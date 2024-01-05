@@ -4,22 +4,19 @@
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.0.xsd">
 
-	<changeSet id="create-table-user" author="root">
+	<changeSet id="create-table-admin" author="root">
 		<preConditions onFail="CONTINUE"
-			onFailMessage="table user already exists">
+			onFailMessage="table admin already exists">
 			<not>
-				<tableExists tableName="user" />
+				<tableExists tableName="admin" />
 			</not>
 		</preConditions>
-		<createTable tableName="user">
+		<createTable tableName="admin">
 			<column name="id" type="BIGINT" autoIncrement="true">
 				<constraints primaryKey="true" nullable="false" />
 			</column>
-			<column name="firstname" type="VARCHAR(50)" />
-			<column name="middlename" type="VARCHAR(50)" />
-			<column name="lastname" type="VARCHAR(50)" />
-			<column name="phone" type="VARCHAR(10)" />
-			<column name="address" type="VARCHAR(255)" />
+			<column name="fullname" type="VARCHAR(100)" />
+			<column name="position" type="VARCHAR(100)" />
 		</createTable>
 	</changeSet>
 </databaseChangeLog>
