@@ -2,18 +2,18 @@ package net.sparkminds.library.service.impl;
 
 import java.util.List;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import lombok.RequiredArgsConstructor;
 import net.sparkminds.library.entity.Account;
 import net.sparkminds.library.repository.AccountRepository;
 import net.sparkminds.library.service.AccountService;
 
 @Service
+@RequiredArgsConstructor
 public class AccountServiceImpl implements AccountService{
 	
-	@Autowired
-	AccountRepository accountRepository;
+	private final AccountRepository accountRepository;
 
 	@Override
 	public List<Account> getAll() {

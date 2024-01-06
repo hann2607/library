@@ -1,201 +1,672 @@
-2024-01-05 17:58:55,794 INFO o.h.v.i.u.Version [background-preinit] HV000001: Hibernate Validator 8.0.1.Final
-2024-01-05 17:58:55,820 INFO o.s.b.StartupInfoLogger [restartedMain] Starting LibraryApplication using Java 17.0.5 with PID 8392 (E:\Project\library\library\target\classes started by HAN-PC in E:\Project\library\library)
-2024-01-05 17:58:55,824 DEBUG o.s.b.StartupInfoLogger [restartedMain] Running with Spring Boot v3.2.1, Spring v6.1.2
-2024-01-05 17:58:55,826 INFO o.s.b.SpringApplication [restartedMain] The following 1 profile is active: "dev"
-2024-01-05 17:58:55,861 INFO o.s.b.l.DeferredLog [restartedMain] Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
-2024-01-05 17:58:55,862 INFO o.s.b.l.DeferredLog [restartedMain] For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
-2024-01-05 17:58:56,363 INFO o.s.d.r.c.RepositoryConfigurationDelegate [restartedMain] Multiple Spring Data modules found, entering strict repository configuration mode
-2024-01-05 17:58:56,363 INFO o.s.d.r.c.RepositoryConfigurationDelegate [restartedMain] Bootstrapping Spring Data JDBC repositories in DEFAULT mode.
-2024-01-05 17:58:56,389 INFO o.s.d.r.c.RepositoryConfigurationExtensionSupport [restartedMain] Spring Data JDBC - Could not safely identify store assignment for repository candidate interface net.sparkminds.library.repository.AccountRepository; If you want this repository to be a JDBC repository, consider annotating your entities with one of these annotations: org.springframework.data.relational.core.mapping.Table.
-2024-01-05 17:58:56,389 INFO o.s.d.r.c.RepositoryConfigurationDelegate [restartedMain] Finished Spring Data repository scanning in 22 ms. Found 0 JDBC repository interfaces.
-2024-01-05 17:58:56,398 INFO o.s.d.r.c.RepositoryConfigurationDelegate [restartedMain] Multiple Spring Data modules found, entering strict repository configuration mode
-2024-01-05 17:58:56,399 INFO o.s.d.r.c.RepositoryConfigurationDelegate [restartedMain] Bootstrapping Spring Data JPA repositories in DEFAULT mode.
-2024-01-05 17:58:56,419 INFO o.s.d.r.c.RepositoryConfigurationDelegate [restartedMain] Finished Spring Data repository scanning in 17 ms. Found 1 JPA repository interface.
-2024-01-05 17:58:56,811 INFO o.s.b.w.e.t.TomcatWebServer [restartedMain] Tomcat initialized with port 8080 (http)
-2024-01-05 17:58:56,821 INFO o.a.j.l.DirectJDKLog [restartedMain] Initializing ProtocolHandler ["http-nio-8080"]
-2024-01-05 17:58:56,822 INFO o.a.j.l.DirectJDKLog [restartedMain] Starting service [Tomcat]
-2024-01-05 17:58:56,822 INFO o.a.j.l.DirectJDKLog [restartedMain] Starting Servlet engine: [Apache Tomcat/10.1.17]
-2024-01-05 17:58:56,860 INFO o.a.j.l.DirectJDKLog [restartedMain] Initializing Spring embedded WebApplicationContext
-2024-01-05 17:58:56,860 INFO o.s.b.w.s.c.ServletWebServerApplicationContext [restartedMain] Root WebApplicationContext: initialization completed in 998 ms
-2024-01-05 17:58:56,965 INFO c.z.h.HikariDataSource [restartedMain] HikariPool-1 - Starting...
-2024-01-05 17:58:57,204 INFO c.z.h.p.HikariPool [restartedMain] HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@30b0482d
-2024-01-05 17:58:57,205 INFO c.z.h.HikariDataSource [restartedMain] HikariPool-1 - Start completed.
-2024-01-05 17:58:57,699 INFO l.l.c.JavaLogger [restartedMain] Reading from db_library.databasechangelog
-2024-01-05 17:58:57,739 INFO l.l.c.JavaLogger [restartedMain] Database is up to date, no changesets to execute
-2024-01-05 17:58:57,742 INFO l.l.c.JavaLogger [restartedMain] Reading from db_library.databasechangelog
-2024-01-05 17:58:57,750 INFO l.l.c.JavaLogger [restartedMain] UPDATE SUMMARY
-2024-01-05 17:58:57,750 INFO l.l.c.JavaLogger [restartedMain] Run:                          0
-2024-01-05 17:58:57,750 INFO l.l.c.JavaLogger [restartedMain] Previously run:               5
-2024-01-05 17:58:57,750 INFO l.l.c.JavaLogger [restartedMain] Filtered out:                 0
-2024-01-05 17:58:57,751 INFO l.l.c.JavaLogger [restartedMain] -------------------------------
-2024-01-05 17:58:57,751 INFO l.l.c.JavaLogger [restartedMain] Total change sets:            5
-2024-01-05 17:58:57,751 INFO l.l.c.JavaLogger [restartedMain] Update summary generated
-2024-01-05 17:58:57,768 INFO l.l.c.JavaLogger [restartedMain] Successfully released change log lock
-2024-01-05 17:58:57,769 INFO l.l.c.JavaLogger [restartedMain] Command execution complete
-2024-01-05 17:58:57,823 INFO o.h.j.i.u.LogHelper [restartedMain] HHH000204: Processing PersistenceUnitInfo [name: default]
-2024-01-05 17:58:57,869 INFO o.h.Version [restartedMain] HHH000412: Hibernate ORM core version 6.4.1.Final
-2024-01-05 17:58:57,902 INFO o.h.c.i.RegionFactoryInitiator [restartedMain] HHH000026: Second-level cache disabled
-2024-01-05 17:58:58,079 INFO o.s.o.j.p.SpringPersistenceUnitInfo [restartedMain] No LoadTimeWeaver setup: ignoring JPA class transformer
-2024-01-05 17:58:58,639 INFO o.h.m.i.EntityInstantiatorPojoStandard [restartedMain] HHH000182: No default (no-argument) constructor for class: net.sparkminds.library.entity.Session (class must be instantiated by Interceptor)
-2024-01-05 17:58:58,842 INFO o.h.e.t.j.p.i.JtaPlatformInitiator [restartedMain] HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
-2024-01-05 17:58:58,902 INFO o.s.o.j.AbstractEntityManagerFactoryBean [restartedMain] Initialized JPA EntityManagerFactory for persistence unit 'default'
-2024-01-05 17:58:59,112 WARN o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration [restartedMain] spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
-2024-01-05 17:58:59,417 INFO o.s.b.d.a.OptionalLiveReloadServer [restartedMain] LiveReload server is running on port 35729
-2024-01-05 17:58:59,433 INFO o.a.j.l.DirectJDKLog [restartedMain] Starting ProtocolHandler ["http-nio-8080"]
-2024-01-05 17:58:59,448 INFO o.s.b.w.e.t.TomcatWebServer [restartedMain] Tomcat started on port 8080 (http) with context path ''
-2024-01-05 17:58:59,456 INFO o.s.b.StartupInfoLogger [restartedMain] Started LibraryApplication in 3.893 seconds (process running for 4.712)
-2024-01-05 17:59:08,022 INFO o.a.j.l.DirectJDKLog [http-nio-8080-exec-1] Initializing Spring DispatcherServlet 'dispatcherServlet'
-2024-01-05 17:59:08,022 INFO o.s.w.s.FrameworkServlet [http-nio-8080-exec-1] Initializing Servlet 'dispatcherServlet'
-2024-01-05 17:59:08,024 INFO o.s.w.s.FrameworkServlet [http-nio-8080-exec-1] Completed initialization in 1 ms
-2024-01-05 18:00:06,855 INFO o.s.b.d.a.LocalDevToolsAutoConfiguration$RestartingClassPathChangeChangedEventListener [File Watcher] Restarting due to 3 class path changes (0 additions, 0 deletions, 3 modifications)
-2024-01-05 18:00:06,858 INFO o.a.j.l.DirectJDKLog [Thread-5] Stopping ProtocolHandler ["http-nio-8080"]
-2024-01-05 18:00:06,868 INFO o.s.o.j.AbstractEntityManagerFactoryBean [Thread-5] Closing JPA EntityManagerFactory for persistence unit 'default'
-2024-01-05 18:00:06,871 INFO c.z.h.HikariDataSource [Thread-5] HikariPool-1 - Shutdown initiated...
-2024-01-05 18:00:06,878 INFO c.z.h.HikariDataSource [Thread-5] HikariPool-1 - Shutdown completed.
-2024-01-05 18:00:06,946 INFO o.s.b.StartupInfoLogger [restartedMain] Starting LibraryApplication using Java 17.0.5 with PID 8392 (E:\Project\library\library\target\classes started by HAN-PC in E:\Project\library\library)
-2024-01-05 18:00:06,946 DEBUG o.s.b.StartupInfoLogger [restartedMain] Running with Spring Boot v3.2.1, Spring v6.1.2
-2024-01-05 18:00:06,946 INFO o.s.b.SpringApplication [restartedMain] The following 1 profile is active: "dev"
-2024-01-05 18:00:07,075 INFO o.s.d.r.c.RepositoryConfigurationDelegate [restartedMain] Multiple Spring Data modules found, entering strict repository configuration mode
-2024-01-05 18:00:07,075 INFO o.s.d.r.c.RepositoryConfigurationDelegate [restartedMain] Bootstrapping Spring Data JDBC repositories in DEFAULT mode.
-2024-01-05 18:00:07,078 INFO o.s.d.r.c.RepositoryConfigurationExtensionSupport [restartedMain] Spring Data JDBC - Could not safely identify store assignment for repository candidate interface net.sparkminds.library.repository.AccountRepository; If you want this repository to be a JDBC repository, consider annotating your entities with one of these annotations: org.springframework.data.relational.core.mapping.Table.
-2024-01-05 18:00:07,079 INFO o.s.d.r.c.RepositoryConfigurationDelegate [restartedMain] Finished Spring Data repository scanning in 3 ms. Found 0 JDBC repository interfaces.
-2024-01-05 18:00:07,081 INFO o.s.d.r.c.RepositoryConfigurationDelegate [restartedMain] Multiple Spring Data modules found, entering strict repository configuration mode
-2024-01-05 18:00:07,081 INFO o.s.d.r.c.RepositoryConfigurationDelegate [restartedMain] Bootstrapping Spring Data JPA repositories in DEFAULT mode.
-2024-01-05 18:00:07,085 INFO o.s.d.r.c.RepositoryConfigurationDelegate [restartedMain] Finished Spring Data repository scanning in 3 ms. Found 1 JPA repository interface.
-2024-01-05 18:00:07,157 INFO o.s.b.w.e.t.TomcatWebServer [restartedMain] Tomcat initialized with port 8080 (http)
-2024-01-05 18:00:07,158 INFO o.a.j.l.DirectJDKLog [restartedMain] Initializing ProtocolHandler ["http-nio-8080"]
-2024-01-05 18:00:07,158 INFO o.a.j.l.DirectJDKLog [restartedMain] Starting service [Tomcat]
-2024-01-05 18:00:07,158 INFO o.a.j.l.DirectJDKLog [restartedMain] Starting Servlet engine: [Apache Tomcat/10.1.17]
-2024-01-05 18:00:07,170 INFO o.a.j.l.DirectJDKLog [restartedMain] Initializing Spring embedded WebApplicationContext
-2024-01-05 18:00:07,170 INFO o.s.b.w.s.c.ServletWebServerApplicationContext [restartedMain] Root WebApplicationContext: initialization completed in 222 ms
-2024-01-05 18:00:07,189 INFO c.z.h.HikariDataSource [restartedMain] HikariPool-2 - Starting...
-2024-01-05 18:00:07,200 INFO c.z.h.p.HikariPool [restartedMain] HikariPool-2 - Added connection com.mysql.cj.jdbc.ConnectionImpl@26c7de61
-2024-01-05 18:00:07,200 INFO c.z.h.HikariDataSource [restartedMain] HikariPool-2 - Start completed.
-2024-01-05 18:00:07,283 INFO l.l.c.JavaLogger [restartedMain] Reading from db_library.databasechangelog
-2024-01-05 18:00:07,297 INFO l.l.c.JavaLogger [restartedMain] Database is up to date, no changesets to execute
-2024-01-05 18:00:07,298 INFO l.l.c.JavaLogger [restartedMain] UPDATE SUMMARY
-2024-01-05 18:00:07,298 INFO l.l.c.JavaLogger [restartedMain] Run:                          0
-2024-01-05 18:00:07,299 INFO l.l.c.JavaLogger [restartedMain] Previously run:               5
-2024-01-05 18:00:07,299 INFO l.l.c.JavaLogger [restartedMain] Filtered out:                 0
-2024-01-05 18:00:07,299 INFO l.l.c.JavaLogger [restartedMain] -------------------------------
-2024-01-05 18:00:07,299 INFO l.l.c.JavaLogger [restartedMain] Total change sets:            5
-2024-01-05 18:00:07,299 INFO l.l.c.JavaLogger [restartedMain] Update summary generated
-2024-01-05 18:00:07,301 INFO l.l.c.JavaLogger [restartedMain] Successfully released change log lock
-2024-01-05 18:00:07,302 INFO l.l.c.JavaLogger [restartedMain] Command execution complete
-2024-01-05 18:00:07,313 INFO o.h.j.i.u.LogHelper [restartedMain] HHH000204: Processing PersistenceUnitInfo [name: default]
-2024-01-05 18:00:07,316 INFO o.h.c.i.RegionFactoryInitiator [restartedMain] HHH000026: Second-level cache disabled
-2024-01-05 18:00:07,318 INFO o.s.o.j.p.SpringPersistenceUnitInfo [restartedMain] No LoadTimeWeaver setup: ignoring JPA class transformer
-2024-01-05 18:00:07,349 INFO o.h.m.i.EntityInstantiatorPojoStandard [restartedMain] HHH000182: No default (no-argument) constructor for class: net.sparkminds.library.entity.Session (class must be instantiated by Interceptor)
-2024-01-05 18:00:07,390 INFO o.h.e.t.j.p.i.JtaPlatformInitiator [restartedMain] HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
-2024-01-05 18:00:07,417 INFO o.s.o.j.AbstractEntityManagerFactoryBean [restartedMain] Initialized JPA EntityManagerFactory for persistence unit 'default'
-2024-01-05 18:00:07,469 WARN o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration [restartedMain] spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
-2024-01-05 18:00:07,550 INFO o.s.b.d.a.OptionalLiveReloadServer [restartedMain] LiveReload server is running on port 35729
-2024-01-05 18:00:07,557 INFO o.a.j.l.DirectJDKLog [restartedMain] Starting ProtocolHandler ["http-nio-8080"]
-2024-01-05 18:00:07,559 INFO o.s.b.w.e.t.TomcatWebServer [restartedMain] Tomcat started on port 8080 (http) with context path ''
-2024-01-05 18:00:07,563 INFO o.s.b.StartupInfoLogger [restartedMain] Started LibraryApplication in 0.644 seconds (process running for 72.819)
-2024-01-05 18:00:07,565 INFO o.s.b.d.a.ConditionEvaluationDeltaLoggingListener [restartedMain] Condition evaluation unchanged
-2024-01-05 18:00:17,071 INFO o.s.b.d.a.LocalDevToolsAutoConfiguration$RestartingClassPathChangeChangedEventListener [File Watcher] Restarting due to 3 class path changes (0 additions, 0 deletions, 3 modifications)
-2024-01-05 18:00:17,072 INFO o.a.j.l.DirectJDKLog [Thread-7] Stopping ProtocolHandler ["http-nio-8080"]
-2024-01-05 18:00:17,081 INFO o.s.o.j.AbstractEntityManagerFactoryBean [Thread-7] Closing JPA EntityManagerFactory for persistence unit 'default'
-2024-01-05 18:00:17,081 INFO c.z.h.HikariDataSource [Thread-7] HikariPool-2 - Shutdown initiated...
-2024-01-05 18:00:17,085 INFO c.z.h.HikariDataSource [Thread-7] HikariPool-2 - Shutdown completed.
-2024-01-05 18:00:17,151 INFO o.s.b.StartupInfoLogger [restartedMain] Starting LibraryApplication using Java 17.0.5 with PID 8392 (E:\Project\library\library\target\classes started by HAN-PC in E:\Project\library\library)
-2024-01-05 18:00:17,152 DEBUG o.s.b.StartupInfoLogger [restartedMain] Running with Spring Boot v3.2.1, Spring v6.1.2
-2024-01-05 18:00:17,152 INFO o.s.b.SpringApplication [restartedMain] The following 1 profile is active: "dev"
-2024-01-05 18:00:17,278 INFO o.s.d.r.c.RepositoryConfigurationDelegate [restartedMain] Multiple Spring Data modules found, entering strict repository configuration mode
-2024-01-05 18:00:17,278 INFO o.s.d.r.c.RepositoryConfigurationDelegate [restartedMain] Bootstrapping Spring Data JDBC repositories in DEFAULT mode.
-2024-01-05 18:00:17,281 INFO o.s.d.r.c.RepositoryConfigurationExtensionSupport [restartedMain] Spring Data JDBC - Could not safely identify store assignment for repository candidate interface net.sparkminds.library.repository.AccountRepository; If you want this repository to be a JDBC repository, consider annotating your entities with one of these annotations: org.springframework.data.relational.core.mapping.Table.
-2024-01-05 18:00:17,281 INFO o.s.d.r.c.RepositoryConfigurationDelegate [restartedMain] Finished Spring Data repository scanning in 3 ms. Found 0 JDBC repository interfaces.
-2024-01-05 18:00:17,284 INFO o.s.d.r.c.RepositoryConfigurationDelegate [restartedMain] Multiple Spring Data modules found, entering strict repository configuration mode
-2024-01-05 18:00:17,284 INFO o.s.d.r.c.RepositoryConfigurationDelegate [restartedMain] Bootstrapping Spring Data JPA repositories in DEFAULT mode.
-2024-01-05 18:00:17,288 INFO o.s.d.r.c.RepositoryConfigurationDelegate [restartedMain] Finished Spring Data repository scanning in 3 ms. Found 1 JPA repository interface.
-2024-01-05 18:00:17,352 INFO o.s.b.w.e.t.TomcatWebServer [restartedMain] Tomcat initialized with port 8080 (http)
-2024-01-05 18:00:17,353 INFO o.a.j.l.DirectJDKLog [restartedMain] Initializing ProtocolHandler ["http-nio-8080"]
-2024-01-05 18:00:17,353 INFO o.a.j.l.DirectJDKLog [restartedMain] Starting service [Tomcat]
-2024-01-05 18:00:17,353 INFO o.a.j.l.DirectJDKLog [restartedMain] Starting Servlet engine: [Apache Tomcat/10.1.17]
-2024-01-05 18:00:17,365 INFO o.a.j.l.DirectJDKLog [restartedMain] Initializing Spring embedded WebApplicationContext
-2024-01-05 18:00:17,365 INFO o.s.b.w.s.c.ServletWebServerApplicationContext [restartedMain] Root WebApplicationContext: initialization completed in 212 ms
-2024-01-05 18:00:17,383 INFO c.z.h.HikariDataSource [restartedMain] HikariPool-3 - Starting...
-2024-01-05 18:00:17,391 INFO c.z.h.p.HikariPool [restartedMain] HikariPool-3 - Added connection com.mysql.cj.jdbc.ConnectionImpl@47d80acc
-2024-01-05 18:00:17,391 INFO c.z.h.HikariDataSource [restartedMain] HikariPool-3 - Start completed.
-2024-01-05 18:00:17,471 INFO l.l.c.JavaLogger [restartedMain] Reading from db_library.databasechangelog
-2024-01-05 18:00:17,484 INFO l.l.c.JavaLogger [restartedMain] Database is up to date, no changesets to execute
-2024-01-05 18:00:17,485 INFO l.l.c.JavaLogger [restartedMain] UPDATE SUMMARY
-2024-01-05 18:00:17,485 INFO l.l.c.JavaLogger [restartedMain] Run:                          0
-2024-01-05 18:00:17,485 INFO l.l.c.JavaLogger [restartedMain] Previously run:               5
-2024-01-05 18:00:17,485 INFO l.l.c.JavaLogger [restartedMain] Filtered out:                 0
-2024-01-05 18:00:17,485 INFO l.l.c.JavaLogger [restartedMain] -------------------------------
-2024-01-05 18:00:17,486 INFO l.l.c.JavaLogger [restartedMain] Total change sets:            5
-2024-01-05 18:00:17,486 INFO l.l.c.JavaLogger [restartedMain] Update summary generated
-2024-01-05 18:00:17,488 INFO l.l.c.JavaLogger [restartedMain] Successfully released change log lock
-2024-01-05 18:00:17,489 INFO l.l.c.JavaLogger [restartedMain] Command execution complete
-2024-01-05 18:00:17,502 INFO o.h.j.i.u.LogHelper [restartedMain] HHH000204: Processing PersistenceUnitInfo [name: default]
-2024-01-05 18:00:17,504 INFO o.h.c.i.RegionFactoryInitiator [restartedMain] HHH000026: Second-level cache disabled
-2024-01-05 18:00:17,506 INFO o.s.o.j.p.SpringPersistenceUnitInfo [restartedMain] No LoadTimeWeaver setup: ignoring JPA class transformer
-2024-01-05 18:00:17,535 INFO o.h.m.i.EntityInstantiatorPojoStandard [restartedMain] HHH000182: No default (no-argument) constructor for class: net.sparkminds.library.entity.Session (class must be instantiated by Interceptor)
-2024-01-05 18:00:17,569 INFO o.h.e.t.j.p.i.JtaPlatformInitiator [restartedMain] HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
-2024-01-05 18:00:17,589 INFO o.s.o.j.AbstractEntityManagerFactoryBean [restartedMain] Initialized JPA EntityManagerFactory for persistence unit 'default'
-2024-01-05 18:00:17,639 WARN o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration [restartedMain] spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
-2024-01-05 18:00:17,725 INFO o.s.b.d.a.OptionalLiveReloadServer [restartedMain] LiveReload server is running on port 35729
-2024-01-05 18:00:17,734 INFO o.a.j.l.DirectJDKLog [restartedMain] Starting ProtocolHandler ["http-nio-8080"]
-2024-01-05 18:00:17,738 INFO o.s.b.w.e.t.TomcatWebServer [restartedMain] Tomcat started on port 8080 (http) with context path ''
-2024-01-05 18:00:17,743 INFO o.s.b.StartupInfoLogger [restartedMain] Started LibraryApplication in 0.619 seconds (process running for 82.999)
-2024-01-05 18:00:17,745 INFO o.s.b.d.a.ConditionEvaluationDeltaLoggingListener [restartedMain] Condition evaluation unchanged
-2024-01-05 18:00:36,008 INFO o.a.j.l.DirectJDKLog [http-nio-8080-exec-2] Initializing Spring DispatcherServlet 'dispatcherServlet'
-2024-01-05 18:00:36,009 INFO o.s.w.s.FrameworkServlet [http-nio-8080-exec-2] Initializing Servlet 'dispatcherServlet'
-2024-01-05 18:00:36,009 INFO o.s.w.s.FrameworkServlet [http-nio-8080-exec-2] Completed initialization in 0 ms
-2024-01-05 18:00:48,582 INFO o.s.b.d.a.LocalDevToolsAutoConfiguration$RestartingClassPathChangeChangedEventListener [File Watcher] Restarting due to 3 class path changes (0 additions, 0 deletions, 3 modifications)
-2024-01-05 18:00:48,583 INFO o.a.j.l.DirectJDKLog [Thread-11] Stopping ProtocolHandler ["http-nio-8080"]
-2024-01-05 18:00:48,591 INFO o.s.o.j.AbstractEntityManagerFactoryBean [Thread-11] Closing JPA EntityManagerFactory for persistence unit 'default'
-2024-01-05 18:00:48,591 INFO c.z.h.HikariDataSource [Thread-11] HikariPool-3 - Shutdown initiated...
-2024-01-05 18:00:48,594 INFO c.z.h.HikariDataSource [Thread-11] HikariPool-3 - Shutdown completed.
-2024-01-05 18:00:48,658 INFO o.s.b.StartupInfoLogger [restartedMain] Starting LibraryApplication using Java 17.0.5 with PID 8392 (E:\Project\library\library\target\classes started by HAN-PC in E:\Project\library\library)
-2024-01-05 18:00:48,658 DEBUG o.s.b.StartupInfoLogger [restartedMain] Running with Spring Boot v3.2.1, Spring v6.1.2
-2024-01-05 18:00:48,658 INFO o.s.b.SpringApplication [restartedMain] The following 1 profile is active: "dev"
-2024-01-05 18:00:48,756 INFO o.s.d.r.c.RepositoryConfigurationDelegate [restartedMain] Multiple Spring Data modules found, entering strict repository configuration mode
-2024-01-05 18:00:48,756 INFO o.s.d.r.c.RepositoryConfigurationDelegate [restartedMain] Bootstrapping Spring Data JDBC repositories in DEFAULT mode.
-2024-01-05 18:00:48,759 INFO o.s.d.r.c.RepositoryConfigurationExtensionSupport [restartedMain] Spring Data JDBC - Could not safely identify store assignment for repository candidate interface net.sparkminds.library.repository.AccountRepository; If you want this repository to be a JDBC repository, consider annotating your entities with one of these annotations: org.springframework.data.relational.core.mapping.Table.
-2024-01-05 18:00:48,759 INFO o.s.d.r.c.RepositoryConfigurationDelegate [restartedMain] Finished Spring Data repository scanning in 3 ms. Found 0 JDBC repository interfaces.
-2024-01-05 18:00:48,762 INFO o.s.d.r.c.RepositoryConfigurationDelegate [restartedMain] Multiple Spring Data modules found, entering strict repository configuration mode
-2024-01-05 18:00:48,762 INFO o.s.d.r.c.RepositoryConfigurationDelegate [restartedMain] Bootstrapping Spring Data JPA repositories in DEFAULT mode.
-2024-01-05 18:00:48,765 INFO o.s.d.r.c.RepositoryConfigurationDelegate [restartedMain] Finished Spring Data repository scanning in 3 ms. Found 1 JPA repository interface.
-2024-01-05 18:00:48,821 INFO o.s.b.w.e.t.TomcatWebServer [restartedMain] Tomcat initialized with port 8080 (http)
-2024-01-05 18:00:48,822 INFO o.a.j.l.DirectJDKLog [restartedMain] Initializing ProtocolHandler ["http-nio-8080"]
-2024-01-05 18:00:48,822 INFO o.a.j.l.DirectJDKLog [restartedMain] Starting service [Tomcat]
-2024-01-05 18:00:48,822 INFO o.a.j.l.DirectJDKLog [restartedMain] Starting Servlet engine: [Apache Tomcat/10.1.17]
-2024-01-05 18:00:48,832 INFO o.a.j.l.DirectJDKLog [restartedMain] Initializing Spring embedded WebApplicationContext
-2024-01-05 18:00:48,832 INFO o.s.b.w.s.c.ServletWebServerApplicationContext [restartedMain] Root WebApplicationContext: initialization completed in 173 ms
-2024-01-05 18:00:48,851 INFO c.z.h.HikariDataSource [restartedMain] HikariPool-4 - Starting...
-2024-01-05 18:00:48,860 INFO c.z.h.p.HikariPool [restartedMain] HikariPool-4 - Added connection com.mysql.cj.jdbc.ConnectionImpl@2fec8c89
-2024-01-05 18:00:48,860 INFO c.z.h.HikariDataSource [restartedMain] HikariPool-4 - Start completed.
-2024-01-05 18:00:48,933 INFO l.l.c.JavaLogger [restartedMain] Reading from db_library.databasechangelog
-2024-01-05 18:00:48,945 INFO l.l.c.JavaLogger [restartedMain] Database is up to date, no changesets to execute
-2024-01-05 18:00:48,946 INFO l.l.c.JavaLogger [restartedMain] UPDATE SUMMARY
-2024-01-05 18:00:48,946 INFO l.l.c.JavaLogger [restartedMain] Run:                          0
-2024-01-05 18:00:48,946 INFO l.l.c.JavaLogger [restartedMain] Previously run:               5
-2024-01-05 18:00:48,946 INFO l.l.c.JavaLogger [restartedMain] Filtered out:                 0
-2024-01-05 18:00:48,946 INFO l.l.c.JavaLogger [restartedMain] -------------------------------
-2024-01-05 18:00:48,946 INFO l.l.c.JavaLogger [restartedMain] Total change sets:            5
-2024-01-05 18:00:48,946 INFO l.l.c.JavaLogger [restartedMain] Update summary generated
-2024-01-05 18:00:48,948 INFO l.l.c.JavaLogger [restartedMain] Successfully released change log lock
-2024-01-05 18:00:48,948 INFO l.l.c.JavaLogger [restartedMain] Command execution complete
-2024-01-05 18:00:48,958 INFO o.h.j.i.u.LogHelper [restartedMain] HHH000204: Processing PersistenceUnitInfo [name: default]
-2024-01-05 18:00:48,960 INFO o.h.c.i.RegionFactoryInitiator [restartedMain] HHH000026: Second-level cache disabled
-2024-01-05 18:00:48,962 INFO o.s.o.j.p.SpringPersistenceUnitInfo [restartedMain] No LoadTimeWeaver setup: ignoring JPA class transformer
-2024-01-05 18:00:48,988 INFO o.h.m.i.EntityInstantiatorPojoStandard [restartedMain] HHH000182: No default (no-argument) constructor for class: net.sparkminds.library.entity.Session (class must be instantiated by Interceptor)
-2024-01-05 18:00:49,019 INFO o.h.e.t.j.p.i.JtaPlatformInitiator [restartedMain] HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
-2024-01-05 18:00:49,043 INFO o.s.o.j.AbstractEntityManagerFactoryBean [restartedMain] Initialized JPA EntityManagerFactory for persistence unit 'default'
-2024-01-05 18:00:49,089 WARN o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration [restartedMain] spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
-2024-01-05 18:00:49,163 INFO o.s.b.d.a.OptionalLiveReloadServer [restartedMain] LiveReload server is running on port 35729
-2024-01-05 18:00:49,170 INFO o.a.j.l.DirectJDKLog [restartedMain] Starting ProtocolHandler ["http-nio-8080"]
-2024-01-05 18:00:49,172 INFO o.s.b.w.e.t.TomcatWebServer [restartedMain] Tomcat started on port 8080 (http) with context path ''
-2024-01-05 18:00:49,177 INFO o.s.b.StartupInfoLogger [restartedMain] Started LibraryApplication in 0.546 seconds (process running for 114.432)
-2024-01-05 18:00:49,178 INFO o.s.b.d.a.ConditionEvaluationDeltaLoggingListener [restartedMain] Condition evaluation unchanged
-2024-01-05 18:00:59,692 INFO o.a.j.l.DirectJDKLog [http-nio-8080-exec-2] Initializing Spring DispatcherServlet 'dispatcherServlet'
-2024-01-05 18:00:59,692 INFO o.s.w.s.FrameworkServlet [http-nio-8080-exec-2] Initializing Servlet 'dispatcherServlet'
-2024-01-05 18:00:59,693 INFO o.s.w.s.FrameworkServlet [http-nio-8080-exec-2] Completed initialization in 1 ms
-2024-01-05 18:03:23,508 INFO o.s.b.a.SpringApplicationAdminMXBeanRegistrar$SpringApplicationAdmin [RMI TCP Connection(20)-127.0.0.1] Application shutdown requested.
-2024-01-05 18:03:23,509 INFO o.a.j.l.DirectJDKLog [RMI TCP Connection(20)-127.0.0.1] Stopping ProtocolHandler ["http-nio-8080"]
-2024-01-05 18:03:23,518 INFO o.s.o.j.AbstractEntityManagerFactoryBean [RMI TCP Connection(20)-127.0.0.1] Closing JPA EntityManagerFactory for persistence unit 'default'
-2024-01-05 18:03:23,518 INFO c.z.h.HikariDataSource [RMI TCP Connection(20)-127.0.0.1] HikariPool-4 - Shutdown initiated...
-2024-01-05 18:03:23,521 INFO c.z.h.HikariDataSource [RMI TCP Connection(20)-127.0.0.1] HikariPool-4 - Shutdown completed.
+2024-01-06 22:31:42,357 INFO o.h.v.i.u.Version [background-preinit] HV000001: Hibernate Validator 8.0.1.Final
+2024-01-06 22:31:42,387 INFO o.s.b.StartupInfoLogger [restartedMain] Starting LibraryApplication using Java 17.0.5 with PID 10884 (E:\Project\library\library\target\classes started by HAN-PC in E:\Project\library\library)
+2024-01-06 22:31:42,390 DEBUG o.s.b.StartupInfoLogger [restartedMain] Running with Spring Boot v3.2.1, Spring v6.1.2
+2024-01-06 22:31:42,392 INFO o.s.b.SpringApplication [restartedMain] The following 1 profile is active: "dev"
+2024-01-06 22:31:42,434 INFO o.s.b.l.DeferredLog [restartedMain] Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2024-01-06 22:31:42,434 INFO o.s.b.l.DeferredLog [restartedMain] For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2024-01-06 22:31:42,951 INFO o.s.d.r.c.RepositoryConfigurationDelegate [restartedMain] Multiple Spring Data modules found, entering strict repository configuration mode
+2024-01-06 22:31:42,952 INFO o.s.d.r.c.RepositoryConfigurationDelegate [restartedMain] Bootstrapping Spring Data JDBC repositories in DEFAULT mode.
+2024-01-06 22:31:42,982 INFO o.s.d.r.c.RepositoryConfigurationExtensionSupport [restartedMain] Spring Data JDBC - Could not safely identify store assignment for repository candidate interface net.sparkminds.library.repository.AccountRepository; If you want this repository to be a JDBC repository, consider annotating your entities with one of these annotations: org.springframework.data.relational.core.mapping.Table.
+2024-01-06 22:31:42,984 INFO o.s.d.r.c.RepositoryConfigurationExtensionSupport [restartedMain] Spring Data JDBC - Could not safely identify store assignment for repository candidate interface net.sparkminds.library.repository.AdminRepository; If you want this repository to be a JDBC repository, consider annotating your entities with one of these annotations: org.springframework.data.relational.core.mapping.Table.
+2024-01-06 22:31:42,985 INFO o.s.d.r.c.RepositoryConfigurationExtensionSupport [restartedMain] Spring Data JDBC - Could not safely identify store assignment for repository candidate interface net.sparkminds.library.repository.RoleRepository; If you want this repository to be a JDBC repository, consider annotating your entities with one of these annotations: org.springframework.data.relational.core.mapping.Table.
+2024-01-06 22:31:42,986 INFO o.s.d.r.c.RepositoryConfigurationExtensionSupport [restartedMain] Spring Data JDBC - Could not safely identify store assignment for repository candidate interface net.sparkminds.library.repository.SessionRepository; If you want this repository to be a JDBC repository, consider annotating your entities with one of these annotations: org.springframework.data.relational.core.mapping.Table.
+2024-01-06 22:31:42,987 INFO o.s.d.r.c.RepositoryConfigurationExtensionSupport [restartedMain] Spring Data JDBC - Could not safely identify store assignment for repository candidate interface net.sparkminds.library.repository.UserRepository; If you want this repository to be a JDBC repository, consider annotating your entities with one of these annotations: org.springframework.data.relational.core.mapping.Table.
+2024-01-06 22:31:42,988 INFO o.s.d.r.c.RepositoryConfigurationDelegate [restartedMain] Finished Spring Data repository scanning in 31 ms. Found 0 JDBC repository interfaces.
+2024-01-06 22:31:42,998 INFO o.s.d.r.c.RepositoryConfigurationDelegate [restartedMain] Multiple Spring Data modules found, entering strict repository configuration mode
+2024-01-06 22:31:42,999 INFO o.s.d.r.c.RepositoryConfigurationDelegate [restartedMain] Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2024-01-06 22:31:43,025 INFO o.s.d.r.c.RepositoryConfigurationDelegate [restartedMain] Finished Spring Data repository scanning in 23 ms. Found 5 JPA repository interfaces.
+2024-01-06 22:31:43,447 INFO o.s.b.w.e.t.TomcatWebServer [restartedMain] Tomcat initialized with port 8080 (http)
+2024-01-06 22:31:43,456 INFO o.a.j.l.DirectJDKLog [restartedMain] Initializing ProtocolHandler ["http-nio-8080"]
+2024-01-06 22:31:43,457 INFO o.a.j.l.DirectJDKLog [restartedMain] Starting service [Tomcat]
+2024-01-06 22:31:43,458 INFO o.a.j.l.DirectJDKLog [restartedMain] Starting Servlet engine: [Apache Tomcat/10.1.17]
+2024-01-06 22:31:43,498 INFO o.a.j.l.DirectJDKLog [restartedMain] Initializing Spring embedded WebApplicationContext
+2024-01-06 22:31:43,498 INFO o.s.b.w.s.c.ServletWebServerApplicationContext [restartedMain] Root WebApplicationContext: initialization completed in 1063 ms
+2024-01-06 22:31:43,609 INFO c.z.h.HikariDataSource [restartedMain] HikariPool-1 - Starting...
+2024-01-06 22:31:43,858 INFO c.z.h.p.HikariPool [restartedMain] HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@52cc5c69
+2024-01-06 22:31:43,859 INFO c.z.h.HikariDataSource [restartedMain] HikariPool-1 - Start completed.
+2024-01-06 22:31:44,389 INFO l.l.c.JavaLogger [restartedMain] Reading from db_library.databasechangelog
+2024-01-06 22:31:44,427 INFO l.l.c.JavaLogger [restartedMain] Database is up to date, no changesets to execute
+2024-01-06 22:31:44,430 INFO l.l.c.JavaLogger [restartedMain] Reading from db_library.databasechangelog
+2024-01-06 22:31:44,438 INFO l.l.c.JavaLogger [restartedMain] UPDATE SUMMARY
+2024-01-06 22:31:44,438 INFO l.l.c.JavaLogger [restartedMain] Run:                          0
+2024-01-06 22:31:44,438 INFO l.l.c.JavaLogger [restartedMain] Previously run:               5
+2024-01-06 22:31:44,439 INFO l.l.c.JavaLogger [restartedMain] Filtered out:                 0
+2024-01-06 22:31:44,439 INFO l.l.c.JavaLogger [restartedMain] -------------------------------
+2024-01-06 22:31:44,439 INFO l.l.c.JavaLogger [restartedMain] Total change sets:            5
+2024-01-06 22:31:44,440 INFO l.l.c.JavaLogger [restartedMain] Update summary generated
+2024-01-06 22:31:44,458 INFO l.l.c.JavaLogger [restartedMain] Successfully released change log lock
+2024-01-06 22:31:44,459 INFO l.l.c.JavaLogger [restartedMain] Command execution complete
+2024-01-06 22:31:44,517 INFO o.h.j.i.u.LogHelper [restartedMain] HHH000204: Processing PersistenceUnitInfo [name: default]
+2024-01-06 22:31:44,571 INFO o.h.Version [restartedMain] HHH000412: Hibernate ORM core version 6.4.1.Final
+2024-01-06 22:31:44,603 INFO o.h.c.i.RegionFactoryInitiator [restartedMain] HHH000026: Second-level cache disabled
+2024-01-06 22:31:44,792 INFO o.s.o.j.p.SpringPersistenceUnitInfo [restartedMain] No LoadTimeWeaver setup: ignoring JPA class transformer
+2024-01-06 22:31:45,689 INFO o.h.e.t.j.p.i.JtaPlatformInitiator [restartedMain] HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2024-01-06 22:31:45,759 INFO o.s.o.j.AbstractEntityManagerFactoryBean [restartedMain] Initialized JPA EntityManagerFactory for persistence unit 'default'
+2024-01-06 22:31:46,044 WARN o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration [restartedMain] spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2024-01-06 22:31:46,368 INFO o.s.b.d.a.OptionalLiveReloadServer [restartedMain] LiveReload server is running on port 35729
+2024-01-06 22:31:46,385 INFO o.a.j.l.DirectJDKLog [restartedMain] Starting ProtocolHandler ["http-nio-8080"]
+2024-01-06 22:31:46,402 INFO o.s.b.w.e.t.TomcatWebServer [restartedMain] Tomcat started on port 8080 (http) with context path ''
+2024-01-06 22:31:46,411 INFO o.s.b.StartupInfoLogger [restartedMain] Started LibraryApplication in 4.296 seconds (process running for 5.123)
+2024-01-06 22:31:48,722 INFO o.a.j.l.DirectJDKLog [http-nio-8080-exec-3] Initializing Spring DispatcherServlet 'dispatcherServlet'
+2024-01-06 22:31:48,722 INFO o.s.w.s.FrameworkServlet [http-nio-8080-exec-3] Initializing Servlet 'dispatcherServlet'
+2024-01-06 22:31:48,725 INFO o.s.w.s.FrameworkServlet [http-nio-8080-exec-3] Completed initialization in 2 ms
+2024-01-06 22:32:35,500 INFO o.s.b.d.a.LocalDevToolsAutoConfiguration$RestartingClassPathChangeChangedEventListener [File Watcher] Restarting due to 1 class path change (0 additions, 0 deletions, 1 modification)
+2024-01-06 22:32:35,504 INFO o.a.j.l.DirectJDKLog [Thread-5] Stopping ProtocolHandler ["http-nio-8080"]
+2024-01-06 22:32:35,514 INFO o.s.o.j.AbstractEntityManagerFactoryBean [Thread-5] Closing JPA EntityManagerFactory for persistence unit 'default'
+2024-01-06 22:32:35,517 INFO c.z.h.HikariDataSource [Thread-5] HikariPool-1 - Shutdown initiated...
+2024-01-06 22:32:35,522 INFO c.z.h.HikariDataSource [Thread-5] HikariPool-1 - Shutdown completed.
+2024-01-06 22:32:35,590 INFO o.s.b.StartupInfoLogger [restartedMain] Starting LibraryApplication using Java 17.0.5 with PID 10884 (E:\Project\library\library\target\classes started by HAN-PC in E:\Project\library\library)
+2024-01-06 22:32:35,590 DEBUG o.s.b.StartupInfoLogger [restartedMain] Running with Spring Boot v3.2.1, Spring v6.1.2
+2024-01-06 22:32:35,590 INFO o.s.b.SpringApplication [restartedMain] The following 1 profile is active: "dev"
+2024-01-06 22:32:35,715 INFO o.s.d.r.c.RepositoryConfigurationDelegate [restartedMain] Multiple Spring Data modules found, entering strict repository configuration mode
+2024-01-06 22:32:35,716 INFO o.s.d.r.c.RepositoryConfigurationDelegate [restartedMain] Bootstrapping Spring Data JDBC repositories in DEFAULT mode.
+2024-01-06 22:32:35,720 INFO o.s.d.r.c.RepositoryConfigurationExtensionSupport [restartedMain] Spring Data JDBC - Could not safely identify store assignment for repository candidate interface net.sparkminds.library.repository.AccountRepository; If you want this repository to be a JDBC repository, consider annotating your entities with one of these annotations: org.springframework.data.relational.core.mapping.Table.
+2024-01-06 22:32:35,720 INFO o.s.d.r.c.RepositoryConfigurationExtensionSupport [restartedMain] Spring Data JDBC - Could not safely identify store assignment for repository candidate interface net.sparkminds.library.repository.AdminRepository; If you want this repository to be a JDBC repository, consider annotating your entities with one of these annotations: org.springframework.data.relational.core.mapping.Table.
+2024-01-06 22:32:35,722 INFO o.s.d.r.c.RepositoryConfigurationExtensionSupport [restartedMain] Spring Data JDBC - Could not safely identify store assignment for repository candidate interface net.sparkminds.library.repository.RoleRepository; If you want this repository to be a JDBC repository, consider annotating your entities with one of these annotations: org.springframework.data.relational.core.mapping.Table.
+2024-01-06 22:32:35,722 INFO o.s.d.r.c.RepositoryConfigurationExtensionSupport [restartedMain] Spring Data JDBC - Could not safely identify store assignment for repository candidate interface net.sparkminds.library.repository.SessionRepository; If you want this repository to be a JDBC repository, consider annotating your entities with one of these annotations: org.springframework.data.relational.core.mapping.Table.
+2024-01-06 22:32:35,724 INFO o.s.d.r.c.RepositoryConfigurationExtensionSupport [restartedMain] Spring Data JDBC - Could not safely identify store assignment for repository candidate interface net.sparkminds.library.repository.UserRepository; If you want this repository to be a JDBC repository, consider annotating your entities with one of these annotations: org.springframework.data.relational.core.mapping.Table.
+2024-01-06 22:32:35,724 INFO o.s.d.r.c.RepositoryConfigurationDelegate [restartedMain] Finished Spring Data repository scanning in 8 ms. Found 0 JDBC repository interfaces.
+2024-01-06 22:32:35,726 INFO o.s.d.r.c.RepositoryConfigurationDelegate [restartedMain] Multiple Spring Data modules found, entering strict repository configuration mode
+2024-01-06 22:32:35,726 INFO o.s.d.r.c.RepositoryConfigurationDelegate [restartedMain] Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2024-01-06 22:32:35,734 INFO o.s.d.r.c.RepositoryConfigurationDelegate [restartedMain] Finished Spring Data repository scanning in 6 ms. Found 5 JPA repository interfaces.
+2024-01-06 22:32:35,806 INFO o.s.b.w.e.t.TomcatWebServer [restartedMain] Tomcat initialized with port 8080 (http)
+2024-01-06 22:32:35,806 INFO o.a.j.l.DirectJDKLog [restartedMain] Initializing ProtocolHandler ["http-nio-8080"]
+2024-01-06 22:32:35,807 INFO o.a.j.l.DirectJDKLog [restartedMain] Starting service [Tomcat]
+2024-01-06 22:32:35,807 INFO o.a.j.l.DirectJDKLog [restartedMain] Starting Servlet engine: [Apache Tomcat/10.1.17]
+2024-01-06 22:32:35,818 INFO o.a.j.l.DirectJDKLog [restartedMain] Initializing Spring embedded WebApplicationContext
+2024-01-06 22:32:35,819 INFO o.s.b.w.s.c.ServletWebServerApplicationContext [restartedMain] Root WebApplicationContext: initialization completed in 226 ms
+2024-01-06 22:32:35,841 INFO c.z.h.HikariDataSource [restartedMain] HikariPool-2 - Starting...
+2024-01-06 22:32:35,851 INFO c.z.h.p.HikariPool [restartedMain] HikariPool-2 - Added connection com.mysql.cj.jdbc.ConnectionImpl@1766a7dd
+2024-01-06 22:32:35,851 INFO c.z.h.HikariDataSource [restartedMain] HikariPool-2 - Start completed.
+2024-01-06 22:32:35,932 INFO l.l.c.JavaLogger [restartedMain] Reading from db_library.databasechangelog
+2024-01-06 22:32:35,945 INFO l.l.c.JavaLogger [restartedMain] Database is up to date, no changesets to execute
+2024-01-06 22:32:35,946 INFO l.l.c.JavaLogger [restartedMain] UPDATE SUMMARY
+2024-01-06 22:32:35,946 INFO l.l.c.JavaLogger [restartedMain] Run:                          0
+2024-01-06 22:32:35,946 INFO l.l.c.JavaLogger [restartedMain] Previously run:               5
+2024-01-06 22:32:35,947 INFO l.l.c.JavaLogger [restartedMain] Filtered out:                 0
+2024-01-06 22:32:35,947 INFO l.l.c.JavaLogger [restartedMain] -------------------------------
+2024-01-06 22:32:35,947 INFO l.l.c.JavaLogger [restartedMain] Total change sets:            5
+2024-01-06 22:32:35,947 INFO l.l.c.JavaLogger [restartedMain] Update summary generated
+2024-01-06 22:32:35,949 INFO l.l.c.JavaLogger [restartedMain] Successfully released change log lock
+2024-01-06 22:32:35,949 INFO l.l.c.JavaLogger [restartedMain] Command execution complete
+2024-01-06 22:32:35,962 INFO o.h.j.i.u.LogHelper [restartedMain] HHH000204: Processing PersistenceUnitInfo [name: default]
+2024-01-06 22:32:35,964 INFO o.h.c.i.RegionFactoryInitiator [restartedMain] HHH000026: Second-level cache disabled
+2024-01-06 22:32:35,966 INFO o.s.o.j.p.SpringPersistenceUnitInfo [restartedMain] No LoadTimeWeaver setup: ignoring JPA class transformer
+2024-01-06 22:32:36,042 INFO o.h.e.t.j.p.i.JtaPlatformInitiator [restartedMain] HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2024-01-06 22:32:36,078 INFO o.s.o.j.AbstractEntityManagerFactoryBean [restartedMain] Initialized JPA EntityManagerFactory for persistence unit 'default'
+2024-01-06 22:32:36,191 WARN o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration [restartedMain] spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2024-01-06 22:32:36,271 INFO o.s.b.d.a.OptionalLiveReloadServer [restartedMain] LiveReload server is running on port 35729
+2024-01-06 22:32:36,280 INFO o.a.j.l.DirectJDKLog [restartedMain] Starting ProtocolHandler ["http-nio-8080"]
+2024-01-06 22:32:36,283 INFO o.s.b.w.e.t.TomcatWebServer [restartedMain] Tomcat started on port 8080 (http) with context path ''
+2024-01-06 22:32:36,286 INFO o.s.b.StartupInfoLogger [restartedMain] Started LibraryApplication in 0.723 seconds (process running for 54.999)
+2024-01-06 22:32:36,288 INFO o.s.b.d.a.ConditionEvaluationDeltaLoggingListener [restartedMain] Condition evaluation unchanged
+2024-01-06 22:32:42,797 INFO o.s.b.d.a.LocalDevToolsAutoConfiguration$RestartingClassPathChangeChangedEventListener [File Watcher] Restarting due to 1 class path change (0 additions, 0 deletions, 1 modification)
+2024-01-06 22:32:42,798 INFO o.a.j.l.DirectJDKLog [Thread-7] Stopping ProtocolHandler ["http-nio-8080"]
+2024-01-06 22:32:42,806 INFO o.s.o.j.AbstractEntityManagerFactoryBean [Thread-7] Closing JPA EntityManagerFactory for persistence unit 'default'
+2024-01-06 22:32:42,806 INFO c.z.h.HikariDataSource [Thread-7] HikariPool-2 - Shutdown initiated...
+2024-01-06 22:32:42,810 INFO c.z.h.HikariDataSource [Thread-7] HikariPool-2 - Shutdown completed.
+2024-01-06 22:32:42,875 INFO o.s.b.StartupInfoLogger [restartedMain] Starting LibraryApplication using Java 17.0.5 with PID 10884 (E:\Project\library\library\target\classes started by HAN-PC in E:\Project\library\library)
+2024-01-06 22:32:42,875 DEBUG o.s.b.StartupInfoLogger [restartedMain] Running with Spring Boot v3.2.1, Spring v6.1.2
+2024-01-06 22:32:42,876 INFO o.s.b.SpringApplication [restartedMain] The following 1 profile is active: "dev"
+2024-01-06 22:32:42,991 INFO o.s.d.r.c.RepositoryConfigurationDelegate [restartedMain] Multiple Spring Data modules found, entering strict repository configuration mode
+2024-01-06 22:32:42,991 INFO o.s.d.r.c.RepositoryConfigurationDelegate [restartedMain] Bootstrapping Spring Data JDBC repositories in DEFAULT mode.
+2024-01-06 22:32:42,994 INFO o.s.d.r.c.RepositoryConfigurationExtensionSupport [restartedMain] Spring Data JDBC - Could not safely identify store assignment for repository candidate interface net.sparkminds.library.repository.AccountRepository; If you want this repository to be a JDBC repository, consider annotating your entities with one of these annotations: org.springframework.data.relational.core.mapping.Table.
+2024-01-06 22:32:42,995 INFO o.s.d.r.c.RepositoryConfigurationExtensionSupport [restartedMain] Spring Data JDBC - Could not safely identify store assignment for repository candidate interface net.sparkminds.library.repository.AdminRepository; If you want this repository to be a JDBC repository, consider annotating your entities with one of these annotations: org.springframework.data.relational.core.mapping.Table.
+2024-01-06 22:32:42,996 INFO o.s.d.r.c.RepositoryConfigurationExtensionSupport [restartedMain] Spring Data JDBC - Could not safely identify store assignment for repository candidate interface net.sparkminds.library.repository.RoleRepository; If you want this repository to be a JDBC repository, consider annotating your entities with one of these annotations: org.springframework.data.relational.core.mapping.Table.
+2024-01-06 22:32:42,997 INFO o.s.d.r.c.RepositoryConfigurationExtensionSupport [restartedMain] Spring Data JDBC - Could not safely identify store assignment for repository candidate interface net.sparkminds.library.repository.SessionRepository; If you want this repository to be a JDBC repository, consider annotating your entities with one of these annotations: org.springframework.data.relational.core.mapping.Table.
+2024-01-06 22:32:42,997 INFO o.s.d.r.c.RepositoryConfigurationExtensionSupport [restartedMain] Spring Data JDBC - Could not safely identify store assignment for repository candidate interface net.sparkminds.library.repository.UserRepository; If you want this repository to be a JDBC repository, consider annotating your entities with one of these annotations: org.springframework.data.relational.core.mapping.Table.
+2024-01-06 22:32:42,999 INFO o.s.d.r.c.RepositoryConfigurationDelegate [restartedMain] Finished Spring Data repository scanning in 7 ms. Found 0 JDBC repository interfaces.
+2024-01-06 22:32:43,001 INFO o.s.d.r.c.RepositoryConfigurationDelegate [restartedMain] Multiple Spring Data modules found, entering strict repository configuration mode
+2024-01-06 22:32:43,001 INFO o.s.d.r.c.RepositoryConfigurationDelegate [restartedMain] Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2024-01-06 22:32:43,007 INFO o.s.d.r.c.RepositoryConfigurationDelegate [restartedMain] Finished Spring Data repository scanning in 5 ms. Found 5 JPA repository interfaces.
+2024-01-06 22:32:43,075 INFO o.s.b.w.e.t.TomcatWebServer [restartedMain] Tomcat initialized with port 8080 (http)
+2024-01-06 22:32:43,075 INFO o.a.j.l.DirectJDKLog [restartedMain] Initializing ProtocolHandler ["http-nio-8080"]
+2024-01-06 22:32:43,076 INFO o.a.j.l.DirectJDKLog [restartedMain] Starting service [Tomcat]
+2024-01-06 22:32:43,076 INFO o.a.j.l.DirectJDKLog [restartedMain] Starting Servlet engine: [Apache Tomcat/10.1.17]
+2024-01-06 22:32:43,087 INFO o.a.j.l.DirectJDKLog [restartedMain] Initializing Spring embedded WebApplicationContext
+2024-01-06 22:32:43,087 INFO o.s.b.w.s.c.ServletWebServerApplicationContext [restartedMain] Root WebApplicationContext: initialization completed in 210 ms
+2024-01-06 22:32:43,106 INFO c.z.h.HikariDataSource [restartedMain] HikariPool-3 - Starting...
+2024-01-06 22:32:43,114 INFO c.z.h.p.HikariPool [restartedMain] HikariPool-3 - Added connection com.mysql.cj.jdbc.ConnectionImpl@2d3c54c4
+2024-01-06 22:32:43,114 INFO c.z.h.HikariDataSource [restartedMain] HikariPool-3 - Start completed.
+2024-01-06 22:32:43,193 INFO l.l.c.JavaLogger [restartedMain] Reading from db_library.databasechangelog
+2024-01-06 22:32:43,204 INFO l.l.c.JavaLogger [restartedMain] Database is up to date, no changesets to execute
+2024-01-06 22:32:43,205 INFO l.l.c.JavaLogger [restartedMain] UPDATE SUMMARY
+2024-01-06 22:32:43,205 INFO l.l.c.JavaLogger [restartedMain] Run:                          0
+2024-01-06 22:32:43,205 INFO l.l.c.JavaLogger [restartedMain] Previously run:               5
+2024-01-06 22:32:43,205 INFO l.l.c.JavaLogger [restartedMain] Filtered out:                 0
+2024-01-06 22:32:43,205 INFO l.l.c.JavaLogger [restartedMain] -------------------------------
+2024-01-06 22:32:43,205 INFO l.l.c.JavaLogger [restartedMain] Total change sets:            5
+2024-01-06 22:32:43,205 INFO l.l.c.JavaLogger [restartedMain] Update summary generated
+2024-01-06 22:32:43,207 INFO l.l.c.JavaLogger [restartedMain] Successfully released change log lock
+2024-01-06 22:32:43,208 INFO l.l.c.JavaLogger [restartedMain] Command execution complete
+2024-01-06 22:32:43,219 INFO o.h.j.i.u.LogHelper [restartedMain] HHH000204: Processing PersistenceUnitInfo [name: default]
+2024-01-06 22:32:43,221 INFO o.h.c.i.RegionFactoryInitiator [restartedMain] HHH000026: Second-level cache disabled
+2024-01-06 22:32:43,224 INFO o.s.o.j.p.SpringPersistenceUnitInfo [restartedMain] No LoadTimeWeaver setup: ignoring JPA class transformer
+2024-01-06 22:32:43,293 INFO o.h.e.t.j.p.i.JtaPlatformInitiator [restartedMain] HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2024-01-06 22:32:43,327 INFO o.s.o.j.AbstractEntityManagerFactoryBean [restartedMain] Initialized JPA EntityManagerFactory for persistence unit 'default'
+2024-01-06 22:32:43,438 WARN o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration [restartedMain] spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2024-01-06 22:32:43,520 INFO o.s.b.d.a.OptionalLiveReloadServer [restartedMain] LiveReload server is running on port 35729
+2024-01-06 22:32:43,528 INFO o.a.j.l.DirectJDKLog [restartedMain] Starting ProtocolHandler ["http-nio-8080"]
+2024-01-06 22:32:43,530 INFO o.s.b.w.e.t.TomcatWebServer [restartedMain] Tomcat started on port 8080 (http) with context path ''
+2024-01-06 22:32:43,534 INFO o.s.b.StartupInfoLogger [restartedMain] Started LibraryApplication in 0.687 seconds (process running for 62.246)
+2024-01-06 22:32:43,535 INFO o.s.b.d.a.ConditionEvaluationDeltaLoggingListener [restartedMain] Condition evaluation unchanged
+2024-01-06 22:32:46,406 INFO o.a.j.l.DirectJDKLog [http-nio-8080-exec-2] Initializing Spring DispatcherServlet 'dispatcherServlet'
+2024-01-06 22:32:46,406 INFO o.s.w.s.FrameworkServlet [http-nio-8080-exec-2] Initializing Servlet 'dispatcherServlet'
+2024-01-06 22:32:46,407 INFO o.s.w.s.FrameworkServlet [http-nio-8080-exec-2] Completed initialization in 1 ms
+2024-01-06 22:33:05,191 INFO o.s.b.d.a.LocalDevToolsAutoConfiguration$RestartingClassPathChangeChangedEventListener [File Watcher] Restarting due to 1 class path change (0 additions, 0 deletions, 1 modification)
+2024-01-06 22:33:05,192 INFO o.a.j.l.DirectJDKLog [Thread-11] Stopping ProtocolHandler ["http-nio-8080"]
+2024-01-06 22:33:05,199 INFO o.s.o.j.AbstractEntityManagerFactoryBean [Thread-11] Closing JPA EntityManagerFactory for persistence unit 'default'
+2024-01-06 22:33:05,200 INFO c.z.h.HikariDataSource [Thread-11] HikariPool-3 - Shutdown initiated...
+2024-01-06 22:33:05,204 INFO c.z.h.HikariDataSource [Thread-11] HikariPool-3 - Shutdown completed.
+2024-01-06 22:33:05,279 INFO o.s.b.StartupInfoLogger [restartedMain] Starting LibraryApplication using Java 17.0.5 with PID 10884 (E:\Project\library\library\target\classes started by HAN-PC in E:\Project\library\library)
+2024-01-06 22:33:05,279 DEBUG o.s.b.StartupInfoLogger [restartedMain] Running with Spring Boot v3.2.1, Spring v6.1.2
+2024-01-06 22:33:05,280 INFO o.s.b.SpringApplication [restartedMain] The following 1 profile is active: "dev"
+2024-01-06 22:33:05,405 INFO o.s.d.r.c.RepositoryConfigurationDelegate [restartedMain] Multiple Spring Data modules found, entering strict repository configuration mode
+2024-01-06 22:33:05,405 INFO o.s.d.r.c.RepositoryConfigurationDelegate [restartedMain] Bootstrapping Spring Data JDBC repositories in DEFAULT mode.
+2024-01-06 22:33:05,408 INFO o.s.d.r.c.RepositoryConfigurationExtensionSupport [restartedMain] Spring Data JDBC - Could not safely identify store assignment for repository candidate interface net.sparkminds.library.repository.AccountRepository; If you want this repository to be a JDBC repository, consider annotating your entities with one of these annotations: org.springframework.data.relational.core.mapping.Table.
+2024-01-06 22:33:05,409 INFO o.s.d.r.c.RepositoryConfigurationExtensionSupport [restartedMain] Spring Data JDBC - Could not safely identify store assignment for repository candidate interface net.sparkminds.library.repository.AdminRepository; If you want this repository to be a JDBC repository, consider annotating your entities with one of these annotations: org.springframework.data.relational.core.mapping.Table.
+2024-01-06 22:33:05,411 INFO o.s.d.r.c.RepositoryConfigurationExtensionSupport [restartedMain] Spring Data JDBC - Could not safely identify store assignment for repository candidate interface net.sparkminds.library.repository.RoleRepository; If you want this repository to be a JDBC repository, consider annotating your entities with one of these annotations: org.springframework.data.relational.core.mapping.Table.
+2024-01-06 22:33:05,412 INFO o.s.d.r.c.RepositoryConfigurationExtensionSupport [restartedMain] Spring Data JDBC - Could not safely identify store assignment for repository candidate interface net.sparkminds.library.repository.SessionRepository; If you want this repository to be a JDBC repository, consider annotating your entities with one of these annotations: org.springframework.data.relational.core.mapping.Table.
+2024-01-06 22:33:05,413 INFO o.s.d.r.c.RepositoryConfigurationExtensionSupport [restartedMain] Spring Data JDBC - Could not safely identify store assignment for repository candidate interface net.sparkminds.library.repository.UserRepository; If you want this repository to be a JDBC repository, consider annotating your entities with one of these annotations: org.springframework.data.relational.core.mapping.Table.
+2024-01-06 22:33:05,413 INFO o.s.d.r.c.RepositoryConfigurationDelegate [restartedMain] Finished Spring Data repository scanning in 7 ms. Found 0 JDBC repository interfaces.
+2024-01-06 22:33:05,415 INFO o.s.d.r.c.RepositoryConfigurationDelegate [restartedMain] Multiple Spring Data modules found, entering strict repository configuration mode
+2024-01-06 22:33:05,415 INFO o.s.d.r.c.RepositoryConfigurationDelegate [restartedMain] Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2024-01-06 22:33:05,422 INFO o.s.d.r.c.RepositoryConfigurationDelegate [restartedMain] Finished Spring Data repository scanning in 6 ms. Found 5 JPA repository interfaces.
+2024-01-06 22:33:05,496 INFO o.s.b.w.e.t.TomcatWebServer [restartedMain] Tomcat initialized with port 8080 (http)
+2024-01-06 22:33:05,497 INFO o.a.j.l.DirectJDKLog [restartedMain] Initializing ProtocolHandler ["http-nio-8080"]
+2024-01-06 22:33:05,497 INFO o.a.j.l.DirectJDKLog [restartedMain] Starting service [Tomcat]
+2024-01-06 22:33:05,497 INFO o.a.j.l.DirectJDKLog [restartedMain] Starting Servlet engine: [Apache Tomcat/10.1.17]
+2024-01-06 22:33:05,509 INFO o.a.j.l.DirectJDKLog [restartedMain] Initializing Spring embedded WebApplicationContext
+2024-01-06 22:33:05,509 INFO o.s.b.w.s.c.ServletWebServerApplicationContext [restartedMain] Root WebApplicationContext: initialization completed in 228 ms
+2024-01-06 22:33:05,530 INFO c.z.h.HikariDataSource [restartedMain] HikariPool-4 - Starting...
+2024-01-06 22:33:05,539 INFO c.z.h.p.HikariPool [restartedMain] HikariPool-4 - Added connection com.mysql.cj.jdbc.ConnectionImpl@1762b647
+2024-01-06 22:33:05,540 INFO c.z.h.HikariDataSource [restartedMain] HikariPool-4 - Start completed.
+2024-01-06 22:33:05,621 INFO l.l.c.JavaLogger [restartedMain] Reading from db_library.databasechangelog
+2024-01-06 22:33:05,634 INFO l.l.c.JavaLogger [restartedMain] Database is up to date, no changesets to execute
+2024-01-06 22:33:05,635 INFO l.l.c.JavaLogger [restartedMain] UPDATE SUMMARY
+2024-01-06 22:33:05,635 INFO l.l.c.JavaLogger [restartedMain] Run:                          0
+2024-01-06 22:33:05,635 INFO l.l.c.JavaLogger [restartedMain] Previously run:               5
+2024-01-06 22:33:05,635 INFO l.l.c.JavaLogger [restartedMain] Filtered out:                 0
+2024-01-06 22:33:05,635 INFO l.l.c.JavaLogger [restartedMain] -------------------------------
+2024-01-06 22:33:05,635 INFO l.l.c.JavaLogger [restartedMain] Total change sets:            5
+2024-01-06 22:33:05,635 INFO l.l.c.JavaLogger [restartedMain] Update summary generated
+2024-01-06 22:33:05,638 INFO l.l.c.JavaLogger [restartedMain] Successfully released change log lock
+2024-01-06 22:33:05,639 INFO l.l.c.JavaLogger [restartedMain] Command execution complete
+2024-01-06 22:33:05,655 INFO o.h.j.i.u.LogHelper [restartedMain] HHH000204: Processing PersistenceUnitInfo [name: default]
+2024-01-06 22:33:05,657 INFO o.h.c.i.RegionFactoryInitiator [restartedMain] HHH000026: Second-level cache disabled
+2024-01-06 22:33:05,661 INFO o.s.o.j.p.SpringPersistenceUnitInfo [restartedMain] No LoadTimeWeaver setup: ignoring JPA class transformer
+2024-01-06 22:33:05,737 INFO o.h.e.t.j.p.i.JtaPlatformInitiator [restartedMain] HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2024-01-06 22:33:05,776 INFO o.s.o.j.AbstractEntityManagerFactoryBean [restartedMain] Initialized JPA EntityManagerFactory for persistence unit 'default'
+2024-01-06 22:33:05,889 WARN o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration [restartedMain] spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2024-01-06 22:33:05,977 INFO o.s.b.d.a.OptionalLiveReloadServer [restartedMain] LiveReload server is running on port 35729
+2024-01-06 22:33:05,986 INFO o.a.j.l.DirectJDKLog [restartedMain] Starting ProtocolHandler ["http-nio-8080"]
+2024-01-06 22:33:05,988 INFO o.s.b.w.e.t.TomcatWebServer [restartedMain] Tomcat started on port 8080 (http) with context path ''
+2024-01-06 22:33:05,992 INFO o.s.b.StartupInfoLogger [restartedMain] Started LibraryApplication in 0.741 seconds (process running for 84.704)
+2024-01-06 22:33:05,993 INFO o.s.b.d.a.ConditionEvaluationDeltaLoggingListener [restartedMain] Condition evaluation unchanged
+2024-01-06 22:33:08,157 INFO o.a.j.l.DirectJDKLog [http-nio-8080-exec-1] Initializing Spring DispatcherServlet 'dispatcherServlet'
+2024-01-06 22:33:08,157 INFO o.s.w.s.FrameworkServlet [http-nio-8080-exec-1] Initializing Servlet 'dispatcherServlet'
+2024-01-06 22:33:08,158 INFO o.s.w.s.FrameworkServlet [http-nio-8080-exec-1] Completed initialization in 1 ms
+2024-01-06 22:33:24,645 INFO o.s.b.d.a.LocalDevToolsAutoConfiguration$RestartingClassPathChangeChangedEventListener [File Watcher] Restarting due to 1 class path change (0 additions, 0 deletions, 1 modification)
+2024-01-06 22:33:24,646 INFO o.a.j.l.DirectJDKLog [Thread-15] Stopping ProtocolHandler ["http-nio-8080"]
+2024-01-06 22:33:24,654 INFO o.s.o.j.AbstractEntityManagerFactoryBean [Thread-15] Closing JPA EntityManagerFactory for persistence unit 'default'
+2024-01-06 22:33:24,655 INFO c.z.h.HikariDataSource [Thread-15] HikariPool-4 - Shutdown initiated...
+2024-01-06 22:33:24,658 INFO c.z.h.HikariDataSource [Thread-15] HikariPool-4 - Shutdown completed.
+2024-01-06 22:33:24,723 INFO o.s.b.StartupInfoLogger [restartedMain] Starting LibraryApplication using Java 17.0.5 with PID 10884 (E:\Project\library\library\target\classes started by HAN-PC in E:\Project\library\library)
+2024-01-06 22:33:24,723 DEBUG o.s.b.StartupInfoLogger [restartedMain] Running with Spring Boot v3.2.1, Spring v6.1.2
+2024-01-06 22:33:24,724 INFO o.s.b.SpringApplication [restartedMain] The following 1 profile is active: "dev"
+2024-01-06 22:33:24,828 INFO o.s.d.r.c.RepositoryConfigurationDelegate [restartedMain] Multiple Spring Data modules found, entering strict repository configuration mode
+2024-01-06 22:33:24,828 INFO o.s.d.r.c.RepositoryConfigurationDelegate [restartedMain] Bootstrapping Spring Data JDBC repositories in DEFAULT mode.
+2024-01-06 22:33:24,831 INFO o.s.d.r.c.RepositoryConfigurationExtensionSupport [restartedMain] Spring Data JDBC - Could not safely identify store assignment for repository candidate interface net.sparkminds.library.repository.AccountRepository; If you want this repository to be a JDBC repository, consider annotating your entities with one of these annotations: org.springframework.data.relational.core.mapping.Table.
+2024-01-06 22:33:24,832 INFO o.s.d.r.c.RepositoryConfigurationExtensionSupport [restartedMain] Spring Data JDBC - Could not safely identify store assignment for repository candidate interface net.sparkminds.library.repository.AdminRepository; If you want this repository to be a JDBC repository, consider annotating your entities with one of these annotations: org.springframework.data.relational.core.mapping.Table.
+2024-01-06 22:33:24,834 INFO o.s.d.r.c.RepositoryConfigurationExtensionSupport [restartedMain] Spring Data JDBC - Could not safely identify store assignment for repository candidate interface net.sparkminds.library.repository.RoleRepository; If you want this repository to be a JDBC repository, consider annotating your entities with one of these annotations: org.springframework.data.relational.core.mapping.Table.
+2024-01-06 22:33:24,835 INFO o.s.d.r.c.RepositoryConfigurationExtensionSupport [restartedMain] Spring Data JDBC - Could not safely identify store assignment for repository candidate interface net.sparkminds.library.repository.SessionRepository; If you want this repository to be a JDBC repository, consider annotating your entities with one of these annotations: org.springframework.data.relational.core.mapping.Table.
+2024-01-06 22:33:24,835 INFO o.s.d.r.c.RepositoryConfigurationExtensionSupport [restartedMain] Spring Data JDBC - Could not safely identify store assignment for repository candidate interface net.sparkminds.library.repository.UserRepository; If you want this repository to be a JDBC repository, consider annotating your entities with one of these annotations: org.springframework.data.relational.core.mapping.Table.
+2024-01-06 22:33:24,835 INFO o.s.d.r.c.RepositoryConfigurationDelegate [restartedMain] Finished Spring Data repository scanning in 6 ms. Found 0 JDBC repository interfaces.
+2024-01-06 22:33:24,838 INFO o.s.d.r.c.RepositoryConfigurationDelegate [restartedMain] Multiple Spring Data modules found, entering strict repository configuration mode
+2024-01-06 22:33:24,838 INFO o.s.d.r.c.RepositoryConfigurationDelegate [restartedMain] Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2024-01-06 22:33:24,843 INFO o.s.d.r.c.RepositoryConfigurationDelegate [restartedMain] Finished Spring Data repository scanning in 5 ms. Found 5 JPA repository interfaces.
+2024-01-06 22:33:24,911 INFO o.s.b.w.e.t.TomcatWebServer [restartedMain] Tomcat initialized with port 8080 (http)
+2024-01-06 22:33:24,912 INFO o.a.j.l.DirectJDKLog [restartedMain] Initializing ProtocolHandler ["http-nio-8080"]
+2024-01-06 22:33:24,912 INFO o.a.j.l.DirectJDKLog [restartedMain] Starting service [Tomcat]
+2024-01-06 22:33:24,912 INFO o.a.j.l.DirectJDKLog [restartedMain] Starting Servlet engine: [Apache Tomcat/10.1.17]
+2024-01-06 22:33:24,925 INFO o.a.j.l.DirectJDKLog [restartedMain] Initializing Spring embedded WebApplicationContext
+2024-01-06 22:33:24,925 INFO o.s.b.w.s.c.ServletWebServerApplicationContext [restartedMain] Root WebApplicationContext: initialization completed in 201 ms
+2024-01-06 22:33:24,957 INFO c.z.h.HikariDataSource [restartedMain] HikariPool-5 - Starting...
+2024-01-06 22:33:24,969 INFO c.z.h.p.HikariPool [restartedMain] HikariPool-5 - Added connection com.mysql.cj.jdbc.ConnectionImpl@2ac337dc
+2024-01-06 22:33:24,969 INFO c.z.h.HikariDataSource [restartedMain] HikariPool-5 - Start completed.
+2024-01-06 22:33:25,050 INFO l.l.c.JavaLogger [restartedMain] Reading from db_library.databasechangelog
+2024-01-06 22:33:25,061 INFO l.l.c.JavaLogger [restartedMain] Database is up to date, no changesets to execute
+2024-01-06 22:33:25,063 INFO l.l.c.JavaLogger [restartedMain] UPDATE SUMMARY
+2024-01-06 22:33:25,064 INFO l.l.c.JavaLogger [restartedMain] Run:                          0
+2024-01-06 22:33:25,064 INFO l.l.c.JavaLogger [restartedMain] Previously run:               5
+2024-01-06 22:33:25,064 INFO l.l.c.JavaLogger [restartedMain] Filtered out:                 0
+2024-01-06 22:33:25,064 INFO l.l.c.JavaLogger [restartedMain] -------------------------------
+2024-01-06 22:33:25,064 INFO l.l.c.JavaLogger [restartedMain] Total change sets:            5
+2024-01-06 22:33:25,064 INFO l.l.c.JavaLogger [restartedMain] Update summary generated
+2024-01-06 22:33:25,066 INFO l.l.c.JavaLogger [restartedMain] Successfully released change log lock
+2024-01-06 22:33:25,066 INFO l.l.c.JavaLogger [restartedMain] Command execution complete
+2024-01-06 22:33:25,078 INFO o.h.j.i.u.LogHelper [restartedMain] HHH000204: Processing PersistenceUnitInfo [name: default]
+2024-01-06 22:33:25,080 INFO o.h.c.i.RegionFactoryInitiator [restartedMain] HHH000026: Second-level cache disabled
+2024-01-06 22:33:25,083 INFO o.s.o.j.p.SpringPersistenceUnitInfo [restartedMain] No LoadTimeWeaver setup: ignoring JPA class transformer
+2024-01-06 22:33:25,146 INFO o.h.e.t.j.p.i.JtaPlatformInitiator [restartedMain] HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2024-01-06 22:33:25,182 INFO o.s.o.j.AbstractEntityManagerFactoryBean [restartedMain] Initialized JPA EntityManagerFactory for persistence unit 'default'
+2024-01-06 22:33:25,291 WARN o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration [restartedMain] spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2024-01-06 22:33:25,380 INFO o.s.b.d.a.OptionalLiveReloadServer [restartedMain] LiveReload server is running on port 35729
+2024-01-06 22:33:25,388 INFO o.a.j.l.DirectJDKLog [restartedMain] Starting ProtocolHandler ["http-nio-8080"]
+2024-01-06 22:33:25,390 INFO o.s.b.w.e.t.TomcatWebServer [restartedMain] Tomcat started on port 8080 (http) with context path ''
+2024-01-06 22:33:25,395 INFO o.s.b.StartupInfoLogger [restartedMain] Started LibraryApplication in 0.699 seconds (process running for 104.107)
+2024-01-06 22:33:25,396 INFO o.s.b.d.a.ConditionEvaluationDeltaLoggingListener [restartedMain] Condition evaluation unchanged
+2024-01-06 22:33:26,349 INFO o.a.j.l.DirectJDKLog [http-nio-8080-exec-2] Initializing Spring DispatcherServlet 'dispatcherServlet'
+2024-01-06 22:33:26,350 INFO o.s.w.s.FrameworkServlet [http-nio-8080-exec-2] Initializing Servlet 'dispatcherServlet'
+2024-01-06 22:33:26,350 INFO o.s.w.s.FrameworkServlet [http-nio-8080-exec-2] Completed initialization in 0 ms
+2024-01-06 22:33:41,997 INFO o.s.b.d.a.LocalDevToolsAutoConfiguration$RestartingClassPathChangeChangedEventListener [File Watcher] Restarting due to 1 class path change (0 additions, 0 deletions, 1 modification)
+2024-01-06 22:33:41,998 INFO o.a.j.l.DirectJDKLog [Thread-19] Stopping ProtocolHandler ["http-nio-8080"]
+2024-01-06 22:33:42,006 INFO o.s.o.j.AbstractEntityManagerFactoryBean [Thread-19] Closing JPA EntityManagerFactory for persistence unit 'default'
+2024-01-06 22:33:42,006 INFO c.z.h.HikariDataSource [Thread-19] HikariPool-5 - Shutdown initiated...
+2024-01-06 22:33:42,009 INFO c.z.h.HikariDataSource [Thread-19] HikariPool-5 - Shutdown completed.
+2024-01-06 22:33:42,082 INFO o.s.b.StartupInfoLogger [restartedMain] Starting LibraryApplication using Java 17.0.5 with PID 10884 (E:\Project\library\library\target\classes started by HAN-PC in E:\Project\library\library)
+2024-01-06 22:33:42,082 DEBUG o.s.b.StartupInfoLogger [restartedMain] Running with Spring Boot v3.2.1, Spring v6.1.2
+2024-01-06 22:33:42,082 INFO o.s.b.SpringApplication [restartedMain] The following 1 profile is active: "dev"
+2024-01-06 22:33:42,195 INFO o.s.d.r.c.RepositoryConfigurationDelegate [restartedMain] Multiple Spring Data modules found, entering strict repository configuration mode
+2024-01-06 22:33:42,195 INFO o.s.d.r.c.RepositoryConfigurationDelegate [restartedMain] Bootstrapping Spring Data JDBC repositories in DEFAULT mode.
+2024-01-06 22:33:42,198 INFO o.s.d.r.c.RepositoryConfigurationExtensionSupport [restartedMain] Spring Data JDBC - Could not safely identify store assignment for repository candidate interface net.sparkminds.library.repository.AccountRepository; If you want this repository to be a JDBC repository, consider annotating your entities with one of these annotations: org.springframework.data.relational.core.mapping.Table.
+2024-01-06 22:33:42,199 INFO o.s.d.r.c.RepositoryConfigurationExtensionSupport [restartedMain] Spring Data JDBC - Could not safely identify store assignment for repository candidate interface net.sparkminds.library.repository.AdminRepository; If you want this repository to be a JDBC repository, consider annotating your entities with one of these annotations: org.springframework.data.relational.core.mapping.Table.
+2024-01-06 22:33:42,200 INFO o.s.d.r.c.RepositoryConfigurationExtensionSupport [restartedMain] Spring Data JDBC - Could not safely identify store assignment for repository candidate interface net.sparkminds.library.repository.RoleRepository; If you want this repository to be a JDBC repository, consider annotating your entities with one of these annotations: org.springframework.data.relational.core.mapping.Table.
+2024-01-06 22:33:42,201 INFO o.s.d.r.c.RepositoryConfigurationExtensionSupport [restartedMain] Spring Data JDBC - Could not safely identify store assignment for repository candidate interface net.sparkminds.library.repository.SessionRepository; If you want this repository to be a JDBC repository, consider annotating your entities with one of these annotations: org.springframework.data.relational.core.mapping.Table.
+2024-01-06 22:33:42,201 INFO o.s.d.r.c.RepositoryConfigurationExtensionSupport [restartedMain] Spring Data JDBC - Could not safely identify store assignment for repository candidate interface net.sparkminds.library.repository.UserRepository; If you want this repository to be a JDBC repository, consider annotating your entities with one of these annotations: org.springframework.data.relational.core.mapping.Table.
+2024-01-06 22:33:42,202 INFO o.s.d.r.c.RepositoryConfigurationDelegate [restartedMain] Finished Spring Data repository scanning in 7 ms. Found 0 JDBC repository interfaces.
+2024-01-06 22:33:42,205 INFO o.s.d.r.c.RepositoryConfigurationDelegate [restartedMain] Multiple Spring Data modules found, entering strict repository configuration mode
+2024-01-06 22:33:42,205 INFO o.s.d.r.c.RepositoryConfigurationDelegate [restartedMain] Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2024-01-06 22:33:42,210 INFO o.s.d.r.c.RepositoryConfigurationDelegate [restartedMain] Finished Spring Data repository scanning in 5 ms. Found 5 JPA repository interfaces.
+2024-01-06 22:33:42,280 INFO o.s.b.w.e.t.TomcatWebServer [restartedMain] Tomcat initialized with port 8080 (http)
+2024-01-06 22:33:42,281 INFO o.a.j.l.DirectJDKLog [restartedMain] Initializing ProtocolHandler ["http-nio-8080"]
+2024-01-06 22:33:42,281 INFO o.a.j.l.DirectJDKLog [restartedMain] Starting service [Tomcat]
+2024-01-06 22:33:42,282 INFO o.a.j.l.DirectJDKLog [restartedMain] Starting Servlet engine: [Apache Tomcat/10.1.17]
+2024-01-06 22:33:42,293 INFO o.a.j.l.DirectJDKLog [restartedMain] Initializing Spring embedded WebApplicationContext
+2024-01-06 22:33:42,293 INFO o.s.b.w.s.c.ServletWebServerApplicationContext [restartedMain] Root WebApplicationContext: initialization completed in 208 ms
+2024-01-06 22:33:42,314 INFO c.z.h.HikariDataSource [restartedMain] HikariPool-6 - Starting...
+2024-01-06 22:33:42,323 INFO c.z.h.p.HikariPool [restartedMain] HikariPool-6 - Added connection com.mysql.cj.jdbc.ConnectionImpl@415ca895
+2024-01-06 22:33:42,323 INFO c.z.h.HikariDataSource [restartedMain] HikariPool-6 - Start completed.
+2024-01-06 22:33:42,395 INFO l.l.c.JavaLogger [restartedMain] Reading from db_library.databasechangelog
+2024-01-06 22:33:42,405 INFO l.l.c.JavaLogger [restartedMain] Database is up to date, no changesets to execute
+2024-01-06 22:33:42,405 INFO l.l.c.JavaLogger [restartedMain] UPDATE SUMMARY
+2024-01-06 22:33:42,406 INFO l.l.c.JavaLogger [restartedMain] Run:                          0
+2024-01-06 22:33:42,406 INFO l.l.c.JavaLogger [restartedMain] Previously run:               5
+2024-01-06 22:33:42,406 INFO l.l.c.JavaLogger [restartedMain] Filtered out:                 0
+2024-01-06 22:33:42,406 INFO l.l.c.JavaLogger [restartedMain] -------------------------------
+2024-01-06 22:33:42,406 INFO l.l.c.JavaLogger [restartedMain] Total change sets:            5
+2024-01-06 22:33:42,406 INFO l.l.c.JavaLogger [restartedMain] Update summary generated
+2024-01-06 22:33:42,408 INFO l.l.c.JavaLogger [restartedMain] Successfully released change log lock
+2024-01-06 22:33:42,409 INFO l.l.c.JavaLogger [restartedMain] Command execution complete
+2024-01-06 22:33:42,420 INFO o.h.j.i.u.LogHelper [restartedMain] HHH000204: Processing PersistenceUnitInfo [name: default]
+2024-01-06 22:33:42,422 INFO o.h.c.i.RegionFactoryInitiator [restartedMain] HHH000026: Second-level cache disabled
+2024-01-06 22:33:42,424 INFO o.s.o.j.p.SpringPersistenceUnitInfo [restartedMain] No LoadTimeWeaver setup: ignoring JPA class transformer
+2024-01-06 22:33:42,482 INFO o.h.e.t.j.p.i.JtaPlatformInitiator [restartedMain] HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2024-01-06 22:33:42,516 INFO o.s.o.j.AbstractEntityManagerFactoryBean [restartedMain] Initialized JPA EntityManagerFactory for persistence unit 'default'
+2024-01-06 22:33:42,620 WARN o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration [restartedMain] spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2024-01-06 22:33:42,696 INFO o.s.b.d.a.OptionalLiveReloadServer [restartedMain] LiveReload server is running on port 35729
+2024-01-06 22:33:42,703 INFO o.a.j.l.DirectJDKLog [restartedMain] Starting ProtocolHandler ["http-nio-8080"]
+2024-01-06 22:33:42,704 INFO o.s.b.w.e.t.TomcatWebServer [restartedMain] Tomcat started on port 8080 (http) with context path ''
+2024-01-06 22:33:42,708 INFO o.s.b.StartupInfoLogger [restartedMain] Started LibraryApplication in 0.653 seconds (process running for 121.42)
+2024-01-06 22:33:42,709 INFO o.s.b.d.a.ConditionEvaluationDeltaLoggingListener [restartedMain] Condition evaluation unchanged
+2024-01-06 22:33:44,647 INFO o.a.j.l.DirectJDKLog [http-nio-8080-exec-4] Initializing Spring DispatcherServlet 'dispatcherServlet'
+2024-01-06 22:33:44,647 INFO o.s.w.s.FrameworkServlet [http-nio-8080-exec-4] Initializing Servlet 'dispatcherServlet'
+2024-01-06 22:33:44,648 INFO o.s.w.s.FrameworkServlet [http-nio-8080-exec-4] Completed initialization in 1 ms
+2024-01-06 22:34:15,543 INFO o.s.b.d.a.LocalDevToolsAutoConfiguration$RestartingClassPathChangeChangedEventListener [File Watcher] Restarting due to 1 class path change (0 additions, 0 deletions, 1 modification)
+2024-01-06 22:34:15,544 INFO o.a.j.l.DirectJDKLog [Thread-23] Stopping ProtocolHandler ["http-nio-8080"]
+2024-01-06 22:34:15,552 INFO o.s.o.j.AbstractEntityManagerFactoryBean [Thread-23] Closing JPA EntityManagerFactory for persistence unit 'default'
+2024-01-06 22:34:15,552 INFO c.z.h.HikariDataSource [Thread-23] HikariPool-6 - Shutdown initiated...
+2024-01-06 22:34:15,556 INFO c.z.h.HikariDataSource [Thread-23] HikariPool-6 - Shutdown completed.
+2024-01-06 22:34:15,622 INFO o.s.b.StartupInfoLogger [restartedMain] Starting LibraryApplication using Java 17.0.5 with PID 10884 (E:\Project\library\library\target\classes started by HAN-PC in E:\Project\library\library)
+2024-01-06 22:34:15,622 DEBUG o.s.b.StartupInfoLogger [restartedMain] Running with Spring Boot v3.2.1, Spring v6.1.2
+2024-01-06 22:34:15,622 INFO o.s.b.SpringApplication [restartedMain] The following 1 profile is active: "dev"
+2024-01-06 22:34:15,733 INFO o.s.d.r.c.RepositoryConfigurationDelegate [restartedMain] Multiple Spring Data modules found, entering strict repository configuration mode
+2024-01-06 22:34:15,733 INFO o.s.d.r.c.RepositoryConfigurationDelegate [restartedMain] Bootstrapping Spring Data JDBC repositories in DEFAULT mode.
+2024-01-06 22:34:15,737 INFO o.s.d.r.c.RepositoryConfigurationExtensionSupport [restartedMain] Spring Data JDBC - Could not safely identify store assignment for repository candidate interface net.sparkminds.library.repository.AccountRepository; If you want this repository to be a JDBC repository, consider annotating your entities with one of these annotations: org.springframework.data.relational.core.mapping.Table.
+2024-01-06 22:34:15,738 INFO o.s.d.r.c.RepositoryConfigurationExtensionSupport [restartedMain] Spring Data JDBC - Could not safely identify store assignment for repository candidate interface net.sparkminds.library.repository.AdminRepository; If you want this repository to be a JDBC repository, consider annotating your entities with one of these annotations: org.springframework.data.relational.core.mapping.Table.
+2024-01-06 22:34:15,739 INFO o.s.d.r.c.RepositoryConfigurationExtensionSupport [restartedMain] Spring Data JDBC - Could not safely identify store assignment for repository candidate interface net.sparkminds.library.repository.RoleRepository; If you want this repository to be a JDBC repository, consider annotating your entities with one of these annotations: org.springframework.data.relational.core.mapping.Table.
+2024-01-06 22:34:15,739 INFO o.s.d.r.c.RepositoryConfigurationExtensionSupport [restartedMain] Spring Data JDBC - Could not safely identify store assignment for repository candidate interface net.sparkminds.library.repository.SessionRepository; If you want this repository to be a JDBC repository, consider annotating your entities with one of these annotations: org.springframework.data.relational.core.mapping.Table.
+2024-01-06 22:34:15,740 INFO o.s.d.r.c.RepositoryConfigurationExtensionSupport [restartedMain] Spring Data JDBC - Could not safely identify store assignment for repository candidate interface net.sparkminds.library.repository.UserRepository; If you want this repository to be a JDBC repository, consider annotating your entities with one of these annotations: org.springframework.data.relational.core.mapping.Table.
+2024-01-06 22:34:15,740 INFO o.s.d.r.c.RepositoryConfigurationDelegate [restartedMain] Finished Spring Data repository scanning in 7 ms. Found 0 JDBC repository interfaces.
+2024-01-06 22:34:15,743 INFO o.s.d.r.c.RepositoryConfigurationDelegate [restartedMain] Multiple Spring Data modules found, entering strict repository configuration mode
+2024-01-06 22:34:15,743 INFO o.s.d.r.c.RepositoryConfigurationDelegate [restartedMain] Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2024-01-06 22:34:15,748 INFO o.s.d.r.c.RepositoryConfigurationDelegate [restartedMain] Finished Spring Data repository scanning in 5 ms. Found 5 JPA repository interfaces.
+2024-01-06 22:34:15,809 INFO o.s.b.w.e.t.TomcatWebServer [restartedMain] Tomcat initialized with port 8080 (http)
+2024-01-06 22:34:15,810 INFO o.a.j.l.DirectJDKLog [restartedMain] Initializing ProtocolHandler ["http-nio-8080"]
+2024-01-06 22:34:15,810 INFO o.a.j.l.DirectJDKLog [restartedMain] Starting service [Tomcat]
+2024-01-06 22:34:15,810 INFO o.a.j.l.DirectJDKLog [restartedMain] Starting Servlet engine: [Apache Tomcat/10.1.17]
+2024-01-06 22:34:15,821 INFO o.a.j.l.DirectJDKLog [restartedMain] Initializing Spring embedded WebApplicationContext
+2024-01-06 22:34:15,821 INFO o.s.b.w.s.c.ServletWebServerApplicationContext [restartedMain] Root WebApplicationContext: initialization completed in 197 ms
+2024-01-06 22:34:15,842 INFO c.z.h.HikariDataSource [restartedMain] HikariPool-7 - Starting...
+2024-01-06 22:34:15,852 INFO c.z.h.p.HikariPool [restartedMain] HikariPool-7 - Added connection com.mysql.cj.jdbc.ConnectionImpl@614742b4
+2024-01-06 22:34:15,852 INFO c.z.h.HikariDataSource [restartedMain] HikariPool-7 - Start completed.
+2024-01-06 22:34:15,919 INFO l.l.c.JavaLogger [restartedMain] Reading from db_library.databasechangelog
+2024-01-06 22:34:15,929 INFO l.l.c.JavaLogger [restartedMain] Database is up to date, no changesets to execute
+2024-01-06 22:34:15,930 INFO l.l.c.JavaLogger [restartedMain] UPDATE SUMMARY
+2024-01-06 22:34:15,930 INFO l.l.c.JavaLogger [restartedMain] Run:                          0
+2024-01-06 22:34:15,930 INFO l.l.c.JavaLogger [restartedMain] Previously run:               5
+2024-01-06 22:34:15,930 INFO l.l.c.JavaLogger [restartedMain] Filtered out:                 0
+2024-01-06 22:34:15,930 INFO l.l.c.JavaLogger [restartedMain] -------------------------------
+2024-01-06 22:34:15,930 INFO l.l.c.JavaLogger [restartedMain] Total change sets:            5
+2024-01-06 22:34:15,930 INFO l.l.c.JavaLogger [restartedMain] Update summary generated
+2024-01-06 22:34:15,932 INFO l.l.c.JavaLogger [restartedMain] Successfully released change log lock
+2024-01-06 22:34:15,932 INFO l.l.c.JavaLogger [restartedMain] Command execution complete
+2024-01-06 22:34:15,944 INFO o.h.j.i.u.LogHelper [restartedMain] HHH000204: Processing PersistenceUnitInfo [name: default]
+2024-01-06 22:34:15,945 INFO o.h.c.i.RegionFactoryInitiator [restartedMain] HHH000026: Second-level cache disabled
+2024-01-06 22:34:15,948 INFO o.s.o.j.p.SpringPersistenceUnitInfo [restartedMain] No LoadTimeWeaver setup: ignoring JPA class transformer
+2024-01-06 22:34:16,001 INFO o.h.e.t.j.p.i.JtaPlatformInitiator [restartedMain] HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2024-01-06 22:34:16,033 INFO o.s.o.j.AbstractEntityManagerFactoryBean [restartedMain] Initialized JPA EntityManagerFactory for persistence unit 'default'
+2024-01-06 22:34:16,137 WARN o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration [restartedMain] spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2024-01-06 22:34:16,215 INFO o.s.b.d.a.OptionalLiveReloadServer [restartedMain] LiveReload server is running on port 35729
+2024-01-06 22:34:16,223 INFO o.a.j.l.DirectJDKLog [restartedMain] Starting ProtocolHandler ["http-nio-8080"]
+2024-01-06 22:34:16,225 INFO o.s.b.w.e.t.TomcatWebServer [restartedMain] Tomcat started on port 8080 (http) with context path ''
+2024-01-06 22:34:16,228 INFO o.s.b.StartupInfoLogger [restartedMain] Started LibraryApplication in 0.632 seconds (process running for 154.94)
+2024-01-06 22:34:16,229 INFO o.s.b.d.a.ConditionEvaluationDeltaLoggingListener [restartedMain] Condition evaluation unchanged
+2024-01-06 22:34:20,684 INFO o.s.b.d.a.LocalDevToolsAutoConfiguration$RestartingClassPathChangeChangedEventListener [File Watcher] Restarting due to 1 class path change (0 additions, 0 deletions, 1 modification)
+2024-01-06 22:34:20,685 INFO o.a.j.l.DirectJDKLog [Thread-27] Stopping ProtocolHandler ["http-nio-8080"]
+2024-01-06 22:34:20,692 INFO o.s.o.j.AbstractEntityManagerFactoryBean [Thread-27] Closing JPA EntityManagerFactory for persistence unit 'default'
+2024-01-06 22:34:20,692 INFO c.z.h.HikariDataSource [Thread-27] HikariPool-7 - Shutdown initiated...
+2024-01-06 22:34:20,696 INFO c.z.h.HikariDataSource [Thread-27] HikariPool-7 - Shutdown completed.
+2024-01-06 22:34:20,762 INFO o.s.b.StartupInfoLogger [restartedMain] Starting LibraryApplication using Java 17.0.5 with PID 10884 (E:\Project\library\library\target\classes started by HAN-PC in E:\Project\library\library)
+2024-01-06 22:34:20,762 DEBUG o.s.b.StartupInfoLogger [restartedMain] Running with Spring Boot v3.2.1, Spring v6.1.2
+2024-01-06 22:34:20,762 INFO o.s.b.SpringApplication [restartedMain] The following 1 profile is active: "dev"
+2024-01-06 22:34:20,878 INFO o.s.d.r.c.RepositoryConfigurationDelegate [restartedMain] Multiple Spring Data modules found, entering strict repository configuration mode
+2024-01-06 22:34:20,878 INFO o.s.d.r.c.RepositoryConfigurationDelegate [restartedMain] Bootstrapping Spring Data JDBC repositories in DEFAULT mode.
+2024-01-06 22:34:20,881 INFO o.s.d.r.c.RepositoryConfigurationExtensionSupport [restartedMain] Spring Data JDBC - Could not safely identify store assignment for repository candidate interface net.sparkminds.library.repository.AccountRepository; If you want this repository to be a JDBC repository, consider annotating your entities with one of these annotations: org.springframework.data.relational.core.mapping.Table.
+2024-01-06 22:34:20,882 INFO o.s.d.r.c.RepositoryConfigurationExtensionSupport [restartedMain] Spring Data JDBC - Could not safely identify store assignment for repository candidate interface net.sparkminds.library.repository.AdminRepository; If you want this repository to be a JDBC repository, consider annotating your entities with one of these annotations: org.springframework.data.relational.core.mapping.Table.
+2024-01-06 22:34:20,883 INFO o.s.d.r.c.RepositoryConfigurationExtensionSupport [restartedMain] Spring Data JDBC - Could not safely identify store assignment for repository candidate interface net.sparkminds.library.repository.RoleRepository; If you want this repository to be a JDBC repository, consider annotating your entities with one of these annotations: org.springframework.data.relational.core.mapping.Table.
+2024-01-06 22:34:20,884 INFO o.s.d.r.c.RepositoryConfigurationExtensionSupport [restartedMain] Spring Data JDBC - Could not safely identify store assignment for repository candidate interface net.sparkminds.library.repository.SessionRepository; If you want this repository to be a JDBC repository, consider annotating your entities with one of these annotations: org.springframework.data.relational.core.mapping.Table.
+2024-01-06 22:34:20,884 INFO o.s.d.r.c.RepositoryConfigurationExtensionSupport [restartedMain] Spring Data JDBC - Could not safely identify store assignment for repository candidate interface net.sparkminds.library.repository.UserRepository; If you want this repository to be a JDBC repository, consider annotating your entities with one of these annotations: org.springframework.data.relational.core.mapping.Table.
+2024-01-06 22:34:20,885 INFO o.s.d.r.c.RepositoryConfigurationDelegate [restartedMain] Finished Spring Data repository scanning in 7 ms. Found 0 JDBC repository interfaces.
+2024-01-06 22:34:20,887 INFO o.s.d.r.c.RepositoryConfigurationDelegate [restartedMain] Multiple Spring Data modules found, entering strict repository configuration mode
+2024-01-06 22:34:20,887 INFO o.s.d.r.c.RepositoryConfigurationDelegate [restartedMain] Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2024-01-06 22:34:20,894 INFO o.s.d.r.c.RepositoryConfigurationDelegate [restartedMain] Finished Spring Data repository scanning in 6 ms. Found 5 JPA repository interfaces.
+2024-01-06 22:34:20,961 INFO o.s.b.w.e.t.TomcatWebServer [restartedMain] Tomcat initialized with port 8080 (http)
+2024-01-06 22:34:20,962 INFO o.a.j.l.DirectJDKLog [restartedMain] Initializing ProtocolHandler ["http-nio-8080"]
+2024-01-06 22:34:20,963 INFO o.a.j.l.DirectJDKLog [restartedMain] Starting service [Tomcat]
+2024-01-06 22:34:20,963 INFO o.a.j.l.DirectJDKLog [restartedMain] Starting Servlet engine: [Apache Tomcat/10.1.17]
+2024-01-06 22:34:20,974 INFO o.a.j.l.DirectJDKLog [restartedMain] Initializing Spring embedded WebApplicationContext
+2024-01-06 22:34:20,974 INFO o.s.b.w.s.c.ServletWebServerApplicationContext [restartedMain] Root WebApplicationContext: initialization completed in 210 ms
+2024-01-06 22:34:20,995 INFO c.z.h.HikariDataSource [restartedMain] HikariPool-8 - Starting...
+2024-01-06 22:34:21,002 INFO c.z.h.p.HikariPool [restartedMain] HikariPool-8 - Added connection com.mysql.cj.jdbc.ConnectionImpl@6d612d89
+2024-01-06 22:34:21,002 INFO c.z.h.HikariDataSource [restartedMain] HikariPool-8 - Start completed.
+2024-01-06 22:34:21,073 INFO l.l.c.JavaLogger [restartedMain] Reading from db_library.databasechangelog
+2024-01-06 22:34:21,084 INFO l.l.c.JavaLogger [restartedMain] Database is up to date, no changesets to execute
+2024-01-06 22:34:21,085 INFO l.l.c.JavaLogger [restartedMain] UPDATE SUMMARY
+2024-01-06 22:34:21,085 INFO l.l.c.JavaLogger [restartedMain] Run:                          0
+2024-01-06 22:34:21,085 INFO l.l.c.JavaLogger [restartedMain] Previously run:               5
+2024-01-06 22:34:21,085 INFO l.l.c.JavaLogger [restartedMain] Filtered out:                 0
+2024-01-06 22:34:21,085 INFO l.l.c.JavaLogger [restartedMain] -------------------------------
+2024-01-06 22:34:21,085 INFO l.l.c.JavaLogger [restartedMain] Total change sets:            5
+2024-01-06 22:34:21,085 INFO l.l.c.JavaLogger [restartedMain] Update summary generated
+2024-01-06 22:34:21,087 INFO l.l.c.JavaLogger [restartedMain] Successfully released change log lock
+2024-01-06 22:34:21,087 INFO l.l.c.JavaLogger [restartedMain] Command execution complete
+2024-01-06 22:34:21,098 INFO o.h.j.i.u.LogHelper [restartedMain] HHH000204: Processing PersistenceUnitInfo [name: default]
+2024-01-06 22:34:21,100 INFO o.h.c.i.RegionFactoryInitiator [restartedMain] HHH000026: Second-level cache disabled
+2024-01-06 22:34:21,102 INFO o.s.o.j.p.SpringPersistenceUnitInfo [restartedMain] No LoadTimeWeaver setup: ignoring JPA class transformer
+2024-01-06 22:34:21,156 INFO o.h.e.t.j.p.i.JtaPlatformInitiator [restartedMain] HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2024-01-06 22:34:21,189 INFO o.s.o.j.AbstractEntityManagerFactoryBean [restartedMain] Initialized JPA EntityManagerFactory for persistence unit 'default'
+2024-01-06 22:34:21,296 WARN o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration [restartedMain] spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2024-01-06 22:34:21,376 INFO o.s.b.d.a.OptionalLiveReloadServer [restartedMain] LiveReload server is running on port 35729
+2024-01-06 22:34:21,382 INFO o.a.j.l.DirectJDKLog [restartedMain] Starting ProtocolHandler ["http-nio-8080"]
+2024-01-06 22:34:21,386 INFO o.s.b.w.e.t.TomcatWebServer [restartedMain] Tomcat started on port 8080 (http) with context path ''
+2024-01-06 22:34:21,390 INFO o.s.b.StartupInfoLogger [restartedMain] Started LibraryApplication in 0.653 seconds (process running for 160.102)
+2024-01-06 22:34:21,390 INFO o.s.b.d.a.ConditionEvaluationDeltaLoggingListener [restartedMain] Condition evaluation unchanged
+2024-01-06 22:34:24,839 INFO o.s.b.d.a.LocalDevToolsAutoConfiguration$RestartingClassPathChangeChangedEventListener [File Watcher] Restarting due to 1 class path change (0 additions, 0 deletions, 1 modification)
+2024-01-06 22:34:24,840 INFO o.a.j.l.DirectJDKLog [Thread-31] Stopping ProtocolHandler ["http-nio-8080"]
+2024-01-06 22:34:24,848 INFO o.s.o.j.AbstractEntityManagerFactoryBean [Thread-31] Closing JPA EntityManagerFactory for persistence unit 'default'
+2024-01-06 22:34:24,848 INFO c.z.h.HikariDataSource [Thread-31] HikariPool-8 - Shutdown initiated...
+2024-01-06 22:34:24,852 INFO c.z.h.HikariDataSource [Thread-31] HikariPool-8 - Shutdown completed.
+2024-01-06 22:34:24,919 INFO o.s.b.StartupInfoLogger [restartedMain] Starting LibraryApplication using Java 17.0.5 with PID 10884 (E:\Project\library\library\target\classes started by HAN-PC in E:\Project\library\library)
+2024-01-06 22:34:24,920 DEBUG o.s.b.StartupInfoLogger [restartedMain] Running with Spring Boot v3.2.1, Spring v6.1.2
+2024-01-06 22:34:24,920 INFO o.s.b.SpringApplication [restartedMain] The following 1 profile is active: "dev"
+2024-01-06 22:34:25,026 INFO o.s.d.r.c.RepositoryConfigurationDelegate [restartedMain] Multiple Spring Data modules found, entering strict repository configuration mode
+2024-01-06 22:34:25,026 INFO o.s.d.r.c.RepositoryConfigurationDelegate [restartedMain] Bootstrapping Spring Data JDBC repositories in DEFAULT mode.
+2024-01-06 22:34:25,029 INFO o.s.d.r.c.RepositoryConfigurationExtensionSupport [restartedMain] Spring Data JDBC - Could not safely identify store assignment for repository candidate interface net.sparkminds.library.repository.AccountRepository; If you want this repository to be a JDBC repository, consider annotating your entities with one of these annotations: org.springframework.data.relational.core.mapping.Table.
+2024-01-06 22:34:25,030 INFO o.s.d.r.c.RepositoryConfigurationExtensionSupport [restartedMain] Spring Data JDBC - Could not safely identify store assignment for repository candidate interface net.sparkminds.library.repository.AdminRepository; If you want this repository to be a JDBC repository, consider annotating your entities with one of these annotations: org.springframework.data.relational.core.mapping.Table.
+2024-01-06 22:34:25,030 INFO o.s.d.r.c.RepositoryConfigurationExtensionSupport [restartedMain] Spring Data JDBC - Could not safely identify store assignment for repository candidate interface net.sparkminds.library.repository.RoleRepository; If you want this repository to be a JDBC repository, consider annotating your entities with one of these annotations: org.springframework.data.relational.core.mapping.Table.
+2024-01-06 22:34:25,031 INFO o.s.d.r.c.RepositoryConfigurationExtensionSupport [restartedMain] Spring Data JDBC - Could not safely identify store assignment for repository candidate interface net.sparkminds.library.repository.SessionRepository; If you want this repository to be a JDBC repository, consider annotating your entities with one of these annotations: org.springframework.data.relational.core.mapping.Table.
+2024-01-06 22:34:25,032 INFO o.s.d.r.c.RepositoryConfigurationExtensionSupport [restartedMain] Spring Data JDBC - Could not safely identify store assignment for repository candidate interface net.sparkminds.library.repository.UserRepository; If you want this repository to be a JDBC repository, consider annotating your entities with one of these annotations: org.springframework.data.relational.core.mapping.Table.
+2024-01-06 22:34:25,032 INFO o.s.d.r.c.RepositoryConfigurationDelegate [restartedMain] Finished Spring Data repository scanning in 5 ms. Found 0 JDBC repository interfaces.
+2024-01-06 22:34:25,034 INFO o.s.d.r.c.RepositoryConfigurationDelegate [restartedMain] Multiple Spring Data modules found, entering strict repository configuration mode
+2024-01-06 22:34:25,034 INFO o.s.d.r.c.RepositoryConfigurationDelegate [restartedMain] Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2024-01-06 22:34:25,039 INFO o.s.d.r.c.RepositoryConfigurationDelegate [restartedMain] Finished Spring Data repository scanning in 5 ms. Found 5 JPA repository interfaces.
+2024-01-06 22:34:25,114 INFO o.s.b.w.e.t.TomcatWebServer [restartedMain] Tomcat initialized with port 8080 (http)
+2024-01-06 22:34:25,115 INFO o.a.j.l.DirectJDKLog [restartedMain] Initializing ProtocolHandler ["http-nio-8080"]
+2024-01-06 22:34:25,115 INFO o.a.j.l.DirectJDKLog [restartedMain] Starting service [Tomcat]
+2024-01-06 22:34:25,115 INFO o.a.j.l.DirectJDKLog [restartedMain] Starting Servlet engine: [Apache Tomcat/10.1.17]
+2024-01-06 22:34:25,126 INFO o.a.j.l.DirectJDKLog [restartedMain] Initializing Spring embedded WebApplicationContext
+2024-01-06 22:34:25,126 INFO o.s.b.w.s.c.ServletWebServerApplicationContext [restartedMain] Root WebApplicationContext: initialization completed in 205 ms
+2024-01-06 22:34:25,147 INFO c.z.h.HikariDataSource [restartedMain] HikariPool-9 - Starting...
+2024-01-06 22:34:25,154 INFO c.z.h.p.HikariPool [restartedMain] HikariPool-9 - Added connection com.mysql.cj.jdbc.ConnectionImpl@37e5e31a
+2024-01-06 22:34:25,154 INFO c.z.h.HikariDataSource [restartedMain] HikariPool-9 - Start completed.
+2024-01-06 22:34:25,217 INFO l.l.c.JavaLogger [restartedMain] Reading from db_library.databasechangelog
+2024-01-06 22:34:25,228 INFO l.l.c.JavaLogger [restartedMain] Database is up to date, no changesets to execute
+2024-01-06 22:34:25,228 INFO l.l.c.JavaLogger [restartedMain] UPDATE SUMMARY
+2024-01-06 22:34:25,228 INFO l.l.c.JavaLogger [restartedMain] Run:                          0
+2024-01-06 22:34:25,228 INFO l.l.c.JavaLogger [restartedMain] Previously run:               5
+2024-01-06 22:34:25,228 INFO l.l.c.JavaLogger [restartedMain] Filtered out:                 0
+2024-01-06 22:34:25,228 INFO l.l.c.JavaLogger [restartedMain] -------------------------------
+2024-01-06 22:34:25,228 INFO l.l.c.JavaLogger [restartedMain] Total change sets:            5
+2024-01-06 22:34:25,228 INFO l.l.c.JavaLogger [restartedMain] Update summary generated
+2024-01-06 22:34:25,230 INFO l.l.c.JavaLogger [restartedMain] Successfully released change log lock
+2024-01-06 22:34:25,231 INFO l.l.c.JavaLogger [restartedMain] Command execution complete
+2024-01-06 22:34:25,241 INFO o.h.j.i.u.LogHelper [restartedMain] HHH000204: Processing PersistenceUnitInfo [name: default]
+2024-01-06 22:34:25,243 INFO o.h.c.i.RegionFactoryInitiator [restartedMain] HHH000026: Second-level cache disabled
+2024-01-06 22:34:25,245 INFO o.s.o.j.p.SpringPersistenceUnitInfo [restartedMain] No LoadTimeWeaver setup: ignoring JPA class transformer
+2024-01-06 22:34:25,298 INFO o.h.e.t.j.p.i.JtaPlatformInitiator [restartedMain] HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2024-01-06 22:34:25,331 INFO o.s.o.j.AbstractEntityManagerFactoryBean [restartedMain] Initialized JPA EntityManagerFactory for persistence unit 'default'
+2024-01-06 22:34:25,389 WARN o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration [restartedMain] spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2024-01-06 22:34:25,529 INFO o.s.b.d.a.OptionalLiveReloadServer [restartedMain] LiveReload server is running on port 35729
+2024-01-06 22:34:25,537 INFO o.a.j.l.DirectJDKLog [restartedMain] Starting ProtocolHandler ["http-nio-8080"]
+2024-01-06 22:34:25,539 INFO o.s.b.w.e.t.TomcatWebServer [restartedMain] Tomcat started on port 8080 (http) with context path ''
+2024-01-06 22:34:25,544 INFO o.s.b.StartupInfoLogger [restartedMain] Started LibraryApplication in 0.648 seconds (process running for 164.256)
+2024-01-06 22:34:25,545 INFO o.s.b.d.a.ConditionEvaluationDeltaLoggingListener [restartedMain] Condition evaluation unchanged
+2024-01-06 22:34:30,987 INFO o.s.b.d.a.LocalDevToolsAutoConfiguration$RestartingClassPathChangeChangedEventListener [File Watcher] Restarting due to 1 class path change (0 additions, 0 deletions, 1 modification)
+2024-01-06 22:34:30,988 INFO o.a.j.l.DirectJDKLog [Thread-35] Stopping ProtocolHandler ["http-nio-8080"]
+2024-01-06 22:34:30,996 INFO o.s.o.j.AbstractEntityManagerFactoryBean [Thread-35] Closing JPA EntityManagerFactory for persistence unit 'default'
+2024-01-06 22:34:30,996 INFO c.z.h.HikariDataSource [Thread-35] HikariPool-9 - Shutdown initiated...
+2024-01-06 22:34:30,999 INFO c.z.h.HikariDataSource [Thread-35] HikariPool-9 - Shutdown completed.
+2024-01-06 22:34:31,065 INFO o.s.b.StartupInfoLogger [restartedMain] Starting LibraryApplication using Java 17.0.5 with PID 10884 (E:\Project\library\library\target\classes started by HAN-PC in E:\Project\library\library)
+2024-01-06 22:34:31,065 DEBUG o.s.b.StartupInfoLogger [restartedMain] Running with Spring Boot v3.2.1, Spring v6.1.2
+2024-01-06 22:34:31,065 INFO o.s.b.SpringApplication [restartedMain] The following 1 profile is active: "dev"
+2024-01-06 22:34:31,169 INFO o.s.d.r.c.RepositoryConfigurationDelegate [restartedMain] Multiple Spring Data modules found, entering strict repository configuration mode
+2024-01-06 22:34:31,169 INFO o.s.d.r.c.RepositoryConfigurationDelegate [restartedMain] Bootstrapping Spring Data JDBC repositories in DEFAULT mode.
+2024-01-06 22:34:31,172 INFO o.s.d.r.c.RepositoryConfigurationExtensionSupport [restartedMain] Spring Data JDBC - Could not safely identify store assignment for repository candidate interface net.sparkminds.library.repository.AccountRepository; If you want this repository to be a JDBC repository, consider annotating your entities with one of these annotations: org.springframework.data.relational.core.mapping.Table.
+2024-01-06 22:34:31,173 INFO o.s.d.r.c.RepositoryConfigurationExtensionSupport [restartedMain] Spring Data JDBC - Could not safely identify store assignment for repository candidate interface net.sparkminds.library.repository.AdminRepository; If you want this repository to be a JDBC repository, consider annotating your entities with one of these annotations: org.springframework.data.relational.core.mapping.Table.
+2024-01-06 22:34:31,173 INFO o.s.d.r.c.RepositoryConfigurationExtensionSupport [restartedMain] Spring Data JDBC - Could not safely identify store assignment for repository candidate interface net.sparkminds.library.repository.RoleRepository; If you want this repository to be a JDBC repository, consider annotating your entities with one of these annotations: org.springframework.data.relational.core.mapping.Table.
+2024-01-06 22:34:31,173 INFO o.s.d.r.c.RepositoryConfigurationExtensionSupport [restartedMain] Spring Data JDBC - Could not safely identify store assignment for repository candidate interface net.sparkminds.library.repository.SessionRepository; If you want this repository to be a JDBC repository, consider annotating your entities with one of these annotations: org.springframework.data.relational.core.mapping.Table.
+2024-01-06 22:34:31,174 INFO o.s.d.r.c.RepositoryConfigurationExtensionSupport [restartedMain] Spring Data JDBC - Could not safely identify store assignment for repository candidate interface net.sparkminds.library.repository.UserRepository; If you want this repository to be a JDBC repository, consider annotating your entities with one of these annotations: org.springframework.data.relational.core.mapping.Table.
+2024-01-06 22:34:31,174 INFO o.s.d.r.c.RepositoryConfigurationDelegate [restartedMain] Finished Spring Data repository scanning in 5 ms. Found 0 JDBC repository interfaces.
+2024-01-06 22:34:31,175 INFO o.s.d.r.c.RepositoryConfigurationDelegate [restartedMain] Multiple Spring Data modules found, entering strict repository configuration mode
+2024-01-06 22:34:31,175 INFO o.s.d.r.c.RepositoryConfigurationDelegate [restartedMain] Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2024-01-06 22:34:31,181 INFO o.s.d.r.c.RepositoryConfigurationDelegate [restartedMain] Finished Spring Data repository scanning in 5 ms. Found 5 JPA repository interfaces.
+2024-01-06 22:34:31,241 INFO o.s.b.w.e.t.TomcatWebServer [restartedMain] Tomcat initialized with port 8080 (http)
+2024-01-06 22:34:31,241 INFO o.a.j.l.DirectJDKLog [restartedMain] Initializing ProtocolHandler ["http-nio-8080"]
+2024-01-06 22:34:31,241 INFO o.a.j.l.DirectJDKLog [restartedMain] Starting service [Tomcat]
+2024-01-06 22:34:31,241 INFO o.a.j.l.DirectJDKLog [restartedMain] Starting Servlet engine: [Apache Tomcat/10.1.17]
+2024-01-06 22:34:31,252 INFO o.a.j.l.DirectJDKLog [restartedMain] Initializing Spring embedded WebApplicationContext
+2024-01-06 22:34:31,252 INFO o.s.b.w.s.c.ServletWebServerApplicationContext [restartedMain] Root WebApplicationContext: initialization completed in 185 ms
+2024-01-06 22:34:31,274 INFO c.z.h.HikariDataSource [restartedMain] HikariPool-10 - Starting...
+2024-01-06 22:34:31,282 INFO c.z.h.p.HikariPool [restartedMain] HikariPool-10 - Added connection com.mysql.cj.jdbc.ConnectionImpl@394ffc8a
+2024-01-06 22:34:31,282 INFO c.z.h.HikariDataSource [restartedMain] HikariPool-10 - Start completed.
+2024-01-06 22:34:31,355 INFO l.l.c.JavaLogger [restartedMain] Reading from db_library.databasechangelog
+2024-01-06 22:34:31,367 INFO l.l.c.JavaLogger [restartedMain] Database is up to date, no changesets to execute
+2024-01-06 22:34:31,367 INFO l.l.c.JavaLogger [restartedMain] UPDATE SUMMARY
+2024-01-06 22:34:31,368 INFO l.l.c.JavaLogger [restartedMain] Run:                          0
+2024-01-06 22:34:31,368 INFO l.l.c.JavaLogger [restartedMain] Previously run:               5
+2024-01-06 22:34:31,368 INFO l.l.c.JavaLogger [restartedMain] Filtered out:                 0
+2024-01-06 22:34:31,368 INFO l.l.c.JavaLogger [restartedMain] -------------------------------
+2024-01-06 22:34:31,368 INFO l.l.c.JavaLogger [restartedMain] Total change sets:            5
+2024-01-06 22:34:31,368 INFO l.l.c.JavaLogger [restartedMain] Update summary generated
+2024-01-06 22:34:31,370 INFO l.l.c.JavaLogger [restartedMain] Successfully released change log lock
+2024-01-06 22:34:31,370 INFO l.l.c.JavaLogger [restartedMain] Command execution complete
+2024-01-06 22:34:31,383 INFO o.h.j.i.u.LogHelper [restartedMain] HHH000204: Processing PersistenceUnitInfo [name: default]
+2024-01-06 22:34:31,384 INFO o.h.c.i.RegionFactoryInitiator [restartedMain] HHH000026: Second-level cache disabled
+2024-01-06 22:34:31,386 INFO o.s.o.j.p.SpringPersistenceUnitInfo [restartedMain] No LoadTimeWeaver setup: ignoring JPA class transformer
+2024-01-06 22:34:31,442 INFO o.h.e.t.j.p.i.JtaPlatformInitiator [restartedMain] HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2024-01-06 22:34:31,472 INFO o.s.o.j.AbstractEntityManagerFactoryBean [restartedMain] Initialized JPA EntityManagerFactory for persistence unit 'default'
+2024-01-06 22:34:31,525 WARN o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration [restartedMain] spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2024-01-06 22:34:31,655 INFO o.s.b.d.a.OptionalLiveReloadServer [restartedMain] LiveReload server is running on port 35729
+2024-01-06 22:34:31,663 INFO o.a.j.l.DirectJDKLog [restartedMain] Starting ProtocolHandler ["http-nio-8080"]
+2024-01-06 22:34:31,666 INFO o.s.b.w.e.t.TomcatWebServer [restartedMain] Tomcat started on port 8080 (http) with context path ''
+2024-01-06 22:34:31,669 INFO o.s.b.StartupInfoLogger [restartedMain] Started LibraryApplication in 0.629 seconds (process running for 170.382)
+2024-01-06 22:34:31,671 INFO o.s.b.d.a.ConditionEvaluationDeltaLoggingListener [restartedMain] Condition evaluation unchanged
+2024-01-06 22:34:35,096 INFO o.s.b.d.a.LocalDevToolsAutoConfiguration$RestartingClassPathChangeChangedEventListener [File Watcher] Restarting due to 2 class path changes (0 additions, 0 deletions, 2 modifications)
+2024-01-06 22:34:35,098 INFO o.a.j.l.DirectJDKLog [Thread-39] Stopping ProtocolHandler ["http-nio-8080"]
+2024-01-06 22:34:35,123 INFO o.s.o.j.AbstractEntityManagerFactoryBean [Thread-39] Closing JPA EntityManagerFactory for persistence unit 'default'
+2024-01-06 22:34:35,128 INFO c.z.h.HikariDataSource [Thread-39] HikariPool-10 - Shutdown initiated...
+2024-01-06 22:34:35,140 INFO c.z.h.HikariDataSource [Thread-39] HikariPool-10 - Shutdown completed.
+2024-01-06 22:34:35,214 INFO o.s.b.StartupInfoLogger [restartedMain] Starting LibraryApplication using Java 17.0.5 with PID 10884 (E:\Project\library\library\target\classes started by HAN-PC in E:\Project\library\library)
+2024-01-06 22:34:35,214 DEBUG o.s.b.StartupInfoLogger [restartedMain] Running with Spring Boot v3.2.1, Spring v6.1.2
+2024-01-06 22:34:35,214 INFO o.s.b.SpringApplication [restartedMain] The following 1 profile is active: "dev"
+2024-01-06 22:34:35,320 INFO o.s.d.r.c.RepositoryConfigurationDelegate [restartedMain] Multiple Spring Data modules found, entering strict repository configuration mode
+2024-01-06 22:34:35,320 INFO o.s.d.r.c.RepositoryConfigurationDelegate [restartedMain] Bootstrapping Spring Data JDBC repositories in DEFAULT mode.
+2024-01-06 22:34:35,324 INFO o.s.d.r.c.RepositoryConfigurationExtensionSupport [restartedMain] Spring Data JDBC - Could not safely identify store assignment for repository candidate interface net.sparkminds.library.repository.AccountRepository; If you want this repository to be a JDBC repository, consider annotating your entities with one of these annotations: org.springframework.data.relational.core.mapping.Table.
+2024-01-06 22:34:35,324 INFO o.s.d.r.c.RepositoryConfigurationExtensionSupport [restartedMain] Spring Data JDBC - Could not safely identify store assignment for repository candidate interface net.sparkminds.library.repository.AdminRepository; If you want this repository to be a JDBC repository, consider annotating your entities with one of these annotations: org.springframework.data.relational.core.mapping.Table.
+2024-01-06 22:34:35,325 INFO o.s.d.r.c.RepositoryConfigurationExtensionSupport [restartedMain] Spring Data JDBC - Could not safely identify store assignment for repository candidate interface net.sparkminds.library.repository.RoleRepository; If you want this repository to be a JDBC repository, consider annotating your entities with one of these annotations: org.springframework.data.relational.core.mapping.Table.
+2024-01-06 22:34:35,326 INFO o.s.d.r.c.RepositoryConfigurationExtensionSupport [restartedMain] Spring Data JDBC - Could not safely identify store assignment for repository candidate interface net.sparkminds.library.repository.SessionRepository; If you want this repository to be a JDBC repository, consider annotating your entities with one of these annotations: org.springframework.data.relational.core.mapping.Table.
+2024-01-06 22:34:35,326 INFO o.s.d.r.c.RepositoryConfigurationExtensionSupport [restartedMain] Spring Data JDBC - Could not safely identify store assignment for repository candidate interface net.sparkminds.library.repository.UserRepository; If you want this repository to be a JDBC repository, consider annotating your entities with one of these annotations: org.springframework.data.relational.core.mapping.Table.
+2024-01-06 22:34:35,327 INFO o.s.d.r.c.RepositoryConfigurationDelegate [restartedMain] Finished Spring Data repository scanning in 6 ms. Found 0 JDBC repository interfaces.
+2024-01-06 22:34:35,329 INFO o.s.d.r.c.RepositoryConfigurationDelegate [restartedMain] Multiple Spring Data modules found, entering strict repository configuration mode
+2024-01-06 22:34:35,329 INFO o.s.d.r.c.RepositoryConfigurationDelegate [restartedMain] Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2024-01-06 22:34:35,335 INFO o.s.d.r.c.RepositoryConfigurationDelegate [restartedMain] Finished Spring Data repository scanning in 5 ms. Found 5 JPA repository interfaces.
+2024-01-06 22:34:35,395 INFO o.s.b.w.e.t.TomcatWebServer [restartedMain] Tomcat initialized with port 8080 (http)
+2024-01-06 22:34:35,395 INFO o.a.j.l.DirectJDKLog [restartedMain] Initializing ProtocolHandler ["http-nio-8080"]
+2024-01-06 22:34:35,396 INFO o.a.j.l.DirectJDKLog [restartedMain] Starting service [Tomcat]
+2024-01-06 22:34:35,396 INFO o.a.j.l.DirectJDKLog [restartedMain] Starting Servlet engine: [Apache Tomcat/10.1.17]
+2024-01-06 22:34:35,406 INFO o.a.j.l.DirectJDKLog [restartedMain] Initializing Spring embedded WebApplicationContext
+2024-01-06 22:34:35,406 INFO o.s.b.w.s.c.ServletWebServerApplicationContext [restartedMain] Root WebApplicationContext: initialization completed in 190 ms
+2024-01-06 22:34:35,428 INFO c.z.h.HikariDataSource [restartedMain] HikariPool-11 - Starting...
+2024-01-06 22:34:35,436 INFO c.z.h.p.HikariPool [restartedMain] HikariPool-11 - Added connection com.mysql.cj.jdbc.ConnectionImpl@15d7fd75
+2024-01-06 22:34:35,436 INFO c.z.h.HikariDataSource [restartedMain] HikariPool-11 - Start completed.
+2024-01-06 22:34:35,514 INFO l.l.c.JavaLogger [restartedMain] Reading from db_library.databasechangelog
+2024-01-06 22:34:35,523 INFO l.l.c.JavaLogger [restartedMain] Database is up to date, no changesets to execute
+2024-01-06 22:34:35,524 INFO l.l.c.JavaLogger [restartedMain] UPDATE SUMMARY
+2024-01-06 22:34:35,524 INFO l.l.c.JavaLogger [restartedMain] Run:                          0
+2024-01-06 22:34:35,524 INFO l.l.c.JavaLogger [restartedMain] Previously run:               5
+2024-01-06 22:34:35,524 INFO l.l.c.JavaLogger [restartedMain] Filtered out:                 0
+2024-01-06 22:34:35,524 INFO l.l.c.JavaLogger [restartedMain] -------------------------------
+2024-01-06 22:34:35,524 INFO l.l.c.JavaLogger [restartedMain] Total change sets:            5
+2024-01-06 22:34:35,524 INFO l.l.c.JavaLogger [restartedMain] Update summary generated
+2024-01-06 22:34:35,526 INFO l.l.c.JavaLogger [restartedMain] Successfully released change log lock
+2024-01-06 22:34:35,526 INFO l.l.c.JavaLogger [restartedMain] Command execution complete
+2024-01-06 22:34:35,537 INFO o.h.j.i.u.LogHelper [restartedMain] HHH000204: Processing PersistenceUnitInfo [name: default]
+2024-01-06 22:34:35,538 INFO o.h.c.i.RegionFactoryInitiator [restartedMain] HHH000026: Second-level cache disabled
+2024-01-06 22:34:35,540 INFO o.s.o.j.p.SpringPersistenceUnitInfo [restartedMain] No LoadTimeWeaver setup: ignoring JPA class transformer
+2024-01-06 22:34:35,590 INFO o.h.e.t.j.p.i.JtaPlatformInitiator [restartedMain] HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2024-01-06 22:34:35,621 INFO o.s.o.j.AbstractEntityManagerFactoryBean [restartedMain] Initialized JPA EntityManagerFactory for persistence unit 'default'
+2024-01-06 22:34:35,674 WARN o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration [restartedMain] spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2024-01-06 22:34:35,803 INFO o.s.b.d.a.OptionalLiveReloadServer [restartedMain] LiveReload server is running on port 35729
+2024-01-06 22:34:35,810 INFO o.a.j.l.DirectJDKLog [restartedMain] Starting ProtocolHandler ["http-nio-8080"]
+2024-01-06 22:34:35,812 INFO o.s.b.w.e.t.TomcatWebServer [restartedMain] Tomcat started on port 8080 (http) with context path ''
+2024-01-06 22:34:35,816 INFO o.s.b.StartupInfoLogger [restartedMain] Started LibraryApplication in 0.626 seconds (process running for 174.528)
+2024-01-06 22:34:35,817 INFO o.s.b.d.a.ConditionEvaluationDeltaLoggingListener [restartedMain] Condition evaluation unchanged
+2024-01-06 22:34:37,227 INFO o.s.b.d.a.LocalDevToolsAutoConfiguration$RestartingClassPathChangeChangedEventListener [File Watcher] Restarting due to 1 class path change (0 additions, 0 deletions, 1 modification)
+2024-01-06 22:34:37,230 INFO o.a.j.l.DirectJDKLog [Thread-43] Stopping ProtocolHandler ["http-nio-8080"]
+2024-01-06 22:34:37,240 INFO o.s.o.j.AbstractEntityManagerFactoryBean [Thread-43] Closing JPA EntityManagerFactory for persistence unit 'default'
+2024-01-06 22:34:37,240 INFO c.z.h.HikariDataSource [Thread-43] HikariPool-11 - Shutdown initiated...
+2024-01-06 22:34:37,246 INFO c.z.h.HikariDataSource [Thread-43] HikariPool-11 - Shutdown completed.
+2024-01-06 22:34:37,322 INFO o.s.b.StartupInfoLogger [restartedMain] Starting LibraryApplication using Java 17.0.5 with PID 10884 (E:\Project\library\library\target\classes started by HAN-PC in E:\Project\library\library)
+2024-01-06 22:34:37,324 DEBUG o.s.b.StartupInfoLogger [restartedMain] Running with Spring Boot v3.2.1, Spring v6.1.2
+2024-01-06 22:34:37,324 INFO o.s.b.SpringApplication [restartedMain] The following 1 profile is active: "dev"
+2024-01-06 22:34:37,452 INFO o.s.d.r.c.RepositoryConfigurationDelegate [restartedMain] Multiple Spring Data modules found, entering strict repository configuration mode
+2024-01-06 22:34:37,452 INFO o.s.d.r.c.RepositoryConfigurationDelegate [restartedMain] Bootstrapping Spring Data JDBC repositories in DEFAULT mode.
+2024-01-06 22:34:37,456 INFO o.s.d.r.c.RepositoryConfigurationExtensionSupport [restartedMain] Spring Data JDBC - Could not safely identify store assignment for repository candidate interface net.sparkminds.library.repository.AccountRepository; If you want this repository to be a JDBC repository, consider annotating your entities with one of these annotations: org.springframework.data.relational.core.mapping.Table.
+2024-01-06 22:34:37,457 INFO o.s.d.r.c.RepositoryConfigurationExtensionSupport [restartedMain] Spring Data JDBC - Could not safely identify store assignment for repository candidate interface net.sparkminds.library.repository.AdminRepository; If you want this repository to be a JDBC repository, consider annotating your entities with one of these annotations: org.springframework.data.relational.core.mapping.Table.
+2024-01-06 22:34:37,457 INFO o.s.d.r.c.RepositoryConfigurationExtensionSupport [restartedMain] Spring Data JDBC - Could not safely identify store assignment for repository candidate interface net.sparkminds.library.repository.RoleRepository; If you want this repository to be a JDBC repository, consider annotating your entities with one of these annotations: org.springframework.data.relational.core.mapping.Table.
+2024-01-06 22:34:37,458 INFO o.s.d.r.c.RepositoryConfigurationExtensionSupport [restartedMain] Spring Data JDBC - Could not safely identify store assignment for repository candidate interface net.sparkminds.library.repository.SessionRepository; If you want this repository to be a JDBC repository, consider annotating your entities with one of these annotations: org.springframework.data.relational.core.mapping.Table.
+2024-01-06 22:34:37,459 INFO o.s.d.r.c.RepositoryConfigurationExtensionSupport [restartedMain] Spring Data JDBC - Could not safely identify store assignment for repository candidate interface net.sparkminds.library.repository.UserRepository; If you want this repository to be a JDBC repository, consider annotating your entities with one of these annotations: org.springframework.data.relational.core.mapping.Table.
+2024-01-06 22:34:37,459 INFO o.s.d.r.c.RepositoryConfigurationDelegate [restartedMain] Finished Spring Data repository scanning in 6 ms. Found 0 JDBC repository interfaces.
+2024-01-06 22:34:37,461 INFO o.s.d.r.c.RepositoryConfigurationDelegate [restartedMain] Multiple Spring Data modules found, entering strict repository configuration mode
+2024-01-06 22:34:37,461 INFO o.s.d.r.c.RepositoryConfigurationDelegate [restartedMain] Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2024-01-06 22:34:37,467 INFO o.s.d.r.c.RepositoryConfigurationDelegate [restartedMain] Finished Spring Data repository scanning in 5 ms. Found 5 JPA repository interfaces.
+2024-01-06 22:34:37,531 INFO o.s.b.w.e.t.TomcatWebServer [restartedMain] Tomcat initialized with port 8080 (http)
+2024-01-06 22:34:37,532 INFO o.a.j.l.DirectJDKLog [restartedMain] Initializing ProtocolHandler ["http-nio-8080"]
+2024-01-06 22:34:37,532 INFO o.a.j.l.DirectJDKLog [restartedMain] Starting service [Tomcat]
+2024-01-06 22:34:37,532 INFO o.a.j.l.DirectJDKLog [restartedMain] Starting Servlet engine: [Apache Tomcat/10.1.17]
+2024-01-06 22:34:37,544 INFO o.a.j.l.DirectJDKLog [restartedMain] Initializing Spring embedded WebApplicationContext
+2024-01-06 22:34:37,544 INFO o.s.b.w.s.c.ServletWebServerApplicationContext [restartedMain] Root WebApplicationContext: initialization completed in 219 ms
+2024-01-06 22:34:37,565 INFO c.z.h.HikariDataSource [restartedMain] HikariPool-12 - Starting...
+2024-01-06 22:34:37,573 INFO c.z.h.p.HikariPool [restartedMain] HikariPool-12 - Added connection com.mysql.cj.jdbc.ConnectionImpl@141cc625
+2024-01-06 22:34:37,573 INFO c.z.h.HikariDataSource [restartedMain] HikariPool-12 - Start completed.
+2024-01-06 22:34:37,639 INFO l.l.c.JavaLogger [restartedMain] Reading from db_library.databasechangelog
+2024-01-06 22:34:37,652 INFO l.l.c.JavaLogger [restartedMain] Database is up to date, no changesets to execute
+2024-01-06 22:34:37,652 INFO l.l.c.JavaLogger [restartedMain] UPDATE SUMMARY
+2024-01-06 22:34:37,652 INFO l.l.c.JavaLogger [restartedMain] Run:                          0
+2024-01-06 22:34:37,652 INFO l.l.c.JavaLogger [restartedMain] Previously run:               5
+2024-01-06 22:34:37,653 INFO l.l.c.JavaLogger [restartedMain] Filtered out:                 0
+2024-01-06 22:34:37,653 INFO l.l.c.JavaLogger [restartedMain] -------------------------------
+2024-01-06 22:34:37,653 INFO l.l.c.JavaLogger [restartedMain] Total change sets:            5
+2024-01-06 22:34:37,653 INFO l.l.c.JavaLogger [restartedMain] Update summary generated
+2024-01-06 22:34:37,654 INFO l.l.c.JavaLogger [restartedMain] Successfully released change log lock
+2024-01-06 22:34:37,654 INFO l.l.c.JavaLogger [restartedMain] Command execution complete
+2024-01-06 22:34:37,667 INFO o.h.j.i.u.LogHelper [restartedMain] HHH000204: Processing PersistenceUnitInfo [name: default]
+2024-01-06 22:34:37,669 INFO o.h.c.i.RegionFactoryInitiator [restartedMain] HHH000026: Second-level cache disabled
+2024-01-06 22:34:37,671 INFO o.s.o.j.p.SpringPersistenceUnitInfo [restartedMain] No LoadTimeWeaver setup: ignoring JPA class transformer
+2024-01-06 22:34:37,724 INFO o.h.e.t.j.p.i.JtaPlatformInitiator [restartedMain] HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2024-01-06 22:34:37,756 INFO o.s.o.j.AbstractEntityManagerFactoryBean [restartedMain] Initialized JPA EntityManagerFactory for persistence unit 'default'
+2024-01-06 22:34:37,803 WARN o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration [restartedMain] spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2024-01-06 22:34:37,935 INFO o.s.b.d.a.OptionalLiveReloadServer [restartedMain] LiveReload server is running on port 35729
+2024-01-06 22:34:37,941 INFO o.a.j.l.DirectJDKLog [restartedMain] Starting ProtocolHandler ["http-nio-8080"]
+2024-01-06 22:34:37,944 INFO o.s.b.w.e.t.TomcatWebServer [restartedMain] Tomcat started on port 8080 (http) with context path ''
+2024-01-06 22:34:37,947 INFO o.s.b.StartupInfoLogger [restartedMain] Started LibraryApplication in 0.653 seconds (process running for 176.66)
+2024-01-06 22:34:37,948 INFO o.s.b.d.a.ConditionEvaluationDeltaLoggingListener [restartedMain] Condition evaluation unchanged
+2024-01-06 22:34:39,350 INFO o.s.b.d.a.LocalDevToolsAutoConfiguration$RestartingClassPathChangeChangedEventListener [File Watcher] Restarting due to 1 class path change (0 additions, 0 deletions, 1 modification)
+2024-01-06 22:34:39,351 INFO o.a.j.l.DirectJDKLog [Thread-47] Stopping ProtocolHandler ["http-nio-8080"]
+2024-01-06 22:34:39,358 INFO o.s.o.j.AbstractEntityManagerFactoryBean [Thread-47] Closing JPA EntityManagerFactory for persistence unit 'default'
+2024-01-06 22:34:39,358 INFO c.z.h.HikariDataSource [Thread-47] HikariPool-12 - Shutdown initiated...
+2024-01-06 22:34:39,361 INFO c.z.h.HikariDataSource [Thread-47] HikariPool-12 - Shutdown completed.
+2024-01-06 22:34:39,428 INFO o.s.b.StartupInfoLogger [restartedMain] Starting LibraryApplication using Java 17.0.5 with PID 10884 (E:\Project\library\library\target\classes started by HAN-PC in E:\Project\library\library)
+2024-01-06 22:34:39,429 DEBUG o.s.b.StartupInfoLogger [restartedMain] Running with Spring Boot v3.2.1, Spring v6.1.2
+2024-01-06 22:34:39,429 INFO o.s.b.SpringApplication [restartedMain] The following 1 profile is active: "dev"
+2024-01-06 22:34:39,524 INFO o.s.d.r.c.RepositoryConfigurationDelegate [restartedMain] Multiple Spring Data modules found, entering strict repository configuration mode
+2024-01-06 22:34:39,524 INFO o.s.d.r.c.RepositoryConfigurationDelegate [restartedMain] Bootstrapping Spring Data JDBC repositories in DEFAULT mode.
+2024-01-06 22:34:39,527 INFO o.s.d.r.c.RepositoryConfigurationExtensionSupport [restartedMain] Spring Data JDBC - Could not safely identify store assignment for repository candidate interface net.sparkminds.library.repository.AccountRepository; If you want this repository to be a JDBC repository, consider annotating your entities with one of these annotations: org.springframework.data.relational.core.mapping.Table.
+2024-01-06 22:34:39,527 INFO o.s.d.r.c.RepositoryConfigurationExtensionSupport [restartedMain] Spring Data JDBC - Could not safely identify store assignment for repository candidate interface net.sparkminds.library.repository.AdminRepository; If you want this repository to be a JDBC repository, consider annotating your entities with one of these annotations: org.springframework.data.relational.core.mapping.Table.
+2024-01-06 22:34:39,528 INFO o.s.d.r.c.RepositoryConfigurationExtensionSupport [restartedMain] Spring Data JDBC - Could not safely identify store assignment for repository candidate interface net.sparkminds.library.repository.RoleRepository; If you want this repository to be a JDBC repository, consider annotating your entities with one of these annotations: org.springframework.data.relational.core.mapping.Table.
+2024-01-06 22:34:39,529 INFO o.s.d.r.c.RepositoryConfigurationExtensionSupport [restartedMain] Spring Data JDBC - Could not safely identify store assignment for repository candidate interface net.sparkminds.library.repository.SessionRepository; If you want this repository to be a JDBC repository, consider annotating your entities with one of these annotations: org.springframework.data.relational.core.mapping.Table.
+2024-01-06 22:34:39,530 INFO o.s.d.r.c.RepositoryConfigurationExtensionSupport [restartedMain] Spring Data JDBC - Could not safely identify store assignment for repository candidate interface net.sparkminds.library.repository.UserRepository; If you want this repository to be a JDBC repository, consider annotating your entities with one of these annotations: org.springframework.data.relational.core.mapping.Table.
+2024-01-06 22:34:39,530 INFO o.s.d.r.c.RepositoryConfigurationDelegate [restartedMain] Finished Spring Data repository scanning in 5 ms. Found 0 JDBC repository interfaces.
+2024-01-06 22:34:39,532 INFO o.s.d.r.c.RepositoryConfigurationDelegate [restartedMain] Multiple Spring Data modules found, entering strict repository configuration mode
+2024-01-06 22:34:39,532 INFO o.s.d.r.c.RepositoryConfigurationDelegate [restartedMain] Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2024-01-06 22:34:39,537 INFO o.s.d.r.c.RepositoryConfigurationDelegate [restartedMain] Finished Spring Data repository scanning in 4 ms. Found 5 JPA repository interfaces.
+2024-01-06 22:34:39,597 INFO o.s.b.w.e.t.TomcatWebServer [restartedMain] Tomcat initialized with port 8080 (http)
+2024-01-06 22:34:39,598 INFO o.a.j.l.DirectJDKLog [restartedMain] Initializing ProtocolHandler ["http-nio-8080"]
+2024-01-06 22:34:39,598 INFO o.a.j.l.DirectJDKLog [restartedMain] Starting service [Tomcat]
+2024-01-06 22:34:39,598 INFO o.a.j.l.DirectJDKLog [restartedMain] Starting Servlet engine: [Apache Tomcat/10.1.17]
+2024-01-06 22:34:39,610 INFO o.a.j.l.DirectJDKLog [restartedMain] Initializing Spring embedded WebApplicationContext
+2024-01-06 22:34:39,610 INFO o.s.b.w.s.c.ServletWebServerApplicationContext [restartedMain] Root WebApplicationContext: initialization completed in 181 ms
+2024-01-06 22:34:39,628 INFO c.z.h.HikariDataSource [restartedMain] HikariPool-13 - Starting...
+2024-01-06 22:34:39,636 INFO c.z.h.p.HikariPool [restartedMain] HikariPool-13 - Added connection com.mysql.cj.jdbc.ConnectionImpl@20774b8b
+2024-01-06 22:34:39,636 INFO c.z.h.HikariDataSource [restartedMain] HikariPool-13 - Start completed.
+2024-01-06 22:34:39,706 INFO l.l.c.JavaLogger [restartedMain] Reading from db_library.databasechangelog
+2024-01-06 22:34:39,716 INFO l.l.c.JavaLogger [restartedMain] Database is up to date, no changesets to execute
+2024-01-06 22:34:39,717 INFO l.l.c.JavaLogger [restartedMain] UPDATE SUMMARY
+2024-01-06 22:34:39,717 INFO l.l.c.JavaLogger [restartedMain] Run:                          0
+2024-01-06 22:34:39,717 INFO l.l.c.JavaLogger [restartedMain] Previously run:               5
+2024-01-06 22:34:39,717 INFO l.l.c.JavaLogger [restartedMain] Filtered out:                 0
+2024-01-06 22:34:39,717 INFO l.l.c.JavaLogger [restartedMain] -------------------------------
+2024-01-06 22:34:39,717 INFO l.l.c.JavaLogger [restartedMain] Total change sets:            5
+2024-01-06 22:34:39,717 INFO l.l.c.JavaLogger [restartedMain] Update summary generated
+2024-01-06 22:34:39,719 INFO l.l.c.JavaLogger [restartedMain] Successfully released change log lock
+2024-01-06 22:34:39,720 INFO l.l.c.JavaLogger [restartedMain] Command execution complete
+2024-01-06 22:34:39,729 INFO o.h.j.i.u.LogHelper [restartedMain] HHH000204: Processing PersistenceUnitInfo [name: default]
+2024-01-06 22:34:39,731 INFO o.h.c.i.RegionFactoryInitiator [restartedMain] HHH000026: Second-level cache disabled
+2024-01-06 22:34:39,734 INFO o.s.o.j.p.SpringPersistenceUnitInfo [restartedMain] No LoadTimeWeaver setup: ignoring JPA class transformer
+2024-01-06 22:34:39,783 INFO o.h.e.t.j.p.i.JtaPlatformInitiator [restartedMain] HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2024-01-06 22:34:39,820 INFO o.s.o.j.AbstractEntityManagerFactoryBean [restartedMain] Initialized JPA EntityManagerFactory for persistence unit 'default'
+2024-01-06 22:34:39,868 WARN o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration [restartedMain] spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2024-01-06 22:34:39,997 INFO o.s.b.d.a.OptionalLiveReloadServer [restartedMain] LiveReload server is running on port 35729
+2024-01-06 22:34:40,005 INFO o.a.j.l.DirectJDKLog [restartedMain] Starting ProtocolHandler ["http-nio-8080"]
+2024-01-06 22:34:40,007 INFO o.s.b.w.e.t.TomcatWebServer [restartedMain] Tomcat started on port 8080 (http) with context path ''
+2024-01-06 22:34:40,010 INFO o.s.b.StartupInfoLogger [restartedMain] Started LibraryApplication in 0.606 seconds (process running for 178.722)
+2024-01-06 22:34:40,011 INFO o.s.b.d.a.ConditionEvaluationDeltaLoggingListener [restartedMain] Condition evaluation unchanged
+2024-01-06 22:34:47,081 INFO o.a.j.l.DirectJDKLog [http-nio-8080-exec-1] Initializing Spring DispatcherServlet 'dispatcherServlet'
+2024-01-06 22:34:47,081 INFO o.s.w.s.FrameworkServlet [http-nio-8080-exec-1] Initializing Servlet 'dispatcherServlet'
+2024-01-06 22:34:47,083 INFO o.s.w.s.FrameworkServlet [http-nio-8080-exec-1] Completed initialization in 2 ms
+2024-01-06 22:35:07,690 INFO o.s.b.a.SpringApplicationAdminMXBeanRegistrar$SpringApplicationAdmin [RMI TCP Connection(7)-127.0.0.1] Application shutdown requested.
+2024-01-06 22:35:07,691 INFO o.a.j.l.DirectJDKLog [RMI TCP Connection(7)-127.0.0.1] Stopping ProtocolHandler ["http-nio-8080"]
+2024-01-06 22:35:07,699 INFO o.s.o.j.AbstractEntityManagerFactoryBean [RMI TCP Connection(7)-127.0.0.1] Closing JPA EntityManagerFactory for persistence unit 'default'
+2024-01-06 22:35:07,700 INFO c.z.h.HikariDataSource [RMI TCP Connection(7)-127.0.0.1] HikariPool-13 - Shutdown initiated...
+2024-01-06 22:35:07,702 INFO c.z.h.HikariDataSource [RMI TCP Connection(7)-127.0.0.1] HikariPool-13 - Shutdown completed.

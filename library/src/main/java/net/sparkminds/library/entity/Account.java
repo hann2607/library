@@ -2,6 +2,9 @@ package net.sparkminds.library.entity;
 
 import java.math.BigInteger;
 import java.time.LocalDateTime;
+import java.util.List;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -11,6 +14,7 @@ import jakarta.persistence.Id;
 import jakarta.persistence.Inheritance;
 import jakarta.persistence.InheritanceType;
 import jakarta.persistence.JoinColumn;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
@@ -49,4 +53,8 @@ public class Account {
 	@OneToOne
 	@JoinColumn(name = "role_id", referencedColumnName = "Id", insertable = false, updatable = false)
 	private Role role;
+	
+	@JsonIgnore
+    @OneToMany(mappedBy="account")
+    private List<Session> sessions;
 }
