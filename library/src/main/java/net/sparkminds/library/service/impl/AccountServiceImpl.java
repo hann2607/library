@@ -19,4 +19,14 @@ public class AccountServiceImpl implements AccountService{
 	public List<Account> getAll() {
 		return accountRepository.findAll();
 	}
+
+	@Override
+	public void save(Account account) {
+		accountRepository.save(account);
+	}
+
+	@Override
+	public Account findByEmail(String email) {
+		return accountRepository.findByEmail(email);
+	}
 }
