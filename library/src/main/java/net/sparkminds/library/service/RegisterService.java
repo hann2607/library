@@ -1,9 +1,7 @@
 package net.sparkminds.library.service;
 
-import java.util.Optional;
-
-import net.sparkminds.library.dto.UserDTO;
+import net.sparkminds.library.dto.register.RegisterRequest;
 
 public interface RegisterService {
-	void register(Optional<UserDTO> userDTO);
+	void register(RegisterRequest userDTO);
 }

@@ -6,7 +6,7 @@ import org.springframework.stereotype.Service;
 import net.sparkminds.library.service.EncryptionService;
 
 @Service
-public class BCryptEncryptionService implements EncryptionService {
+public class EncryptionServiceImpl implements EncryptionService {
 
 	@Override
 	public String encrypt(String data) {

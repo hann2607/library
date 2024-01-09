@@ -19,8 +19,9 @@
 			<column name="password" type="VARCHAR(60)" />
 			<column name="blocked_at" type="DATETIME" />
 			<column name="reason_blocked" type="VARCHAR(255)" />
+			<column name="isVerify" type="TINYINT" />
 			<column name="status"
-				type="ENUM('active', 'blocked', 'deleted')" />
+				type="ENUM('ACTIVE', 'BLOCKED', 'DELETED')" />
 			<column name="role_id" type="BIGINT" />
 		</createTable>
 		<addForeignKeyConstraint

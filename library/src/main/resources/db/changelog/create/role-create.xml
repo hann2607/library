@@ -15,7 +15,7 @@
 			<column name="id" type="BIGINT" autoIncrement="true">
 				<constraints primaryKey="true" nullable="false" />
 			</column>
-			<column name="role" type="VARCHAR(50)" />
+			<column name="role" type="ENUM('USER', 'ADMIN')" />
 		</createTable>
 	</changeSet>
 </databaseChangeLog>

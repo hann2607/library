@@ -23,11 +23,11 @@ public class UserDetailsServiceImpl implements UserDetailsService {
     @Override
     public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {
 
-        Account account = accountRepository.findByEmail(email);
+        Account account = accountRepository.findByEmail(email).get(0);
         if(account == null){
             throw new UsernameNotFoundException("User not found",null);
         }
-        List<GrantedAuthority> authorities = List.of(new SimpleGrantedAuthority(account.getRole().getRole()));
+        List<GrantedAuthority> authorities = List.of(new SimpleGrantedAuthority(account.getRole().getRole().name()));
 
         return new User(account.getEmail(),account.getPassword(), authorities);
     }

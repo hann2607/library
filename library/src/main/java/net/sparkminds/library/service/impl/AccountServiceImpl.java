@@ -11,22 +11,12 @@ import net.sparkminds.library.service.AccountService;
 
 @Service
 @RequiredArgsConstructor
-public class AccountServiceImpl implements AccountService{
-	
+public class AccountServiceImpl implements AccountService {
+
 	private final AccountRepository accountRepository;
 
 	@Override
-	public List<Account> getAll() {
-		return accountRepository.findAll();
-	}
-
-	@Override
-	public void save(Account account) {
-		accountRepository.save(account);
-	}
-
-	@Override
-	public Account findByEmail(String email) {
+	public List<Account> findByEmail(String email) {
 		return accountRepository.findByEmail(email);
 	}
 }

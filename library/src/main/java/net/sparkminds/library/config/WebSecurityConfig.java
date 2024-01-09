@@ -30,15 +30,13 @@ public class WebSecurityConfig {
 		http.csrf(csrf -> csrf.disable());
 
 		http.authorizeHttpRequests(auth -> {
-			// Phân quyền truy cập tài nguyên hệ thống
-			auth.requestMatchers("/authenticate", "/api/**", "/api/account/**", "/api/mail/**", "/login/**",
-					"/resources/**", "/static/**", "/assets/**", "/lib/**", "/popup/**").permitAll();
+			// Decentralize access to system resources
+			auth.requestMatchers("/api/v1/authenticate", "/api/v1/common/**", "/api/v1/account/**", "/api/v1/mail/**",
+					"/api/v1/login/**", "/resources/**", "/static/**", "/assets/**", "/lib/**", "/popup/**")
+					.permitAll();
 
-//			// Phân quyền dùng chung
-//			auth.requestMatchers("/api/v1/common/**").permitAll();
-//
-//			// Tất cả đường dẫn còn lại phải xác thực
-//			auth.anyRequest().authenticated();
+			// All remaining paths must be authentic
+			auth.anyRequest().authenticated();
 		});
 
 		http.sessionManagement(management -> management.sessionCreationPolicy(SessionCreationPolicy.STATELESS));
