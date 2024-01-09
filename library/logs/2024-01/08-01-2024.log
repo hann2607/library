@@ -1,0 +1,680 @@
+2024-01-08 22:19:18,324 INFO o.h.v.i.u.Version [background-preinit] HV000001: Hibernate Validator 8.0.1.Final
+2024-01-08 22:19:18,351 INFO o.s.b.StartupInfoLogger [restartedMain] Starting LibraryApplication using Java 17.0.5 with PID 20364 (E:\Project\library\library\target\classes started by HAN-PC in E:\Project\library\library)
+2024-01-08 22:19:18,356 DEBUG o.s.b.StartupInfoLogger [restartedMain] Running with Spring Boot v3.2.1, Spring v6.1.2
+2024-01-08 22:19:18,357 INFO o.s.b.SpringApplication [restartedMain] The following 1 profile is active: "dev"
+2024-01-08 22:19:18,396 INFO o.s.b.l.DeferredLog [restartedMain] Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2024-01-08 22:19:18,396 INFO o.s.b.l.DeferredLog [restartedMain] For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2024-01-08 22:19:18,957 INFO o.s.d.r.c.RepositoryConfigurationDelegate [restartedMain] Multiple Spring Data modules found, entering strict repository configuration mode
+2024-01-08 22:19:18,958 INFO o.s.d.r.c.RepositoryConfigurationDelegate [restartedMain] Bootstrapping Spring Data JDBC repositories in DEFAULT mode.
+2024-01-08 22:19:18,991 INFO o.s.d.r.c.RepositoryConfigurationExtensionSupport [restartedMain] Spring Data JDBC - Could not safely identify store assignment for repository candidate interface net.sparkminds.library.repository.AccountRepository; If you want this repository to be a JDBC repository, consider annotating your entities with one of these annotations: org.springframework.data.relational.core.mapping.Table.
+2024-01-08 22:19:18,992 INFO o.s.d.r.c.RepositoryConfigurationExtensionSupport [restartedMain] Spring Data JDBC - Could not safely identify store assignment for repository candidate interface net.sparkminds.library.repository.AdminRepository; If you want this repository to be a JDBC repository, consider annotating your entities with one of these annotations: org.springframework.data.relational.core.mapping.Table.
+2024-01-08 22:19:18,993 INFO o.s.d.r.c.RepositoryConfigurationExtensionSupport [restartedMain] Spring Data JDBC - Could not safely identify store assignment for repository candidate interface net.sparkminds.library.repository.RoleRepository; If you want this repository to be a JDBC repository, consider annotating your entities with one of these annotations: org.springframework.data.relational.core.mapping.Table.
+2024-01-08 22:19:18,994 INFO o.s.d.r.c.RepositoryConfigurationExtensionSupport [restartedMain] Spring Data JDBC - Could not safely identify store assignment for repository candidate interface net.sparkminds.library.repository.SessionRepository; If you want this repository to be a JDBC repository, consider annotating your entities with one of these annotations: org.springframework.data.relational.core.mapping.Table.
+2024-01-08 22:19:18,995 INFO o.s.d.r.c.RepositoryConfigurationExtensionSupport [restartedMain] Spring Data JDBC - Could not safely identify store assignment for repository candidate interface net.sparkminds.library.repository.UserRepository; If you want this repository to be a JDBC repository, consider annotating your entities with one of these annotations: org.springframework.data.relational.core.mapping.Table.
+2024-01-08 22:19:18,996 INFO o.s.d.r.c.RepositoryConfigurationDelegate [restartedMain] Finished Spring Data repository scanning in 33 ms. Found 0 JDBC repository interfaces.
+2024-01-08 22:19:19,004 INFO o.s.d.r.c.RepositoryConfigurationDelegate [restartedMain] Multiple Spring Data modules found, entering strict repository configuration mode
+2024-01-08 22:19:19,006 INFO o.s.d.r.c.RepositoryConfigurationDelegate [restartedMain] Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2024-01-08 22:19:19,036 INFO o.s.d.r.c.RepositoryConfigurationDelegate [restartedMain] Finished Spring Data repository scanning in 27 ms. Found 5 JPA repository interfaces.
+2024-01-08 22:19:19,516 INFO o.s.b.w.e.t.TomcatWebServer [restartedMain] Tomcat initialized with port 8080 (http)
+2024-01-08 22:19:19,525 INFO o.a.j.l.DirectJDKLog [restartedMain] Initializing ProtocolHandler ["http-nio-8080"]
+2024-01-08 22:19:19,527 INFO o.a.j.l.DirectJDKLog [restartedMain] Starting service [Tomcat]
+2024-01-08 22:19:19,527 INFO o.a.j.l.DirectJDKLog [restartedMain] Starting Servlet engine: [Apache Tomcat/10.1.17]
+2024-01-08 22:19:19,567 INFO o.a.j.l.DirectJDKLog [restartedMain] Initializing Spring embedded WebApplicationContext
+2024-01-08 22:19:19,567 INFO o.s.b.w.s.c.ServletWebServerApplicationContext [restartedMain] Root WebApplicationContext: initialization completed in 1170 ms
+2024-01-08 22:19:19,667 INFO c.z.h.HikariDataSource [restartedMain] HikariPool-1 - Starting...
+2024-01-08 22:19:19,905 INFO c.z.h.p.HikariPool [restartedMain] HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@33965083
+2024-01-08 22:19:19,906 INFO c.z.h.HikariDataSource [restartedMain] HikariPool-1 - Start completed.
+2024-01-08 22:19:20,439 INFO l.l.c.JavaLogger [restartedMain] Reading from db_library.databasechangelog
+2024-01-08 22:19:20,480 INFO l.l.c.JavaLogger [restartedMain] Database is up to date, no changesets to execute
+2024-01-08 22:19:20,483 INFO l.l.c.JavaLogger [restartedMain] Reading from db_library.databasechangelog
+2024-01-08 22:19:20,489 INFO l.l.c.JavaLogger [restartedMain] UPDATE SUMMARY
+2024-01-08 22:19:20,489 INFO l.l.c.JavaLogger [restartedMain] Run:                          0
+2024-01-08 22:19:20,489 INFO l.l.c.JavaLogger [restartedMain] Previously run:               5
+2024-01-08 22:19:20,489 INFO l.l.c.JavaLogger [restartedMain] Filtered out:                 0
+2024-01-08 22:19:20,489 INFO l.l.c.JavaLogger [restartedMain] -------------------------------
+2024-01-08 22:19:20,490 INFO l.l.c.JavaLogger [restartedMain] Total change sets:            5
+2024-01-08 22:19:20,490 INFO l.l.c.JavaLogger [restartedMain] Update summary generated
+2024-01-08 22:19:20,508 INFO l.l.c.JavaLogger [restartedMain] Successfully released change log lock
+2024-01-08 22:19:20,509 INFO l.l.c.JavaLogger [restartedMain] Command execution complete
+2024-01-08 22:19:20,571 INFO o.h.j.i.u.LogHelper [restartedMain] HHH000204: Processing PersistenceUnitInfo [name: default]
+2024-01-08 22:19:20,620 INFO o.h.Version [restartedMain] HHH000412: Hibernate ORM core version 6.4.1.Final
+2024-01-08 22:19:20,650 INFO o.h.c.i.RegionFactoryInitiator [restartedMain] HHH000026: Second-level cache disabled
+2024-01-08 22:19:20,821 INFO o.s.o.j.p.SpringPersistenceUnitInfo [restartedMain] No LoadTimeWeaver setup: ignoring JPA class transformer
+2024-01-08 22:19:21,679 INFO o.h.e.t.j.p.i.JtaPlatformInitiator [restartedMain] HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2024-01-08 22:19:21,743 INFO o.s.o.j.AbstractEntityManagerFactoryBean [restartedMain] Initialized JPA EntityManagerFactory for persistence unit 'default'
+2024-01-08 22:19:22,016 DEBUG o.s.w.f.GenericFilterBean [restartedMain] Filter 'jwtFilter' configured for use
+2024-01-08 22:19:22,093 WARN o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration [restartedMain] spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2024-01-08 22:19:22,348 INFO o.s.s.w.DefaultSecurityFilterChain [restartedMain] Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@43de8723, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@1287868f, org.springframework.security.web.context.SecurityContextHolderFilter@5f142989, org.springframework.security.web.header.HeaderWriterFilter@70e0f7b3, org.springframework.security.web.authentication.logout.LogoutFilter@23efc48b, net.sparkminds.library.jwt.JwtFilter@5563119b, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@270bf58c, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@46837d87, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@5e17a7a3, org.springframework.security.web.session.SessionManagementFilter@749d8bb2, org.springframework.security.web.access.ExceptionTranslationFilter@683986cc, org.springframework.security.web.access.intercept.AuthorizationFilter@4482a146]
+2024-01-08 22:19:22,488 WARN o.s.b.a.t.ThymeleafAutoConfiguration$DefaultTemplateResolverConfiguration [restartedMain] Cannot find template location: classpath:/templates/ (please add some templates, check your Thymeleaf configuration, or set spring.thymeleaf.check-template-location=false)
+2024-01-08 22:19:22,730 INFO o.s.b.d.a.OptionalLiveReloadServer [restartedMain] LiveReload server is running on port 35729
+2024-01-08 22:19:22,746 INFO o.a.j.l.DirectJDKLog [restartedMain] Starting ProtocolHandler ["http-nio-8080"]
+2024-01-08 22:19:22,763 INFO o.s.b.w.e.t.TomcatWebServer [restartedMain] Tomcat started on port 8080 (http) with context path ''
+2024-01-08 22:19:22,773 INFO o.s.b.StartupInfoLogger [restartedMain] Started LibraryApplication in 4.671 seconds (process running for 5.532)
+2024-01-08 22:19:28,163 INFO o.s.b.d.a.LocalDevToolsAutoConfiguration$RestartingClassPathChangeChangedEventListener [File Watcher] Restarting due to 1 class path change (0 additions, 0 deletions, 1 modification)
+2024-01-08 22:19:28,167 INFO o.a.j.l.DirectJDKLog [Thread-5] Stopping ProtocolHandler ["http-nio-8080"]
+2024-01-08 22:19:28,178 INFO o.s.o.j.AbstractEntityManagerFactoryBean [Thread-5] Closing JPA EntityManagerFactory for persistence unit 'default'
+2024-01-08 22:19:28,181 INFO c.z.h.HikariDataSource [Thread-5] HikariPool-1 - Shutdown initiated...
+2024-01-08 22:19:28,189 INFO c.z.h.HikariDataSource [Thread-5] HikariPool-1 - Shutdown completed.
+2024-01-08 22:19:28,256 INFO o.s.b.StartupInfoLogger [restartedMain] Starting LibraryApplication using Java 17.0.5 with PID 20364 (E:\Project\library\library\target\classes started by HAN-PC in E:\Project\library\library)
+2024-01-08 22:19:28,257 DEBUG o.s.b.StartupInfoLogger [restartedMain] Running with Spring Boot v3.2.1, Spring v6.1.2
+2024-01-08 22:19:28,257 INFO o.s.b.SpringApplication [restartedMain] The following 1 profile is active: "dev"
+2024-01-08 22:19:28,406 INFO o.s.d.r.c.RepositoryConfigurationDelegate [restartedMain] Multiple Spring Data modules found, entering strict repository configuration mode
+2024-01-08 22:19:28,406 INFO o.s.d.r.c.RepositoryConfigurationDelegate [restartedMain] Bootstrapping Spring Data JDBC repositories in DEFAULT mode.
+2024-01-08 22:19:28,411 INFO o.s.d.r.c.RepositoryConfigurationExtensionSupport [restartedMain] Spring Data JDBC - Could not safely identify store assignment for repository candidate interface net.sparkminds.library.repository.AccountRepository; If you want this repository to be a JDBC repository, consider annotating your entities with one of these annotations: org.springframework.data.relational.core.mapping.Table.
+2024-01-08 22:19:28,413 INFO o.s.d.r.c.RepositoryConfigurationExtensionSupport [restartedMain] Spring Data JDBC - Could not safely identify store assignment for repository candidate interface net.sparkminds.library.repository.AdminRepository; If you want this repository to be a JDBC repository, consider annotating your entities with one of these annotations: org.springframework.data.relational.core.mapping.Table.
+2024-01-08 22:19:28,414 INFO o.s.d.r.c.RepositoryConfigurationExtensionSupport [restartedMain] Spring Data JDBC - Could not safely identify store assignment for repository candidate interface net.sparkminds.library.repository.RoleRepository; If you want this repository to be a JDBC repository, consider annotating your entities with one of these annotations: org.springframework.data.relational.core.mapping.Table.
+2024-01-08 22:19:28,414 INFO o.s.d.r.c.RepositoryConfigurationExtensionSupport [restartedMain] Spring Data JDBC - Could not safely identify store assignment for repository candidate interface net.sparkminds.library.repository.SessionRepository; If you want this repository to be a JDBC repository, consider annotating your entities with one of these annotations: org.springframework.data.relational.core.mapping.Table.
+2024-01-08 22:19:28,416 INFO o.s.d.r.c.RepositoryConfigurationExtensionSupport [restartedMain] Spring Data JDBC - Could not safely identify store assignment for repository candidate interface net.sparkminds.library.repository.UserRepository; If you want this repository to be a JDBC repository, consider annotating your entities with one of these annotations: org.springframework.data.relational.core.mapping.Table.
+2024-01-08 22:19:28,417 INFO o.s.d.r.c.RepositoryConfigurationDelegate [restartedMain] Finished Spring Data repository scanning in 9 ms. Found 0 JDBC repository interfaces.
+2024-01-08 22:19:28,419 INFO o.s.d.r.c.RepositoryConfigurationDelegate [restartedMain] Multiple Spring Data modules found, entering strict repository configuration mode
+2024-01-08 22:19:28,419 INFO o.s.d.r.c.RepositoryConfigurationDelegate [restartedMain] Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2024-01-08 22:19:28,427 INFO o.s.d.r.c.RepositoryConfigurationDelegate [restartedMain] Finished Spring Data repository scanning in 8 ms. Found 5 JPA repository interfaces.
+2024-01-08 22:19:28,546 INFO o.s.b.w.e.t.TomcatWebServer [restartedMain] Tomcat initialized with port 8080 (http)
+2024-01-08 22:19:28,547 INFO o.a.j.l.DirectJDKLog [restartedMain] Initializing ProtocolHandler ["http-nio-8080"]
+2024-01-08 22:19:28,547 INFO o.a.j.l.DirectJDKLog [restartedMain] Starting service [Tomcat]
+2024-01-08 22:19:28,547 INFO o.a.j.l.DirectJDKLog [restartedMain] Starting Servlet engine: [Apache Tomcat/10.1.17]
+2024-01-08 22:19:28,559 INFO o.a.j.l.DirectJDKLog [restartedMain] Initializing Spring embedded WebApplicationContext
+2024-01-08 22:19:28,559 INFO o.s.b.w.s.c.ServletWebServerApplicationContext [restartedMain] Root WebApplicationContext: initialization completed in 300 ms
+2024-01-08 22:19:28,588 INFO c.z.h.HikariDataSource [restartedMain] HikariPool-2 - Starting...
+2024-01-08 22:19:28,598 INFO c.z.h.p.HikariPool [restartedMain] HikariPool-2 - Added connection com.mysql.cj.jdbc.ConnectionImpl@7928d439
+2024-01-08 22:19:28,598 INFO c.z.h.HikariDataSource [restartedMain] HikariPool-2 - Start completed.
+2024-01-08 22:19:28,680 INFO l.l.c.JavaLogger [restartedMain] Reading from db_library.databasechangelog
+2024-01-08 22:19:28,694 INFO l.l.c.JavaLogger [restartedMain] Database is up to date, no changesets to execute
+2024-01-08 22:19:28,695 INFO l.l.c.JavaLogger [restartedMain] UPDATE SUMMARY
+2024-01-08 22:19:28,695 INFO l.l.c.JavaLogger [restartedMain] Run:                          0
+2024-01-08 22:19:28,695 INFO l.l.c.JavaLogger [restartedMain] Previously run:               5
+2024-01-08 22:19:28,695 INFO l.l.c.JavaLogger [restartedMain] Filtered out:                 0
+2024-01-08 22:19:28,695 INFO l.l.c.JavaLogger [restartedMain] -------------------------------
+2024-01-08 22:19:28,695 INFO l.l.c.JavaLogger [restartedMain] Total change sets:            5
+2024-01-08 22:19:28,696 INFO l.l.c.JavaLogger [restartedMain] Update summary generated
+2024-01-08 22:19:28,698 INFO l.l.c.JavaLogger [restartedMain] Successfully released change log lock
+2024-01-08 22:19:28,699 INFO l.l.c.JavaLogger [restartedMain] Command execution complete
+2024-01-08 22:19:28,720 INFO o.h.j.i.u.LogHelper [restartedMain] HHH000204: Processing PersistenceUnitInfo [name: default]
+2024-01-08 22:19:28,722 INFO o.h.c.i.RegionFactoryInitiator [restartedMain] HHH000026: Second-level cache disabled
+2024-01-08 22:19:28,725 INFO o.s.o.j.p.SpringPersistenceUnitInfo [restartedMain] No LoadTimeWeaver setup: ignoring JPA class transformer
+2024-01-08 22:19:28,819 INFO o.h.e.t.j.p.i.JtaPlatformInitiator [restartedMain] HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2024-01-08 22:19:28,853 INFO o.s.o.j.AbstractEntityManagerFactoryBean [restartedMain] Initialized JPA EntityManagerFactory for persistence unit 'default'
+2024-01-08 22:19:28,924 DEBUG o.s.w.f.GenericFilterBean [restartedMain] Filter 'jwtFilter' configured for use
+2024-01-08 22:19:28,979 WARN o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration [restartedMain] spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2024-01-08 22:19:29,087 INFO o.s.s.w.DefaultSecurityFilterChain [restartedMain] Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@775accf6, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@7b7397ee, org.springframework.security.web.context.SecurityContextHolderFilter@bb6de08, org.springframework.security.web.header.HeaderWriterFilter@18805d53, org.springframework.security.web.authentication.logout.LogoutFilter@7616883, net.sparkminds.library.jwt.JwtFilter@6d17dede, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@67ec4b01, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@7d9cf86a, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@7ddcc65a, org.springframework.security.web.session.SessionManagementFilter@284de19e, org.springframework.security.web.access.ExceptionTranslationFilter@6ae0dacd, org.springframework.security.web.access.intercept.AuthorizationFilter@181578a5]
+2024-01-08 22:19:29,144 WARN o.s.b.a.t.ThymeleafAutoConfiguration$DefaultTemplateResolverConfiguration [restartedMain] Cannot find template location: classpath:/templates/ (please add some templates, check your Thymeleaf configuration, or set spring.thymeleaf.check-template-location=false)
+2024-01-08 22:19:29,267 INFO o.s.b.d.a.OptionalLiveReloadServer [restartedMain] LiveReload server is running on port 35729
+2024-01-08 22:19:29,278 INFO o.a.j.l.DirectJDKLog [restartedMain] Starting ProtocolHandler ["http-nio-8080"]
+2024-01-08 22:19:29,282 INFO o.s.b.w.e.t.TomcatWebServer [restartedMain] Tomcat started on port 8080 (http) with context path ''
+2024-01-08 22:19:29,286 INFO o.s.b.StartupInfoLogger [restartedMain] Started LibraryApplication in 1.057 seconds (process running for 12.045)
+2024-01-08 22:19:29,288 INFO o.s.b.d.a.ConditionEvaluationDeltaLoggingListener [restartedMain] Condition evaluation unchanged
+2024-01-08 22:19:33,696 INFO o.s.b.d.a.LocalDevToolsAutoConfiguration$RestartingClassPathChangeChangedEventListener [File Watcher] Restarting due to 1 class path change (0 additions, 0 deletions, 1 modification)
+2024-01-08 22:19:33,697 INFO o.a.j.l.DirectJDKLog [Thread-7] Stopping ProtocolHandler ["http-nio-8080"]
+2024-01-08 22:19:33,706 INFO o.s.o.j.AbstractEntityManagerFactoryBean [Thread-7] Closing JPA EntityManagerFactory for persistence unit 'default'
+2024-01-08 22:19:33,707 INFO c.z.h.HikariDataSource [Thread-7] HikariPool-2 - Shutdown initiated...
+2024-01-08 22:19:33,710 INFO c.z.h.HikariDataSource [Thread-7] HikariPool-2 - Shutdown completed.
+2024-01-08 22:19:33,777 INFO o.s.b.StartupInfoLogger [restartedMain] Starting LibraryApplication using Java 17.0.5 with PID 20364 (E:\Project\library\library\target\classes started by HAN-PC in E:\Project\library\library)
+2024-01-08 22:19:33,778 DEBUG o.s.b.StartupInfoLogger [restartedMain] Running with Spring Boot v3.2.1, Spring v6.1.2
+2024-01-08 22:19:33,778 INFO o.s.b.SpringApplication [restartedMain] The following 1 profile is active: "dev"
+2024-01-08 22:19:33,909 INFO o.s.d.r.c.RepositoryConfigurationDelegate [restartedMain] Multiple Spring Data modules found, entering strict repository configuration mode
+2024-01-08 22:19:33,909 INFO o.s.d.r.c.RepositoryConfigurationDelegate [restartedMain] Bootstrapping Spring Data JDBC repositories in DEFAULT mode.
+2024-01-08 22:19:33,914 INFO o.s.d.r.c.RepositoryConfigurationExtensionSupport [restartedMain] Spring Data JDBC - Could not safely identify store assignment for repository candidate interface net.sparkminds.library.repository.AccountRepository; If you want this repository to be a JDBC repository, consider annotating your entities with one of these annotations: org.springframework.data.relational.core.mapping.Table.
+2024-01-08 22:19:33,916 INFO o.s.d.r.c.RepositoryConfigurationExtensionSupport [restartedMain] Spring Data JDBC - Could not safely identify store assignment for repository candidate interface net.sparkminds.library.repository.AdminRepository; If you want this repository to be a JDBC repository, consider annotating your entities with one of these annotations: org.springframework.data.relational.core.mapping.Table.
+2024-01-08 22:19:33,917 INFO o.s.d.r.c.RepositoryConfigurationExtensionSupport [restartedMain] Spring Data JDBC - Could not safely identify store assignment for repository candidate interface net.sparkminds.library.repository.RoleRepository; If you want this repository to be a JDBC repository, consider annotating your entities with one of these annotations: org.springframework.data.relational.core.mapping.Table.
+2024-01-08 22:19:33,918 INFO o.s.d.r.c.RepositoryConfigurationExtensionSupport [restartedMain] Spring Data JDBC - Could not safely identify store assignment for repository candidate interface net.sparkminds.library.repository.SessionRepository; If you want this repository to be a JDBC repository, consider annotating your entities with one of these annotations: org.springframework.data.relational.core.mapping.Table.
+2024-01-08 22:19:33,919 INFO o.s.d.r.c.RepositoryConfigurationExtensionSupport [restartedMain] Spring Data JDBC - Could not safely identify store assignment for repository candidate interface net.sparkminds.library.repository.UserRepository; If you want this repository to be a JDBC repository, consider annotating your entities with one of these annotations: org.springframework.data.relational.core.mapping.Table.
+2024-01-08 22:19:33,919 INFO o.s.d.r.c.RepositoryConfigurationDelegate [restartedMain] Finished Spring Data repository scanning in 9 ms. Found 0 JDBC repository interfaces.
+2024-01-08 22:19:33,921 INFO o.s.d.r.c.RepositoryConfigurationDelegate [restartedMain] Multiple Spring Data modules found, entering strict repository configuration mode
+2024-01-08 22:19:33,922 INFO o.s.d.r.c.RepositoryConfigurationDelegate [restartedMain] Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2024-01-08 22:19:33,929 INFO o.s.d.r.c.RepositoryConfigurationDelegate [restartedMain] Finished Spring Data repository scanning in 7 ms. Found 5 JPA repository interfaces.
+2024-01-08 22:19:34,028 INFO o.s.b.w.e.t.TomcatWebServer [restartedMain] Tomcat initialized with port 8080 (http)
+2024-01-08 22:19:34,029 INFO o.a.j.l.DirectJDKLog [restartedMain] Initializing ProtocolHandler ["http-nio-8080"]
+2024-01-08 22:19:34,029 INFO o.a.j.l.DirectJDKLog [restartedMain] Starting service [Tomcat]
+2024-01-08 22:19:34,030 INFO o.a.j.l.DirectJDKLog [restartedMain] Starting Servlet engine: [Apache Tomcat/10.1.17]
+2024-01-08 22:19:34,041 INFO o.a.j.l.DirectJDKLog [restartedMain] Initializing Spring embedded WebApplicationContext
+2024-01-08 22:19:34,043 INFO o.s.b.w.s.c.ServletWebServerApplicationContext [restartedMain] Root WebApplicationContext: initialization completed in 264 ms
+2024-01-08 22:19:34,071 INFO c.z.h.HikariDataSource [restartedMain] HikariPool-3 - Starting...
+2024-01-08 22:19:34,079 INFO c.z.h.p.HikariPool [restartedMain] HikariPool-3 - Added connection com.mysql.cj.jdbc.ConnectionImpl@3f5d6ca9
+2024-01-08 22:19:34,079 INFO c.z.h.HikariDataSource [restartedMain] HikariPool-3 - Start completed.
+2024-01-08 22:19:34,157 INFO l.l.c.JavaLogger [restartedMain] Reading from db_library.databasechangelog
+2024-01-08 22:19:34,168 INFO l.l.c.JavaLogger [restartedMain] Database is up to date, no changesets to execute
+2024-01-08 22:19:34,169 INFO l.l.c.JavaLogger [restartedMain] UPDATE SUMMARY
+2024-01-08 22:19:34,169 INFO l.l.c.JavaLogger [restartedMain] Run:                          0
+2024-01-08 22:19:34,169 INFO l.l.c.JavaLogger [restartedMain] Previously run:               5
+2024-01-08 22:19:34,169 INFO l.l.c.JavaLogger [restartedMain] Filtered out:                 0
+2024-01-08 22:19:34,169 INFO l.l.c.JavaLogger [restartedMain] -------------------------------
+2024-01-08 22:19:34,169 INFO l.l.c.JavaLogger [restartedMain] Total change sets:            5
+2024-01-08 22:19:34,169 INFO l.l.c.JavaLogger [restartedMain] Update summary generated
+2024-01-08 22:19:34,171 INFO l.l.c.JavaLogger [restartedMain] Successfully released change log lock
+2024-01-08 22:19:34,172 INFO l.l.c.JavaLogger [restartedMain] Command execution complete
+2024-01-08 22:19:34,187 INFO o.h.j.i.u.LogHelper [restartedMain] HHH000204: Processing PersistenceUnitInfo [name: default]
+2024-01-08 22:19:34,190 INFO o.h.c.i.RegionFactoryInitiator [restartedMain] HHH000026: Second-level cache disabled
+2024-01-08 22:19:34,192 INFO o.s.o.j.p.SpringPersistenceUnitInfo [restartedMain] No LoadTimeWeaver setup: ignoring JPA class transformer
+2024-01-08 22:19:34,271 INFO o.h.e.t.j.p.i.JtaPlatformInitiator [restartedMain] HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2024-01-08 22:19:34,306 INFO o.s.o.j.AbstractEntityManagerFactoryBean [restartedMain] Initialized JPA EntityManagerFactory for persistence unit 'default'
+2024-01-08 22:19:34,379 DEBUG o.s.w.f.GenericFilterBean [restartedMain] Filter 'jwtFilter' configured for use
+2024-01-08 22:19:34,425 WARN o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration [restartedMain] spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2024-01-08 22:19:34,533 INFO o.s.s.w.DefaultSecurityFilterChain [restartedMain] Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@602917e5, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@5874d6cd, org.springframework.security.web.context.SecurityContextHolderFilter@552ee42a, org.springframework.security.web.header.HeaderWriterFilter@2c5e695c, org.springframework.security.web.authentication.logout.LogoutFilter@14659015, net.sparkminds.library.jwt.JwtFilter@5077bb29, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@3f3525f5, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@607ebfc6, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@1278863f, org.springframework.security.web.session.SessionManagementFilter@6c5756e5, org.springframework.security.web.access.ExceptionTranslationFilter@77a3aa50, org.springframework.security.web.access.intercept.AuthorizationFilter@17fc1af5]
+2024-01-08 22:19:34,586 WARN o.s.b.a.t.ThymeleafAutoConfiguration$DefaultTemplateResolverConfiguration [restartedMain] Cannot find template location: classpath:/templates/ (please add some templates, check your Thymeleaf configuration, or set spring.thymeleaf.check-template-location=false)
+2024-01-08 22:19:34,707 INFO o.s.b.d.a.OptionalLiveReloadServer [restartedMain] LiveReload server is running on port 35729
+2024-01-08 22:19:34,717 INFO o.a.j.l.DirectJDKLog [restartedMain] Starting ProtocolHandler ["http-nio-8080"]
+2024-01-08 22:19:34,719 INFO o.s.b.w.e.t.TomcatWebServer [restartedMain] Tomcat started on port 8080 (http) with context path ''
+2024-01-08 22:19:34,723 INFO o.s.b.StartupInfoLogger [restartedMain] Started LibraryApplication in 0.977 seconds (process running for 17.482)
+2024-01-08 22:19:34,724 INFO o.s.b.d.a.ConditionEvaluationDeltaLoggingListener [restartedMain] Condition evaluation unchanged
+2024-01-08 22:19:40,138 INFO o.s.b.d.a.LocalDevToolsAutoConfiguration$RestartingClassPathChangeChangedEventListener [File Watcher] Restarting due to 1 class path change (0 additions, 0 deletions, 1 modification)
+2024-01-08 22:19:40,139 INFO o.a.j.l.DirectJDKLog [Thread-11] Stopping ProtocolHandler ["http-nio-8080"]
+2024-01-08 22:19:40,149 INFO o.s.o.j.AbstractEntityManagerFactoryBean [Thread-11] Closing JPA EntityManagerFactory for persistence unit 'default'
+2024-01-08 22:19:40,149 INFO c.z.h.HikariDataSource [Thread-11] HikariPool-3 - Shutdown initiated...
+2024-01-08 22:19:40,152 INFO c.z.h.HikariDataSource [Thread-11] HikariPool-3 - Shutdown completed.
+2024-01-08 22:19:40,218 INFO o.s.b.StartupInfoLogger [restartedMain] Starting LibraryApplication using Java 17.0.5 with PID 20364 (E:\Project\library\library\target\classes started by HAN-PC in E:\Project\library\library)
+2024-01-08 22:19:40,219 DEBUG o.s.b.StartupInfoLogger [restartedMain] Running with Spring Boot v3.2.1, Spring v6.1.2
+2024-01-08 22:19:40,219 INFO o.s.b.SpringApplication [restartedMain] The following 1 profile is active: "dev"
+2024-01-08 22:19:40,344 INFO o.s.d.r.c.RepositoryConfigurationDelegate [restartedMain] Multiple Spring Data modules found, entering strict repository configuration mode
+2024-01-08 22:19:40,344 INFO o.s.d.r.c.RepositoryConfigurationDelegate [restartedMain] Bootstrapping Spring Data JDBC repositories in DEFAULT mode.
+2024-01-08 22:19:40,350 INFO o.s.d.r.c.RepositoryConfigurationExtensionSupport [restartedMain] Spring Data JDBC - Could not safely identify store assignment for repository candidate interface net.sparkminds.library.repository.AccountRepository; If you want this repository to be a JDBC repository, consider annotating your entities with one of these annotations: org.springframework.data.relational.core.mapping.Table.
+2024-01-08 22:19:40,351 INFO o.s.d.r.c.RepositoryConfigurationExtensionSupport [restartedMain] Spring Data JDBC - Could not safely identify store assignment for repository candidate interface net.sparkminds.library.repository.AdminRepository; If you want this repository to be a JDBC repository, consider annotating your entities with one of these annotations: org.springframework.data.relational.core.mapping.Table.
+2024-01-08 22:19:40,352 INFO o.s.d.r.c.RepositoryConfigurationExtensionSupport [restartedMain] Spring Data JDBC - Could not safely identify store assignment for repository candidate interface net.sparkminds.library.repository.RoleRepository; If you want this repository to be a JDBC repository, consider annotating your entities with one of these annotations: org.springframework.data.relational.core.mapping.Table.
+2024-01-08 22:19:40,353 INFO o.s.d.r.c.RepositoryConfigurationExtensionSupport [restartedMain] Spring Data JDBC - Could not safely identify store assignment for repository candidate interface net.sparkminds.library.repository.SessionRepository; If you want this repository to be a JDBC repository, consider annotating your entities with one of these annotations: org.springframework.data.relational.core.mapping.Table.
+2024-01-08 22:19:40,354 INFO o.s.d.r.c.RepositoryConfigurationExtensionSupport [restartedMain] Spring Data JDBC - Could not safely identify store assignment for repository candidate interface net.sparkminds.library.repository.UserRepository; If you want this repository to be a JDBC repository, consider annotating your entities with one of these annotations: org.springframework.data.relational.core.mapping.Table.
+2024-01-08 22:19:40,354 INFO o.s.d.r.c.RepositoryConfigurationDelegate [restartedMain] Finished Spring Data repository scanning in 9 ms. Found 0 JDBC repository interfaces.
+2024-01-08 22:19:40,356 INFO o.s.d.r.c.RepositoryConfigurationDelegate [restartedMain] Multiple Spring Data modules found, entering strict repository configuration mode
+2024-01-08 22:19:40,356 INFO o.s.d.r.c.RepositoryConfigurationDelegate [restartedMain] Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2024-01-08 22:19:40,364 INFO o.s.d.r.c.RepositoryConfigurationDelegate [restartedMain] Finished Spring Data repository scanning in 6 ms. Found 5 JPA repository interfaces.
+2024-01-08 22:19:40,460 INFO o.s.b.w.e.t.TomcatWebServer [restartedMain] Tomcat initialized with port 8080 (http)
+2024-01-08 22:19:40,460 INFO o.a.j.l.DirectJDKLog [restartedMain] Initializing ProtocolHandler ["http-nio-8080"]
+2024-01-08 22:19:40,460 INFO o.a.j.l.DirectJDKLog [restartedMain] Starting service [Tomcat]
+2024-01-08 22:19:40,461 INFO o.a.j.l.DirectJDKLog [restartedMain] Starting Servlet engine: [Apache Tomcat/10.1.17]
+2024-01-08 22:19:40,472 INFO o.a.j.l.DirectJDKLog [restartedMain] Initializing Spring embedded WebApplicationContext
+2024-01-08 22:19:40,472 INFO o.s.b.w.s.c.ServletWebServerApplicationContext [restartedMain] Root WebApplicationContext: initialization completed in 251 ms
+2024-01-08 22:19:40,504 INFO c.z.h.HikariDataSource [restartedMain] HikariPool-4 - Starting...
+2024-01-08 22:19:40,512 INFO c.z.h.p.HikariPool [restartedMain] HikariPool-4 - Added connection com.mysql.cj.jdbc.ConnectionImpl@32612809
+2024-01-08 22:19:40,512 INFO c.z.h.HikariDataSource [restartedMain] HikariPool-4 - Start completed.
+2024-01-08 22:19:40,583 INFO l.l.c.JavaLogger [restartedMain] Reading from db_library.databasechangelog
+2024-01-08 22:19:40,594 INFO l.l.c.JavaLogger [restartedMain] Database is up to date, no changesets to execute
+2024-01-08 22:19:40,596 INFO l.l.c.JavaLogger [restartedMain] UPDATE SUMMARY
+2024-01-08 22:19:40,596 INFO l.l.c.JavaLogger [restartedMain] Run:                          0
+2024-01-08 22:19:40,596 INFO l.l.c.JavaLogger [restartedMain] Previously run:               5
+2024-01-08 22:19:40,596 INFO l.l.c.JavaLogger [restartedMain] Filtered out:                 0
+2024-01-08 22:19:40,597 INFO l.l.c.JavaLogger [restartedMain] -------------------------------
+2024-01-08 22:19:40,597 INFO l.l.c.JavaLogger [restartedMain] Total change sets:            5
+2024-01-08 22:19:40,597 INFO l.l.c.JavaLogger [restartedMain] Update summary generated
+2024-01-08 22:19:40,599 INFO l.l.c.JavaLogger [restartedMain] Successfully released change log lock
+2024-01-08 22:19:40,599 INFO l.l.c.JavaLogger [restartedMain] Command execution complete
+2024-01-08 22:19:40,615 INFO o.h.j.i.u.LogHelper [restartedMain] HHH000204: Processing PersistenceUnitInfo [name: default]
+2024-01-08 22:19:40,617 INFO o.h.c.i.RegionFactoryInitiator [restartedMain] HHH000026: Second-level cache disabled
+2024-01-08 22:19:40,619 INFO o.s.o.j.p.SpringPersistenceUnitInfo [restartedMain] No LoadTimeWeaver setup: ignoring JPA class transformer
+2024-01-08 22:19:40,692 INFO o.h.e.t.j.p.i.JtaPlatformInitiator [restartedMain] HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2024-01-08 22:19:40,724 INFO o.s.o.j.AbstractEntityManagerFactoryBean [restartedMain] Initialized JPA EntityManagerFactory for persistence unit 'default'
+2024-01-08 22:19:40,791 DEBUG o.s.w.f.GenericFilterBean [restartedMain] Filter 'jwtFilter' configured for use
+2024-01-08 22:19:40,837 WARN o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration [restartedMain] spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2024-01-08 22:19:40,938 INFO o.s.s.w.DefaultSecurityFilterChain [restartedMain] Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@3e7700a9, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@719fa6b4, org.springframework.security.web.context.SecurityContextHolderFilter@194d707b, org.springframework.security.web.header.HeaderWriterFilter@25474bfe, org.springframework.security.web.authentication.logout.LogoutFilter@42d1aed5, net.sparkminds.library.jwt.JwtFilter@197fce41, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@5aeddc86, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@45ea649e, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@65782019, org.springframework.security.web.session.SessionManagementFilter@79719078, org.springframework.security.web.access.ExceptionTranslationFilter@5b030c18, org.springframework.security.web.access.intercept.AuthorizationFilter@60340722]
+2024-01-08 22:19:40,989 WARN o.s.b.a.t.ThymeleafAutoConfiguration$DefaultTemplateResolverConfiguration [restartedMain] Cannot find template location: classpath:/templates/ (please add some templates, check your Thymeleaf configuration, or set spring.thymeleaf.check-template-location=false)
+2024-01-08 22:19:41,108 INFO o.s.b.d.a.OptionalLiveReloadServer [restartedMain] LiveReload server is running on port 35729
+2024-01-08 22:19:41,117 INFO o.a.j.l.DirectJDKLog [restartedMain] Starting ProtocolHandler ["http-nio-8080"]
+2024-01-08 22:19:41,120 INFO o.s.b.w.e.t.TomcatWebServer [restartedMain] Tomcat started on port 8080 (http) with context path ''
+2024-01-08 22:19:41,123 INFO o.s.b.StartupInfoLogger [restartedMain] Started LibraryApplication in 0.932 seconds (process running for 23.883)
+2024-01-08 22:19:41,124 INFO o.s.b.d.a.ConditionEvaluationDeltaLoggingListener [restartedMain] Condition evaluation unchanged
+2024-01-08 22:19:45,851 INFO o.a.j.l.DirectJDKLog [http-nio-8080-exec-2] Initializing Spring DispatcherServlet 'dispatcherServlet'
+2024-01-08 22:19:45,852 INFO o.s.w.s.FrameworkServlet [http-nio-8080-exec-2] Initializing Servlet 'dispatcherServlet'
+2024-01-08 22:19:45,853 INFO o.s.w.s.FrameworkServlet [http-nio-8080-exec-2] Completed initialization in 0 ms
+2024-01-08 22:22:01,668 INFO o.s.b.d.a.LocalDevToolsAutoConfiguration$RestartingClassPathChangeChangedEventListener [File Watcher] Restarting due to 1 class path change (0 additions, 0 deletions, 1 modification)
+2024-01-08 22:22:01,670 INFO o.a.j.l.DirectJDKLog [Thread-15] Stopping ProtocolHandler ["http-nio-8080"]
+2024-01-08 22:22:01,678 INFO o.s.o.j.AbstractEntityManagerFactoryBean [Thread-15] Closing JPA EntityManagerFactory for persistence unit 'default'
+2024-01-08 22:22:01,678 INFO c.z.h.HikariDataSource [Thread-15] HikariPool-4 - Shutdown initiated...
+2024-01-08 22:22:01,682 INFO c.z.h.HikariDataSource [Thread-15] HikariPool-4 - Shutdown completed.
+2024-01-08 22:22:01,756 INFO o.s.b.StartupInfoLogger [restartedMain] Starting LibraryApplication using Java 17.0.5 with PID 20364 (E:\Project\library\library\target\classes started by HAN-PC in E:\Project\library\library)
+2024-01-08 22:22:01,756 DEBUG o.s.b.StartupInfoLogger [restartedMain] Running with Spring Boot v3.2.1, Spring v6.1.2
+2024-01-08 22:22:01,756 INFO o.s.b.SpringApplication [restartedMain] The following 1 profile is active: "dev"
+2024-01-08 22:22:01,890 INFO o.s.d.r.c.RepositoryConfigurationDelegate [restartedMain] Multiple Spring Data modules found, entering strict repository configuration mode
+2024-01-08 22:22:01,891 INFO o.s.d.r.c.RepositoryConfigurationDelegate [restartedMain] Bootstrapping Spring Data JDBC repositories in DEFAULT mode.
+2024-01-08 22:22:01,896 INFO o.s.d.r.c.RepositoryConfigurationExtensionSupport [restartedMain] Spring Data JDBC - Could not safely identify store assignment for repository candidate interface net.sparkminds.library.repository.AccountRepository; If you want this repository to be a JDBC repository, consider annotating your entities with one of these annotations: org.springframework.data.relational.core.mapping.Table.
+2024-01-08 22:22:01,896 INFO o.s.d.r.c.RepositoryConfigurationExtensionSupport [restartedMain] Spring Data JDBC - Could not safely identify store assignment for repository candidate interface net.sparkminds.library.repository.AdminRepository; If you want this repository to be a JDBC repository, consider annotating your entities with one of these annotations: org.springframework.data.relational.core.mapping.Table.
+2024-01-08 22:22:01,897 INFO o.s.d.r.c.RepositoryConfigurationExtensionSupport [restartedMain] Spring Data JDBC - Could not safely identify store assignment for repository candidate interface net.sparkminds.library.repository.RoleRepository; If you want this repository to be a JDBC repository, consider annotating your entities with one of these annotations: org.springframework.data.relational.core.mapping.Table.
+2024-01-08 22:22:01,898 INFO o.s.d.r.c.RepositoryConfigurationExtensionSupport [restartedMain] Spring Data JDBC - Could not safely identify store assignment for repository candidate interface net.sparkminds.library.repository.SessionRepository; If you want this repository to be a JDBC repository, consider annotating your entities with one of these annotations: org.springframework.data.relational.core.mapping.Table.
+2024-01-08 22:22:01,898 INFO o.s.d.r.c.RepositoryConfigurationExtensionSupport [restartedMain] Spring Data JDBC - Could not safely identify store assignment for repository candidate interface net.sparkminds.library.repository.UserRepository; If you want this repository to be a JDBC repository, consider annotating your entities with one of these annotations: org.springframework.data.relational.core.mapping.Table.
+2024-01-08 22:22:01,898 INFO o.s.d.r.c.RepositoryConfigurationDelegate [restartedMain] Finished Spring Data repository scanning in 7 ms. Found 0 JDBC repository interfaces.
+2024-01-08 22:22:01,901 INFO o.s.d.r.c.RepositoryConfigurationDelegate [restartedMain] Multiple Spring Data modules found, entering strict repository configuration mode
+2024-01-08 22:22:01,901 INFO o.s.d.r.c.RepositoryConfigurationDelegate [restartedMain] Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2024-01-08 22:22:01,908 INFO o.s.d.r.c.RepositoryConfigurationDelegate [restartedMain] Finished Spring Data repository scanning in 6 ms. Found 5 JPA repository interfaces.
+2024-01-08 22:22:02,014 INFO o.s.b.w.e.t.TomcatWebServer [restartedMain] Tomcat initialized with port 8080 (http)
+2024-01-08 22:22:02,016 INFO o.a.j.l.DirectJDKLog [restartedMain] Initializing ProtocolHandler ["http-nio-8080"]
+2024-01-08 22:22:02,016 INFO o.a.j.l.DirectJDKLog [restartedMain] Starting service [Tomcat]
+2024-01-08 22:22:02,016 INFO o.a.j.l.DirectJDKLog [restartedMain] Starting Servlet engine: [Apache Tomcat/10.1.17]
+2024-01-08 22:22:02,028 INFO o.a.j.l.DirectJDKLog [restartedMain] Initializing Spring embedded WebApplicationContext
+2024-01-08 22:22:02,028 INFO o.s.b.w.s.c.ServletWebServerApplicationContext [restartedMain] Root WebApplicationContext: initialization completed in 271 ms
+2024-01-08 22:22:02,065 INFO c.z.h.HikariDataSource [restartedMain] HikariPool-5 - Starting...
+2024-01-08 22:22:02,074 INFO c.z.h.p.HikariPool [restartedMain] HikariPool-5 - Added connection com.mysql.cj.jdbc.ConnectionImpl@7398452
+2024-01-08 22:22:02,076 INFO c.z.h.HikariDataSource [restartedMain] HikariPool-5 - Start completed.
+2024-01-08 22:22:02,158 INFO l.l.c.JavaLogger [restartedMain] Reading from db_library.databasechangelog
+2024-01-08 22:22:02,173 INFO l.l.c.JavaLogger [restartedMain] Database is up to date, no changesets to execute
+2024-01-08 22:22:02,174 INFO l.l.c.JavaLogger [restartedMain] UPDATE SUMMARY
+2024-01-08 22:22:02,175 INFO l.l.c.JavaLogger [restartedMain] Run:                          0
+2024-01-08 22:22:02,175 INFO l.l.c.JavaLogger [restartedMain] Previously run:               5
+2024-01-08 22:22:02,175 INFO l.l.c.JavaLogger [restartedMain] Filtered out:                 0
+2024-01-08 22:22:02,175 INFO l.l.c.JavaLogger [restartedMain] -------------------------------
+2024-01-08 22:22:02,175 INFO l.l.c.JavaLogger [restartedMain] Total change sets:            5
+2024-01-08 22:22:02,175 INFO l.l.c.JavaLogger [restartedMain] Update summary generated
+2024-01-08 22:22:02,177 INFO l.l.c.JavaLogger [restartedMain] Successfully released change log lock
+2024-01-08 22:22:02,178 INFO l.l.c.JavaLogger [restartedMain] Command execution complete
+2024-01-08 22:22:02,202 INFO o.h.j.i.u.LogHelper [restartedMain] HHH000204: Processing PersistenceUnitInfo [name: default]
+2024-01-08 22:22:02,205 INFO o.h.c.i.RegionFactoryInitiator [restartedMain] HHH000026: Second-level cache disabled
+2024-01-08 22:22:02,207 INFO o.s.o.j.p.SpringPersistenceUnitInfo [restartedMain] No LoadTimeWeaver setup: ignoring JPA class transformer
+2024-01-08 22:22:02,282 INFO o.h.e.t.j.p.i.JtaPlatformInitiator [restartedMain] HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2024-01-08 22:22:02,318 INFO o.s.o.j.AbstractEntityManagerFactoryBean [restartedMain] Initialized JPA EntityManagerFactory for persistence unit 'default'
+2024-01-08 22:22:02,405 DEBUG o.s.w.f.GenericFilterBean [restartedMain] Filter 'jwtFilter' configured for use
+2024-01-08 22:22:02,453 WARN o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration [restartedMain] spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2024-01-08 22:22:02,564 INFO o.s.s.w.DefaultSecurityFilterChain [restartedMain] Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@43ef63e0, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@692aa53c, org.springframework.security.web.context.SecurityContextHolderFilter@1aea86b8, org.springframework.security.web.header.HeaderWriterFilter@7652dff7, org.springframework.security.web.authentication.logout.LogoutFilter@29b36c5e, net.sparkminds.library.jwt.JwtFilter@31507306, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@30949ef8, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@50d9427a, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@2be36615, org.springframework.security.web.session.SessionManagementFilter@5a5f2e13, org.springframework.security.web.access.ExceptionTranslationFilter@582e4f42, org.springframework.security.web.access.intercept.AuthorizationFilter@710c2003]
+2024-01-08 22:22:02,627 WARN o.s.b.a.t.ThymeleafAutoConfiguration$DefaultTemplateResolverConfiguration [restartedMain] Cannot find template location: classpath:/templates/ (please add some templates, check your Thymeleaf configuration, or set spring.thymeleaf.check-template-location=false)
+2024-01-08 22:22:02,760 INFO o.s.b.d.a.OptionalLiveReloadServer [restartedMain] LiveReload server is running on port 35729
+2024-01-08 22:22:02,770 INFO o.a.j.l.DirectJDKLog [restartedMain] Starting ProtocolHandler ["http-nio-8080"]
+2024-01-08 22:22:02,772 INFO o.s.b.w.e.t.TomcatWebServer [restartedMain] Tomcat started on port 8080 (http) with context path ''
+2024-01-08 22:22:02,776 INFO o.s.b.StartupInfoLogger [restartedMain] Started LibraryApplication in 1.049 seconds (process running for 165.535)
+2024-01-08 22:22:02,778 INFO o.s.b.d.a.ConditionEvaluationDeltaLoggingListener [restartedMain] Condition evaluation unchanged
+2024-01-08 22:22:04,179 INFO o.s.b.d.a.LocalDevToolsAutoConfiguration$RestartingClassPathChangeChangedEventListener [File Watcher] Restarting due to 1 class path change (0 additions, 0 deletions, 1 modification)
+2024-01-08 22:22:04,181 INFO o.a.j.l.DirectJDKLog [Thread-19] Stopping ProtocolHandler ["http-nio-8080"]
+2024-01-08 22:22:04,188 INFO o.s.o.j.AbstractEntityManagerFactoryBean [Thread-19] Closing JPA EntityManagerFactory for persistence unit 'default'
+2024-01-08 22:22:04,188 INFO c.z.h.HikariDataSource [Thread-19] HikariPool-5 - Shutdown initiated...
+2024-01-08 22:22:04,192 INFO c.z.h.HikariDataSource [Thread-19] HikariPool-5 - Shutdown completed.
+2024-01-08 22:22:04,259 INFO o.s.b.StartupInfoLogger [restartedMain] Starting LibraryApplication using Java 17.0.5 with PID 20364 (E:\Project\library\library\target\classes started by HAN-PC in E:\Project\library\library)
+2024-01-08 22:22:04,260 DEBUG o.s.b.StartupInfoLogger [restartedMain] Running with Spring Boot v3.2.1, Spring v6.1.2
+2024-01-08 22:22:04,260 INFO o.s.b.SpringApplication [restartedMain] The following 1 profile is active: "dev"
+2024-01-08 22:22:04,385 INFO o.s.d.r.c.RepositoryConfigurationDelegate [restartedMain] Multiple Spring Data modules found, entering strict repository configuration mode
+2024-01-08 22:22:04,385 INFO o.s.d.r.c.RepositoryConfigurationDelegate [restartedMain] Bootstrapping Spring Data JDBC repositories in DEFAULT mode.
+2024-01-08 22:22:04,390 INFO o.s.d.r.c.RepositoryConfigurationExtensionSupport [restartedMain] Spring Data JDBC - Could not safely identify store assignment for repository candidate interface net.sparkminds.library.repository.AccountRepository; If you want this repository to be a JDBC repository, consider annotating your entities with one of these annotations: org.springframework.data.relational.core.mapping.Table.
+2024-01-08 22:22:04,391 INFO o.s.d.r.c.RepositoryConfigurationExtensionSupport [restartedMain] Spring Data JDBC - Could not safely identify store assignment for repository candidate interface net.sparkminds.library.repository.AdminRepository; If you want this repository to be a JDBC repository, consider annotating your entities with one of these annotations: org.springframework.data.relational.core.mapping.Table.
+2024-01-08 22:22:04,392 INFO o.s.d.r.c.RepositoryConfigurationExtensionSupport [restartedMain] Spring Data JDBC - Could not safely identify store assignment for repository candidate interface net.sparkminds.library.repository.RoleRepository; If you want this repository to be a JDBC repository, consider annotating your entities with one of these annotations: org.springframework.data.relational.core.mapping.Table.
+2024-01-08 22:22:04,392 INFO o.s.d.r.c.RepositoryConfigurationExtensionSupport [restartedMain] Spring Data JDBC - Could not safely identify store assignment for repository candidate interface net.sparkminds.library.repository.SessionRepository; If you want this repository to be a JDBC repository, consider annotating your entities with one of these annotations: org.springframework.data.relational.core.mapping.Table.
+2024-01-08 22:22:04,393 INFO o.s.d.r.c.RepositoryConfigurationExtensionSupport [restartedMain] Spring Data JDBC - Could not safely identify store assignment for repository candidate interface net.sparkminds.library.repository.UserRepository; If you want this repository to be a JDBC repository, consider annotating your entities with one of these annotations: org.springframework.data.relational.core.mapping.Table.
+2024-01-08 22:22:04,393 INFO o.s.d.r.c.RepositoryConfigurationDelegate [restartedMain] Finished Spring Data repository scanning in 8 ms. Found 0 JDBC repository interfaces.
+2024-01-08 22:22:04,396 INFO o.s.d.r.c.RepositoryConfigurationDelegate [restartedMain] Multiple Spring Data modules found, entering strict repository configuration mode
+2024-01-08 22:22:04,396 INFO o.s.d.r.c.RepositoryConfigurationDelegate [restartedMain] Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2024-01-08 22:22:04,403 INFO o.s.d.r.c.RepositoryConfigurationDelegate [restartedMain] Finished Spring Data repository scanning in 6 ms. Found 5 JPA repository interfaces.
+2024-01-08 22:22:04,501 INFO o.s.b.w.e.t.TomcatWebServer [restartedMain] Tomcat initialized with port 8080 (http)
+2024-01-08 22:22:04,501 INFO o.a.j.l.DirectJDKLog [restartedMain] Initializing ProtocolHandler ["http-nio-8080"]
+2024-01-08 22:22:04,501 INFO o.a.j.l.DirectJDKLog [restartedMain] Starting service [Tomcat]
+2024-01-08 22:22:04,502 INFO o.a.j.l.DirectJDKLog [restartedMain] Starting Servlet engine: [Apache Tomcat/10.1.17]
+2024-01-08 22:22:04,515 INFO o.a.j.l.DirectJDKLog [restartedMain] Initializing Spring embedded WebApplicationContext
+2024-01-08 22:22:04,515 INFO o.s.b.w.s.c.ServletWebServerApplicationContext [restartedMain] Root WebApplicationContext: initialization completed in 254 ms
+2024-01-08 22:22:04,546 INFO c.z.h.HikariDataSource [restartedMain] HikariPool-6 - Starting...
+2024-01-08 22:22:04,553 INFO c.z.h.p.HikariPool [restartedMain] HikariPool-6 - Added connection com.mysql.cj.jdbc.ConnectionImpl@50fd5a96
+2024-01-08 22:22:04,553 INFO c.z.h.HikariDataSource [restartedMain] HikariPool-6 - Start completed.
+2024-01-08 22:22:04,624 INFO l.l.c.JavaLogger [restartedMain] Reading from db_library.databasechangelog
+2024-01-08 22:22:04,634 INFO l.l.c.JavaLogger [restartedMain] Database is up to date, no changesets to execute
+2024-01-08 22:22:04,635 INFO l.l.c.JavaLogger [restartedMain] UPDATE SUMMARY
+2024-01-08 22:22:04,635 INFO l.l.c.JavaLogger [restartedMain] Run:                          0
+2024-01-08 22:22:04,635 INFO l.l.c.JavaLogger [restartedMain] Previously run:               5
+2024-01-08 22:22:04,635 INFO l.l.c.JavaLogger [restartedMain] Filtered out:                 0
+2024-01-08 22:22:04,635 INFO l.l.c.JavaLogger [restartedMain] -------------------------------
+2024-01-08 22:22:04,635 INFO l.l.c.JavaLogger [restartedMain] Total change sets:            5
+2024-01-08 22:22:04,635 INFO l.l.c.JavaLogger [restartedMain] Update summary generated
+2024-01-08 22:22:04,637 INFO l.l.c.JavaLogger [restartedMain] Successfully released change log lock
+2024-01-08 22:22:04,637 INFO l.l.c.JavaLogger [restartedMain] Command execution complete
+2024-01-08 22:22:04,654 INFO o.h.j.i.u.LogHelper [restartedMain] HHH000204: Processing PersistenceUnitInfo [name: default]
+2024-01-08 22:22:04,656 INFO o.h.c.i.RegionFactoryInitiator [restartedMain] HHH000026: Second-level cache disabled
+2024-01-08 22:22:04,658 INFO o.s.o.j.p.SpringPersistenceUnitInfo [restartedMain] No LoadTimeWeaver setup: ignoring JPA class transformer
+2024-01-08 22:22:04,726 INFO o.h.e.t.j.p.i.JtaPlatformInitiator [restartedMain] HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2024-01-08 22:22:04,758 INFO o.s.o.j.AbstractEntityManagerFactoryBean [restartedMain] Initialized JPA EntityManagerFactory for persistence unit 'default'
+2024-01-08 22:22:04,824 DEBUG o.s.w.f.GenericFilterBean [restartedMain] Filter 'jwtFilter' configured for use
+2024-01-08 22:22:04,874 WARN o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration [restartedMain] spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2024-01-08 22:22:04,976 INFO o.s.s.w.DefaultSecurityFilterChain [restartedMain] Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@6c2a0243, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@744207c, org.springframework.security.web.context.SecurityContextHolderFilter@1990578f, org.springframework.security.web.header.HeaderWriterFilter@46bea2f5, org.springframework.security.web.authentication.logout.LogoutFilter@42d52a10, net.sparkminds.library.jwt.JwtFilter@3826b9d7, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@22ec4f07, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@11f6e8a5, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@b4029bf, org.springframework.security.web.session.SessionManagementFilter@2c3c9c13, org.springframework.security.web.access.ExceptionTranslationFilter@18247c76, org.springframework.security.web.access.intercept.AuthorizationFilter@2494b21f]
+2024-01-08 22:22:05,027 WARN o.s.b.a.t.ThymeleafAutoConfiguration$DefaultTemplateResolverConfiguration [restartedMain] Cannot find template location: classpath:/templates/ (please add some templates, check your Thymeleaf configuration, or set spring.thymeleaf.check-template-location=false)
+2024-01-08 22:22:05,148 INFO o.s.b.d.a.OptionalLiveReloadServer [restartedMain] LiveReload server is running on port 35729
+2024-01-08 22:22:05,158 INFO o.a.j.l.DirectJDKLog [restartedMain] Starting ProtocolHandler ["http-nio-8080"]
+2024-01-08 22:22:05,160 INFO o.s.b.w.e.t.TomcatWebServer [restartedMain] Tomcat started on port 8080 (http) with context path ''
+2024-01-08 22:22:05,164 INFO o.s.b.StartupInfoLogger [restartedMain] Started LibraryApplication in 0.931 seconds (process running for 167.923)
+2024-01-08 22:22:05,165 INFO o.s.b.d.a.ConditionEvaluationDeltaLoggingListener [restartedMain] Condition evaluation unchanged
+2024-01-08 22:22:07,983 INFO o.a.j.l.DirectJDKLog [http-nio-8080-exec-3] Initializing Spring DispatcherServlet 'dispatcherServlet'
+2024-01-08 22:22:07,983 INFO o.s.w.s.FrameworkServlet [http-nio-8080-exec-3] Initializing Servlet 'dispatcherServlet'
+2024-01-08 22:22:07,984 INFO o.s.w.s.FrameworkServlet [http-nio-8080-exec-3] Completed initialization in 1 ms
+2024-01-08 22:22:08,062 INFO n.s.l.s.i.RegisterServiceImpl [http-nio-8080-exec-3] Insert User: Account(id=8, email=user123@gmail.com, password=$2a$10$k0VsnUtDVioLZce4zX6hAud8lyLhvTmOcW6bk6aN09YPDX7z7B9ee, blockedAt=null, reasonBlocked=null, isVerify=false, status=ACTIVE, sessions=null, role=Role(id=2, role=USER, accounts=null))
+2024-01-08 22:22:55,392 INFO o.s.b.d.a.LocalDevToolsAutoConfiguration$RestartingClassPathChangeChangedEventListener [File Watcher] Restarting due to 1 class path change (0 additions, 1 deletion, 0 modifications)
+2024-01-08 22:22:55,395 INFO o.a.j.l.DirectJDKLog [Thread-23] Stopping ProtocolHandler ["http-nio-8080"]
+2024-01-08 22:22:55,402 INFO o.s.o.j.AbstractEntityManagerFactoryBean [Thread-23] Closing JPA EntityManagerFactory for persistence unit 'default'
+2024-01-08 22:22:55,403 INFO c.z.h.HikariDataSource [Thread-23] HikariPool-6 - Shutdown initiated...
+2024-01-08 22:22:55,406 INFO c.z.h.HikariDataSource [Thread-23] HikariPool-6 - Shutdown completed.
+2024-01-08 22:22:55,483 INFO o.s.b.StartupInfoLogger [restartedMain] Starting LibraryApplication using Java 17.0.5 with PID 20364 (E:\Project\library\library\target\classes started by HAN-PC in E:\Project\library\library)
+2024-01-08 22:22:55,483 DEBUG o.s.b.StartupInfoLogger [restartedMain] Running with Spring Boot v3.2.1, Spring v6.1.2
+2024-01-08 22:22:55,483 INFO o.s.b.SpringApplication [restartedMain] The following 1 profile is active: "dev"
+2024-01-08 22:22:55,607 INFO o.s.d.r.c.RepositoryConfigurationDelegate [restartedMain] Multiple Spring Data modules found, entering strict repository configuration mode
+2024-01-08 22:22:55,607 INFO o.s.d.r.c.RepositoryConfigurationDelegate [restartedMain] Bootstrapping Spring Data JDBC repositories in DEFAULT mode.
+2024-01-08 22:22:55,612 INFO o.s.d.r.c.RepositoryConfigurationExtensionSupport [restartedMain] Spring Data JDBC - Could not safely identify store assignment for repository candidate interface net.sparkminds.library.repository.AccountRepository; If you want this repository to be a JDBC repository, consider annotating your entities with one of these annotations: org.springframework.data.relational.core.mapping.Table.
+2024-01-08 22:22:55,613 INFO o.s.d.r.c.RepositoryConfigurationExtensionSupport [restartedMain] Spring Data JDBC - Could not safely identify store assignment for repository candidate interface net.sparkminds.library.repository.AdminRepository; If you want this repository to be a JDBC repository, consider annotating your entities with one of these annotations: org.springframework.data.relational.core.mapping.Table.
+2024-01-08 22:22:55,613 INFO o.s.d.r.c.RepositoryConfigurationExtensionSupport [restartedMain] Spring Data JDBC - Could not safely identify store assignment for repository candidate interface net.sparkminds.library.repository.RoleRepository; If you want this repository to be a JDBC repository, consider annotating your entities with one of these annotations: org.springframework.data.relational.core.mapping.Table.
+2024-01-08 22:22:55,614 INFO o.s.d.r.c.RepositoryConfigurationExtensionSupport [restartedMain] Spring Data JDBC - Could not safely identify store assignment for repository candidate interface net.sparkminds.library.repository.SessionRepository; If you want this repository to be a JDBC repository, consider annotating your entities with one of these annotations: org.springframework.data.relational.core.mapping.Table.
+2024-01-08 22:22:55,616 INFO o.s.d.r.c.RepositoryConfigurationExtensionSupport [restartedMain] Spring Data JDBC - Could not safely identify store assignment for repository candidate interface net.sparkminds.library.repository.UserRepository; If you want this repository to be a JDBC repository, consider annotating your entities with one of these annotations: org.springframework.data.relational.core.mapping.Table.
+2024-01-08 22:22:55,616 INFO o.s.d.r.c.RepositoryConfigurationDelegate [restartedMain] Finished Spring Data repository scanning in 8 ms. Found 0 JDBC repository interfaces.
+2024-01-08 22:22:55,618 INFO o.s.d.r.c.RepositoryConfigurationDelegate [restartedMain] Multiple Spring Data modules found, entering strict repository configuration mode
+2024-01-08 22:22:55,618 INFO o.s.d.r.c.RepositoryConfigurationDelegate [restartedMain] Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2024-01-08 22:22:55,625 INFO o.s.d.r.c.RepositoryConfigurationDelegate [restartedMain] Finished Spring Data repository scanning in 7 ms. Found 5 JPA repository interfaces.
+2024-01-08 22:22:55,724 INFO o.s.b.w.e.t.TomcatWebServer [restartedMain] Tomcat initialized with port 8080 (http)
+2024-01-08 22:22:55,724 INFO o.a.j.l.DirectJDKLog [restartedMain] Initializing ProtocolHandler ["http-nio-8080"]
+2024-01-08 22:22:55,726 INFO o.a.j.l.DirectJDKLog [restartedMain] Starting service [Tomcat]
+2024-01-08 22:22:55,726 INFO o.a.j.l.DirectJDKLog [restartedMain] Starting Servlet engine: [Apache Tomcat/10.1.17]
+2024-01-08 22:22:55,737 INFO o.a.j.l.DirectJDKLog [restartedMain] Initializing Spring embedded WebApplicationContext
+2024-01-08 22:22:55,737 INFO o.s.b.w.s.c.ServletWebServerApplicationContext [restartedMain] Root WebApplicationContext: initialization completed in 253 ms
+2024-01-08 22:22:55,768 INFO c.z.h.HikariDataSource [restartedMain] HikariPool-7 - Starting...
+2024-01-08 22:22:55,777 INFO c.z.h.p.HikariPool [restartedMain] HikariPool-7 - Added connection com.mysql.cj.jdbc.ConnectionImpl@9fb8ec3
+2024-01-08 22:22:55,777 INFO c.z.h.HikariDataSource [restartedMain] HikariPool-7 - Start completed.
+2024-01-08 22:22:55,849 INFO l.l.c.JavaLogger [restartedMain] Reading from db_library.databasechangelog
+2024-01-08 22:22:55,858 INFO l.l.c.JavaLogger [restartedMain] Database is up to date, no changesets to execute
+2024-01-08 22:22:55,859 INFO l.l.c.JavaLogger [restartedMain] UPDATE SUMMARY
+2024-01-08 22:22:55,859 INFO l.l.c.JavaLogger [restartedMain] Run:                          0
+2024-01-08 22:22:55,859 INFO l.l.c.JavaLogger [restartedMain] Previously run:               5
+2024-01-08 22:22:55,859 INFO l.l.c.JavaLogger [restartedMain] Filtered out:                 0
+2024-01-08 22:22:55,859 INFO l.l.c.JavaLogger [restartedMain] -------------------------------
+2024-01-08 22:22:55,859 INFO l.l.c.JavaLogger [restartedMain] Total change sets:            5
+2024-01-08 22:22:55,859 INFO l.l.c.JavaLogger [restartedMain] Update summary generated
+2024-01-08 22:22:55,861 INFO l.l.c.JavaLogger [restartedMain] Successfully released change log lock
+2024-01-08 22:22:55,861 INFO l.l.c.JavaLogger [restartedMain] Command execution complete
+2024-01-08 22:22:55,878 INFO o.h.j.i.u.LogHelper [restartedMain] HHH000204: Processing PersistenceUnitInfo [name: default]
+2024-01-08 22:22:55,880 INFO o.h.c.i.RegionFactoryInitiator [restartedMain] HHH000026: Second-level cache disabled
+2024-01-08 22:22:55,882 INFO o.s.o.j.p.SpringPersistenceUnitInfo [restartedMain] No LoadTimeWeaver setup: ignoring JPA class transformer
+2024-01-08 22:22:55,945 INFO o.h.e.t.j.p.i.JtaPlatformInitiator [restartedMain] HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2024-01-08 22:22:55,978 INFO o.s.o.j.AbstractEntityManagerFactoryBean [restartedMain] Initialized JPA EntityManagerFactory for persistence unit 'default'
+2024-01-08 22:22:56,041 DEBUG o.s.w.f.GenericFilterBean [restartedMain] Filter 'jwtFilter' configured for use
+2024-01-08 22:22:56,090 WARN o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration [restartedMain] spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2024-01-08 22:22:56,190 INFO o.s.s.w.DefaultSecurityFilterChain [restartedMain] Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@24b9bf94, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@540901e7, org.springframework.security.web.context.SecurityContextHolderFilter@783c8b0f, org.springframework.security.web.header.HeaderWriterFilter@7233e38c, org.springframework.security.web.authentication.logout.LogoutFilter@74909a0e, net.sparkminds.library.jwt.JwtFilter@73cb24, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@34e928da, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@59ab8248, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@4b4967eb, org.springframework.security.web.session.SessionManagementFilter@7c69a369, org.springframework.security.web.access.ExceptionTranslationFilter@7cf60de7, org.springframework.security.web.access.intercept.AuthorizationFilter@cfeb91c]
+2024-01-08 22:22:56,241 WARN o.s.b.a.t.ThymeleafAutoConfiguration$DefaultTemplateResolverConfiguration [restartedMain] Cannot find template location: classpath:/templates/ (please add some templates, check your Thymeleaf configuration, or set spring.thymeleaf.check-template-location=false)
+2024-01-08 22:22:56,360 INFO o.s.b.d.a.OptionalLiveReloadServer [restartedMain] LiveReload server is running on port 35729
+2024-01-08 22:22:56,369 INFO o.a.j.l.DirectJDKLog [restartedMain] Starting ProtocolHandler ["http-nio-8080"]
+2024-01-08 22:22:56,371 INFO o.s.b.w.e.t.TomcatWebServer [restartedMain] Tomcat started on port 8080 (http) with context path ''
+2024-01-08 22:22:56,374 INFO o.s.b.StartupInfoLogger [restartedMain] Started LibraryApplication in 0.918 seconds (process running for 219.134)
+2024-01-08 22:22:56,375 INFO o.s.b.d.a.ConditionEvaluationDeltaLoggingListener [restartedMain] Condition evaluation unchanged
+2024-01-08 22:23:34,360 INFO o.s.b.d.a.LocalDevToolsAutoConfiguration$RestartingClassPathChangeChangedEventListener [File Watcher] Restarting due to 2 class path changes (0 additions, 1 deletion, 1 modification)
+2024-01-08 22:23:34,361 INFO o.a.j.l.DirectJDKLog [Thread-27] Stopping ProtocolHandler ["http-nio-8080"]
+2024-01-08 22:23:34,369 INFO o.s.o.j.AbstractEntityManagerFactoryBean [Thread-27] Closing JPA EntityManagerFactory for persistence unit 'default'
+2024-01-08 22:23:34,370 INFO c.z.h.HikariDataSource [Thread-27] HikariPool-7 - Shutdown initiated...
+2024-01-08 22:23:34,373 INFO c.z.h.HikariDataSource [Thread-27] HikariPool-7 - Shutdown completed.
+2024-01-08 22:23:34,451 INFO o.s.b.StartupInfoLogger [restartedMain] Starting LibraryApplication using Java 17.0.5 with PID 20364 (E:\Project\library\library\target\classes started by HAN-PC in E:\Project\library\library)
+2024-01-08 22:23:34,451 DEBUG o.s.b.StartupInfoLogger [restartedMain] Running with Spring Boot v3.2.1, Spring v6.1.2
+2024-01-08 22:23:34,451 INFO o.s.b.SpringApplication [restartedMain] The following 1 profile is active: "dev"
+2024-01-08 22:23:34,578 INFO o.s.d.r.c.RepositoryConfigurationDelegate [restartedMain] Multiple Spring Data modules found, entering strict repository configuration mode
+2024-01-08 22:23:34,578 INFO o.s.d.r.c.RepositoryConfigurationDelegate [restartedMain] Bootstrapping Spring Data JDBC repositories in DEFAULT mode.
+2024-01-08 22:23:34,583 INFO o.s.d.r.c.RepositoryConfigurationExtensionSupport [restartedMain] Spring Data JDBC - Could not safely identify store assignment for repository candidate interface net.sparkminds.library.repository.AccountRepository; If you want this repository to be a JDBC repository, consider annotating your entities with one of these annotations: org.springframework.data.relational.core.mapping.Table.
+2024-01-08 22:23:34,584 INFO o.s.d.r.c.RepositoryConfigurationExtensionSupport [restartedMain] Spring Data JDBC - Could not safely identify store assignment for repository candidate interface net.sparkminds.library.repository.AdminRepository; If you want this repository to be a JDBC repository, consider annotating your entities with one of these annotations: org.springframework.data.relational.core.mapping.Table.
+2024-01-08 22:23:34,584 INFO o.s.d.r.c.RepositoryConfigurationExtensionSupport [restartedMain] Spring Data JDBC - Could not safely identify store assignment for repository candidate interface net.sparkminds.library.repository.RoleRepository; If you want this repository to be a JDBC repository, consider annotating your entities with one of these annotations: org.springframework.data.relational.core.mapping.Table.
+2024-01-08 22:23:34,586 INFO o.s.d.r.c.RepositoryConfigurationExtensionSupport [restartedMain] Spring Data JDBC - Could not safely identify store assignment for repository candidate interface net.sparkminds.library.repository.SessionRepository; If you want this repository to be a JDBC repository, consider annotating your entities with one of these annotations: org.springframework.data.relational.core.mapping.Table.
+2024-01-08 22:23:34,587 INFO o.s.d.r.c.RepositoryConfigurationExtensionSupport [restartedMain] Spring Data JDBC - Could not safely identify store assignment for repository candidate interface net.sparkminds.library.repository.UserRepository; If you want this repository to be a JDBC repository, consider annotating your entities with one of these annotations: org.springframework.data.relational.core.mapping.Table.
+2024-01-08 22:23:34,587 INFO o.s.d.r.c.RepositoryConfigurationDelegate [restartedMain] Finished Spring Data repository scanning in 8 ms. Found 0 JDBC repository interfaces.
+2024-01-08 22:23:34,589 INFO o.s.d.r.c.RepositoryConfigurationDelegate [restartedMain] Multiple Spring Data modules found, entering strict repository configuration mode
+2024-01-08 22:23:34,589 INFO o.s.d.r.c.RepositoryConfigurationDelegate [restartedMain] Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2024-01-08 22:23:34,596 INFO o.s.d.r.c.RepositoryConfigurationDelegate [restartedMain] Finished Spring Data repository scanning in 6 ms. Found 5 JPA repository interfaces.
+2024-01-08 22:23:34,692 INFO o.s.b.w.e.t.TomcatWebServer [restartedMain] Tomcat initialized with port 8080 (http)
+2024-01-08 22:23:34,693 INFO o.a.j.l.DirectJDKLog [restartedMain] Initializing ProtocolHandler ["http-nio-8080"]
+2024-01-08 22:23:34,693 INFO o.a.j.l.DirectJDKLog [restartedMain] Starting service [Tomcat]
+2024-01-08 22:23:34,693 INFO o.a.j.l.DirectJDKLog [restartedMain] Starting Servlet engine: [Apache Tomcat/10.1.17]
+2024-01-08 22:23:34,705 INFO o.a.j.l.DirectJDKLog [restartedMain] Initializing Spring embedded WebApplicationContext
+2024-01-08 22:23:34,705 INFO o.s.b.w.s.c.ServletWebServerApplicationContext [restartedMain] Root WebApplicationContext: initialization completed in 252 ms
+2024-01-08 22:23:34,734 INFO c.z.h.HikariDataSource [restartedMain] HikariPool-8 - Starting...
+2024-01-08 22:23:34,742 INFO c.z.h.p.HikariPool [restartedMain] HikariPool-8 - Added connection com.mysql.cj.jdbc.ConnectionImpl@60b580d9
+2024-01-08 22:23:34,742 INFO c.z.h.HikariDataSource [restartedMain] HikariPool-8 - Start completed.
+2024-01-08 22:23:34,809 INFO l.l.c.JavaLogger [restartedMain] Reading from db_library.databasechangelog
+2024-01-08 22:23:34,821 INFO l.l.c.JavaLogger [restartedMain] Database is up to date, no changesets to execute
+2024-01-08 22:23:34,822 INFO l.l.c.JavaLogger [restartedMain] UPDATE SUMMARY
+2024-01-08 22:23:34,822 INFO l.l.c.JavaLogger [restartedMain] Run:                          0
+2024-01-08 22:23:34,822 INFO l.l.c.JavaLogger [restartedMain] Previously run:               5
+2024-01-08 22:23:34,822 INFO l.l.c.JavaLogger [restartedMain] Filtered out:                 0
+2024-01-08 22:23:34,822 INFO l.l.c.JavaLogger [restartedMain] -------------------------------
+2024-01-08 22:23:34,822 INFO l.l.c.JavaLogger [restartedMain] Total change sets:            5
+2024-01-08 22:23:34,822 INFO l.l.c.JavaLogger [restartedMain] Update summary generated
+2024-01-08 22:23:34,824 INFO l.l.c.JavaLogger [restartedMain] Successfully released change log lock
+2024-01-08 22:23:34,824 INFO l.l.c.JavaLogger [restartedMain] Command execution complete
+2024-01-08 22:23:34,840 INFO o.h.j.i.u.LogHelper [restartedMain] HHH000204: Processing PersistenceUnitInfo [name: default]
+2024-01-08 22:23:34,842 INFO o.h.c.i.RegionFactoryInitiator [restartedMain] HHH000026: Second-level cache disabled
+2024-01-08 22:23:34,844 INFO o.s.o.j.p.SpringPersistenceUnitInfo [restartedMain] No LoadTimeWeaver setup: ignoring JPA class transformer
+2024-01-08 22:23:34,908 INFO o.h.e.t.j.p.i.JtaPlatformInitiator [restartedMain] HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2024-01-08 22:23:34,941 INFO o.s.o.j.AbstractEntityManagerFactoryBean [restartedMain] Initialized JPA EntityManagerFactory for persistence unit 'default'
+2024-01-08 22:23:35,008 DEBUG o.s.w.f.GenericFilterBean [restartedMain] Filter 'jwtFilter' configured for use
+2024-01-08 22:23:35,038 WARN o.s.c.s.AbstractApplicationContext [restartedMain] Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'accountServiceImpl' defined in file [E:\Project\library\library\target\classes\net\sparkminds\library\service\impl\AccountServiceImpl.class]: Failed to instantiate [net.sparkminds.library.service.impl.AccountServiceImpl]: Constructor threw exception
+2024-01-08 22:23:35,038 INFO o.s.o.j.AbstractEntityManagerFactoryBean [restartedMain] Closing JPA EntityManagerFactory for persistence unit 'default'
+2024-01-08 22:23:35,038 INFO c.z.h.HikariDataSource [restartedMain] HikariPool-8 - Shutdown initiated...
+2024-01-08 22:23:35,066 INFO c.z.h.HikariDataSource [restartedMain] HikariPool-8 - Shutdown completed.
+2024-01-08 22:23:35,067 INFO o.a.j.l.DirectJDKLog [restartedMain] Stopping service [Tomcat]
+2024-01-08 22:23:35,071 INFO o.s.b.a.l.ConditionEvaluationReportLogger [restartedMain] 
+
+Error starting ApplicationContext. To display the condition evaluation report re-run your application with 'debug' enabled.
+2024-01-08 22:23:35,084 ERROR o.s.b.SpringApplication [restartedMain] Application run failed
+org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'accountServiceImpl' defined in file [E:\Project\library\library\target\classes\net\sparkminds\library\service\impl\AccountServiceImpl.class]: Failed to instantiate [net.sparkminds.library.service.impl.AccountServiceImpl]: Constructor threw exception
+	at org.springframework.beans.factory.support.ConstructorResolver.instantiate(ConstructorResolver.java:322) ~[spring-beans-6.1.2.jar:6.1.2]
+	at org.springframework.beans.factory.support.ConstructorResolver.autowireConstructor(ConstructorResolver.java:310) ~[spring-beans-6.1.2.jar:6.1.2]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.autowireConstructor(AbstractAutowireCapableBeanFactory.java:1354) ~[spring-beans-6.1.2.jar:6.1.2]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBeanInstance(AbstractAutowireCapableBeanFactory.java:1191) ~[spring-beans-6.1.2.jar:6.1.2]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:561) ~[spring-beans-6.1.2.jar:6.1.2]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:521) ~[spring-beans-6.1.2.jar:6.1.2]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:325) ~[spring-beans-6.1.2.jar:6.1.2]
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:234) ~[spring-beans-6.1.2.jar:6.1.2]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:323) ~[spring-beans-6.1.2.jar:6.1.2]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:199) ~[spring-beans-6.1.2.jar:6.1.2]
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.preInstantiateSingletons(DefaultListableBeanFactory.java:975) ~[spring-beans-6.1.2.jar:6.1.2]
+	at org.springframework.context.support.AbstractApplicationContext.finishBeanFactoryInitialization(AbstractApplicationContext.java:960) ~[spring-context-6.1.2.jar:6.1.2]
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:625) ~[spring-context-6.1.2.jar:6.1.2]
+	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.refresh(ServletWebServerApplicationContext.java:146) ~[spring-boot-3.2.1.jar:3.2.1]
+	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:762) [spring-boot-3.2.1.jar:3.2.1]
+	at org.springframework.boot.SpringApplication.refreshContext(SpringApplication.java:464) [spring-boot-3.2.1.jar:3.2.1]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:334) [spring-boot-3.2.1.jar:3.2.1]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1358) [spring-boot-3.2.1.jar:3.2.1]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1347) [spring-boot-3.2.1.jar:3.2.1]
+	at net.sparkminds.library.LibraryApplication.main(LibraryApplication.java:10) [classes/:?]
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[?:?]
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77) ~[?:?]
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[?:?]
+	at java.base/java.lang.reflect.Method.invoke(Method.java:568) ~[?:?]
+	at org.springframework.boot.devtools.restart.RestartLauncher.run(RestartLauncher.java:50) [spring-boot-devtools-3.2.1.jar:3.2.1]
+Caused by: org.springframework.beans.BeanInstantiationException: Failed to instantiate [net.sparkminds.library.service.impl.AccountServiceImpl]: Constructor threw exception
+	at org.springframework.beans.BeanUtils.instantiateClass(BeanUtils.java:223) ~[spring-beans-6.1.2.jar:6.1.2]
+	at org.springframework.beans.factory.support.SimpleInstantiationStrategy.instantiate(SimpleInstantiationStrategy.java:111) ~[spring-beans-6.1.2.jar:6.1.2]
+	at org.springframework.beans.factory.support.ConstructorResolver.instantiate(ConstructorResolver.java:319) ~[spring-beans-6.1.2.jar:6.1.2]
+	... 24 more
+Caused by: java.lang.Error: Unresolved compilation problems: 
+	The import net.sparkminds.library.service.AccountService cannot be resolved
+	AccountService cannot be resolved to a type
+
+	at net.sparkminds.library.service.impl.AccountServiceImpl.<init>(AccountServiceImpl.java:10) ~[classes/:?]
+	at java.base/jdk.internal.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method) ~[?:?]
+	at java.base/jdk.internal.reflect.NativeConstructorAccessorImpl.newInstance(NativeConstructorAccessorImpl.java:77) ~[?:?]
+	at java.base/jdk.internal.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45) ~[?:?]
+	at java.base/java.lang.reflect.Constructor.newInstanceWithCaller(Constructor.java:499) ~[?:?]
+	at java.base/java.lang.reflect.Constructor.newInstance(Constructor.java:480) ~[?:?]
+	at org.springframework.beans.BeanUtils.instantiateClass(BeanUtils.java:210) ~[spring-beans-6.1.2.jar:6.1.2]
+	at org.springframework.beans.factory.support.SimpleInstantiationStrategy.instantiate(SimpleInstantiationStrategy.java:111) ~[spring-beans-6.1.2.jar:6.1.2]
+	at org.springframework.beans.factory.support.ConstructorResolver.instantiate(ConstructorResolver.java:319) ~[spring-beans-6.1.2.jar:6.1.2]
+	... 24 more
+2024-01-08 22:23:44,682 INFO o.s.b.StartupInfoLogger [restartedMain] Starting LibraryApplication using Java 17.0.5 with PID 20364 (E:\Project\library\library\target\classes started by HAN-PC in E:\Project\library\library)
+2024-01-08 22:23:44,683 DEBUG o.s.b.StartupInfoLogger [restartedMain] Running with Spring Boot v3.2.1, Spring v6.1.2
+2024-01-08 22:23:44,683 INFO o.s.b.SpringApplication [restartedMain] The following 1 profile is active: "dev"
+2024-01-08 22:23:44,801 INFO o.s.d.r.c.RepositoryConfigurationDelegate [restartedMain] Multiple Spring Data modules found, entering strict repository configuration mode
+2024-01-08 22:23:44,801 INFO o.s.d.r.c.RepositoryConfigurationDelegate [restartedMain] Bootstrapping Spring Data JDBC repositories in DEFAULT mode.
+2024-01-08 22:23:44,806 INFO o.s.d.r.c.RepositoryConfigurationExtensionSupport [restartedMain] Spring Data JDBC - Could not safely identify store assignment for repository candidate interface net.sparkminds.library.repository.AccountRepository; If you want this repository to be a JDBC repository, consider annotating your entities with one of these annotations: org.springframework.data.relational.core.mapping.Table.
+2024-01-08 22:23:44,807 INFO o.s.d.r.c.RepositoryConfigurationExtensionSupport [restartedMain] Spring Data JDBC - Could not safely identify store assignment for repository candidate interface net.sparkminds.library.repository.AdminRepository; If you want this repository to be a JDBC repository, consider annotating your entities with one of these annotations: org.springframework.data.relational.core.mapping.Table.
+2024-01-08 22:23:44,807 INFO o.s.d.r.c.RepositoryConfigurationExtensionSupport [restartedMain] Spring Data JDBC - Could not safely identify store assignment for repository candidate interface net.sparkminds.library.repository.RoleRepository; If you want this repository to be a JDBC repository, consider annotating your entities with one of these annotations: org.springframework.data.relational.core.mapping.Table.
+2024-01-08 22:23:44,808 INFO o.s.d.r.c.RepositoryConfigurationExtensionSupport [restartedMain] Spring Data JDBC - Could not safely identify store assignment for repository candidate interface net.sparkminds.library.repository.SessionRepository; If you want this repository to be a JDBC repository, consider annotating your entities with one of these annotations: org.springframework.data.relational.core.mapping.Table.
+2024-01-08 22:23:44,809 INFO o.s.d.r.c.RepositoryConfigurationExtensionSupport [restartedMain] Spring Data JDBC - Could not safely identify store assignment for repository candidate interface net.sparkminds.library.repository.UserRepository; If you want this repository to be a JDBC repository, consider annotating your entities with one of these annotations: org.springframework.data.relational.core.mapping.Table.
+2024-01-08 22:23:44,809 INFO o.s.d.r.c.RepositoryConfigurationDelegate [restartedMain] Finished Spring Data repository scanning in 7 ms. Found 0 JDBC repository interfaces.
+2024-01-08 22:23:44,811 INFO o.s.d.r.c.RepositoryConfigurationDelegate [restartedMain] Multiple Spring Data modules found, entering strict repository configuration mode
+2024-01-08 22:23:44,812 INFO o.s.d.r.c.RepositoryConfigurationDelegate [restartedMain] Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2024-01-08 22:23:44,818 INFO o.s.d.r.c.RepositoryConfigurationDelegate [restartedMain] Finished Spring Data repository scanning in 6 ms. Found 5 JPA repository interfaces.
+2024-01-08 22:23:44,910 INFO o.s.b.w.e.t.TomcatWebServer [restartedMain] Tomcat initialized with port 8080 (http)
+2024-01-08 22:23:44,911 INFO o.a.j.l.DirectJDKLog [restartedMain] Initializing ProtocolHandler ["http-nio-8080"]
+2024-01-08 22:23:44,911 INFO o.a.j.l.DirectJDKLog [restartedMain] Starting service [Tomcat]
+2024-01-08 22:23:44,911 INFO o.a.j.l.DirectJDKLog [restartedMain] Starting Servlet engine: [Apache Tomcat/10.1.17]
+2024-01-08 22:23:44,924 INFO o.a.j.l.DirectJDKLog [restartedMain] Initializing Spring embedded WebApplicationContext
+2024-01-08 22:23:44,924 INFO o.s.b.w.s.c.ServletWebServerApplicationContext [restartedMain] Root WebApplicationContext: initialization completed in 240 ms
+2024-01-08 22:23:44,950 INFO c.z.h.HikariDataSource [restartedMain] HikariPool-9 - Starting...
+2024-01-08 22:23:44,958 INFO c.z.h.p.HikariPool [restartedMain] HikariPool-9 - Added connection com.mysql.cj.jdbc.ConnectionImpl@427fdd2b
+2024-01-08 22:23:44,958 INFO c.z.h.HikariDataSource [restartedMain] HikariPool-9 - Start completed.
+2024-01-08 22:23:45,026 INFO l.l.c.JavaLogger [restartedMain] Reading from db_library.databasechangelog
+2024-01-08 22:23:45,037 INFO l.l.c.JavaLogger [restartedMain] Database is up to date, no changesets to execute
+2024-01-08 22:23:45,038 INFO l.l.c.JavaLogger [restartedMain] UPDATE SUMMARY
+2024-01-08 22:23:45,038 INFO l.l.c.JavaLogger [restartedMain] Run:                          0
+2024-01-08 22:23:45,038 INFO l.l.c.JavaLogger [restartedMain] Previously run:               5
+2024-01-08 22:23:45,038 INFO l.l.c.JavaLogger [restartedMain] Filtered out:                 0
+2024-01-08 22:23:45,038 INFO l.l.c.JavaLogger [restartedMain] -------------------------------
+2024-01-08 22:23:45,038 INFO l.l.c.JavaLogger [restartedMain] Total change sets:            5
+2024-01-08 22:23:45,038 INFO l.l.c.JavaLogger [restartedMain] Update summary generated
+2024-01-08 22:23:45,039 INFO l.l.c.JavaLogger [restartedMain] Successfully released change log lock
+2024-01-08 22:23:45,040 INFO l.l.c.JavaLogger [restartedMain] Command execution complete
+2024-01-08 22:23:45,056 INFO o.h.j.i.u.LogHelper [restartedMain] HHH000204: Processing PersistenceUnitInfo [name: default]
+2024-01-08 22:23:45,057 INFO o.h.c.i.RegionFactoryInitiator [restartedMain] HHH000026: Second-level cache disabled
+2024-01-08 22:23:45,060 INFO o.s.o.j.p.SpringPersistenceUnitInfo [restartedMain] No LoadTimeWeaver setup: ignoring JPA class transformer
+2024-01-08 22:23:45,118 INFO o.h.e.t.j.p.i.JtaPlatformInitiator [restartedMain] HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2024-01-08 22:23:45,148 INFO o.s.o.j.AbstractEntityManagerFactoryBean [restartedMain] Initialized JPA EntityManagerFactory for persistence unit 'default'
+2024-01-08 22:23:45,210 DEBUG o.s.w.f.GenericFilterBean [restartedMain] Filter 'jwtFilter' configured for use
+2024-01-08 22:23:45,258 WARN o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration [restartedMain] spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2024-01-08 22:23:45,361 INFO o.s.s.w.DefaultSecurityFilterChain [restartedMain] Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@1ba9b215, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@1cc1c965, org.springframework.security.web.context.SecurityContextHolderFilter@489291f9, org.springframework.security.web.header.HeaderWriterFilter@1fc47aaa, org.springframework.security.web.authentication.logout.LogoutFilter@1fd30792, net.sparkminds.library.jwt.JwtFilter@7f351ac0, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@47aac361, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@7b07e014, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@9d1b151, org.springframework.security.web.session.SessionManagementFilter@1fa4e13d, org.springframework.security.web.access.ExceptionTranslationFilter@950ccf6, org.springframework.security.web.access.intercept.AuthorizationFilter@4ab02848]
+2024-01-08 22:23:45,414 WARN o.s.b.a.t.ThymeleafAutoConfiguration$DefaultTemplateResolverConfiguration [restartedMain] Cannot find template location: classpath:/templates/ (please add some templates, check your Thymeleaf configuration, or set spring.thymeleaf.check-template-location=false)
+2024-01-08 22:23:45,540 INFO o.s.b.d.a.OptionalLiveReloadServer [restartedMain] LiveReload server is running on port 35729
+2024-01-08 22:23:45,549 INFO o.a.j.l.DirectJDKLog [restartedMain] Starting ProtocolHandler ["http-nio-8080"]
+2024-01-08 22:23:45,551 INFO o.s.b.w.e.t.TomcatWebServer [restartedMain] Tomcat started on port 8080 (http) with context path ''
+2024-01-08 22:23:45,554 INFO o.s.b.StartupInfoLogger [restartedMain] Started LibraryApplication in 0.895 seconds (process running for 268.315)
+2024-01-08 22:23:45,556 INFO o.s.b.d.a.ConditionEvaluationDeltaLoggingListener [restartedMain] Condition evaluation unchanged
+2024-01-08 22:24:04,165 INFO o.s.b.d.a.LocalDevToolsAutoConfiguration$RestartingClassPathChangeChangedEventListener [File Watcher] Restarting due to 2 class path changes (0 additions, 1 deletion, 1 modification)
+2024-01-08 22:24:04,167 INFO o.a.j.l.DirectJDKLog [Thread-31] Stopping ProtocolHandler ["http-nio-8080"]
+2024-01-08 22:24:04,175 INFO o.s.o.j.AbstractEntityManagerFactoryBean [Thread-31] Closing JPA EntityManagerFactory for persistence unit 'default'
+2024-01-08 22:24:04,175 INFO c.z.h.HikariDataSource [Thread-31] HikariPool-9 - Shutdown initiated...
+2024-01-08 22:24:04,179 INFO c.z.h.HikariDataSource [Thread-31] HikariPool-9 - Shutdown completed.
+2024-01-08 22:24:04,253 INFO o.s.b.StartupInfoLogger [restartedMain] Starting LibraryApplication using Java 17.0.5 with PID 20364 (E:\Project\library\library\target\classes started by HAN-PC in E:\Project\library\library)
+2024-01-08 22:24:04,253 DEBUG o.s.b.StartupInfoLogger [restartedMain] Running with Spring Boot v3.2.1, Spring v6.1.2
+2024-01-08 22:24:04,253 INFO o.s.b.SpringApplication [restartedMain] The following 1 profile is active: "dev"
+2024-01-08 22:24:04,371 INFO o.s.d.r.c.RepositoryConfigurationDelegate [restartedMain] Multiple Spring Data modules found, entering strict repository configuration mode
+2024-01-08 22:24:04,371 INFO o.s.d.r.c.RepositoryConfigurationDelegate [restartedMain] Bootstrapping Spring Data JDBC repositories in DEFAULT mode.
+2024-01-08 22:24:04,376 INFO o.s.d.r.c.RepositoryConfigurationExtensionSupport [restartedMain] Spring Data JDBC - Could not safely identify store assignment for repository candidate interface net.sparkminds.library.repository.AccountRepository; If you want this repository to be a JDBC repository, consider annotating your entities with one of these annotations: org.springframework.data.relational.core.mapping.Table.
+2024-01-08 22:24:04,377 INFO o.s.d.r.c.RepositoryConfigurationExtensionSupport [restartedMain] Spring Data JDBC - Could not safely identify store assignment for repository candidate interface net.sparkminds.library.repository.AdminRepository; If you want this repository to be a JDBC repository, consider annotating your entities with one of these annotations: org.springframework.data.relational.core.mapping.Table.
+2024-01-08 22:24:04,378 INFO o.s.d.r.c.RepositoryConfigurationExtensionSupport [restartedMain] Spring Data JDBC - Could not safely identify store assignment for repository candidate interface net.sparkminds.library.repository.RoleRepository; If you want this repository to be a JDBC repository, consider annotating your entities with one of these annotations: org.springframework.data.relational.core.mapping.Table.
+2024-01-08 22:24:04,379 INFO o.s.d.r.c.RepositoryConfigurationExtensionSupport [restartedMain] Spring Data JDBC - Could not safely identify store assignment for repository candidate interface net.sparkminds.library.repository.SessionRepository; If you want this repository to be a JDBC repository, consider annotating your entities with one of these annotations: org.springframework.data.relational.core.mapping.Table.
+2024-01-08 22:24:04,379 INFO o.s.d.r.c.RepositoryConfigurationExtensionSupport [restartedMain] Spring Data JDBC - Could not safely identify store assignment for repository candidate interface net.sparkminds.library.repository.UserRepository; If you want this repository to be a JDBC repository, consider annotating your entities with one of these annotations: org.springframework.data.relational.core.mapping.Table.
+2024-01-08 22:24:04,379 INFO o.s.d.r.c.RepositoryConfigurationDelegate [restartedMain] Finished Spring Data repository scanning in 7 ms. Found 0 JDBC repository interfaces.
+2024-01-08 22:24:04,381 INFO o.s.d.r.c.RepositoryConfigurationDelegate [restartedMain] Multiple Spring Data modules found, entering strict repository configuration mode
+2024-01-08 22:24:04,381 INFO o.s.d.r.c.RepositoryConfigurationDelegate [restartedMain] Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2024-01-08 22:24:04,387 INFO o.s.d.r.c.RepositoryConfigurationDelegate [restartedMain] Finished Spring Data repository scanning in 6 ms. Found 5 JPA repository interfaces.
+2024-01-08 22:24:04,480 INFO o.s.b.w.e.t.TomcatWebServer [restartedMain] Tomcat initialized with port 8080 (http)
+2024-01-08 22:24:04,480 INFO o.a.j.l.DirectJDKLog [restartedMain] Initializing ProtocolHandler ["http-nio-8080"]
+2024-01-08 22:24:04,481 INFO o.a.j.l.DirectJDKLog [restartedMain] Starting service [Tomcat]
+2024-01-08 22:24:04,481 INFO o.a.j.l.DirectJDKLog [restartedMain] Starting Servlet engine: [Apache Tomcat/10.1.17]
+2024-01-08 22:24:04,493 INFO o.a.j.l.DirectJDKLog [restartedMain] Initializing Spring embedded WebApplicationContext
+2024-01-08 22:24:04,493 INFO o.s.b.w.s.c.ServletWebServerApplicationContext [restartedMain] Root WebApplicationContext: initialization completed in 238 ms
+2024-01-08 22:24:04,522 INFO c.z.h.HikariDataSource [restartedMain] HikariPool-10 - Starting...
+2024-01-08 22:24:04,530 INFO c.z.h.p.HikariPool [restartedMain] HikariPool-10 - Added connection com.mysql.cj.jdbc.ConnectionImpl@183cda6d
+2024-01-08 22:24:04,530 INFO c.z.h.HikariDataSource [restartedMain] HikariPool-10 - Start completed.
+2024-01-08 22:24:04,593 INFO l.l.c.JavaLogger [restartedMain] Reading from db_library.databasechangelog
+2024-01-08 22:24:04,603 INFO l.l.c.JavaLogger [restartedMain] Database is up to date, no changesets to execute
+2024-01-08 22:24:04,604 INFO l.l.c.JavaLogger [restartedMain] UPDATE SUMMARY
+2024-01-08 22:24:04,604 INFO l.l.c.JavaLogger [restartedMain] Run:                          0
+2024-01-08 22:24:04,604 INFO l.l.c.JavaLogger [restartedMain] Previously run:               5
+2024-01-08 22:24:04,604 INFO l.l.c.JavaLogger [restartedMain] Filtered out:                 0
+2024-01-08 22:24:04,604 INFO l.l.c.JavaLogger [restartedMain] -------------------------------
+2024-01-08 22:24:04,604 INFO l.l.c.JavaLogger [restartedMain] Total change sets:            5
+2024-01-08 22:24:04,605 INFO l.l.c.JavaLogger [restartedMain] Update summary generated
+2024-01-08 22:24:04,606 INFO l.l.c.JavaLogger [restartedMain] Successfully released change log lock
+2024-01-08 22:24:04,607 INFO l.l.c.JavaLogger [restartedMain] Command execution complete
+2024-01-08 22:24:04,622 INFO o.h.j.i.u.LogHelper [restartedMain] HHH000204: Processing PersistenceUnitInfo [name: default]
+2024-01-08 22:24:04,623 INFO o.h.c.i.RegionFactoryInitiator [restartedMain] HHH000026: Second-level cache disabled
+2024-01-08 22:24:04,626 INFO o.s.o.j.p.SpringPersistenceUnitInfo [restartedMain] No LoadTimeWeaver setup: ignoring JPA class transformer
+2024-01-08 22:24:04,689 INFO o.h.e.t.j.p.i.JtaPlatformInitiator [restartedMain] HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2024-01-08 22:24:04,717 INFO o.s.o.j.AbstractEntityManagerFactoryBean [restartedMain] Initialized JPA EntityManagerFactory for persistence unit 'default'
+2024-01-08 22:24:04,782 DEBUG o.s.w.f.GenericFilterBean [restartedMain] Filter 'jwtFilter' configured for use
+2024-01-08 22:24:04,813 WARN o.s.c.s.AbstractApplicationContext [restartedMain] Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'userServiceImpl' defined in file [E:\Project\library\library\target\classes\net\sparkminds\library\service\impl\UserServiceImpl.class]: Failed to instantiate [net.sparkminds.library.service.impl.UserServiceImpl]: Constructor threw exception
+2024-01-08 22:24:04,814 INFO o.s.o.j.AbstractEntityManagerFactoryBean [restartedMain] Closing JPA EntityManagerFactory for persistence unit 'default'
+2024-01-08 22:24:04,814 INFO c.z.h.HikariDataSource [restartedMain] HikariPool-10 - Shutdown initiated...
+2024-01-08 22:24:04,818 INFO c.z.h.HikariDataSource [restartedMain] HikariPool-10 - Shutdown completed.
+2024-01-08 22:24:04,818 INFO o.a.j.l.DirectJDKLog [restartedMain] Stopping service [Tomcat]
+2024-01-08 22:24:04,822 INFO o.s.b.a.l.ConditionEvaluationReportLogger [restartedMain] 
+
+Error starting ApplicationContext. To display the condition evaluation report re-run your application with 'debug' enabled.
+2024-01-08 22:24:04,824 ERROR o.s.b.SpringApplication [restartedMain] Application run failed
+org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'userServiceImpl' defined in file [E:\Project\library\library\target\classes\net\sparkminds\library\service\impl\UserServiceImpl.class]: Failed to instantiate [net.sparkminds.library.service.impl.UserServiceImpl]: Constructor threw exception
+	at org.springframework.beans.factory.support.ConstructorResolver.instantiate(ConstructorResolver.java:322) ~[spring-beans-6.1.2.jar:6.1.2]
+	at org.springframework.beans.factory.support.ConstructorResolver.autowireConstructor(ConstructorResolver.java:310) ~[spring-beans-6.1.2.jar:6.1.2]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.autowireConstructor(AbstractAutowireCapableBeanFactory.java:1354) ~[spring-beans-6.1.2.jar:6.1.2]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBeanInstance(AbstractAutowireCapableBeanFactory.java:1191) ~[spring-beans-6.1.2.jar:6.1.2]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:561) ~[spring-beans-6.1.2.jar:6.1.2]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:521) ~[spring-beans-6.1.2.jar:6.1.2]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:325) ~[spring-beans-6.1.2.jar:6.1.2]
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:234) ~[spring-beans-6.1.2.jar:6.1.2]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:323) ~[spring-beans-6.1.2.jar:6.1.2]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:199) ~[spring-beans-6.1.2.jar:6.1.2]
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.preInstantiateSingletons(DefaultListableBeanFactory.java:975) ~[spring-beans-6.1.2.jar:6.1.2]
+	at org.springframework.context.support.AbstractApplicationContext.finishBeanFactoryInitialization(AbstractApplicationContext.java:960) ~[spring-context-6.1.2.jar:6.1.2]
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:625) ~[spring-context-6.1.2.jar:6.1.2]
+	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.refresh(ServletWebServerApplicationContext.java:146) ~[spring-boot-3.2.1.jar:3.2.1]
+	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:762) [spring-boot-3.2.1.jar:3.2.1]
+	at org.springframework.boot.SpringApplication.refreshContext(SpringApplication.java:464) [spring-boot-3.2.1.jar:3.2.1]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:334) [spring-boot-3.2.1.jar:3.2.1]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1358) [spring-boot-3.2.1.jar:3.2.1]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1347) [spring-boot-3.2.1.jar:3.2.1]
+	at net.sparkminds.library.LibraryApplication.main(LibraryApplication.java:10) [classes/:?]
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[?:?]
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77) ~[?:?]
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[?:?]
+	at java.base/java.lang.reflect.Method.invoke(Method.java:568) ~[?:?]
+	at org.springframework.boot.devtools.restart.RestartLauncher.run(RestartLauncher.java:50) [spring-boot-devtools-3.2.1.jar:3.2.1]
+Caused by: org.springframework.beans.BeanInstantiationException: Failed to instantiate [net.sparkminds.library.service.impl.UserServiceImpl]: Constructor threw exception
+	at org.springframework.beans.BeanUtils.instantiateClass(BeanUtils.java:223) ~[spring-beans-6.1.2.jar:6.1.2]
+	at org.springframework.beans.factory.support.SimpleInstantiationStrategy.instantiate(SimpleInstantiationStrategy.java:111) ~[spring-beans-6.1.2.jar:6.1.2]
+	at org.springframework.beans.factory.support.ConstructorResolver.instantiate(ConstructorResolver.java:319) ~[spring-beans-6.1.2.jar:6.1.2]
+	... 24 more
+Caused by: java.lang.Error: Unresolved compilation problems: 
+	The import net.sparkminds.library.service.UserService cannot be resolved
+	UserService cannot be resolved to a type
+
+	at net.sparkminds.library.service.impl.UserServiceImpl.<init>(UserServiceImpl.java:8) ~[classes/:?]
+	at java.base/jdk.internal.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method) ~[?:?]
+	at java.base/jdk.internal.reflect.NativeConstructorAccessorImpl.newInstance(NativeConstructorAccessorImpl.java:77) ~[?:?]
+	at java.base/jdk.internal.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45) ~[?:?]
+	at java.base/java.lang.reflect.Constructor.newInstanceWithCaller(Constructor.java:499) ~[?:?]
+	at java.base/java.lang.reflect.Constructor.newInstance(Constructor.java:480) ~[?:?]
+	at org.springframework.beans.BeanUtils.instantiateClass(BeanUtils.java:210) ~[spring-beans-6.1.2.jar:6.1.2]
+	at org.springframework.beans.factory.support.SimpleInstantiationStrategy.instantiate(SimpleInstantiationStrategy.java:111) ~[spring-beans-6.1.2.jar:6.1.2]
+	at org.springframework.beans.factory.support.ConstructorResolver.instantiate(ConstructorResolver.java:319) ~[spring-beans-6.1.2.jar:6.1.2]
+	... 24 more
+2024-01-08 22:24:09,304 INFO o.s.b.StartupInfoLogger [restartedMain] Starting LibraryApplication using Java 17.0.5 with PID 20364 (E:\Project\library\library\target\classes started by HAN-PC in E:\Project\library\library)
+2024-01-08 22:24:09,304 DEBUG o.s.b.StartupInfoLogger [restartedMain] Running with Spring Boot v3.2.1, Spring v6.1.2
+2024-01-08 22:24:09,304 INFO o.s.b.SpringApplication [restartedMain] The following 1 profile is active: "dev"
+2024-01-08 22:24:09,419 INFO o.s.d.r.c.RepositoryConfigurationDelegate [restartedMain] Multiple Spring Data modules found, entering strict repository configuration mode
+2024-01-08 22:24:09,419 INFO o.s.d.r.c.RepositoryConfigurationDelegate [restartedMain] Bootstrapping Spring Data JDBC repositories in DEFAULT mode.
+2024-01-08 22:24:09,424 INFO o.s.d.r.c.RepositoryConfigurationExtensionSupport [restartedMain] Spring Data JDBC - Could not safely identify store assignment for repository candidate interface net.sparkminds.library.repository.AccountRepository; If you want this repository to be a JDBC repository, consider annotating your entities with one of these annotations: org.springframework.data.relational.core.mapping.Table.
+2024-01-08 22:24:09,424 INFO o.s.d.r.c.RepositoryConfigurationExtensionSupport [restartedMain] Spring Data JDBC - Could not safely identify store assignment for repository candidate interface net.sparkminds.library.repository.AdminRepository; If you want this repository to be a JDBC repository, consider annotating your entities with one of these annotations: org.springframework.data.relational.core.mapping.Table.
+2024-01-08 22:24:09,426 INFO o.s.d.r.c.RepositoryConfigurationExtensionSupport [restartedMain] Spring Data JDBC - Could not safely identify store assignment for repository candidate interface net.sparkminds.library.repository.RoleRepository; If you want this repository to be a JDBC repository, consider annotating your entities with one of these annotations: org.springframework.data.relational.core.mapping.Table.
+2024-01-08 22:24:09,427 INFO o.s.d.r.c.RepositoryConfigurationExtensionSupport [restartedMain] Spring Data JDBC - Could not safely identify store assignment for repository candidate interface net.sparkminds.library.repository.SessionRepository; If you want this repository to be a JDBC repository, consider annotating your entities with one of these annotations: org.springframework.data.relational.core.mapping.Table.
+2024-01-08 22:24:09,428 INFO o.s.d.r.c.RepositoryConfigurationExtensionSupport [restartedMain] Spring Data JDBC - Could not safely identify store assignment for repository candidate interface net.sparkminds.library.repository.UserRepository; If you want this repository to be a JDBC repository, consider annotating your entities with one of these annotations: org.springframework.data.relational.core.mapping.Table.
+2024-01-08 22:24:09,428 INFO o.s.d.r.c.RepositoryConfigurationDelegate [restartedMain] Finished Spring Data repository scanning in 8 ms. Found 0 JDBC repository interfaces.
+2024-01-08 22:24:09,430 INFO o.s.d.r.c.RepositoryConfigurationDelegate [restartedMain] Multiple Spring Data modules found, entering strict repository configuration mode
+2024-01-08 22:24:09,430 INFO o.s.d.r.c.RepositoryConfigurationDelegate [restartedMain] Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2024-01-08 22:24:09,436 INFO o.s.d.r.c.RepositoryConfigurationDelegate [restartedMain] Finished Spring Data repository scanning in 6 ms. Found 5 JPA repository interfaces.
+2024-01-08 22:24:09,529 INFO o.s.b.w.e.t.TomcatWebServer [restartedMain] Tomcat initialized with port 8080 (http)
+2024-01-08 22:24:09,529 INFO o.a.j.l.DirectJDKLog [restartedMain] Initializing ProtocolHandler ["http-nio-8080"]
+2024-01-08 22:24:09,530 INFO o.a.j.l.DirectJDKLog [restartedMain] Starting service [Tomcat]
+2024-01-08 22:24:09,530 INFO o.a.j.l.DirectJDKLog [restartedMain] Starting Servlet engine: [Apache Tomcat/10.1.17]
+2024-01-08 22:24:09,542 INFO o.a.j.l.DirectJDKLog [restartedMain] Initializing Spring embedded WebApplicationContext
+2024-01-08 22:24:09,542 INFO o.s.b.w.s.c.ServletWebServerApplicationContext [restartedMain] Root WebApplicationContext: initialization completed in 237 ms
+2024-01-08 22:24:09,568 INFO c.z.h.HikariDataSource [restartedMain] HikariPool-11 - Starting...
+2024-01-08 22:24:09,577 INFO c.z.h.p.HikariPool [restartedMain] HikariPool-11 - Added connection com.mysql.cj.jdbc.ConnectionImpl@5bfee41a
+2024-01-08 22:24:09,577 INFO c.z.h.HikariDataSource [restartedMain] HikariPool-11 - Start completed.
+2024-01-08 22:24:09,643 INFO l.l.c.JavaLogger [restartedMain] Reading from db_library.databasechangelog
+2024-01-08 22:24:09,653 INFO l.l.c.JavaLogger [restartedMain] Database is up to date, no changesets to execute
+2024-01-08 22:24:09,654 INFO l.l.c.JavaLogger [restartedMain] UPDATE SUMMARY
+2024-01-08 22:24:09,654 INFO l.l.c.JavaLogger [restartedMain] Run:                          0
+2024-01-08 22:24:09,654 INFO l.l.c.JavaLogger [restartedMain] Previously run:               5
+2024-01-08 22:24:09,654 INFO l.l.c.JavaLogger [restartedMain] Filtered out:                 0
+2024-01-08 22:24:09,654 INFO l.l.c.JavaLogger [restartedMain] -------------------------------
+2024-01-08 22:24:09,654 INFO l.l.c.JavaLogger [restartedMain] Total change sets:            5
+2024-01-08 22:24:09,654 INFO l.l.c.JavaLogger [restartedMain] Update summary generated
+2024-01-08 22:24:09,656 INFO l.l.c.JavaLogger [restartedMain] Successfully released change log lock
+2024-01-08 22:24:09,657 INFO l.l.c.JavaLogger [restartedMain] Command execution complete
+2024-01-08 22:24:09,672 INFO o.h.j.i.u.LogHelper [restartedMain] HHH000204: Processing PersistenceUnitInfo [name: default]
+2024-01-08 22:24:09,674 INFO o.h.c.i.RegionFactoryInitiator [restartedMain] HHH000026: Second-level cache disabled
+2024-01-08 22:24:09,677 INFO o.s.o.j.p.SpringPersistenceUnitInfo [restartedMain] No LoadTimeWeaver setup: ignoring JPA class transformer
+2024-01-08 22:24:09,739 INFO o.h.e.t.j.p.i.JtaPlatformInitiator [restartedMain] HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2024-01-08 22:24:09,770 INFO o.s.o.j.AbstractEntityManagerFactoryBean [restartedMain] Initialized JPA EntityManagerFactory for persistence unit 'default'
+2024-01-08 22:24:09,833 DEBUG o.s.w.f.GenericFilterBean [restartedMain] Filter 'jwtFilter' configured for use
+2024-01-08 22:24:09,876 WARN o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration [restartedMain] spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2024-01-08 22:24:09,982 INFO o.s.s.w.DefaultSecurityFilterChain [restartedMain] Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@468071cb, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@63cf12da, org.springframework.security.web.context.SecurityContextHolderFilter@38c2d01e, org.springframework.security.web.header.HeaderWriterFilter@3b6d903f, org.springframework.security.web.authentication.logout.LogoutFilter@25601150, net.sparkminds.library.jwt.JwtFilter@77295f70, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@650fbfa, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@516b6f67, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@32f93047, org.springframework.security.web.session.SessionManagementFilter@82a52ff, org.springframework.security.web.access.ExceptionTranslationFilter@412ff06c, org.springframework.security.web.access.intercept.AuthorizationFilter@2ef4f280]
+2024-01-08 22:24:10,034 WARN o.s.b.a.t.ThymeleafAutoConfiguration$DefaultTemplateResolverConfiguration [restartedMain] Cannot find template location: classpath:/templates/ (please add some templates, check your Thymeleaf configuration, or set spring.thymeleaf.check-template-location=false)
+2024-01-08 22:24:10,151 INFO o.s.b.d.a.OptionalLiveReloadServer [restartedMain] LiveReload server is running on port 35729
+2024-01-08 22:24:10,161 INFO o.a.j.l.DirectJDKLog [restartedMain] Starting ProtocolHandler ["http-nio-8080"]
+2024-01-08 22:24:10,163 INFO o.s.b.w.e.t.TomcatWebServer [restartedMain] Tomcat started on port 8080 (http) with context path ''
+2024-01-08 22:24:10,167 INFO o.s.b.StartupInfoLogger [restartedMain] Started LibraryApplication in 0.885 seconds (process running for 292.927)
+2024-01-08 22:24:10,169 INFO o.s.b.d.a.ConditionEvaluationDeltaLoggingListener [restartedMain] Condition evaluation unchanged
+2024-01-08 22:24:59,100 INFO o.a.j.l.DirectJDKLog [http-nio-8080-exec-3] Initializing Spring DispatcherServlet 'dispatcherServlet'
+2024-01-08 22:24:59,101 INFO o.s.w.s.FrameworkServlet [http-nio-8080-exec-3] Initializing Servlet 'dispatcherServlet'
+2024-01-08 22:24:59,101 INFO o.s.w.s.FrameworkServlet [http-nio-8080-exec-3] Completed initialization in 0 ms
+2024-01-08 22:24:59,115 INFO n.s.l.s.i.RegisterServiceImpl [http-nio-8080-exec-3] Insert User: Account(id=9, email=user123@gmail.com, password=$2a$10$k0VsnUtDVioLZce4zX6hAud8lyLhvTmOcW6bk6aN09YPDX7z7B9ee, blockedAt=null, reasonBlocked=null, isVerify=false, status=ACTIVE, sessions=null, role=Role(id=2, role=USER, accounts=null))
+2024-01-08 22:26:08,252 INFO o.s.b.a.SpringApplicationAdminMXBeanRegistrar$SpringApplicationAdmin [RMI TCP Connection(11)-127.0.0.1] Application shutdown requested.
+2024-01-08 22:26:08,253 INFO o.a.j.l.DirectJDKLog [RMI TCP Connection(11)-127.0.0.1] Stopping ProtocolHandler ["http-nio-8080"]
+2024-01-08 22:26:08,262 INFO o.s.o.j.AbstractEntityManagerFactoryBean [RMI TCP Connection(11)-127.0.0.1] Closing JPA EntityManagerFactory for persistence unit 'default'
+2024-01-08 22:26:08,262 INFO c.z.h.HikariDataSource [RMI TCP Connection(11)-127.0.0.1] HikariPool-11 - Shutdown initiated...
+2024-01-08 22:26:08,266 INFO c.z.h.HikariDataSource [RMI TCP Connection(11)-127.0.0.1] HikariPool-11 - Shutdown completed.
