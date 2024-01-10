@@ -1,4 +1,4 @@
-package net.sparkminds.library.jwt;
+package net.sparkminds.library.dto.error;
 
 import java.time.LocalDateTime;
 import java.util.ArrayList;
@@ -13,15 +13,15 @@ import lombok.NoArgsConstructor;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class ErrorResponse {
+public class ErrorValidResponse {
 	private String timestamp;
 	private int status;
 	private String error;
 	private List<FieldErrorInfo> errors;
 
 	// The function generates ErrorResponse from HttpStatus and error information for the specific field
-	public static ErrorResponse from(HttpStatus httpStatus, String fieldName, String message, String errorCode) {
-		ErrorResponse errorResponse = new ErrorResponse();
+	public static ErrorValidResponse from(HttpStatus httpStatus, String fieldName, String message, String errorCode) {
+		ErrorValidResponse errorResponse = new ErrorValidResponse();
 		errorResponse.setTimestamp(LocalDateTime.now().toString());
 		errorResponse.setStatus(httpStatus.value());
 		errorResponse.setError(httpStatus.getReasonPhrase());
