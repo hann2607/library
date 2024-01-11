@@ -13,6 +13,7 @@ public interface MailService {
 	void send(String to, String subject, String body) throws MessagingException;
 	
 	void queue(MailRequest mail);
+	
 	void queue(String to, String subject, String body);
 
 }

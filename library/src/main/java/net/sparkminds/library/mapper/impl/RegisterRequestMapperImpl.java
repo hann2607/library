@@ -7,7 +7,7 @@ import org.springframework.stereotype.Service;
 import lombok.RequiredArgsConstructor;
 import net.sparkminds.library.dto.register.RegisterRequest;
 import net.sparkminds.library.entity.User;
-import net.sparkminds.library.enums.EnumStatus;
+import net.sparkminds.library.enumration.EnumStatus;
 import net.sparkminds.library.mapper.RegisterRequestMapper;
 
 @Generated(value = "org.mapstruct.ap.MappingProcessor", date = "2024-01-08T22:16:01+0700", comments = "version: 1.5.5.Final, compiler: Eclipse JDT (IDE) 1.4.300.v20221108-0856, environment: Java 18.0.2.1 (Oracle Corporation)")

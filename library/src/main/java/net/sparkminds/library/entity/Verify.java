@@ -16,7 +16,7 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import net.sparkminds.library.enums.EnumTypeOTP;
+import net.sparkminds.library.enumration.EnumTypeOTP;
 
 @Entity
 @Table(name = "verify")
@@ -46,4 +46,10 @@ public class Verify{
 	@ManyToOne(optional=false)
     @JoinColumn(name="account_id", nullable=false)
     private Account account;
+
+	@Override
+	public String toString() {
+		return "Verify [id=" + id + ", link=" + link + ", otp=" + otp + ", expirationTime=" + expirationTime
+				+ ", typeOTP=" + typeOTP + "]";
+	}
 }

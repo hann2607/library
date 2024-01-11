@@ -16,37 +16,37 @@ import net.sparkminds.library.service.ValidPhoneNumber;
 @NoArgsConstructor
 @Data
 public class RegisterRequest {
-	@Email(message = "{Email.RegisterRequest.email}")
-	@Length(max = 100, message = "{Length.RegisterRequest.email}")
+	@Email(message = "{registerrequest.email.email-invalid}")
+	@Length(max = 100, message = "{registerrequest.email.email-length}")
 	private String email;
 	
-	@Length(min = 8, max = 32, message = "{Length.RegisterRequest.Password}")
+	@Length(min = 8, max = 32, message = "{registerrequest.password.password-invalid}")
 	private String password;
 	
-	@NotBlank(message = "{NotBlank.RegisterRequest.firstName}")
-	@Pattern(regexp = "^[\\p{L} ]+$", message = "{Pattern.RegisterRequest.firstName}")
-	@Length(max = 50, message = "{Length.RegisterRequest.firstname}")
+	@NotBlank(message = "{registerrequest.firstname.firstname-notblank}")
+	@Pattern(regexp = "^[\\p{L} ]+$", message = "{registerrequest.firstname.firstname-invalid}")
+	@Length(max = 50, message = "{registerrequest.firstname.firstname-length}")
 	private String firstname;
 	
-	@NotBlank(message = "{NotBlank.RegisterRequest.lastName}")
-	@Pattern(regexp = "^[\\p{L} ]+$", message = "{Pattern.RegisterRequest.lastName}")
-	@Length(max = 50, message = "{Length.RegisterRequest.lastname}")
+	@NotBlank(message = "{registerrequest.lastname.lastname-notblank}")
+	@Pattern(regexp = "^[\\p{L} ]+$", message = "{registerrequest.lastname.lastname-invalid}")
+	@Length(max = 50, message = "{registerrequest.lastname.lastname-length}")
 	private String lastname;
 	
-	@ValidPhoneNumber(countryCode = "VN", message = "{phone.invalid}")
-	@NotBlank(message = "{NotBlank.RegisterRequest.phone}")
+	@ValidPhoneNumber(countryCode = "VN", message = "{registerrequest.phone.phone-invalid}")
+	@NotBlank(message = "{registerrequest.phone.phone-notblank}")
 	private String phone;
 	
-	@NotBlank(message = "{NotBlank.RegisterRequest.address}")
-	@Length(max = 255, message = "{Length.RegisterRequest.address}")
+	@NotBlank(message = "{registerrequest.address.address-notblank}")
+	@Length(max = 255, message = "{registerrequest.address.address-length}")
 	private String address;
 	
 	private String status;
 	
-	@NotBlank(message = "{NotBlank.RegisterRequest.avatar}")
-	@Length(max = 255, message = "{Length.RegisterRequest.avatar}")
+	@NotBlank(message = "{registerrequest.avatar.avatar-notblank}")
+	@Length(max = 255, message = "{registerrequest.avatar.avatar-length}")
 	private String avatar;
 	
-	@NotNull(message = "{NotNull.RegisterRequest.role}")
+	@NotNull(message = "{registerrequest.role.role-notnull}")
 	private Role role;
 }

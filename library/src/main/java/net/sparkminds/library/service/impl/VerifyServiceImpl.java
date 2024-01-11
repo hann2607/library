@@ -1,7 +1,11 @@
 package net.sparkminds.library.service.impl;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.springframework.context.MessageSource;
 import org.springframework.context.i18n.LocaleContextHolder;
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 
 import jakarta.transaction.Transactional;
@@ -23,15 +27,21 @@ public class VerifyServiceImpl implements VerifyService {
 
 	@Override
 	public void save(Verify verify) {
-		String message;
+		String message = null;
+		
 		try {
 			verifyRepository.save(verify);
-			message = messageSource.getMessage("Insert.Success.Verify", null, LocaleContextHolder.getLocale());
+			message = messageSource.getMessage("verify.insert-successed", 
+					null, LocaleContextHolder.getLocale());
+			
 			log.info(message + ": " + verify);
 		} catch (Exception e) {
-			message = messageSource.getMessage("Insert.Error.Verify", null, LocaleContextHolder.getLocale());
+			message = messageSource.getMessage("verify.insert-failed", 
+					null, LocaleContextHolder.getLocale());
+			
 			log.error(message + ": " + verify);
-			throw new RequestException(message);
+			throw new RequestException(message, HttpStatus.BAD_REQUEST.value(),
+					"verify.insert-failed");
 		}
 	}
 
@@ -40,29 +50,17 @@ public class VerifyServiceImpl implements VerifyService {
 		String message;
 		try {
 			verifyRepository.deleteById(verifyId);
-			message = messageSource.getMessage("Delete.Success.Verify", null, LocaleContextHolder.getLocale());
+			message = messageSource.getMessage("verify.delete-successed", 
+					null, LocaleContextHolder.getLocale());
+			
 			log.info(message + ": " + verifyId);
 		} catch (Exception e) {
-			message = messageSource.getMessage("Delete.Error.Verify", null, LocaleContextHolder.getLocale());
+			message = messageSource.getMessage("verify.delete-failed", 
+					null, LocaleContextHolder.getLocale());
+			
 			log.error(message + ": " + verifyId);
-			throw new RequestException(message);
-		}
-	}
-
-	@Override
-	public Verify findByLink(String link) {
-		String message;
-		Verify verify = null;
-		
-		verify = verifyRepository.findByOtp(link);
-		if(verify != null) {
-			message = messageSource.getMessage("Find.Success.Verify.Link", null, LocaleContextHolder.getLocale());
-			log.info(message + ": " + link);
-			return verifyRepository.findByOtp(link);
-		} else {
-			message = messageSource.getMessage("Find.Error.Verify.Link", null, LocaleContextHolder.getLocale());
-			log.error(message + ": " + link);
-			throw new RequestException(message);
+			throw new RequestException(message, HttpStatus.BAD_REQUEST.value(),
+					"verify.delete-failed");
 		}
 	}
 
@@ -73,13 +71,31 @@ public class VerifyServiceImpl implements VerifyService {
 		
 		verify = verifyRepository.findByOtp(otp);
 		if(verify != null) {
-			message = messageSource.getMessage("Find.Success.Verify.Otp", null, LocaleContextHolder.getLocale());
+			message = messageSource.getMessage("verify.otp.find-successed", 
+					null, LocaleContextHolder.getLocale());
 			log.info(message + ": " + otp);
-			return verifyRepository.findByOtp(otp);
+		}
+		
+		return verifyRepository.findByOtp(otp);
+	}
+
+	@Override
+	public List<Verify> findByAccountId(Long accountId) {
+		String message;
+		List<Verify> verifies = new ArrayList<>();
+		
+		verifies = verifyRepository.findByAccountId(accountId);
+		if(!verifies.isEmpty()) {
+			message = messageSource.getMessage("verify.accountid.find-successed", 
+					null, LocaleContextHolder.getLocale());
+			log.info(message + ": " + accountId);
+			return verifies;
 		} else {
-			message = messageSource.getMessage("Find.Error.Verify.Otp", null, LocaleContextHolder.getLocale());
-			log.error(message + ": " + otp);
-			throw new RequestException(message);
+			message = messageSource.getMessage("verify.accountid.account-actived", 
+					null, LocaleContextHolder.getLocale());
+			log.error(message + ": " + accountId);
+			throw new RequestException(message, HttpStatus.NOT_FOUND.value(),
+					"verify.accountid.account-actived");
 		}
 	}
 }

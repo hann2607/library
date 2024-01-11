@@ -1,5 +1,7 @@
 package net.sparkminds.library.service;
 
+import java.util.List;
+
 import net.sparkminds.library.entity.Verify;
 
 public interface VerifyService {
@@ -7,7 +9,7 @@ public interface VerifyService {
 	
 	void delete(Long verifyId);
 	
-	Verify findByLink(String link);
-	
 	Verify findByOtp(String otp);
+	
+	List<Verify> findByAccountId(Long accountId);
 }

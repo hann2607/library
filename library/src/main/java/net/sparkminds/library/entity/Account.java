@@ -26,7 +26,7 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.experimental.SuperBuilder;
-import net.sparkminds.library.enums.EnumStatus;
+import net.sparkminds.library.enumration.EnumStatus;
 
 @Entity
 @Table(name = "account")
@@ -42,12 +42,12 @@ public class Account {
 	private Long id;
 
 	@Column(name = "email", nullable = false, unique = true, length = 100)
-	@Email(message = "{Email.Account.email}")
-	@Length(max = 100, message = "{Length.Account.email}")
+	@Email(message = "{account.email.email-invalid}")
+	@Length(max = 100, message = "{account.email.email-invalidlength}")
 	private String email;
 
 	@Column(name = "password", nullable = false, length = 60)
-	@Length(min = 8, max = 60, message = "{Length.Account.Password}")
+	@Length(min = 8, max = 60, message = "{account.password.password-invalidlength}")
 	private String password;
 
 	@Column(name = "blocked_at", nullable = true)
@@ -57,7 +57,7 @@ public class Account {
 	private String reasonBlocked;
 
 	@Column(name = "isVerify", nullable = false)
-	@NotNull(message = "{NotNull.Account.isVerify}")
+	@NotNull(message = "{account.isverify.isverify-notnull}")
 	private boolean isVerify;
 
 	@Enumerated(EnumType.STRING)
@@ -74,9 +74,7 @@ public class Account {
 
 	@Override
 	public String toString() {
-		return "Account{" + "id=" + id + ", email='" + email + '\'' + ", password='" + password + '\'' + ", blockedAt="
-				+ blockedAt + ", reasonBlocked='" + reasonBlocked + '\'' + ", isVerify=" + isVerify + ", status="
-				+ status + ", sessions=" + (sessions != null ? sessions.size() : "null") + ", role=" + role + '}';
+		return "Account [id=" + id + ", email=" + email + ", password=" + password + ", blockedAt=" + blockedAt
+				+ ", reasonBlocked=" + reasonBlocked + ", isVerify=" + isVerify + ", status=" + status + "]";
 	}
-
 }

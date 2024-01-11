@@ -29,14 +29,17 @@ public class RegisterRestController {
 	}
 	
 	@GetMapping("/register/verify/link/{otp}")
-	public String verifyAccountByLink(@PathVariable("otp") String otp) {
+	public void verifyAccountByLink(@PathVariable("otp") String otp) {
 		registerService.verifyAccountByLink(otp);
-		return "Verify Account successfully!";
 	}
 	
-	@GetMapping("/register/verify/otp/{otp}")
-	public String verifyAccountByOtp(@PathVariable("otp") String otp) {
+	@PostMapping("/register/verify/otp/{otp}")
+	public void verifyAccountByOtp(@PathVariable("otp") String otp) {
 		registerService.verifyAccountByOTP(otp);
-		return "Verify Account successfully!";
+	}
+	
+	@PostMapping("/register/verify/resend/{email}")
+	public void resendOtpAndLink(@PathVariable("email") String email) {
+		registerService.resendOtpAndLink(email);
 	}
 }

@@ -6,4 +6,6 @@ import net.sparkminds.library.entity.Account;
 
 public interface AccountService {
 	List<Account> findByEmail(String email);
+	
+	void save(Account account);
 }

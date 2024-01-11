@@ -17,7 +17,7 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import net.sparkminds.library.enums.EnumRole;
+import net.sparkminds.library.enumration.EnumRole;
 
 @Entity
 @Table(name = "role")
@@ -38,4 +38,9 @@ public class Role {
 	@JsonIgnore
     @OneToMany(mappedBy="role")
     private List<Account> accounts;
+
+	@Override
+	public String toString() {
+		return "Role [id=" + id + ", role=" + role + "]";
+	}
 }

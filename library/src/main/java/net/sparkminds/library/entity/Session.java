@@ -37,4 +37,10 @@ public class Session{
 	@ManyToOne(optional=false)
     @JoinColumn(name="account_id", nullable=false)
     private Account account;
+
+	@Override
+	public String toString() {
+		return "Session [id=" + id + ", sessionData=" + sessionData + ", expirationTime=" + expirationTime
+				+ ", userInfo=" + userInfo + "]";
+	}
 }

@@ -18,45 +18,57 @@ import net.sparkminds.library.dto.error.FieldErrorInfo;
 @ControllerAdvice
 public class GlobalExceptionHandler {
 
-	// Error for API Response
-	@ExceptionHandler(RequestException.class)
-	public static ResponseEntity<Object> handleValidationException(RequestException e) {
-		ErrorAPIResponse errorAPIResponse = new ErrorAPIResponse();
-		List<FieldErrorInfo> errorInfos = new ArrayList<>();
-		
-		FieldErrorInfo errorInfo = new FieldErrorInfo();
-		errorInfo.setMessage(e.getMessage());
-		errorInfos.add(errorInfo);
-		
-		errorAPIResponse.setTimestamp(Instant.now().toString());
-		errorAPIResponse.setStatus(HttpStatus.BAD_REQUEST.value());
-		errorAPIResponse.setError(HttpStatus.BAD_REQUEST.getReasonPhrase());
-		errorAPIResponse.setMessage(e.getMessage());
-		
-		return new ResponseEntity<>(errorAPIResponse, HttpStatus.BAD_REQUEST);
+	// Common method to handle both RequestException
+	public static ErrorAPIResponse createErrorResponse(int statusCode, String message, String messageCode) {		
+		ErrorAPIResponse errorAPIResponse = ErrorAPIResponse.builder()
+				.timestamp(Instant.now().toString())
+				.status(HttpStatus.valueOf(statusCode).value())
+				.error(HttpStatus.valueOf(statusCode).getReasonPhrase())
+				.message(message)
+				.messageCode(messageCode).build();
+
+		return errorAPIResponse;
 	}
-	
-	// Error for validation 
-	@ExceptionHandler(MethodArgumentNotValidException.class)
-    public static ResponseEntity<ErrorValidResponse> handleValidationException(MethodArgumentNotValidException ex) {
-        List<FieldError> errors = ex.getBindingResult().getFieldErrors();
-        List<FieldErrorInfo> errorInfos = new ArrayList<>();
-        for (FieldError error : errors) {
-            String field = error.getField();
-            String message = error.getDefaultMessage();
-            FieldErrorInfo errorInfo = new FieldErrorInfo();
-            errorInfo.setErrorCode(error.getObjectName() + "." + error.getField() +".invalid");
-            errorInfo.setField(field);
-            errorInfo.setMessage(message);
-            errorInfos.add(errorInfo);
-        }
-        
-        ErrorValidResponse errorResponse = new ErrorValidResponse();
-        errorResponse.setTimestamp(Instant.now().toString());
-        errorResponse.setStatus(HttpStatus.BAD_REQUEST.value());
-        errorResponse.setError(HttpStatus.BAD_REQUEST.getReasonPhrase());
-        errorResponse.setErrors(errorInfos);
-        
-        return new ResponseEntity<>(errorResponse, HttpStatus.BAD_REQUEST);
+
+    @ExceptionHandler(RequestException.class)
+    public ResponseEntity<ErrorAPIResponse> handleCustomException(RequestException e) {
+        ErrorAPIResponse errorAPIResponse = createErrorResponse(e.getStatusCode(), e.getMessage(), e.getMessageCode());
+        return new ResponseEntity<>(errorAPIResponse, HttpStatus.valueOf(e.getStatusCode()));
     }
+
+
+	// Error for validation
+	@ExceptionHandler(MethodArgumentNotValidException.class)
+	public static ResponseEntity<ErrorValidResponse> handleValidationException(MethodArgumentNotValidException ex) {
+		List<FieldError> errors = ex.getBindingResult().getFieldErrors();
+		List<FieldErrorInfo> errorInfos = new ArrayList<>();
+		String errorCode = null;
+		
+		for (FieldError error : errors) {
+			String field = error.getField();
+			String message = error.getDefaultMessage();
+			FieldErrorInfo errorInfo = new FieldErrorInfo();
+			
+			if(error.getCode().equals("ValidPhoneNumber") || error.getCode().equals("Email") 
+					|| error.getCode().equals("Pattern")) {
+				errorCode = "Invalid";
+			} else {
+				errorCode = error.getCode();
+			}
+			
+			errorInfo.setErrorCode(error.getObjectName() + "." + error.getField() + "." 
+					+ error.getField() + "-" + errorCode);
+			errorInfo.setField(field);
+			errorInfo.setMessage(message);
+			errorInfos.add(errorInfo);
+		}
+
+		ErrorValidResponse errorResponse = new ErrorValidResponse();
+		errorResponse.setTimestamp(Instant.now().toString());
+		errorResponse.setStatus(HttpStatus.BAD_REQUEST.value());
+		errorResponse.setError(HttpStatus.BAD_REQUEST.getReasonPhrase());
+		errorResponse.setErrors(errorInfos);
+
+		return new ResponseEntity<>(errorResponse, HttpStatus.BAD_REQUEST);
+	}
 }

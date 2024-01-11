@@ -1,14 +1,30 @@
 package net.sparkminds.library.exception;
 
-public class RequestException extends RuntimeException{
+public class RequestException extends RuntimeException {
 
 	private static final long serialVersionUID = 1L;
 
-	public RequestException(String message) {
-		super(message);
-	}
+	private final int statusCode;
 	
-	public RequestException(String message, Throwable cause) {
-		super(message, cause);
+	private final String messageCode;
+
+	public RequestException(String message, int statusCode, String messageCode) {
+		super(message);
+		this.statusCode = statusCode;
+		this.messageCode = messageCode;
 	}
+
+	public RequestException(String message, int statusCode, String messageCode, Throwable cause) {
+		super(message, cause);
+		this.statusCode = statusCode;
+		this.messageCode = messageCode;
+	}
+
+	public int getStatusCode() {
+        return statusCode;
+    }
+	
+	public String getMessageCode() {
+        return messageCode;
+    }
 }
