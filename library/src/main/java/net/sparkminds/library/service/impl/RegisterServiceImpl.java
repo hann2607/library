@@ -63,25 +63,34 @@ public class RegisterServiceImpl implements RegisterService {
 		String otp = null;        // OTP Random 6 number
 		String link = null;        // Link verify account
 		String fullname = null;        // Get Fullname account
-		String mailBody = null;
-		LocalDateTime currentDateTime = null;
+		String mailBody = null;        // Content for send mail
+		LocalDateTime currentDateTime = null;        // current date time for set expirationTime otp
+		
+		// Get path templateFreemarker email
 		Path resourceDirectory = Paths.get("src", "main", "resources");
 		String absolutePath = resourceDirectory.toFile().getAbsolutePath();
 
+		// convert DTO --> model
 		user = userMapper.dtoToModel(userDTO);
+
+		// Find account by email if not existed -> accept register 
 		accounts = accountService.findByEmail(user.getEmail());
-		
 		if (accounts.isEmpty()) {
+			
+			// Set info user
 			user.setPassword(encryptionService.encrypt(user.getPassword()));
 			user.setVerify(false);
 			user.setStatus(EnumStatus.ACTIVE);
-			userService.save(user);
+			
+			// Create user
+			userService.create(user);
 
-			// Send mail Verify
+			// Create otp, link and mail info
 			otp = randOTP() + "";        // Generate OTP
 			link = generateLink(user.getEmail(), otp);        // Generate link verify
 			fullname = userDTO.getLastname() + " " + userDTO.getFirstname();
 			
+			// Send mail
 			try {
 				mailBody = readTemplateMailFreemarker(absolutePath, otp, link, fullname);
 				mailService.send(user.getEmail(), "VERIFY ACCOUNT", mailBody);
@@ -94,6 +103,7 @@ public class RegisterServiceImpl implements RegisterService {
 						"mail.sendmail.templatefreemarker.templatefreemarker-notgenerated");
 			}
 
+			// Setup verify and create
 			currentDateTime = LocalDateTime.now();
 			Verify verify = Verify.builder()
 					.link(link)
@@ -101,7 +111,7 @@ public class RegisterServiceImpl implements RegisterService {
 					.expirationTime(currentDateTime.plusMinutes(5))
 					.typeOTP(EnumTypeOTP.REGISTER).account(user).build();
 
-			verifyService.save(verify);
+			verifyService.create(verify);
 
 			return ResponseEntity.ok(userDTO);
 
@@ -115,6 +125,7 @@ public class RegisterServiceImpl implements RegisterService {
 		}
 	}
 
+	// Method return random OTP
 	private int randOTP() {
 		Random random = new Random();
 		int min = 100000;
@@ -123,16 +134,18 @@ public class RegisterServiceImpl implements RegisterService {
 		return randomNumber;
 	}
 
+	// Method return link verify
 	private String generateLink(String username, String otp) {
 		String link = baseUrl + "/register/verify/link/" + otp;
 		return link;
 	}
 
+	// Method generate link verify
 	private String readTemplateMailFreemarker(String absolutePath, String otp, 
 			String link, String fullname) throws IOException{
-		Writer out = null;
-		Map<String, Object> templateData = new HashMap<>();
-		String message = null;
+		Writer out = null;        // work with StringWriter
+		Map<String, Object> templateData = new HashMap<>();        // data for template freemarker
+		String message = null;        // message error or success
 
 		try {
 			// Load template HTML from file freemarker
@@ -148,6 +161,7 @@ public class RegisterServiceImpl implements RegisterService {
 			out = new StringWriter();
 			template.process(templateData, out);
 
+			// Convert template freemarker to string
 			String result = out.toString();
 			return result;
 		} catch (Exception e) {
@@ -163,12 +177,13 @@ public class RegisterServiceImpl implements RegisterService {
 
 	@Override
 	public void verifyAccountByLink(String otp) {
-		Verify verify = null;
-		LocalDateTime currentDateTime = null;
-		User user = null;
-		String message = null;
-		Long verifyId = null;
+		Verify verify = null;        // model verify
+		LocalDateTime currentDateTime = null;        // current date time using check expirationTime 
+		User user = null;        // model user
+		String message = null;        // message error or success
+		Long verifyId = null;        // verify id, if verify success --> delete by Id
 
+		// Find verify by OTP(Link and OTP is one row in DB)
 		verify = verifyService.findByOtp(otp);
 		if(verify != null) {
 			verifyId = verify.getId();
@@ -183,7 +198,7 @@ public class RegisterServiceImpl implements RegisterService {
 					user.setVerify(true);
 					
 					// Update isVerify account
-					userService.save(user);
+					userService.update(user);
 
 					// Delete verify
 					verifyService.delete(verifyId);
@@ -213,12 +228,13 @@ public class RegisterServiceImpl implements RegisterService {
 
 	@Override
 	public void verifyAccountByOTP(String otp) {
-		Verify verify = null;
-		LocalDateTime currentDateTime = null;
-		User user = null;
-		String message = null;
-		Long verifyId = null;
+		Verify verify = null;        // model verify
+		LocalDateTime currentDateTime = null;        // current date time using check expirationTime 
+		User user = null;        // model user
+		String message = null;        // message error or success
+		Long verifyId = null;        // verify id, if verify success --> delete by Id
 
+		// Find verify by OTP
 		verify = verifyService.findByOtp(otp);
 		if(verify != null) {
 			verifyId = verify.getId();
@@ -230,11 +246,12 @@ public class RegisterServiceImpl implements RegisterService {
 			if (seconds > 0) {
 				user = userService.findById(verify.getAccount().getId());
 				
+				// Check if user existed --> verify
 				if(user != null) {
 					user.setVerify(true);
 
 					// Update isVerify account
-					userService.save(user);
+					userService.update(user);
 
 					// Delete verify
 					verifyService.delete(verifyId);
@@ -265,36 +282,34 @@ public class RegisterServiceImpl implements RegisterService {
 
 	@Override
 	public void resendOtpAndLink(String email) {
-		User user = null;
-		Account account = null;
-		Verify verify = null;
-		List<Verify> verifies = new ArrayList<>();
-		LocalDateTime currentDateTime = LocalDateTime.now();
-		String otp = null;
-		String link = null;
-		String message = null;
-		String fullname = null;
-		String mailBody = null;
+		User user = null;        // model user
+		Account account = null;        // model account
+		Verify verify = null;        // model verify
+		List<Verify> verifies = new ArrayList<>();        // Get list verify by account
+		LocalDateTime currentDateTime = LocalDateTime.now();;        // current date time for check expiration time
+		String otp = null;        // OTP random
+		String link = null;        // generate link
+		String message = null;        // message error or success
+		String fullname = null;        // fullname of user for send mail
+		String mailBody = null;        // mail info
+		
+		// path template mail freemarker
 		Path resourceDirectory = Paths.get("src", "main", "resources");
 		String absolutePath = resourceDirectory.toFile().getAbsolutePath();
 
+		// find user and account 
 		user = userService.findByEmail(email);
 		account = accountService.findByEmail(email).get(0);
 		
+		// check user and account != null --> verify
 		if(user != null && account != null) {
-			verifies = verifyService.findByAccountId(user.getId());
-			for (Verify v : verifies) {
-				System.out.println(v.getTypeOTP().compareTo(EnumTypeOTP.REGISTER));
-				if (v.getTypeOTP().compareTo(EnumTypeOTP.REGISTER) == 0) {
-					verify = v;
-				}
-			}
 			
 			otp = randOTP() + "";        // Generate OTP
 			link = generateLink(email, otp);        // Generate link verify
-			fullname = user.getLastname() + " " + user.getFirstname();
+			fullname = user.getLastname() + " " + user.getFirstname();        // fullname of user
 			
 			try {
+				// mail info
 				mailBody = readTemplateMailFreemarker(absolutePath, otp, link, fullname);
 			} catch (IOException e) {
 				message = messageSource.getMessage("mail.resend.templatefreemarker.templatefreemarker-notgenerated", 
@@ -303,42 +318,47 @@ public class RegisterServiceImpl implements RegisterService {
 				throw new RequestException(message, HttpStatus.BAD_REQUEST.value(),
 						"mail.resend.templatefreemarker.templatefreemarker-notgenerated");
 			}
-
+			
+			// get list verifies by account
+			verifies = verifyService.findByAccountId(user.getId());
+			for (Verify v : verifies) {
+							
+				// check verify has type 'REGISTER'
+				if (v.getTypeOTP().compareTo(EnumTypeOTP.REGISTER) == 0) {
+					verify = v;
+				}
+			}
+			
+			// if verify != null -> update verify
 			if (verify != null) {
 				verify.setExpirationTime(currentDateTime.plusMinutes(5));
 				verify.setLink(link);
 				verify.setOtp(otp);
 
-				verifyService.save(verify);
-				try {
-					mailService.send(user.getEmail(), "VERIFY ACCOUNT", mailBody);
-				} catch (MessagingException e) {
-					message = messageSource.getMessage("mail.resend.resend-failed", null,
-							LocaleContextHolder.getLocale());
-					log.error(message);
-					throw new RequestException(message, HttpStatus.BAD_REQUEST.value(),
-							"mail.resend.resend-failed");
-				}
+				// update verify
+				verifyService.update(verify);
 			} else {
+				// if verify == null -> create new verify
 				verify = Verify.builder().link(link).otp(otp).expirationTime(currentDateTime.plusMinutes(5))
 						.typeOTP(EnumTypeOTP.REGISTER).account(account).build();
 
-				verifyService.save(verify);
-				try {
-					mailService.send(user.getEmail(), "VERIFY ACCOUNT", mailBody);
-				} catch (MessagingException e) {
-					message = messageSource.getMessage("mail.resend.resend-failed", null,
-							LocaleContextHolder.getLocale());
-					log.error(message);
-					throw new RequestException(message, HttpStatus.BAD_REQUEST.value(),
-							"mail.resend.resend-failed");
-				}
+				verifyService.create(verify);
 			}
-
-			message = messageSource.getMessage("verify.resend.resend-successed", 
-					null, LocaleContextHolder.getLocale());
 			
-			log.info(message);
+			// send mail
+			try {
+				mailService.send(user.getEmail(), "VERIFY ACCOUNT", mailBody);
+				message = messageSource.getMessage("verify.resend.resend-successed", 
+						null, LocaleContextHolder.getLocale());
+				
+				log.info(message);
+			} catch (MessagingException e) {
+				message = messageSource.getMessage("mail.resend.resend-failed", null,
+						LocaleContextHolder.getLocale());
+				log.error(message);
+				throw new RequestException(message, HttpStatus.BAD_REQUEST.value(),
+						"mail.resend.resend-failed");
+			}
 		} else {
 			message = messageSource.getMessage("account.email.email-notfound", 
 					null, LocaleContextHolder.getLocale());

@@ -5,7 +5,9 @@ import java.util.List;
 import net.sparkminds.library.entity.Verify;
 
 public interface VerifyService {
-	void save(Verify verify);
+	void create(Verify verify);
+	
+	void update(Verify verify);
 	
 	void delete(Long verifyId);
 	

@@ -9,7 +9,9 @@ public interface UserService {
 	
 	User findById(Long id);
 	
-	void save(User user);
+	void create(User user);
+	
+	void update(User user);
 
 	User findByEmail(String email);
 }

@@ -40,7 +40,7 @@ public class AccountServiceImpl implements AccountService {
 	}
 
 	@Override
-	public void save(Account account) {
+	public void create(Account account) {
 		String message;
 		
 		try {
@@ -54,7 +54,28 @@ public class AccountServiceImpl implements AccountService {
 					null, LocaleContextHolder.getLocale());
 			
 			log.error(message + ": " + account.toString());
-			throw new RequestException(message, HttpStatus.BAD_REQUEST.value(), "account.insert-failed");
+			throw new RequestException(message, HttpStatus.BAD_REQUEST.value(), 
+					"account.insert-failed");
+		}
+	}
+	
+	@Override
+	public void update(Account account) {
+		String message;
+		
+		try {
+			accountRepository.save(account);
+			message = messageSource.getMessage("account.update-successed", 
+					null, LocaleContextHolder.getLocale());
+			
+			log.info(message + ": " + account.toString());
+		} catch (Exception e) {
+			message = messageSource.getMessage("account.update-failed", 
+					null, LocaleContextHolder.getLocale());
+			
+			log.error(message + ": " + account.toString());
+			throw new RequestException(message, HttpStatus.BAD_REQUEST.value(), 
+					"account.update-failed");
 		}
 	}
 }

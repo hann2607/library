@@ -30,18 +30,16 @@ public class UserServiceImpl implements UserService {
 		
 		List<User> users = userRepository.findAll();
 		if(!users.isEmpty()) {
-			message = messageSource.getMessage("user.user-notfound", 
+			message = messageSource.getMessage("user.findall-successed", 
 					null, LocaleContextHolder.getLocale());
 			
-			log.error(message);
-			throw new RequestException(message, HttpStatus.BAD_REQUEST.value(),
-					"user.user-notfound");
+			log.info(message);
 		}
 		return users;
 	}
 
 	@Override
-	public void save(User user) {
+	public void create(User user) {
 		String message = null;
 		
 		try {
@@ -57,6 +55,26 @@ public class UserServiceImpl implements UserService {
 			log.error(message + ": " + user.toString());
 			throw new RequestException(message, HttpStatus.BAD_REQUEST.value(),
 					"user.insert-failed");
+		}
+	}
+	
+	@Override
+	public void update(User user) {
+		String message = null;
+		
+		try {
+			userRepository.save(user);
+			message = messageSource.getMessage("user.update-successed", 
+					null, LocaleContextHolder.getLocale());
+			
+			log.info(message + ": " + user.toString());
+		} catch (Exception e) {
+			message = messageSource.getMessage("user.update-failed", 
+					null, LocaleContextHolder.getLocale());
+			
+			log.error(message + ": " + user.toString());
+			throw new RequestException(message, HttpStatus.BAD_REQUEST.value(),
+					"user.update-failed");
 		}
 	}
 

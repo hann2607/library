@@ -26,7 +26,27 @@ public class VerifyServiceImpl implements VerifyService {
 	private final MessageSource messageSource;
 
 	@Override
-	public void save(Verify verify) {
+	public void create(Verify verify) {
+		String message = null;
+		
+		try {
+			verifyRepository.save(verify);
+			message = messageSource.getMessage("verify.insert-successed", 
+					null, LocaleContextHolder.getLocale());
+			
+			log.info(message + ": " + verify);
+		} catch (Exception e) {
+			message = messageSource.getMessage("verify.insert-failed", 
+					null, LocaleContextHolder.getLocale());
+			
+			log.error(message + ": " + verify);
+			throw new RequestException(message, HttpStatus.BAD_REQUEST.value(),
+					"verify.insert-failed");
+		}
+	}
+	
+	@Override
+	public void update(Verify verify) {
 		String message = null;
 		
 		try {
@@ -88,14 +108,10 @@ public class VerifyServiceImpl implements VerifyService {
 		if(!verifies.isEmpty()) {
 			message = messageSource.getMessage("verify.accountid.find-successed", 
 					null, LocaleContextHolder.getLocale());
-			log.info(message + ": " + accountId);
-			return verifies;
-		} else {
-			message = messageSource.getMessage("verify.accountid.account-actived", 
-					null, LocaleContextHolder.getLocale());
-			log.error(message + ": " + accountId);
-			throw new RequestException(message, HttpStatus.NOT_FOUND.value(),
-					"verify.accountid.account-actived");
-		}
+			
+			log.info(message + ": " + accountId);	
+		} 
+		
+		return verifies;
 	}
 }
