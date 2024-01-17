@@ -4,12 +4,10 @@ import org.hibernate.validator.constraints.Length;
 
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
-import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Pattern;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import net.sparkminds.library.entity.Role;
 import net.sparkminds.library.service.ValidPhoneNumber;
 
 @AllArgsConstructor
@@ -46,7 +44,4 @@ public class RegisterRequest {
 	@NotBlank(message = "{registerrequest.avatar.avatar-notblank}")
 	@Length(max = 255, message = "{registerrequest.avatar.avatar-length}")
 	private String avatar;
-	
-	@NotNull(message = "{registerrequest.role.role-notnull}")
-	private Role role;
 }

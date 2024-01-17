@@ -1,6 +1,7 @@
 package net.sparkminds.library.service.impl;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.context.MessageSource;
 import org.springframework.context.i18n.LocaleContextHolder;
@@ -10,25 +11,25 @@ import org.springframework.stereotype.Service;
 import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
-import net.sparkminds.library.entity.User;
+import net.sparkminds.library.entity.Customer;
 import net.sparkminds.library.exception.RequestException;
 import net.sparkminds.library.repository.UserRepository;
-import net.sparkminds.library.service.UserService;
+import net.sparkminds.library.service.CustomerService;
 
 @Service
 @RequiredArgsConstructor
 @Log4j2
 @Transactional
-public class UserServiceImpl implements UserService {
+public class CustomerServiceImpl implements CustomerService {
 	
 	private final UserRepository userRepository;
 	private final MessageSource messageSource;
 	
 	@Override
-	public List<User> findAll() {
+	public List<Customer> findAll() {
 		String message = null;
 		
-		List<User> users = userRepository.findAll();
+		List<Customer> users = userRepository.findAll();
 		if(!users.isEmpty()) {
 			message = messageSource.getMessage("user.findall-successed", 
 					null, LocaleContextHolder.getLocale());
@@ -39,7 +40,7 @@ public class UserServiceImpl implements UserService {
 	}
 
 	@Override
-	public void create(User user) {
+	public void create(Customer user) {
 		String message = null;
 		
 		try {
@@ -59,7 +60,7 @@ public class UserServiceImpl implements UserService {
 	}
 	
 	@Override
-	public void update(User user) {
+	public void update(Customer user) {
 		String message = null;
 		
 		try {
@@ -79,35 +80,35 @@ public class UserServiceImpl implements UserService {
 	}
 
 	@Override
-	public User findById(Long id) {
+	public Customer findById(Long id) {
 		String message = null;
-		User user = null;
-		user = userRepository.findById(id).get();
+		Optional<Customer> user = null;
+		user = userRepository.findById(id);
 		
-		if(user != null) {
+		if(user.isPresent()) {
 			message = messageSource.getMessage("user.id.find-successed", 
 				null, LocaleContextHolder.getLocale());
 		
 			log.info(message + ": " + user.toString());
+			return user.get();
 		}
-		
-		return user;
+		return null;
 	}
 
 	@Override
-	public User findByEmail(String email) {
+	public Customer findByEmail(String email) {
 		String message = null;
-		User user = null;
+		Optional<Customer> user = null;
 		user = userRepository.findByEmail(email);
 		
-		if(user != null) {
+		if(user.isPresent()) {
 			message = messageSource.getMessage("user.email.find-successed", 
 					null, LocaleContextHolder.getLocale());
 			
 			log.info(message + ": " + user.toString());
+			return user.get();
 		}
-		
-		return user;
+		return null;
 	}
 
 }

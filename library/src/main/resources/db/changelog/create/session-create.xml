@@ -15,9 +15,9 @@
 			<column name="id" type="BIGINT" autoIncrement="true">
 				<constraints primaryKey="true" nullable="false" />
 			</column>
-			<column name="session_data" type="VARCHAR(255)" />
-			<column name="expiration_time" type="DATETIME" />
-			<column name="user_information" type="VARCHAR(255)" />
+			<column name="jti" type="VARCHAR(255)" />
+			<column name="isLogin" type="TINYINT" defaultValue="1"/>
+			<column name="refresh_expiration_time" type="DATETIME" />
 			<column name="account_id" type="BIGINT" />
 		</createTable>
 		<addForeignKeyConstraint

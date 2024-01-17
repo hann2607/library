@@ -1,5 +1,7 @@
 package net.sparkminds.library.service.impl;
 
+import java.time.Duration;
+import java.time.LocalDateTime;
 import java.util.List;
 
 import org.springframework.context.MessageSource;
@@ -15,35 +17,65 @@ import org.springframework.stereotype.Service;
 
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
-import net.sparkminds.library.entity.Account;
+import net.sparkminds.library.entity.Customer;
+import net.sparkminds.library.enumration.EnumStatus;
 import net.sparkminds.library.exception.RequestException;
-import net.sparkminds.library.repository.AccountRepository;
+import net.sparkminds.library.service.CustomerService;
 
 @Service
 @RequiredArgsConstructor
 @Log4j2
 public class UserDetailsServiceImpl implements UserDetailsService {
 
-	private final AccountRepository accountRepository;
+	private final CustomerService customerService;
 	private final MessageSource messageSource;
 
     @Override
     public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {
     	String message = null;
-    	Account account = null;
+    	Customer customer = null;
+    	LocalDateTime currentDateTime = null;
     	
-        account = accountRepository.findByEmail(email).get(0);
+    	customer = customerService.findByEmail(email);
         
-        if(account == null){
-        	message = messageSource.getMessage("Find.Error.Account.email", null,
+        if(customer == null){
+        	message = messageSource.getMessage("account.email.email-notfound", null,
 					LocaleContextHolder.getLocale());
 			log.error(message);
 			throw new RequestException(message, HttpStatus.NOT_FOUND.value(),
-					"Find.Error.Account.email");
+					"account.email.email-notfound");
         }
         
-        List<GrantedAuthority> authorities = List.of(new SimpleGrantedAuthority(account.getRole().getRole().name()));
+        if(customer.getStatus().compareTo(EnumStatus.DELETED) == 0) {
+        	message = messageSource.getMessage("account.account-deleted", null,
+					LocaleContextHolder.getLocale());
+			log.error(message);
+			throw new RequestException(message, HttpStatus.NOT_FOUND.value(),
+					"account.account-deleted");
+        } 
+        
+        if(customer.getStatus().compareTo(EnumStatus.BLOCKED) == 0) {
+        	
+        	currentDateTime= LocalDateTime.now();
+        	long seconds = Duration.between(currentDateTime, customer.getBlockedAt()).getSeconds();
 
-        return new User(account.getEmail(),account.getPassword(), authorities);
+        	if(seconds < 0) {
+        		customer.setBlockedAt(null);
+        		customer.setReasonBlocked(null);
+        		customer.setStatus(EnumStatus.ACTIVE);
+        		
+        		customerService.update(customer);
+        	} else {
+        		message = messageSource.getMessage("account.account-blocked", null,
+    					LocaleContextHolder.getLocale());
+    			log.error(message);
+    			throw new RequestException(message, HttpStatus.UNAUTHORIZED.value(),
+    					"account.account-blocked");
+        	}
+        } 
+        
+        List<GrantedAuthority> authorities = List.of(new SimpleGrantedAuthority(customer.getRole().getRole().name()));
+
+        return new User(customer.getEmail(),customer.getPassword(), authorities);
     }
 }

@@ -11,6 +11,7 @@ import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 
+import io.jsonwebtoken.ExpiredJwtException;
 import net.sparkminds.library.dto.error.ErrorAPIResponse;
 import net.sparkminds.library.dto.error.ErrorValidResponse;
 import net.sparkminds.library.dto.error.FieldErrorInfo;
@@ -30,13 +31,12 @@ public class GlobalExceptionHandler {
 		return errorAPIResponse;
 	}
 
-    @ExceptionHandler(RequestException.class)
+    @ExceptionHandler({RequestException.class, ExpiredJwtException.class})
     public ResponseEntity<ErrorAPIResponse> handleCustomException(RequestException e) {
         ErrorAPIResponse errorAPIResponse = createErrorResponse(e.getStatusCode(), e.getMessage(), e.getMessageCode());
         return new ResponseEntity<>(errorAPIResponse, HttpStatus.valueOf(e.getStatusCode()));
     }
-
-
+    
 	// Error for validation
 	@ExceptionHandler(MethodArgumentNotValidException.class)
 	public static ResponseEntity<ErrorValidResponse> handleValidationException(MethodArgumentNotValidException ex) {

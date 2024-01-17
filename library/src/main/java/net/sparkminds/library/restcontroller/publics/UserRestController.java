@@ -9,18 +9,19 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import lombok.RequiredArgsConstructor;
-import net.sparkminds.library.entity.User;
-import net.sparkminds.library.service.UserService;
+import net.sparkminds.library.entity.Customer;
+import net.sparkminds.library.service.CustomerService;
 
 @RestController
 @RequiredArgsConstructor
 @CrossOrigin("*")
 @RequestMapping("/api/v1/user")
 public class UserRestController {
-	private final UserService userService;
+	private final CustomerService userService;
 	
 	@GetMapping("/users")
-	public ResponseEntity<List<User>> findAllUser() {
+	public ResponseEntity<List<Customer>> findAllUser() {
+		System.out.println("2");
 		return ResponseEntity.ok(userService.findAll());
 	}
 }

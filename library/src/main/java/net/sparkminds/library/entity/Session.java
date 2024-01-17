@@ -10,8 +10,11 @@ import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
+import lombok.Data;
 import lombok.NoArgsConstructor;
 
 @Entity
@@ -19,20 +22,24 @@ import lombok.NoArgsConstructor;
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
+@Data
 public class Session{
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 
-	@Column(name = "session_data", nullable = false, unique = true, length = 255)
-	private String sessionData;
+	@Column(name = "jti", nullable = false, unique = true, length = 255)
+	@NotBlank(message = "{session.jti.jti-notblank}")
+	private String jti;
+	
+	@Column(name = "isLogin", nullable = false)
+	@NotNull(message = "{session.isLogin.isLogin-notnull}")
+	private boolean isLogin;
 
-	@Column(name = "expiration_time", nullable = false)
-	private LocalDateTime expirationTime;
-
-	@Column(name = "user_information", nullable = false, unique = true, length = 255)
-	private String userInfo;
+	@Column(name = "refresh_expiration_time", nullable = false)
+	@NotNull(message = "{session.expiration.expiration-notnull}")
+	private LocalDateTime refreshExpirationTime;
 	
 	@ManyToOne(optional=false)
     @JoinColumn(name="account_id", nullable=false)
@@ -40,7 +47,7 @@ public class Session{
 
 	@Override
 	public String toString() {
-		return "Session [id=" + id + ", sessionData=" + sessionData + ", expirationTime=" + expirationTime
-				+ ", userInfo=" + userInfo + "]";
+		return "Session [id=" + id + ", refreshToken=" + jti + ", refreshExpirationTime="
+				+ refreshExpirationTime + "]";
 	}
 }

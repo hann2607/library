@@ -21,7 +21,7 @@ import net.sparkminds.library.service.ValidPhoneNumber;
 @Getter
 @Setter
 @Table(name = "user")
-public class User extends Account {
+public class Customer extends Account {
 
 	@Column(name = "firstname", nullable = false, unique = false, length = 50)
 	@NotBlank(message = "{user.firstname.firstname-notblank}")

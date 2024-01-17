@@ -19,7 +19,11 @@
 			<column name="password" type="VARCHAR(60)" />
 			<column name="blocked_at" type="DATETIME" />
 			<column name="reason_blocked" type="VARCHAR(255)" />
+			<column name="login_attempt" type="INT" defaultValue="0"/>
+			<column name="isFirstTimeLogin" type="TINYINT" defaultValue="1"/>
 			<column name="isVerify" type="TINYINT" />
+			<column name="mfa" type="TINYINT" defaultValue="0"/>
+			<column name="secret" type="VARCHAR(255)" />
 			<column name="status"
 				type="ENUM('ACTIVE', 'BLOCKED', 'DELETED')" />
 			<column name="role_id" type="BIGINT" />

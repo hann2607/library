@@ -3,13 +3,13 @@ package net.sparkminds.library.mapper;
 import org.mapstruct.Mapper;
 
 import net.sparkminds.library.dto.register.RegisterRequest;
-import net.sparkminds.library.entity.User;
+import net.sparkminds.library.entity.Customer;
 
 @Mapper
 public interface RegisterRequestMapper {
 	
-	RegisterRequest modelToDto(User user);
+	RegisterRequest modelToDto(Customer user);
 	
-	User dtoToModel (RegisterRequest userDTO);
+	Customer dtoToModel (RegisterRequest userDTO);
 	
 }

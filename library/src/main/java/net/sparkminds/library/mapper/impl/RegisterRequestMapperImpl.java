@@ -6,7 +6,8 @@ import org.springframework.stereotype.Service;
 
 import lombok.RequiredArgsConstructor;
 import net.sparkminds.library.dto.register.RegisterRequest;
-import net.sparkminds.library.entity.User;
+import net.sparkminds.library.entity.Customer;
+import net.sparkminds.library.entity.Customer.CustomerBuilder;
 import net.sparkminds.library.enumration.EnumStatus;
 import net.sparkminds.library.mapper.RegisterRequestMapper;
 
@@ -16,7 +17,7 @@ import net.sparkminds.library.mapper.RegisterRequestMapper;
 public class RegisterRequestMapperImpl implements RegisterRequestMapper {
 
 	@Override
-	public RegisterRequest modelToDto(User user) {
+	public RegisterRequest modelToDto(Customer user) {
 		if (user == null) {
 			return null;
 		}
@@ -25,7 +26,6 @@ public class RegisterRequestMapperImpl implements RegisterRequestMapper {
 
 		userDTO.setEmail(user.getEmail());
 		userDTO.setPassword(user.getPassword());
-		userDTO.setRole(user.getRole());
 		if (user.getStatus() != null) {
 			userDTO.setStatus(user.getStatus().name());
 		}
@@ -34,16 +34,15 @@ public class RegisterRequestMapperImpl implements RegisterRequestMapper {
 	}
 
 	@Override
-	public User dtoToModel(RegisterRequest userDTO) {
+	public Customer dtoToModel(RegisterRequest userDTO) {
 		if (userDTO == null) {
 			return null;
 		}
 
-		User.UserBuilder<?, ?> user = User.builder();
+		CustomerBuilder<?, ?> user = Customer.builder();
 
 		user.email(userDTO.getEmail());
 		user.password(userDTO.getPassword());
-		user.role(userDTO.getRole());
 		if (userDTO.getStatus() != null) {
 			user.status(Enum.valueOf(EnumStatus.class, userDTO.getStatus()));
 		}

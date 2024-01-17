@@ -33,7 +33,7 @@ public class AccountServiceImpl implements AccountService {
 			message = messageSource.getMessage("account.email.find-successed", 
 					null, LocaleContextHolder.getLocale());
 			
-			log.info(message);
+			log.info(message + ": " + email);
 		}
 		
 		return accounts;

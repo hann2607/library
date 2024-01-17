@@ -13,6 +13,7 @@ import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import net.sparkminds.library.dto.register.RegisterRequest;
 import net.sparkminds.library.service.RegisterService;
+import net.sparkminds.library.service.VerifyAccountService;
 
 @RestController
 @RequiredArgsConstructor
@@ -21,25 +22,28 @@ import net.sparkminds.library.service.RegisterService;
 public class RegisterRestController {
 
 	private final RegisterService registerService;
+	private final VerifyAccountService verifyAccountService;
 
 	@PostMapping("/register")
 	public ResponseEntity<RegisterRequest> registerAccount(@Valid @RequestBody RegisterRequest userDTO) {
-		registerService.register(userDTO);
-		return ResponseEntity.ok(userDTO);
+		return ResponseEntity.ok(registerService.register(userDTO));
 	}
 	
 	@GetMapping("/register/verify/link/{otp}")
-	public void verifyAccountByLink(@PathVariable("otp") String otp) {
-		registerService.verifyAccountByLink(otp);
+	public ResponseEntity<Void> verifyAccountByLink(@PathVariable("otp") String otp) {
+		verifyAccountService.verifyAccountByLink(otp);
+		return ResponseEntity.ok().build();
 	}
 	
 	@PostMapping("/register/verify/otp/{otp}")
-	public void verifyAccountByOtp(@PathVariable("otp") String otp) {
-		registerService.verifyAccountByOTP(otp);
+	public ResponseEntity<Void> verifyAccountByOtp(@PathVariable("otp") String otp) {
+		verifyAccountService.verifyAccountByOTP(otp);
+		return ResponseEntity.ok().build();
 	}
 	
 	@PostMapping("/register/verify/resend/{email}")
-	public void resendOtpAndLink(@PathVariable("email") String email) {
-		registerService.resendOtpAndLink(email);
+	public ResponseEntity<Void> resendOtpAndLink(@PathVariable("email") String email) {
+		verifyAccountService.resendOtpAndLink(email);
+		return ResponseEntity.ok().build();
 	}
 }

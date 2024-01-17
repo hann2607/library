@@ -2,6 +2,7 @@ package net.sparkminds.library.service.impl;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.context.MessageSource;
 import org.springframework.context.i18n.LocaleContextHolder;
@@ -87,16 +88,17 @@ public class VerifyServiceImpl implements VerifyService {
 	@Override
 	public Verify findByOtp(String otp) {
 		String message;
-		Verify verify = null;
+		Optional<Verify> verify = null;
 		
 		verify = verifyRepository.findByOtp(otp);
-		if(verify != null) {
+		if(verify.isPresent()) {
 			message = messageSource.getMessage("verify.otp.find-successed", 
 					null, LocaleContextHolder.getLocale());
 			log.info(message + ": " + otp);
+			return verify.get();
 		}
 		
-		return verifyRepository.findByOtp(otp);
+		return null;
 	}
 
 	@Override

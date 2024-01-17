@@ -1,4 +1,4 @@
-package net.sparkminds.library.jwt;
+package net.sparkminds.library.dto.jwt;
 
 import java.io.Serializable;
 
@@ -15,10 +15,10 @@ import lombok.NoArgsConstructor;
 public class JwtRequest implements Serializable{
 	private static final long serialVersionUID = 1L;
 	
-	@Email(message = "{Email.Account.email}")
-	@Length(max = 100, message = "{Length.Account.email}")
+	@Email(message = "{account.email.email-invalid}")
+	@Length(max = 100, message = "{account.email.email-invalidlength}")
 	private String username;
 	
-	@Length(min = 8, max = 60, message = "{Length.Account.Password}")
+	@Length(min = 8, max = 60, message = "{account.password.password-invalidlength}")
 	private String password;
 }

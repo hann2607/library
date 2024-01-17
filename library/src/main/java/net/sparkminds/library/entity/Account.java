@@ -56,10 +56,25 @@ public class Account {
 
 	@Column(name = "reason_blocked", nullable = true, length = 255)
 	private String reasonBlocked;
+	
+	@Column(name = "login_attempt")
+	private Integer loginAttempt;
+	
+	@Column(name = "isFirstTimeLogin", nullable = false)
+	@NotNull(message = "{account.isFirstTimeLogin.isFirstTimeLogin-notnull}")
+	private boolean isFirstTimeLogin;
 
 	@Column(name = "isVerify", nullable = false)
 	@NotNull(message = "{account.isverify.isverify-notnull}")
 	private boolean isVerify;
+	
+	@Column(name = "mfa")
+	@NotNull(message = "{account.mfa.mfa-notnull}")
+	private boolean mfa;
+	
+	@Column(name = "secret", nullable = true, unique = true, length = 255)
+	@Length(max = 255, message = "{account.secret.secret-invalidlength}")
+	private String secret;
 
 	@Enumerated(EnumType.STRING)
 	@Column(name = "status", nullable = false)
