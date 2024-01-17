@@ -18,12 +18,17 @@ import lombok.experimental.SuperBuilder;
 public class Admin extends Account {
 
 	@Column(name = "fullname", nullable = false, unique = false, length = 100)
-	@NotBlank(message = "{NotBlank.Admin.fullname}")
-	@Length(max = 100, message = "{Length.Admin.fullname}")
+	@NotBlank(message = "{admin.fullname.fullname-notblank}")
+	@Length(max = 100, message = "{admin.fullname.fullname-invalidlength}")
 	private String fullname;
 	
 	@Column(name = "position", nullable = false, unique = false, length = 100)
-	@NotBlank(message = "{NotBlank.Admin.position}")
-	@Length(max = 100, message = "{Length.Admin.position}")
+	@NotBlank(message = "{admin.position.position-notblank}")
+	@Length(max = 100, message = "{admin.position.position-invalidlength}")
 	private String position;
+
+	@Override
+	public String toString() {
+		return "Admin [fullname=" + fullname + ", position=" + position + "]";
+	}
 }

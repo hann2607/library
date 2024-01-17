@@ -1,4 +1,4 @@
-package net.sparkminds.library.jwt;
+package net.sparkminds.library.dto.error;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;

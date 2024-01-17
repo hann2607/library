@@ -16,7 +16,10 @@ import net.sparkminds.library.service.impl.PhoneNumberValidator;
 @Documented
 public @interface ValidPhoneNumber {
 	String message() default "{phone.invalid}";
+	
     Class<?>[] groups() default {};
+    
     Class<? extends Payload>[] payload() default {};
+    
     String countryCode();
 }
