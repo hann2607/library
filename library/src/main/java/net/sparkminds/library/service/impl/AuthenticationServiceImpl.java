@@ -28,12 +28,14 @@ import lombok.extern.log4j.Log4j2;
 import net.sparkminds.library.dto.jwt.JwtRequest;
 import net.sparkminds.library.dto.jwt.JwtResponse;
 import net.sparkminds.library.dto.jwt.RefreshTokenRequest;
+import net.sparkminds.library.entity.Account;
 import net.sparkminds.library.entity.Customer;
 import net.sparkminds.library.entity.Session;
 import net.sparkminds.library.event.authentication.AuthenticationEvent;
 import net.sparkminds.library.event.authentication.VerifyAccountEvent;
 import net.sparkminds.library.exception.RequestException;
 import net.sparkminds.library.jwt.JwtUtil;
+import net.sparkminds.library.service.AccountService;
 import net.sparkminds.library.service.AuthenticationService;
 import net.sparkminds.library.service.CustomerService;
 import net.sparkminds.library.service.SessionService;
@@ -44,7 +46,7 @@ import net.sparkminds.library.service.SessionService;
 public class AuthenticationServiceImpl implements AuthenticationService {
 
 	private final JwtUtil jwtUtil;
-	private final CustomerService customerService;
+	private final AccountService accountService;
 	private final SessionService sessionService;
 	private final UserDetailsServiceImpl userDetailsService;
 	private final AuthenticationManager authenticationManager;
@@ -53,18 +55,18 @@ public class AuthenticationServiceImpl implements AuthenticationService {
 
 	@Override
 	public JwtResponse authentication(JwtRequest jwtRequest) {
-		Customer customer = null;
+		Account account = null;
 		
 		// Login success
 		if (authenticateUser(jwtRequest)) {
 			UserDetails userDetails = userDetailsService.loadUserByUsername(jwtRequest.getUsername());
 			List<String> roles = userDetails.getAuthorities().stream().map(GrantedAuthority::getAuthority)
 					.collect(Collectors.toList());
-
+			
 			// Reset login attempt
-			customer = customerService.findByEmail(jwtRequest.getUsername());
-			customer.setLoginAttempt(0);
-			customerService.update(customer);
+			account = accountService.findByEmail(jwtRequest.getUsername()).get(0);
+			account.setLoginAttempt(0);
+			accountService.update(account);
 
 			// Create token and refresh token
 			String JTI = UUID.randomUUID().toString();
@@ -74,7 +76,7 @@ public class AuthenticationServiceImpl implements AuthenticationService {
 
 			// Save to table session
 			Session session = Session.builder().jti(JTI).isLogin(true)
-					.refreshExpirationTime(convertDateToLocalDateTime(refreshTokenExpiration)).account(customer)
+					.refreshExpirationTime(convertDateToLocalDateTime(refreshTokenExpiration)).account(account)
 					.build();
 
 			sessionService.create(session);

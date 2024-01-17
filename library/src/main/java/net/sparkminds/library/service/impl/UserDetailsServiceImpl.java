@@ -17,28 +17,28 @@ import org.springframework.stereotype.Service;
 
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
-import net.sparkminds.library.entity.Customer;
+import net.sparkminds.library.entity.Account;
 import net.sparkminds.library.enumration.EnumStatus;
 import net.sparkminds.library.exception.RequestException;
-import net.sparkminds.library.service.CustomerService;
+import net.sparkminds.library.service.AccountService;
 
 @Service
 @RequiredArgsConstructor
 @Log4j2
 public class UserDetailsServiceImpl implements UserDetailsService {
 
-	private final CustomerService customerService;
+	private final AccountService accountService;
 	private final MessageSource messageSource;
 
     @Override
     public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {
     	String message = null;
-    	Customer customer = null;
+    	Account account = null;
     	LocalDateTime currentDateTime = null;
     	
-    	customer = customerService.findByEmail(email);
+    	account = accountService.findByEmail(email).get(0);
         
-        if(customer == null){
+        if(account == null){
         	message = messageSource.getMessage("account.email.email-notfound", null,
 					LocaleContextHolder.getLocale());
 			log.error(message);
@@ -46,7 +46,7 @@ public class UserDetailsServiceImpl implements UserDetailsService {
 					"account.email.email-notfound");
         }
         
-        if(customer.getStatus().compareTo(EnumStatus.DELETED) == 0) {
+        if(account.getStatus().compareTo(EnumStatus.DELETED) == 0) {
         	message = messageSource.getMessage("account.account-deleted", null,
 					LocaleContextHolder.getLocale());
 			log.error(message);
@@ -54,17 +54,17 @@ public class UserDetailsServiceImpl implements UserDetailsService {
 					"account.account-deleted");
         } 
         
-        if(customer.getStatus().compareTo(EnumStatus.BLOCKED) == 0) {
+        if(account.getStatus().compareTo(EnumStatus.BLOCKED) == 0) {
         	
         	currentDateTime= LocalDateTime.now();
-        	long seconds = Duration.between(currentDateTime, customer.getBlockedAt()).getSeconds();
+        	long seconds = Duration.between(currentDateTime, account.getBlockedAt()).getSeconds();
 
         	if(seconds < 0) {
-        		customer.setBlockedAt(null);
-        		customer.setReasonBlocked(null);
-        		customer.setStatus(EnumStatus.ACTIVE);
+        		account.setBlockedAt(null);
+        		account.setReasonBlocked(null);
+        		account.setStatus(EnumStatus.ACTIVE);
         		
-        		customerService.update(customer);
+        		accountService.update(account);
         	} else {
         		message = messageSource.getMessage("account.account-blocked", null,
     					LocaleContextHolder.getLocale());
@@ -74,8 +74,8 @@ public class UserDetailsServiceImpl implements UserDetailsService {
         	}
         } 
         
-        List<GrantedAuthority> authorities = List.of(new SimpleGrantedAuthority(customer.getRole().getRole().name()));
+        List<GrantedAuthority> authorities = List.of(new SimpleGrantedAuthority(account.getRole().getRole().name()));
 
-        return new User(customer.getEmail(),customer.getPassword(), authorities);
+        return new User(account.getEmail(),account.getPassword(), authorities);
     }
 }

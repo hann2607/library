@@ -20,6 +20,7 @@ import org.springframework.web.cors.CorsConfigurationSource;
 import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
 
 import lombok.RequiredArgsConstructor;
+import net.sparkminds.library.enumration.EnumRole;
 import net.sparkminds.library.jwt.JwtFilter;
 
 @Configuration
@@ -40,6 +41,8 @@ public class WebSecurityConfig {
 			auth.requestMatchers("/api/v1/common/**", "/resources/**", "/static/**", "/assets/**", "/lib/**",
 					"/popup/**", "/swagger-ui/**", "/v3/api-docs/**").permitAll();
 
+			auth.requestMatchers("/api/v1/admin/**").hasAnyRole(EnumRole.ADMIN.toString());
+			auth.requestMatchers("/api/v1/user/**").hasAnyRole(EnumRole.USER.toString());
 			// All remaining paths must be authentic
 			auth.anyRequest().authenticated();
 		});

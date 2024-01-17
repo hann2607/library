@@ -1,9 +1,10 @@
 package net.sparkminds.library.service;
 
+import net.sparkminds.library.dto.mfa.MfaRequest;
 import net.sparkminds.library.dto.mfa.MfaResponse;
 
 public interface TwoFactorAuthService {
-	MfaResponse generateTwoFactorAuth();
+	MfaResponse generateTwoFactorAuth(MfaRequest mfaRequest);
 	
-	boolean verifyTwoFactorAuth(String email, String code);
+	void verifyTwoFactorAuth(String email, String secret);
 }

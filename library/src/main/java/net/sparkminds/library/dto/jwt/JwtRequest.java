@@ -21,4 +21,6 @@ public class JwtRequest implements Serializable{
 	
 	@Length(min = 8, max = 60, message = "{account.password.password-invalidlength}")
 	private String password;
+	
+	private String code;
 }
