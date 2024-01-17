@@ -38,7 +38,7 @@ public class WebSecurityConfig {
 		http.authorizeHttpRequests(auth -> {
 			// Decentralized access to system resources
 			auth.requestMatchers("/api/v1/common/**", "/resources/**", "/static/**", "/assets/**", "/lib/**",
-					"/popup/**").permitAll();
+					"/popup/**", "/swagger-ui/**", "/v3/api-docs/**").permitAll();
 
 			// All remaining paths must be authentic
 			auth.anyRequest().authenticated();

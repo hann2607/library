@@ -1,4 +1,4 @@
-package net.sparkminds.library.restcontroller.publics;
+package net.sparkminds.library.restcontroller.privates;
 
 import java.util.List;
 
@@ -15,13 +15,12 @@ import net.sparkminds.library.service.CustomerService;
 @RestController
 @RequiredArgsConstructor
 @CrossOrigin("*")
-@RequestMapping("/api/v1/user")
-public class UserRestController {
+@RequestMapping("/api/v1/admin")
+public class AdminRestController {
 	private final CustomerService userService;
 	
 	@GetMapping("/users")
 	public ResponseEntity<List<Customer>> findAllUser() {
-		System.out.println("2");
 		return ResponseEntity.ok(userService.findAll());
 	}
 }
