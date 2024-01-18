@@ -6,12 +6,12 @@ import java.io.Writer;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.time.LocalDateTime;
-import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
+import java.util.Optional;
 import java.util.Random;
 
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.MessageSource;
 import org.springframework.context.i18n.LocaleContextHolder;
 import org.springframework.http.HttpStatus;
@@ -19,6 +19,7 @@ import org.springframework.stereotype.Service;
 
 import freemarker.template.Configuration;
 import freemarker.template.Template;
+import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
 import net.sparkminds.library.dto.register.RegisterRequest;
@@ -31,13 +32,13 @@ import net.sparkminds.library.enumration.EnumStatus;
 import net.sparkminds.library.enumration.EnumTypeOTP;
 import net.sparkminds.library.exception.RequestException;
 import net.sparkminds.library.mapper.RegisterRequestMapper;
-import net.sparkminds.library.service.AccountService;
-import net.sparkminds.library.service.CustomerService;
+import net.sparkminds.library.repository.AccountRepository;
+import net.sparkminds.library.repository.CustomerRepository;
+import net.sparkminds.library.repository.RoleRepository;
+import net.sparkminds.library.repository.VerifyRepository;
 import net.sparkminds.library.service.EncryptionService;
 import net.sparkminds.library.service.MailService;
 import net.sparkminds.library.service.RegisterService;
-import net.sparkminds.library.service.RoleService;
-import net.sparkminds.library.service.VerifyService;
 
 @Service
 @RequiredArgsConstructor
@@ -47,19 +48,22 @@ public class RegisterServiceImpl implements RegisterService {
 
 	private final RegisterRequestMapper userMapper;        // Use convert DTO to Entity
 	private final EncryptionService encryptionService;        // Encrypt password
-	private final RoleService roleService;        // handle entity Role
-	private final AccountService accountService;        // handle entity Account
-	private final CustomerService customerService;        // handle entity Account
+	private final RoleRepository roleRepository;        // handle entity Role
+	private final AccountRepository accountRepository;        // handle entity Account
+	private final CustomerRepository customerRepository;        // handle entity Account
 	private final MessageSource messageSource;        // Get message error from MessageError.properties
 	private final MailService mailService;        // Sending mail
-	private final VerifyService verifyService;        // Handle entities Verify
-	private final String baseUrl = "http://localhost:8080/api/v1/common";
+	private final VerifyRepository verifyRepository;        // Handle entities Verify
+	
+	@Value("${baseUrlCommon}")
+	private String baseUrlCommon;
 
 	@Override
+	@Transactional(rollbackOn = Exception.class)
 	public RegisterRequest register(RegisterRequest userDTO) {
-		List<Account> accounts = new ArrayList<>();        // Get accounts by email
-		Customer user = null;        // Save User to database
-		Role role = null;        // Find role by role name
+		Optional<Account> account = null;        // Get accounts by email
+		Customer customer = null;        // Save User to database
+		Optional<Role> role = null;        // Find role by role name
 		String message = null;        // error message in file MessageError.properties
 		String otp = null;        // OTP Random 6 number
 		String link = null;        // Link verify account
@@ -72,40 +76,63 @@ public class RegisterServiceImpl implements RegisterService {
 		String absolutePath = resourceDirectory.toFile().getAbsolutePath();
 
 		// convert DTO --> model
-		user = userMapper.dtoToModel(userDTO);
+		customer = userMapper.dtoToModel(userDTO);
 
 		// Find account by email if not existed -> accept register
-		accounts = accountService.findByEmail(user.getEmail());
-		if (!accounts.isEmpty()) {
+		account = accountRepository.findByEmail(customer.getEmail());
+		if(account.isPresent()) {
 			message = messageSource.getMessage("account.email.email-existed", 
 					null, LocaleContextHolder.getLocale());
-
-			log.error(message + ": " + user.toString());
-			throw new RequestException(message, HttpStatus.CONFLICT.value(), 
+			
+			log.error(message + ": " + customer.getEmail());
+			throw new RequestException(message, HttpStatus.BAD_REQUEST.value(),
 					"account.email.email-existed");
 		}
 
 		// Set info user
-		role = roleService.findByRole(EnumRole.USER);
-		user.setPassword(encryptionService.encrypt(user.getPassword()));
-		user.setVerify(false);
-		user.setStatus(EnumStatus.ACTIVE);
-		user.setLoginAttempt(0);
-		user.setFirstTimeLogin(true);
-		user.setRole(role);
+		role = roleRepository.findByRole(EnumRole.ROLE_USER);
+		if(!role.isPresent()) {
+			message = messageSource
+					.getMessage("role.role-notfound", 
+							null, LocaleContextHolder.getLocale());
+
+			log.error(message);
+			throw new RequestException(message, HttpStatus.NOT_FOUND.value(),
+					"role.role-notfound");
+		}
+		
+		customer.setPassword(encryptionService.encrypt(customer.getPassword()));
+		customer.setVerify(false);
+		customer.setStatus(EnumStatus.ACTIVE);
+		customer.setLoginAttempt(0);
+		customer.setFirstTimeLogin(true);
+		customer.setRole(role.get());
 		
 		// Create user
-		customerService.create(user);
+		try {
+			customerRepository.save(customer);
+			message = messageSource.getMessage("account.insert-successed", 
+					null, LocaleContextHolder.getLocale());
+			
+			log.info(message + ": " + customer.toString());
+		} catch (Exception e) {
+			message = messageSource.getMessage("account.insert-failed", 
+					null, LocaleContextHolder.getLocale());
+			
+			log.error(message + ": " + customer.toString());
+			throw new RequestException(message, HttpStatus.BAD_REQUEST.value(),
+					"account.insert-failed");
+		}
 
 		// Create otp, link and mail info
 		otp = randOTP() + "";        // Generate OTP
-		link = generateLink(user.getEmail(), otp);        // Generate link verify
+		link = generateLink(customer.getEmail(), otp);        // Generate link verify
 		fullname = userDTO.getLastname() + " " + userDTO.getFirstname();
 
 		// Send mail
 		try {
 			mailBody = readTemplateMailFreemarker(absolutePath, otp, link, fullname);
-			mailService.send(user.getEmail(), "VERIFY ACCOUNT", mailBody);
+			mailService.send(customer.getEmail(), "VERIFY ACCOUNT", mailBody);
 		} catch (Exception e) {
 			message = messageSource
 					.getMessage("mail.sendmail.templatefreemarker.templatefreemarker-notgenerated", 
@@ -123,9 +150,22 @@ public class RegisterServiceImpl implements RegisterService {
 				.otp(otp)
 				.expirationTime(currentDateTime.plusMinutes(5))
 				.typeOTP(EnumTypeOTP.REGISTER)
-				.account(user).build();
+				.account(customer).build();
 
-		verifyService.create(verify);
+		try {
+			verifyRepository.save(verify);
+			message = messageSource.getMessage("verify.insert-successed", 
+					null, LocaleContextHolder.getLocale());
+			
+			log.info(message + ": " + verify);
+		} catch (Exception e) {
+			message = messageSource.getMessage("verify.insert-failed", 
+					null, LocaleContextHolder.getLocale());
+			
+			log.error(message + ": " + verify);
+			throw new RequestException(message, HttpStatus.BAD_REQUEST.value(),
+					"verify.insert-failed");
+		}
 
 		return userDTO;
 	}
@@ -141,7 +181,7 @@ public class RegisterServiceImpl implements RegisterService {
 
 	// Method return link verify
 	private String generateLink(String username, String otp) {
-		String link = baseUrl + "/register/verify/link/" + otp;
+		String link = baseUrlCommon + "/register/verify/link/" + otp;
 		return link;
 	}
 

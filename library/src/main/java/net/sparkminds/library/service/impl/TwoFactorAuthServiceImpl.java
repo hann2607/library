@@ -1,5 +1,7 @@
 package net.sparkminds.library.service.impl;
 
+import java.util.Optional;
+
 import org.springframework.context.MessageSource;
 import org.springframework.context.i18n.LocaleContextHolder;
 import org.springframework.http.HttpStatus;
@@ -13,9 +15,9 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
 import net.sparkminds.library.dto.mfa.MfaRequest;
 import net.sparkminds.library.dto.mfa.MfaResponse;
-import net.sparkminds.library.entity.Customer;
+import net.sparkminds.library.entity.Account;
 import net.sparkminds.library.exception.RequestException;
-import net.sparkminds.library.service.CustomerService;
+import net.sparkminds.library.repository.AccountRepository;
 import net.sparkminds.library.service.TwoFactorAuthService;
 
 @Service
@@ -23,7 +25,7 @@ import net.sparkminds.library.service.TwoFactorAuthService;
 @Log4j2
 public class TwoFactorAuthServiceImpl implements TwoFactorAuthService {
 
-	private final CustomerService customerService;
+	private final AccountRepository accountRepository;
 	private final MessageSource messageSource;
 	private final GoogleAuthenticator GOOGLE_AUTH = new GoogleAuthenticator();
 
@@ -45,11 +47,11 @@ public class TwoFactorAuthServiceImpl implements TwoFactorAuthService {
 
 	@Override
 	public void verifyTwoFactorAuth(String email, String secret) {
-		Customer customer = null;
+		Optional<Account> account = null;
 		String message = null;
 		
-		customer = customerService.findByEmail(email);
-		if(customer == null) {
+		account = accountRepository.findByEmail(email);
+		if(!account.isPresent()) {
 			message = messageSource.getMessage("account.email.email-notfound", 
 					null, LocaleContextHolder.getLocale());
 			
@@ -58,9 +60,22 @@ public class TwoFactorAuthServiceImpl implements TwoFactorAuthService {
 					"account.email.email-notfound");
 		}
 		
-		customer.setMfa(true);
-		customer.setSecret(secret);
+		account.get().setMfa(true);
+		account.get().setSecret(secret);
 		
-		customerService.update(customer);
+		try {
+			accountRepository.save(account.get());
+			message = messageSource.getMessage("account.update-successed", 
+					null, LocaleContextHolder.getLocale());
+			
+			log.info(message + ": " + account.get().toString());
+		} catch (Exception e) {
+			message = messageSource.getMessage("account.update-failed", 
+					null, LocaleContextHolder.getLocale());
+			
+			log.error(message + ": " + account.get().toString());
+			throw new RequestException(message, HttpStatus.BAD_REQUEST.value(),
+					"account.update-failed");
+		}
 	}
 }

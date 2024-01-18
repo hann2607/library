@@ -20,7 +20,6 @@ import org.springframework.web.cors.CorsConfigurationSource;
 import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
 
 import lombok.RequiredArgsConstructor;
-import net.sparkminds.library.enumration.EnumRole;
 import net.sparkminds.library.jwt.JwtFilter;
 
 @Configuration
@@ -37,19 +36,20 @@ public class WebSecurityConfig {
 		http.csrf(csrf -> csrf.disable());
 
 		http.authorizeHttpRequests(auth -> {
+
 			// Decentralized access to system resources
 			auth.requestMatchers("/api/v1/common/**", "/resources/**", "/static/**", "/assets/**", "/lib/**",
 					"/popup/**", "/swagger-ui/**", "/v3/api-docs/**").permitAll();
 
-			auth.requestMatchers("/api/v1/admin/**").hasAnyRole(EnumRole.ADMIN.toString());
-			auth.requestMatchers("/api/v1/user/**").hasAnyRole(EnumRole.USER.toString());
+			auth.requestMatchers("/api/v1/admin/**").hasAnyRole("ADMIN");
+			auth.requestMatchers("/api/v1/user/**").hasAnyRole("USER");
+
 			// All remaining paths must be authentic
 			auth.anyRequest().authenticated();
 		});
 
 		http.sessionManagement(management -> management.sessionCreationPolicy(SessionCreationPolicy.STATELESS));
-		http.addFilterBefore(requestFilter, UsernamePasswordAuthenticationFilter.class);
-
+	    http.addFilterBefore(requestFilter, UsernamePasswordAuthenticationFilter.class);
 		return http.build();
 	}
 
@@ -65,16 +65,15 @@ public class WebSecurityConfig {
 
 	@Bean
 	CorsConfigurationSource corsConfigurationSource() {
-        CorsConfiguration configuration = new CorsConfiguration();
-        configuration.setAllowedOrigins(List.of("*"));
-        configuration.setAllowCredentials(true);
-        configuration.setAllowedHeaders(Arrays.asList("Access-Control-Allow-Headers",
-                "Access-Control-Allow-Origin","Access-Control-Request-Method",
-                "Access-Control-Request-Headers","Origin","Cache-Control", "Content-Type",
-                "Authorization"));
-        configuration.setAllowedMethods(Arrays.asList("DELETE", "GET", "POST", "PATCH", "PUT"));
-        UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
-        source.registerCorsConfiguration("/**", configuration);
-        return source;
-    }
+		CorsConfiguration configuration = new CorsConfiguration();
+		configuration.setAllowedOrigins(List.of("*"));
+		configuration.setAllowCredentials(true);
+		configuration.setAllowedHeaders(Arrays.asList("Access-Control-Allow-Headers", "Access-Control-Allow-Origin",
+				"Access-Control-Request-Method", "Access-Control-Request-Headers", "Origin", "Cache-Control",
+				"Content-Type", "Authorization"));
+		configuration.setAllowedMethods(Arrays.asList("DELETE", "GET", "POST", "PATCH", "PUT"));
+		UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
+		source.registerCorsConfiguration("/**", configuration);
+		return source;
+	}
 }

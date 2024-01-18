@@ -11,8 +11,10 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Optional;
 import java.util.Random;
 
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.MessageSource;
 import org.springframework.context.i18n.LocaleContextHolder;
 import org.springframework.http.HttpStatus;
@@ -21,6 +23,7 @@ import org.springframework.stereotype.Service;
 import freemarker.template.Configuration;
 import freemarker.template.Template;
 import jakarta.mail.MessagingException;
+import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
 import net.sparkminds.library.entity.Account;
@@ -28,149 +31,236 @@ import net.sparkminds.library.entity.Customer;
 import net.sparkminds.library.entity.Verify;
 import net.sparkminds.library.enumration.EnumTypeOTP;
 import net.sparkminds.library.exception.RequestException;
-import net.sparkminds.library.service.AccountService;
-import net.sparkminds.library.service.CustomerService;
+import net.sparkminds.library.repository.AccountRepository;
+import net.sparkminds.library.repository.CustomerRepository;
+import net.sparkminds.library.repository.VerifyRepository;
 import net.sparkminds.library.service.MailService;
 import net.sparkminds.library.service.VerifyAccountService;
-import net.sparkminds.library.service.VerifyService;
 
 @Service
 @RequiredArgsConstructor
 @Log4j2
 public class VerifyAccountServiceImpl implements VerifyAccountService {
 
-	private final AccountService accountService; // handle entity Account
-	private final CustomerService customerService; // handle entity Account
-	private final MessageSource messageSource; // Get message error from MessageError.properties
-	private final MailService mailService; // Sending mail
-	private final VerifyService verifyService; // Handle entities Verify
-	private final String baseUrl = "http://localhost:8080/api/v1/common";
+	private final AccountRepository accountRepository;        // handle entity Account
+	private final CustomerRepository customerRepository;        // handle entity Account
+	private final MessageSource messageSource;        // Get message error from MessageError.properties
+	private final MailService mailService;        // Sending mail
+	private final VerifyRepository verifyRepository;        // Handle entities Verify
+	
+	@Value("${baseUrlCommon}")
+	private String baseUrlCommon;
 
 	@Override
+	@Transactional(rollbackOn = Exception.class)
 	public void verifyAccountByLink(String otp) {
-		Verify verify = null; // model verify
-		LocalDateTime currentDateTime = null; // current date time using check expirationTime
-		Customer user = null; // model user
-		String message = null; // message error or success
-		Long verifyId = null; // verify id, if verify success --> delete by Id
+		Optional<Verify> verify = null;        // model verify
+		LocalDateTime currentDateTime = null;        // current date time using check expirationTime
+		Optional<Customer> customer = null;        // model user
+		String message = null;        // message error or success
+		Long verifyId = null;        // verify id, if verify success --> delete by Id
 
 		// Find verify by OTP(Link and OTP is one row in DB)
-		verify = verifyService.findByOtp(otp);
-		if (verify == null) {
-			message = messageSource.getMessage("verify.link.link-notfound", null, LocaleContextHolder.getLocale());
+		verify = verifyRepository.findByOtp(otp);
+		if(!verify.isPresent()) {
+			message = messageSource.getMessage("verify.link.link-notfound", 
+					null, LocaleContextHolder.getLocale());
 			log.error(message);
-			throw new RequestException(message, HttpStatus.NOT_FOUND.value(), "verify.link.link-notfound");
+			throw new RequestException(message, HttpStatus.NOT_FOUND.value(), 
+					"verify.link.link-notfound");
 		}
 
-		verifyId = verify.getId();
+		verifyId = verify.get().getId();
 		currentDateTime = LocalDateTime.now();
-		long seconds = Duration.between(currentDateTime, verify.getExpirationTime()).getSeconds();
+		long seconds = Duration.between(currentDateTime, verify.get().getExpirationTime()).getSeconds();
 
 		// Check time link
 		if (seconds <= 0) {
 			// Delete verify
-			verifyService.delete(verifyId);
+			try {
+				verifyRepository.deleteById(verifyId);
+				message = messageSource.getMessage("verify.delete-successed", 
+						null, LocaleContextHolder.getLocale());
+				
+				log.info(message + ": " + verifyId);
+			} catch (Exception e) {
+				message = messageSource.getMessage("verify.delete-failed", 
+						null, LocaleContextHolder.getLocale());
+				
+				log.error(message + ": " + verifyId);
+				throw new RequestException(message, HttpStatus.BAD_REQUEST.value(),
+						"verify.delete-failed");
+			}
 			message = messageSource.getMessage("verify.link.link-expired", null, LocaleContextHolder.getLocale());
 			log.error(message);
 			throw new RequestException(message, HttpStatus.BAD_REQUEST.value(), "verify.link.link-expired");
 		}
 
-		user = customerService.findById(verify.getAccount().getId());
-		if (user == null) {
+		customer = customerRepository.findById(verify.get().getAccount().getId());
+		if (!customer.isPresent()) {
 			message = messageSource.getMessage("user.id.user-notexisted", null, LocaleContextHolder.getLocale());
 
 			log.error(message);
 			throw new RequestException(message, HttpStatus.BAD_REQUEST.value(), "user.id.user-notexisted");
 		}
 
-		user.setVerify(true);
+		customer.get().setVerify(true);
 
-		// Update isVerify account
-		customerService.update(user);
+		// Update isVerify account		
+		try {
+			customerRepository.save(customer.get());
+			message = messageSource.getMessage("account.update-successed", 
+					null, LocaleContextHolder.getLocale());
+			
+			log.info(message + ": " + customer.get().toString());
+		} catch (Exception e) {
+			message = messageSource.getMessage("account.update-failed", 
+					null, LocaleContextHolder.getLocale());
+			
+			log.error(message + ": " + customer.get().toString());
+			throw new RequestException(message, HttpStatus.BAD_REQUEST.value(),
+					"account.update-failed");
+		}
 
 		// Delete verify
-		verifyService.delete(verifyId);
+		try {
+			verifyRepository.deleteById(verifyId);
+			message = messageSource.getMessage("verify.delete-successed", 
+					null, LocaleContextHolder.getLocale());
+			
+			log.info(message + ": " + verifyId);
+		} catch (Exception e) {
+			message = messageSource.getMessage("verify.delete-failed", 
+					null, LocaleContextHolder.getLocale());
+			
+			log.error(message + ": " + verifyId);
+			throw new RequestException(message, HttpStatus.BAD_REQUEST.value(),
+					"verify.delete-failed");
+		}
 	}
 
 	@Override
+	@Transactional(rollbackOn = Exception.class)
 	public void verifyAccountByOTP(String otp) {
-		Verify verify = null; // model verify
-		LocalDateTime currentDateTime = null; // current date time using check expirationTime
-		Customer user = null; // model user
-		String message = null; // message error or success
-		Long verifyId = null; // verify id, if verify success --> delete by Id
+		Optional<Verify> verify = null;        // model verify
+		LocalDateTime currentDateTime = null;        // current date time using check expirationTime
+		Optional<Customer> customer = null;        // model user
+		String message = null;        // message error or success
+		Long verifyId = null;        // verify id, if verify success --> delete by Id
 
 		// Find verify by OTP(Link and OTP is one row in DB)
-		verify = verifyService.findByOtp(otp);
-		if (verify == null) {
-			message = messageSource.getMessage("verify.otp.otp-notfound", null, LocaleContextHolder.getLocale());
+		verify = verifyRepository.findByOtp(otp);
+		if(!verify.isPresent()) {
+			message = messageSource.getMessage("verify.link.link-notfound", 
+					null, LocaleContextHolder.getLocale());
 			log.error(message);
-			throw new RequestException(message, HttpStatus.NOT_FOUND.value(), "verify.otp.otp-notfound");
+			throw new RequestException(message, HttpStatus.NOT_FOUND.value(), 
+					"verify.link.link-notfound");
 		}
 
-		verifyId = verify.getId();
+		verifyId = verify.get().getId();
 		currentDateTime = LocalDateTime.now();
-		long seconds = Duration.between(currentDateTime, verify.getExpirationTime()).getSeconds();
+		long seconds = Duration.between(currentDateTime, verify.get().getExpirationTime()).getSeconds();
 
 		// Check time link
 		if (seconds <= 0) {
 			// Delete verify
-			verifyService.delete(verifyId);
+			try {
+				verifyRepository.deleteById(verifyId);
+				message = messageSource.getMessage("verify.delete-successed", 
+						null, LocaleContextHolder.getLocale());
+				
+				log.info(message + ": " + verifyId);
+			} catch (Exception e) {
+				message = messageSource.getMessage("verify.delete-failed", 
+						null, LocaleContextHolder.getLocale());
+				
+				log.error(message + ": " + verifyId);
+				throw new RequestException(message, HttpStatus.BAD_REQUEST.value(),
+						"verify.delete-failed");
+			}
+			
 			message = messageSource.getMessage("verify.otp.otp-expired", null, LocaleContextHolder.getLocale());
 			log.error(message);
 			throw new RequestException(message, HttpStatus.BAD_REQUEST.value(), "verify.otp.otp-expired");
 		}
 
-		user = customerService.findById(verify.getAccount().getId());
-		if (user == null) {
+		customer = customerRepository.findById(verify.get().getAccount().getId());
+		if (!customer.isPresent()) {
 			message = messageSource.getMessage("user.id.user-notexisted", null, LocaleContextHolder.getLocale());
 
 			log.error(message);
 			throw new RequestException(message, HttpStatus.BAD_REQUEST.value(), "user.id.user-notexisted");
 		}
 
-		user.setVerify(true);
+		customer.get().setVerify(true);
 
 		// Update isVerify account
-		customerService.update(user);
+		try {
+			customerRepository.save(customer.get());
+			message = messageSource.getMessage("account.update-successed", 
+					null, LocaleContextHolder.getLocale());
+			
+			log.info(message + ": " + verifyId);
+		} catch (Exception e) {
+			message = messageSource.getMessage("account.update-failed", 
+					null, LocaleContextHolder.getLocale());
+			
+			log.error(message + ": " + verifyId);
+			throw new RequestException(message, HttpStatus.BAD_REQUEST.value(),
+					"account.update-failed");
+		}
 
 		// Delete verify
-		verifyService.delete(verifyId);
+		try {
+			verifyRepository.deleteById(verifyId);
+			message = messageSource.getMessage("verify.delete-successed", 
+					null, LocaleContextHolder.getLocale());
+			
+			log.info(message + ": " + verifyId);
+		} catch (Exception e) {
+			message = messageSource.getMessage("verify.delete-failed", 
+					null, LocaleContextHolder.getLocale());
+			
+			log.error(message + ": " + verifyId);
+			throw new RequestException(message, HttpStatus.BAD_REQUEST.value(),
+					"verify.delete-failed");
+		}
 	}
 
 	@Override
 	public void resendOtpAndLink(String email) {
-		Customer user = null; // model user
-		Account account = null; // model account
-		Verify verify = null; // model verify
-		List<Verify> verifies = new ArrayList<>(); // Get list verify by account
+		Optional<Customer> customer = null;        // model user
+		Optional<Account> account = null;        // model account
+		Verify verify = null;        // model verify
+		List<Verify> verifies = new ArrayList<>();        // Get list verify by account
 		LocalDateTime currentDateTime = LocalDateTime.now();
-		; // current date time for check expiration time
-		String otp = null; // OTP random
-		String link = null; // generate link
-		String message = null; // message error or success
-		String fullname = null; // fullname of user for send mail
-		String mailBody = null; // mail info
+		;        // current date time for check expiration time
+		String otp = null;        // OTP random
+		String link = null;        // generate link
+		String message = null;        // message error or success
+		String fullname = null;        // fullname of user for send mail
+		String mailBody = null;        // mail info
 
 		// path template mail freemarker
 		Path resourceDirectory = Paths.get("src", "main", "resources");
 		String absolutePath = resourceDirectory.toFile().getAbsolutePath();
 
 		// find user and account
-		user = customerService.findByEmail(email);
-		account = accountService.findByEmail(email).get(0);
-
-		// check user and account != null --> verify
-		if (user == null || account == null) {
-			message = messageSource.getMessage("account.email.email-notfound", null, LocaleContextHolder.getLocale());
-
-			log.error(message);
-			throw new RequestException(message, HttpStatus.BAD_REQUEST.value(), "account.email.email-notfound");
+		customer = customerRepository.findByEmail(email);
+		account = accountRepository.findByEmail(email);
+		if(!account.isPresent() || !customer.isPresent()) {
+			message = messageSource.getMessage("account.email.email-notfound", 
+					null, LocaleContextHolder.getLocale());
+			
+			log.error(message + ": " + email);
+			throw new RequestException(message, HttpStatus.NOT_FOUND.value(),
+					"account.email.email-notfound");
 		}
 
-		otp = randOTP() + ""; // Generate OTP
-		link = generateLink(email, otp); // Generate link verify
-		fullname = user.getLastname() + " " + user.getFirstname(); // fullname of user
+		otp = randOTP() + "";        // Generate OTP
+		link = generateLink(email, otp);        // Generate link verify
+		fullname = customer.get().getLastname() + " " + customer.get().getFirstname();        // fullname of user
 
 		try {
 			// mail info
@@ -184,7 +274,14 @@ public class VerifyAccountServiceImpl implements VerifyAccountService {
 		}
 
 		// get list verifies by account
-		verifies = verifyService.findByAccountId(user.getId());
+		verifies = verifyRepository.findByAccountId(customer.get().getId());
+		if(!verifies.isEmpty()) {
+			message = messageSource.getMessage("verify.accountid.find-successed", 
+					null, LocaleContextHolder.getLocale());
+			
+			log.info(message + ": " + customer.get().getId());	
+		} 
+
 		for (Verify v : verifies) {
 
 			// check verify has type 'REGISTER'
@@ -200,18 +297,44 @@ public class VerifyAccountServiceImpl implements VerifyAccountService {
 			verify.setOtp(otp);
 
 			// update verify
-			verifyService.update(verify);
+			try {
+				verifyRepository.save(verify);
+				message = messageSource.getMessage("verify.insert-successed", 
+						null, LocaleContextHolder.getLocale());
+				
+				log.info(message + ": " + verify);
+			} catch (Exception e) {
+				message = messageSource.getMessage("verify.insert-failed", 
+						null, LocaleContextHolder.getLocale());
+				
+				log.error(message + ": " + verify);
+				throw new RequestException(message, HttpStatus.BAD_REQUEST.value(),
+						"verify.insert-failed");
+			}
 		} else {
 			// if verify == null -> create new verify
 			verify = Verify.builder().link(link).otp(otp).expirationTime(currentDateTime.plusMinutes(5))
-					.typeOTP(EnumTypeOTP.REGISTER).account(account).build();
+					.typeOTP(EnumTypeOTP.REGISTER).account(account.get()).build();
 
-			verifyService.create(verify);
+			try {
+				verifyRepository.save(verify);
+				message = messageSource.getMessage("verify.insert-successed", 
+						null, LocaleContextHolder.getLocale());
+				
+				log.info(message + ": " + verify);
+			} catch (Exception e) {
+				message = messageSource.getMessage("verify.insert-failed", 
+						null, LocaleContextHolder.getLocale());
+				
+				log.error(message + ": " + verify);
+				throw new RequestException(message, HttpStatus.BAD_REQUEST.value(),
+						"verify.insert-failed");
+			}
 		}
 
 		// send mail
 		try {
-			mailService.send(user.getEmail(), "VERIFY ACCOUNT", mailBody);
+			mailService.send(customer.get().getEmail(), "VERIFY ACCOUNT", mailBody);
 			message = messageSource.getMessage("verify.resend.resend-successed", null, LocaleContextHolder.getLocale());
 
 			log.info(message);
@@ -225,9 +348,9 @@ public class VerifyAccountServiceImpl implements VerifyAccountService {
 	// Method generate mail info
 	private String readTemplateMailFreemarker(String absolutePath, String otp, String link, String fullname)
 			throws IOException {
-		Writer out = null; // work with StringWriter
-		Map<String, Object> templateData = new HashMap<>(); // data for template freemarker
-		String message = null; // message error or success
+		Writer out = null;        // work with StringWriter
+		Map<String, Object> templateData = new HashMap<>();        // data for template freemarker
+		String message = null;        // message error or success
 
 		try {
 			// Load template HTML from file freemarker
@@ -268,7 +391,7 @@ public class VerifyAccountServiceImpl implements VerifyAccountService {
 
 	// Method return link verify
 	private String generateLink(String username, String otp) {
-		String link = baseUrl + "/register/verify/link/" + otp;
+		String link = baseUrlCommon + "/register/verify/link/" + otp;
 		return link;
 	}
 }

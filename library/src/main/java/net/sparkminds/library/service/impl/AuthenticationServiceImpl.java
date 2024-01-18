@@ -23,22 +23,21 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
+import com.warrenstrange.googleauth.GoogleAuthenticator;
+
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
 import net.sparkminds.library.dto.jwt.JwtRequest;
 import net.sparkminds.library.dto.jwt.JwtResponse;
 import net.sparkminds.library.dto.jwt.RefreshTokenRequest;
 import net.sparkminds.library.entity.Account;
-import net.sparkminds.library.entity.Customer;
 import net.sparkminds.library.entity.Session;
-import net.sparkminds.library.event.authentication.AuthenticationEvent;
-import net.sparkminds.library.event.authentication.VerifyAccountEvent;
+import net.sparkminds.library.event.authentication.AuthenticationFailureEvent;
 import net.sparkminds.library.exception.RequestException;
 import net.sparkminds.library.jwt.JwtUtil;
-import net.sparkminds.library.service.AccountService;
+import net.sparkminds.library.repository.AccountRepository;
+import net.sparkminds.library.repository.SessionRepository;
 import net.sparkminds.library.service.AuthenticationService;
-import net.sparkminds.library.service.CustomerService;
-import net.sparkminds.library.service.SessionService;
 
 @Service
 @RequiredArgsConstructor
@@ -46,16 +45,18 @@ import net.sparkminds.library.service.SessionService;
 public class AuthenticationServiceImpl implements AuthenticationService {
 
 	private final JwtUtil jwtUtil;
-	private final AccountService accountService;
-	private final SessionService sessionService;
+	private final AccountRepository accountRepository;
+	private final SessionRepository sessionRepository;
 	private final UserDetailsServiceImpl userDetailsService;
 	private final AuthenticationManager authenticationManager;
 	private final MessageSource messageSource;
 	private final ApplicationEventPublisher eventPublisher;
+	private final GoogleAuthenticator GOOGLE_AUTH = new GoogleAuthenticator();
 
 	@Override
 	public JwtResponse authentication(JwtRequest jwtRequest) {
-		Account account = null;
+		Optional<Account> account = null;
+		String message = null;
 		
 		// Login success
 		if (authenticateUser(jwtRequest)) {
@@ -64,9 +65,31 @@ public class AuthenticationServiceImpl implements AuthenticationService {
 					.collect(Collectors.toList());
 			
 			// Reset login attempt
-			account = accountService.findByEmail(jwtRequest.getUsername()).get(0);
-			account.setLoginAttempt(0);
-			accountService.update(account);
+			account = accountRepository.findByEmail(jwtRequest.getUsername());
+			if(!account.isPresent()) {
+				message = messageSource.getMessage("account.email.email-notfound", 
+						null, LocaleContextHolder.getLocale());
+				
+				log.error(message + ": " + jwtRequest.getUsername());
+				throw new RequestException(message, HttpStatus.BAD_REQUEST.value(),
+						"account.email.email-notfound");
+			}
+			
+			account.get().setLoginAttempt(0);
+			try {
+				accountRepository.save(account.get());
+				message = messageSource.getMessage("account.update-successed", 
+						null, LocaleContextHolder.getLocale());
+				
+				log.info(message + ": " + account.get().toString());
+			} catch (Exception e) {
+				message = messageSource.getMessage("account.update-failed", 
+						null, LocaleContextHolder.getLocale());
+				
+				log.error(message + ": " + account.get().toString());
+				throw new RequestException(message, HttpStatus.BAD_REQUEST.value(),
+						"account.update-failed");
+			}
 
 			// Create token and refresh token
 			String JTI = UUID.randomUUID().toString();
@@ -76,10 +99,23 @@ public class AuthenticationServiceImpl implements AuthenticationService {
 
 			// Save to table session
 			Session session = Session.builder().jti(JTI).isLogin(true)
-					.refreshExpirationTime(convertDateToLocalDateTime(refreshTokenExpiration)).account(account)
-					.build();
+					.refreshExpirationTime(convertDateToLocalDateTime(refreshTokenExpiration))
+					.account(account.get()).build();
 
-			sessionService.create(session);
+			try {
+				sessionRepository.save(session);
+				message = messageSource.getMessage("session.insert-successed", 
+						null, LocaleContextHolder.getLocale());
+				
+				log.info(message + ": " + session.toString());
+			} catch (Exception e) {
+				message = messageSource.getMessage("session.insert-failed", 
+						null, LocaleContextHolder.getLocale());
+				
+				log.error(message + ": " + session.toString());
+				throw new RequestException(message, HttpStatus.BAD_REQUEST.value(),
+						"session.insert-failed");
+			}
 
 			JwtResponse jwtResponse = new JwtResponse(token, userDetails.getUsername(), roles, refreshToken);
 			
@@ -91,13 +127,58 @@ public class AuthenticationServiceImpl implements AuthenticationService {
 
 	private boolean authenticateUser(JwtRequest jwtRequest) {
 		String message = null;
+		Optional<Account> account = null;
 		
 		try {
 			authenticationManager.authenticate(
 					new UsernamePasswordAuthenticationToken(jwtRequest.getUsername(), jwtRequest.getPassword()));
 			
-			// handle event check verify account 
-			eventPublisher.publishEvent(new VerifyAccountEvent(this, jwtRequest));
+			// Find account
+			account = accountRepository.findByEmail(jwtRequest.getUsername());
+			if(!account.isPresent()) {
+				message = messageSource.getMessage("account.email.email-notfound", 
+						null, LocaleContextHolder.getLocale());
+				
+				log.error(message + ": " + jwtRequest.getUsername());
+				throw new RequestException(message, HttpStatus.BAD_REQUEST.value(),
+						"account.email.email-notfound");
+			}
+			
+			// Check verify account
+			if(!account.get().isVerify()) {
+				message = messageSource.getMessage("account.account-notVerified", 
+						null, LocaleContextHolder.getLocale());
+				
+				log.error(message);
+				throw new RequestException(message, HttpStatus.UNAUTHORIZED.value(),
+						"account.account-notVerified");
+			}
+				
+			// Check MFA enabled
+			if(account.get().isMfa()) {
+				// Check Code nullable
+				if(jwtRequest.getCode() == null || jwtRequest.getCode() == "") {
+					
+					message = messageSource.getMessage("account.mfa.code-invalid", 
+							null, LocaleContextHolder.getLocale());
+					
+					log.error(message);
+					throw new RequestException(message, HttpStatus.BAD_REQUEST.value(),
+							"account.mfa.code-invalid");
+				}
+				
+				// Check MFA
+				if(!GOOGLE_AUTH.authorize(account.get().getSecret(), Integer.parseInt(jwtRequest.getCode()))) {
+					
+					message = messageSource.getMessage("account.mfa-invalid", 
+							null, LocaleContextHolder.getLocale());
+					
+					log.error(message);
+					throw new RequestException(message, HttpStatus.BAD_REQUEST.value(),
+							"account.mfa-invalid");
+				}
+			}
+			
 			return true;
 		} catch (UsernameNotFoundException e) {
 			message = messageSource.getMessage("account.email.email-notfound", 
@@ -109,7 +190,7 @@ public class AuthenticationServiceImpl implements AuthenticationService {
 		} catch (BadCredentialsException e) {
 			
 			// handle event Authentication Failure 
-			eventPublisher.publishEvent(new AuthenticationEvent(this, jwtRequest));
+			eventPublisher.publishEvent(new AuthenticationFailureEvent(this, jwtRequest));
 			
 			message = messageSource.getMessage("account.password.password-invalid", 
 			null, LocaleContextHolder.getLocale());
@@ -119,7 +200,7 @@ public class AuthenticationServiceImpl implements AuthenticationService {
 					"account.password.password-invalid");
 		} 
 	}
-
+	
 	private static LocalDateTime convertDateToLocalDateTime(Date date) {
 		Instant instant = date.toInstant();
 		ZoneId zoneId = ZoneId.systemDefault();
@@ -139,7 +220,7 @@ public class AuthenticationServiceImpl implements AuthenticationService {
 		long seconds = 0;
 
 		refreshToken = refreshTokenRequest.getRefreshToken();
-		session = sessionService.findByJti(jwtUtil.extractJTI(refreshToken));
+		session = sessionRepository.findByJti(jwtUtil.extractJTI(refreshToken));
 
 		// Check if it's token?
 		if (!session.isPresent()) {

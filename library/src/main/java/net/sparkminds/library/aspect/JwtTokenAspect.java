@@ -17,7 +17,7 @@ import lombok.extern.log4j.Log4j2;
 import net.sparkminds.library.entity.Session;
 import net.sparkminds.library.exception.RequestException;
 import net.sparkminds.library.jwt.JwtUtil;
-import net.sparkminds.library.service.SessionService;
+import net.sparkminds.library.repository.SessionRepository;
 
 @Aspect
 @Component
@@ -25,7 +25,7 @@ import net.sparkminds.library.service.SessionService;
 @Log4j2
 public class JwtTokenAspect {
 	
-	private final SessionService sessionService;
+	private final SessionRepository sessionRepository;
 	private final MessageSource messageSource;
 	private final JwtUtil jwtUtil;
 	
@@ -46,7 +46,7 @@ public class JwtTokenAspect {
         	token = authHeader.substring(7);
         	JTI = jwtUtil.extractJTI(token);
             
-            session = sessionService.findByJti(JTI);
+            session = sessionRepository.findByJti(JTI);
             if(session.isPresent()) {
             	if(!session.get().isLogin()) {
             		message = messageSource.getMessage("account.account-logout", 
