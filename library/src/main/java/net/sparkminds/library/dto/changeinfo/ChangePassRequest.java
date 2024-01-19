@@ -1,6 +1,8 @@
-package net.sparkminds.library.dto.jwt;
+package net.sparkminds.library.dto.changeinfo;
 
 import java.io.Serializable;
+
+import org.hibernate.validator.constraints.Length;
 
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.validation.constraints.Pattern;
@@ -11,7 +13,7 @@ import lombok.NoArgsConstructor;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class JwtRequest implements Serializable{
+public class ChangePassRequest implements Serializable{
 	private static final long serialVersionUID = 1L;
 	
 	@Pattern(regexp = "^[a-zA-Z0-9_!#$%&’*+/=?`{|}~^.-]+@[a-zA-Z0-9.-]+$", 
@@ -20,10 +22,11 @@ public class JwtRequest implements Serializable{
 	private String username;
 	
 	@Pattern(regexp = "^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)(?=.*[#$@!%&*?])[A-Za-z\\d#$@!%&*?]{8,}$", 
-	message = "{account.password.password-invalid}")
-	@Schema(description = "Password", example = "Abc1234!")
+			message = "{account.password.password-invalid}")
+			@Schema(description = "Password", example = "Abc1234!")
 	private String password;
 	
-	@Schema(description = "Code MFA", example = "123456")
-	private String code;
+	@Length(min = 8, max = 60, message = "{account.newpassword.newpassword-invalidlength}")
+	@Schema(description = "New password", example = "12345678")
+	private String newPassword;
 }

@@ -45,6 +45,12 @@ public class Verify extends Auditable{
 	@Enumerated(EnumType.STRING)
 	private EnumTypeOTP typeOTP;
 	
+	@Column(name = "newPhone", nullable = true, unique = true, length = 10)
+	private String newPhone;
+	
+	@Column(name = "newEmail", nullable = true, unique = true, length = 100)
+	private String newEmail;
+	
 	@ManyToOne(optional=false)
     @JoinColumn(name="account_id", nullable=false)
     private Account account;

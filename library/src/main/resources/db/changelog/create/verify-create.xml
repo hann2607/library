@@ -19,8 +19,10 @@
 			<column name="otp" type="VARCHAR(6)" />
 			<column name="expiration_time" type="DATETIME" />
 			<column name="type_otp"
-				type="ENUM('REGISTER', 'FORGOTPASS', 'CHANGEPHONE')" />
+				type="ENUM('REGISTER', 'CHANGEEMAIL', 'CHANGEPHONE')" />
 			<column name="account_id" type="BIGINT" />
+			<column name="newPhone" type="VARCHAR(10)" />
+			<column name="newEmail" type="VARCHAR(100)" />
 		</createTable>
 		<addForeignKeyConstraint
 			baseColumnNames="account_id" baseTableName="verify"

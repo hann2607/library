@@ -75,7 +75,17 @@ public class AuthenticationServiceImpl implements AuthenticationService {
 						"account.email.email-notfound");
 			}
 			
+			if(account.get().isFirstTimeLogin()) {
+				message = messageSource.getMessage("account.changepass-firsttimelogin", 
+						null, LocaleContextHolder.getLocale());
+				
+				log.error(message);
+				throw new RequestException(message, HttpStatus.BAD_REQUEST.value(),
+						"account.changepass-firsttimelogin");
+			}
+			
 			account.get().setLoginAttempt(0);
+			account.get().setFirstTimeLogin(false);
 			try {
 				accountRepository.save(account.get());
 				message = messageSource.getMessage("account.update-successed", 
