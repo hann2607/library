@@ -14,7 +14,8 @@ import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import net.sparkminds.library.dto.changeinfo.ChangeEmailRequest;
 import net.sparkminds.library.dto.changeinfo.ChangePhoneRequest;
-import net.sparkminds.library.service.ChangeInfoService;
+import net.sparkminds.library.service.ChangeEmailService;
+import net.sparkminds.library.service.ChangePhoneService;
 
 @RestController
 @RequiredArgsConstructor
@@ -22,14 +23,15 @@ import net.sparkminds.library.service.ChangeInfoService;
 @Tag(name = "Change infomation account", description = "ChangeInfo APIs")
 public class ChangeInfoRestController {
 	
-	private final ChangeInfoService changeInfoService;
+	private final ChangePhoneService changePhoneService;
+	private final ChangeEmailService changeEmailService;
 	
 	@Operation(summary = "Change phone", 
 			description = "Change phone.", 
 			tags = { "Change infomation account", "post" })
 	@PostMapping("/changephone")
 	public ResponseEntity<Void> changePhone(@Valid @RequestBody ChangePhoneRequest changePhoneRequest) {
-		changeInfoService.changePhone(changePhoneRequest);
+		changePhoneService.changePhone(changePhoneRequest);
 		return ResponseEntity.ok().build();
 	}
 	
@@ -38,7 +40,7 @@ public class ChangeInfoRestController {
 			tags = { "Change infomation account", "post" })
 	@PostMapping("/verifychangephone")
 	public ResponseEntity<Void> verifyChangePhone(@Parameter(description = "OTP") @RequestParam("otp") String otp) {
-		changeInfoService.verifyChangePhone(otp);
+		changePhoneService.verifyChangePhone(otp);
 		return ResponseEntity.ok().build();
 	}
 	
@@ -47,7 +49,7 @@ public class ChangeInfoRestController {
 			tags = { "Change infomation account", "post" })
 	@PostMapping("/changeemail")
 	public ResponseEntity<Void> changeEmail(@Valid @RequestBody ChangeEmailRequest changeEmailRequest) {
-		changeInfoService.changeEmail(changeEmailRequest);
+		changeEmailService.changeEmail(changeEmailRequest);
 		return ResponseEntity.ok().build();
 	}
 	
@@ -56,7 +58,7 @@ public class ChangeInfoRestController {
 			tags = { "Change infomation account", "post" })
 	@PostMapping("/verifychangeemail")
 	public ResponseEntity<Void> verifyChangeEmail(@Parameter(description = "OTP") @RequestParam("otp") String otp) {
-		changeInfoService.verifyChangeEmail(otp);
+		changeEmailService.verifyChangeEmail(otp);
 		return ResponseEntity.ok().build();
 	}
 }

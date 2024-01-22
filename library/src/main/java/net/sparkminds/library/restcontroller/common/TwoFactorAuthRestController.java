@@ -20,7 +20,7 @@ import net.sparkminds.library.service.TwoFactorAuthService;
 @RequiredArgsConstructor
 @RequestMapping("/api/v1/common")
 @Tag(name = "MFA", description = "MFA APIs")
-public class TwoFactorAuthController {
+public class TwoFactorAuthRestController {
 	
 	private final TwoFactorAuthService twoFactorAuthService;
 	

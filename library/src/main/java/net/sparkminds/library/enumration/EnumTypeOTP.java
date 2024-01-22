@@ -1,5 +1,5 @@
 package net.sparkminds.library.enumration;
 
 public enum EnumTypeOTP {
-	REGISTER, CHANGEEMAIL, CHANGEPHONE
+	REGISTER, CHANGEEMAIL, CHANGEPHONE, RESETPASS
 }

@@ -19,10 +19,8 @@ public class AppConfig implements WebMvcConfigurer {
 	@Bean("messageSource")
 	MessageSource getMessageSource() {
 		ReloadableResourceBundleMessageSource messageSource = new ReloadableResourceBundleMessageSource();
-		messageSource.setBasenames("classpath:i18n/validationRegisterRequest", "classpath:i18n/validationAccount",
-				"classpath:i18n/validationAdmin", "classpath:i18n/validationSession", "classpath:i18n/validationUser",
-				"classpath:i18n/MessageError", "classpath:i18n/MessageSuccess",
-				"classpath:i18n/validationRefreshRequestToken");
+		messageSource.setBasenames("classpath:i18n/validation", "classpath:i18n/MessageError",
+				"classpath:i18n/MessageSuccess");
 		messageSource.setDefaultEncoding("UTF-8");
 		return messageSource;
 	}

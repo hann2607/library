@@ -144,11 +144,11 @@
                                                                             <strong>Cám ơn bạn đã sử dụng
                                                                                 website LibMana!</strong> <br> <br>
 
-                                                                            Bạn vừa thay đổi password, đây là password mới của bạn:
+                                                                            Bạn vừa thay đổi password, đây là OTP xác thực của bạn:
                                                                             <br>
                                                                             <p
                                                                                 style="font-size: 1.5em; font-weight: 750;">
-                                                                                <strong>Password: <br> ${newPass}</strong>
+                                                                                <strong>OTP: ${otp}</strong>
                                                                                 <br>
                                 
                                                                             </p>

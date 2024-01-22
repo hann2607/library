@@ -51,6 +51,9 @@ public class Verify extends Auditable{
 	@Column(name = "newEmail", nullable = true, unique = true, length = 100)
 	private String newEmail;
 	
+	@Column(name = "newPassword", nullable = true, unique = true, length = 100)
+	private String newPassword;
+	
 	@ManyToOne(optional=false)
     @JoinColumn(name="account_id", nullable=false)
     private Account account;

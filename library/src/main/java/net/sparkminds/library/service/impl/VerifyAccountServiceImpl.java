@@ -61,7 +61,7 @@ public class VerifyAccountServiceImpl implements VerifyAccountService {
 		Long verifyId = null;        // verify id, if verify success --> delete by Id
 
 		// Find verify by OTP(Link and OTP is one row in DB)
-		verify = verifyRepository.findByOtp(otp);
+		verify = verifyRepository.findByOtpAndTypeOTP(otp, EnumTypeOTP.REGISTER);
 		if(!verify.isPresent()) {
 			message = messageSource.getMessage("verify.link.link-notfound", 
 					null, LocaleContextHolder.getLocale());
@@ -149,7 +149,7 @@ public class VerifyAccountServiceImpl implements VerifyAccountService {
 		Long verifyId = null;        // verify id, if verify success --> delete by Id
 
 		// Find verify by OTP(Link and OTP is one row in DB)
-		verify = verifyRepository.findByOtp(otp);
+		verify = verifyRepository.findByOtpAndTypeOTP(otp, EnumTypeOTP.REGISTER);
 		if(!verify.isPresent()) {
 			message = messageSource.getMessage("verify.link.link-notfound", 
 					null, LocaleContextHolder.getLocale());
@@ -356,7 +356,7 @@ public class VerifyAccountServiceImpl implements VerifyAccountService {
 			// Load template HTML from file freemarker
 			Configuration cfg = new Configuration(Configuration.VERSION_2_3_30);
 			cfg.setClassForTemplateLoading(RegisterServiceImpl.class, "/");
-			Template template = cfg.getTemplate("/templatemail.ftl");
+			Template template = cfg.getTemplate("/templates/mail/templatemail-register.ftl");
 
 			// Fill data into the template
 			templateData.put("otp", otp);

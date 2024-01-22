@@ -196,7 +196,7 @@ public class RegisterServiceImpl implements RegisterService {
 			// Load template HTML from file freemarker
 			Configuration cfg = new Configuration(Configuration.VERSION_2_3_30);
 			cfg.setClassForTemplateLoading(RegisterServiceImpl.class, "/");
-			Template template = cfg.getTemplate("/templatemail.ftl");
+			Template template = cfg.getTemplate("/templates/mail/templatemail-register.ftl");
 
 			// Fill data into the template
 			templateData.put("otp", otp);
