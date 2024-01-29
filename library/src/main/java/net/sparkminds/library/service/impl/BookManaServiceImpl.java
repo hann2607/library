@@ -2,7 +2,9 @@ package net.sparkminds.library.service.impl;
 
 import java.io.IOException;
 import java.util.Optional;
+import java.util.UUID;
 
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.MessageSource;
 import org.springframework.context.i18n.LocaleContextHolder;
 import org.springframework.data.domain.Page;
@@ -24,7 +26,7 @@ import net.sparkminds.library.repository.BookRepository;
 import net.sparkminds.library.service.BookManaService;
 import net.sparkminds.library.service.criteria.BookCriteria;
 import net.sparkminds.library.service.query.BookQueryService;
-import net.sparkminds.library.util.ImageBase64Utils;
+import net.sparkminds.library.util.FileUtil;
 import tech.jhipster.service.filter.StringFilter;
 
 @Service
@@ -37,6 +39,9 @@ public class BookManaServiceImpl implements BookManaService {
 	private final BookRepository bookRepository;
 	private final BookQueryService bookQueryService;
 	
+	@Value("${BASEURL_RESOURCES}")
+	private String BASEURL_RESOURCES;
+	
 	@Override
 	@Transactional(rollbackFor = IOException.class)
 	public void create(BookManaRequest bookManaRequest) {
@@ -47,6 +52,8 @@ public class BookManaServiceImpl implements BookManaService {
 		Pageable pageable = PageRequest.of(0, 10);
 		String message = null;
 		String contentType = null;
+		String fileName = null;
+		String fileDir = null;
 		
 		titleFilter.setEquals(bookManaRequest.getTitle());
 		bookCriteria.setTitle(titleFilter);
@@ -61,7 +68,6 @@ public class BookManaServiceImpl implements BookManaService {
 		}
 
 		contentType = bookManaRequest.getCoverImageFile().getContentType();
-		System.out.println(contentType);
 		if (!("image/jpeg".equals(contentType)) && !("image/png".equals(contentType))) {
 			message = messageSource.getMessage("bookmanarequest.coverImageFile.coverImageFile-invalid", 
 					null, LocaleContextHolder.getLocale());
@@ -72,17 +78,21 @@ public class BookManaServiceImpl implements BookManaService {
 	    }      
 		
 		book = bookManaMapper.dtoToModel(bookManaRequest);
+		fileName = UUID.randomUUID().toString() + System.currentTimeMillis() +
+				bookManaRequest.getCoverImageFile().getOriginalFilename();
+		fileDir = BASEURL_RESOURCES + "/images/books";
 		try {
-			book.setCoverImageUrl(ImageBase64Utils.encodeMultipartFileToBase64(bookManaRequest.getCoverImageFile()));
+			FileUtil.saveMultipartFile(fileDir, fileName, bookManaRequest.getCoverImageFile());
 		} catch (IOException e) {
-			message = messageSource.getMessage("bookmanarequest.coverImageFile.coverImageFile-encodeerror", 
+			message = messageSource.getMessage("file.image.createimage-failed", 
 					null, LocaleContextHolder.getLocale());
 			
-			log.error(message + ": " + book.toString());
+			log.error(message + ": " + fileDir + "/" + fileName);
 			throw new RequestException(message, HttpStatus.BAD_REQUEST.value(),
-					"bookmanarequest.coverImageFile.coverImageFile-encodeerror");
+					"file.image.createimage-failed");
 		}
 		
+		book.setCoverImageUrl("/images/books/" + fileName);
 		try {
 			bookRepository.save(book);
 			message = messageSource.getMessage("book.insert-successed", 
@@ -108,6 +118,8 @@ public class BookManaServiceImpl implements BookManaService {
 		BookCriteria bookCriteria = new BookCriteria();
 		String message = null;
 		String contentType = null;
+		String fileName = null;
+		String fileDir = null;
 		
 		titleFilter.setEquals(bookManaRequest.getTitle());
 		bookCriteria.setTitle(titleFilter);
@@ -122,7 +134,6 @@ public class BookManaServiceImpl implements BookManaService {
 		}
 		
 		contentType = bookManaRequest.getCoverImageFile().getContentType();
-		System.out.println(contentType);
 		if (!("image/jpeg".equals(contentType)) && !("image/png".equals(contentType))) {
 			message = messageSource.getMessage("bookmanarequest.coverImageFile.coverImageFile-invalid", 
 					null, LocaleContextHolder.getLocale());
@@ -133,18 +144,33 @@ public class BookManaServiceImpl implements BookManaService {
 	    }  
 
 		book = bookManaMapper.dtoToModel(bookManaRequest);
+		fileName = UUID.randomUUID().toString() + System.currentTimeMillis() +
+				bookManaRequest.getCoverImageFile().getOriginalFilename();
+		fileDir = BASEURL_RESOURCES + "/images/books";
 		try {
-			System.out.println(ImageBase64Utils.encodeMultipartFileToBase64(bookManaRequest.getCoverImageFile()));
-			book.setCoverImageUrl(ImageBase64Utils.encodeMultipartFileToBase64(bookManaRequest.getCoverImageFile()));
+			FileUtil.saveMultipartFile(fileDir, fileName, bookManaRequest.getCoverImageFile());
 		} catch (IOException e) {
-			message = messageSource.getMessage("book.-bookmanarequest.coverImageFile.coverImageFile-invalid", 
+			message = messageSource.getMessage("file.image.createimage-failed", 
 					null, LocaleContextHolder.getLocale());
 			
-			log.error(message + ": " + book.toString());
+			log.error(message + ": " + fileDir + "/" + fileName);
 			throw new RequestException(message, HttpStatus.BAD_REQUEST.value(),
-					"bookmanarequest.coverImageFile.coverImageFile-invalid");
+					"file.image.createimage-failed");
 		}
+		
+		try {
+			FileUtil.deleteFile(BASEURL_RESOURCES + books.getContent().get(0).getCoverImageUrl());
+		} catch (IOException e1) {
+			message = messageSource.getMessage("file.image.deleteimage-failed", 
+					null, LocaleContextHolder.getLocale());
+			
+			log.error(message + ": " + fileDir + "/" + fileName);
+			throw new RequestException(message, HttpStatus.BAD_REQUEST.value(),
+					"file.image.deleteimage-failed");
+		}
+		
 		book.setId(books.getContent().get(0).getId());
+		book.setCoverImageUrl("/images/books/" + fileName);
 		try {
 			bookRepository.save(book);
 			message = messageSource.getMessage("book.update-successed", 
@@ -165,7 +191,6 @@ public class BookManaServiceImpl implements BookManaService {
 	public void delete(Long id) {
 		Optional<Book> book = null;
 		String message = null;
-		
 
 		book = bookRepository.findById(id);
 		if(!book.isPresent()) {

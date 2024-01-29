@@ -55,9 +55,9 @@ public class BookManaRestController {
 			description = "The response is BookManaRequest.", 
 			tags = { "Book management", "put" })
 	@PutMapping(value = "/update", consumes = { "multipart/form-data" })
-	public ResponseEntity<BookManaRequest> updateBook(@Valid @ModelAttribute BookManaRequest bookManaRequest) {
+	public ResponseEntity<Void> updateBook(@Valid @ModelAttribute BookManaRequest bookManaRequest) {
 		bookManaService.update(bookManaRequest);
-		return ResponseEntity.ok(bookManaRequest);
+		return ResponseEntity.ok().build();
 	}
 	
 	@Operation(summary = "Delete book", 

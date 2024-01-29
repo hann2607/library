@@ -1,5 +1,6 @@
 package net.sparkminds.library.service.impl;
 
+import java.io.File;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.math.BigDecimal;
@@ -8,8 +9,10 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
+import java.util.UUID;
 
 import org.apache.commons.lang3.StringUtils;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.MessageSource;
 import org.springframework.context.i18n.LocaleContextHolder;
 import org.springframework.core.io.ClassPathResource;
@@ -38,7 +41,7 @@ import net.sparkminds.library.repository.CategoryRepository;
 import net.sparkminds.library.service.HandleCSVService;
 import net.sparkminds.library.service.criteria.BookCriteria;
 import net.sparkminds.library.service.query.BookQueryService;
-import net.sparkminds.library.util.ImageBase64Utils;
+import net.sparkminds.library.util.FileUtil;
 import tech.jhipster.service.filter.StringFilter;
 
 @Service
@@ -56,6 +59,9 @@ public class HandleCSVImpl implements HandleCSVService{
             "language", "publisher", "price",
             "authorid", "categoryid"
     };
+	
+	@Value("${BASEURL_RESOURCES}")
+	private String BASEURL_RESOURCES;
 
 	@Override
 	@Transactional(rollbackFor = RequestException.class)
@@ -70,6 +76,7 @@ public class HandleCSVImpl implements HandleCSVService{
 		Optional<Category> category = null;
 		Long authorId = (long) 0;
 		Long categoryId = (long) 0;
+		String fileName = null;
 		ClassPathResource classPathResource = new ClassPathResource("images/default.jpg");
         Path path = null;
         
@@ -166,7 +173,9 @@ public class HandleCSVImpl implements HandleCSVService{
         			throw new RequestException(message, HttpStatus.BAD_REQUEST.value(),
         					"category.id.id-notfound");
         		}
-        		
+
+        		File defaultImageFile = path.toFile();
+				fileName = UUID.randomUUID().toString() + System.currentTimeMillis() + defaultImageFile.getName();
                 
         		Book book = Book.builder()
 						.title(record[0])
@@ -174,7 +183,7 @@ public class HandleCSVImpl implements HandleCSVService{
 						.totalPages(totalPagesValue)
 						.availableCopies(availableCopies)
 						.language(EnumLanguage.valueOf(record[4].toUpperCase()))
-						.coverImageUrl(ImageBase64Utils.encodeImageToBase64(path))
+						.coverImageUrl("/images/books/" + fileName)
 						.publisher(record[5])
 						.price(priceValue)
 						.status(EnumStatus.ACTIVE)
@@ -195,41 +204,62 @@ public class HandleCSVImpl implements HandleCSVService{
 	    } catch (Exception e) {
 	    	log.error(e.getMessage());
 			throw new RequestException(e.getMessage(), HttpStatus.BAD_REQUEST.value(), "file.csv.csv-invalid");
-		}
-        
+		}  
         
         // Add book to DB
-        books.forEach(book -> {
+        createBooks(books, path);
+	}
+	
+	private void createBooks(List<Book> books, Path path) {
+		books.forEach(book -> {
     		StringFilter titleFilter = new StringFilter();
     		Page<BookManaResponse> bookresponses = null;
     		BookCriteria bookCriteria = new BookCriteria();
     		Pageable pageable = PageRequest.of(0, 10);
-    		String mess = null;
+    		String message = null;
+    		String fileName = null;
+    		String fileDir = null;
     		
     		titleFilter.setEquals(book.getTitle());
     		bookCriteria.setTitle(titleFilter);
     		bookresponses = bookQueryService.findBookByCriteria(bookCriteria, pageable);
     		if(!bookresponses.isEmpty()) {
-    			mess = messageSource.getMessage("book.title.title-exists", 
+    			message = messageSource.getMessage("book.title.title-exists", 
     					null, LocaleContextHolder.getLocale());
     			
-    			log.error(mess + ": " + book.getTitle());
-    			throw new RequestException(mess, HttpStatus.BAD_REQUEST.value(),
+    			log.error(message + ": " + book.getTitle());
+    			throw new RequestException(message, HttpStatus.BAD_REQUEST.value(),
     					"book.title.title-exists");
     		}   
     		
     		try {
+    			File defaultImageFile = path.toFile();
+    			String prefix = "/images/books/";
+    			fileName = book.getCoverImageUrl().substring(prefix.length());
+        		fileDir = BASEURL_RESOURCES + "/images/books";
+    			FileUtil.saveFile(fileDir, fileName, defaultImageFile);
+
+            } catch (IOException e) {
+            	message = messageSource.getMessage("file.image.createimage-failed", 
+    					null, LocaleContextHolder.getLocale());
+    			
+    			log.error(message + ": " + fileDir + "/" + fileName);
+    			throw new RequestException(message, HttpStatus.BAD_REQUEST.value(),
+    					"file.image.createimage-failed");
+            }
+    		
+    		try {
     			bookRepository.save(book);
-    			mess = messageSource.getMessage("book.insert-successed", 
+    			message = messageSource.getMessage("book.insert-successed", 
     					null, LocaleContextHolder.getLocale());
     			
-    			log.info(mess + ": " + book.toString());
+    			log.info(message + ": " + book.toString());
     		} catch (Exception e) {
-    			mess = messageSource.getMessage("book.insert-failed", 
+    			message = messageSource.getMessage("book.insert-failed", 
     					null, LocaleContextHolder.getLocale());
     			
-    			log.error(mess + ": " + book.toString());
-    			throw new RequestException(mess, HttpStatus.BAD_REQUEST.value(),
+    			log.error(message + ": " + book.toString());
+    			throw new RequestException(message, HttpStatus.BAD_REQUEST.value(),
     					"book.insert-failed");
     		}
         });
