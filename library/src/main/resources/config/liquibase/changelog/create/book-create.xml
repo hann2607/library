@@ -20,7 +20,7 @@
 			<column name="totalPages" type="INT" />
 			<column name="availableCopies" type="INT" />
 			<column name="language" type="ENUM('VN', 'ENG')" />
-			<column name="coverImageUrl" type="LONGTEXT" />
+			<column name="coverImageUrl" type="VARCHAR(255)" />
 			<column name="publisher" type="VARCHAR(100)" />
 			<column name="price" type="DECIMAL(10, 0)" />
 			<column name="status" type="ENUM('ACTIVE', 'BLOCKED', 'DELETED')" />

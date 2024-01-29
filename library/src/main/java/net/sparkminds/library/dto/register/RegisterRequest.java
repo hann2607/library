@@ -48,7 +48,7 @@ public class RegisterRequest {
 	private String address;
 	
 	@NotBlank(message = "{registerrequest.avatar.avatar-notblank}")
-	@Length(max = 50000, message = "{registerrequest.avatar.avatar-length}")
+	@Length(max = 255, message = "{registerrequest.avatar.avatar-length}")
 	@Schema(description = "Avatar", example = "default.png")
 	private String avatar;
 }

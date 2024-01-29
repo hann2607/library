@@ -53,7 +53,7 @@ public class Book extends Auditable{
 	@Enumerated(EnumType.STRING)
 	private EnumLanguage language;
 	
-	@Column(name = "coverImageUrl", nullable = false, unique = false)
+	@Column(name = "coverImageUrl", nullable = false, unique = false, length = 255)
 	private String coverImageUrl;
 	
 	@Column(name = "publisher", nullable = false, unique = false, length = 100)

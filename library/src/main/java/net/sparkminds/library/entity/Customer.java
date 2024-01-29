@@ -47,6 +47,6 @@ public class Customer extends Account {
 	
 	@Column(name = "avatar")
 	@NotBlank(message = "{user.avatar.avatar-notblank}")
-	@Length(max = 50000, message = "{user.avatar.avatar-length}")
+	@Length(max = 255, message = "{user.avatar.avatar-length}")
 	private String avatar;
 }
