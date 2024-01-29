@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+	xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.0.xsd">
+
+	<changeSet id="create-table-author" author="root">
+		<preConditions onFail="CONTINUE"
+			onFailMessage="table author already exists">
+			<not>
+				<tableExists tableName="author" />
+			</not>
+		</preConditions>
+		<createTable tableName="author">
+			<column name="id" type="BIGINT" autoIncrement="true">
+				<constraints primaryKey="true" nullable="false" />
+			</column>
+			<column name="fullname" type="VARCHAR(100)" />
+			<column name="dateOfBirth" type="DATE" />
+			<column name="biography" type="VARCHAR(10000)" />
+			<column name="avatar" type="VARCHAR(255)"/>
+			<column name="nationality_id" type="BIGINT" />
+			<column name="status" type="ENUM('ACTIVE', 'BLOCKED', 'DELETED')" />
+		</createTable>
+		<addForeignKeyConstraint
+			baseColumnNames="nationality_id" baseTableName="author"
+			constraintName="fk_author_nationality" onDelete="CASCADE"
+			onUpdate="RESTRICT" referencedColumnNames="id"
+			referencedTableName="nationality" />
+	</changeSet>
+</databaseChangeLog>

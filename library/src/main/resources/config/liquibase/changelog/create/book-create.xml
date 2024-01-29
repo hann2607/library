@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+	xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.0.xsd">
+
+	<changeSet id="create-table-book" author="root">
+		<preConditions onFail="CONTINUE"
+			onFailMessage="table book already exists">
+			<not>
+				<tableExists tableName="book" />
+			</not>
+		</preConditions>
+		<createTable tableName="book">
+			<column name="id" type="BIGINT" autoIncrement="true">
+				<constraints primaryKey="true" nullable="false" />
+			</column>
+			<column name="title" type="VARCHAR(255)" />
+			<column name="description" type="LONGTEXT" />
+			<column name="totalPages" type="INT" />
+			<column name="availableCopies" type="INT" />
+			<column name="language" type="ENUM('VN', 'ENG')" />
+			<column name="coverImageUrl" type="LONGTEXT" />
+			<column name="publisher" type="VARCHAR(100)" />
+			<column name="price" type="DECIMAL(10, 0)" />
+			<column name="status" type="ENUM('ACTIVE', 'BLOCKED', 'DELETED')" />
+			<column name="author_id" type="BIGINT" />
+			<column name="category_id" type="BIGINT" />
+		</createTable>
+		<addForeignKeyConstraint
+			baseColumnNames="author_id" baseTableName="book"
+			constraintName="fk_book_author" onDelete="CASCADE"
+			onUpdate="RESTRICT" referencedColumnNames="id"
+			referencedTableName="author" />
+			
+		<addForeignKeyConstraint
+			baseColumnNames="category_id" baseTableName="book"
+			constraintName="fk_book_category" onDelete="CASCADE"
+			onUpdate="RESTRICT" referencedColumnNames="id"
+			referencedTableName="category" />
+	</changeSet>
+</databaseChangeLog>

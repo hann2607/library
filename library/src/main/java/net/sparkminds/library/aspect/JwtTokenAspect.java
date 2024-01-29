@@ -1,5 +1,10 @@
 package net.sparkminds.library.aspect;
 
+import java.time.Duration;
+import java.time.Instant;
+import java.time.LocalDateTime;
+import java.time.ZoneId;
+import java.util.Date;
 import java.util.Optional;
 
 import org.aspectj.lang.annotation.Aspect;
@@ -37,6 +42,7 @@ public class JwtTokenAspect {
 		String JTI = null;
 		HttpServletRequest request = null;
 		Optional<Session> session = null;
+		long seconds = 0;
 		
 		request = ((ServletRequestAttributes) RequestContextHolder
 				.currentRequestAttributes()).getRequest();
@@ -48,6 +54,17 @@ public class JwtTokenAspect {
             
             session = sessionRepository.findByJti(JTI);
             if(session.isPresent()) {
+            	
+            	// Check if it's refreshToken?
+    			seconds = Duration.between(session.get().getRefreshExpirationTime(),
+    					convertDateToLocalDateTime(jwtUtil.extractExpiration(token))).getSeconds();
+    			if (seconds == 0) {
+    				message = messageSource.getMessage("token.token-invalid", null,
+    						LocaleContextHolder.getLocale());
+    				log.error(message);
+    				throw new RequestException(message, HttpStatus.UNAUTHORIZED.value(), "token.token-invalid");
+    			}
+            	
             	if(!session.get().isLogin()) {
             		message = messageSource.getMessage("account.account-logout", 
         					null, LocaleContextHolder.getLocale());
@@ -59,4 +76,10 @@ public class JwtTokenAspect {
             }
         }  
     }
+	
+	private static LocalDateTime convertDateToLocalDateTime(Date date) {
+		Instant instant = date.toInstant();
+		ZoneId zoneId = ZoneId.systemDefault();
+		return LocalDateTime.ofInstant(instant, zoneId);
+	}
 }

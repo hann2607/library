@@ -32,7 +32,7 @@ import net.sparkminds.library.dto.jwt.JwtResponse;
 import net.sparkminds.library.dto.jwt.RefreshTokenRequest;
 import net.sparkminds.library.entity.Account;
 import net.sparkminds.library.entity.Session;
-import net.sparkminds.library.event.authentication.AuthenticationFailureEvent;
+import net.sparkminds.library.event.AuthenticationFailureEvent;
 import net.sparkminds.library.exception.RequestException;
 import net.sparkminds.library.jwt.JwtUtil;
 import net.sparkminds.library.repository.AccountRepository;

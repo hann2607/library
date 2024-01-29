@@ -20,7 +20,7 @@ import net.sparkminds.library.service.ValidPhoneNumber;
 @SuperBuilder
 @Getter
 @Setter
-@Table(name = "user")
+@Table(name = "customer")
 public class Customer extends Account {
 
 	@Column(name = "firstname", nullable = false, unique = false, length = 50)
@@ -45,8 +45,8 @@ public class Customer extends Account {
 	@Length(max = 255, message = "{user.address.address-length}")
 	private String address;
 	
-	@Column(name = "avatar", length = 255)
+	@Column(name = "avatar")
 	@NotBlank(message = "{user.avatar.avatar-notblank}")
-	@Length(max = 255, message = "{user.avatar.avatar-length}")
+	@Length(max = 50000, message = "{user.avatar.avatar-length}")
 	private String avatar;
 }

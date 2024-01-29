@@ -33,6 +33,7 @@ import net.sparkminds.library.exception.RequestException;
 import net.sparkminds.library.repository.AccountRepository;
 import net.sparkminds.library.repository.VerifyRepository;
 import net.sparkminds.library.service.EncryptionService;
+import net.sparkminds.library.service.LogoutService;
 import net.sparkminds.library.service.MailService;
 import net.sparkminds.library.service.PasswordService;
 
@@ -46,6 +47,7 @@ public class PasswordServiceImpl implements PasswordService{
 	private final MessageSource messageSource;
 	private final EncryptionService encryptionService;
 	private final MailService mailService;        // Sending mail
+	private final LogoutService logoutService;
 
 	@Override
 	@Transactional(rollbackOn = Exception.class)
@@ -292,5 +294,7 @@ public class PasswordServiceImpl implements PasswordService{
 			throw new RequestException(message, HttpStatus.BAD_REQUEST.value(),
 					"account.update-failed");
 		}
+		
+		logoutService.logout();
 	}
 }

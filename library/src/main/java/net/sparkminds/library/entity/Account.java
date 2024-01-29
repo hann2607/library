@@ -87,6 +87,10 @@ public class Account {
 	@ManyToOne(optional = false)
 	@JoinColumn(name = "role_id", nullable = false)
 	private Role role;
+	
+	@JsonIgnore
+    @OneToMany(mappedBy="account", fetch = FetchType.LAZY)
+    private List<Loan> loans;
 
 	@Override
 	public String toString() {

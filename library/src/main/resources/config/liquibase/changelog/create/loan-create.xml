@@ -4,30 +4,29 @@
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.0.xsd">
 
-	<changeSet id="create-table-verify" author="root">
+	<changeSet id="create-table-loan" author="root">
 		<preConditions onFail="CONTINUE"
-			onFailMessage="table verify already exists">
+			onFailMessage="table loan already exists">
 			<not>
-				<tableExists tableName="verify" />
+				<tableExists tableName="loan" />
 			</not>
 		</preConditions>
-		<createTable tableName="verify">
+		<createTable tableName="loan">
 			<column name="id" type="BIGINT" autoIncrement="true">
 				<constraints primaryKey="true" nullable="false" />
 			</column>
-			<column name="link" type="VARCHAR(255)" />
-			<column name="otp" type="VARCHAR(6)" />
-			<column name="expiration_time" type="DATETIME" />
-			<column name="type_otp"
-				type="ENUM('REGISTER', 'CHANGEEMAIL', 'CHANGEPHONE', 'RESETPASS')" />
+			<column name="loanDate" type="DATETIME" />
+			<column name="returnDate" type="DATETIME" />
+			<column name="actualReturnDate" type="DATETIME" />
+			<column name="totalPrice" type="DECIMAL(10, 2)" />
+			<column name="note" type="VARCHAR(255)" />
+			<column name="status" type="ENUM('BORROWED', 'RETURNED', 'OVERDUE')" />
 			<column name="account_id" type="BIGINT" />
-			<column name="newPhone" type="VARCHAR(10)" />
-			<column name="newEmail" type="VARCHAR(100)" />
-			<column name="newPassword" type="VARCHAR(100)" />
 		</createTable>
+		
 		<addForeignKeyConstraint
-			baseColumnNames="account_id" baseTableName="verify"
-			constraintName="fk_verify_account" onDelete="CASCADE"
+			baseColumnNames="account_id" baseTableName="loan"
+			constraintName="fk_loan_account" onDelete="CASCADE"
 			onUpdate="RESTRICT" referencedColumnNames="id"
 			referencedTableName="account" />
 	</changeSet>

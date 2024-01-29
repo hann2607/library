@@ -24,6 +24,7 @@ import net.sparkminds.library.repository.AccountRepository;
 import net.sparkminds.library.repository.CustomerRepository;
 import net.sparkminds.library.repository.VerifyRepository;
 import net.sparkminds.library.service.ChangePhoneService;
+import net.sparkminds.library.service.LogoutService;
 
 @Service
 @RequiredArgsConstructor
@@ -34,6 +35,7 @@ public class ChangePhoneServiceImpl implements ChangePhoneService {
 	private final CustomerRepository customerRepository;        // Handle entities customer
 	private final VerifyRepository verifyRepository;        // Handle entities verify
 	private final MessageSource messageSource;
+	private final LogoutService logoutService;
 
 	@Override
 	public void changePhone(ChangePhoneRequest changePhoneRequest) {
@@ -215,5 +217,7 @@ public class ChangePhoneServiceImpl implements ChangePhoneService {
 			throw new RequestException(message, HttpStatus.BAD_REQUEST.value(),
 					"verify.delete-failed");
 		}
+		
+		logoutService.logout();
 	}
 }

@@ -1,4 +1,4 @@
-package net.sparkminds.library.event.authentication;
+package net.sparkminds.library.event;
 
 import java.time.Duration;
 import java.time.LocalDateTime;

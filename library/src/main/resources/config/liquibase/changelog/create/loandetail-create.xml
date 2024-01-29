@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+	xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.0.xsd">
+
+	<changeSet id="create-table-loanDetail" author="root">
+		<preConditions onFail="CONTINUE"
+			onFailMessage="table loanDetail already exists">
+			<not>
+				<tableExists tableName="loanDetail" />
+			</not>
+		</preConditions>
+		<createTable tableName="loanDetail">
+			<column name="id" type="BIGINT" autoIncrement="true">
+				<constraints primaryKey="true" nullable="false" />
+			</column>
+			<column name="price" type="DECIMAL(10, 2)" />
+			<column name="book_id" type="BIGINT" />
+			<column name="loan_id" type="BIGINT" />
+		</createTable>
+
+		<addForeignKeyConstraint
+			baseColumnNames="loan_id" baseTableName="loanDetail"
+			constraintName="fk_loanDetail_loan" onDelete="CASCADE"
+			onUpdate="RESTRICT" referencedColumnNames="id"
+			referencedTableName="loan" />
+
+		<addForeignKeyConstraint
+			baseColumnNames="book_id" baseTableName="loanDetail"
+			constraintName="fk_loanDetail_book" onDelete="CASCADE"
+			onUpdate="RESTRICT" referencedColumnNames="id"
+			referencedTableName="book" />
+	</changeSet>
+</databaseChangeLog>

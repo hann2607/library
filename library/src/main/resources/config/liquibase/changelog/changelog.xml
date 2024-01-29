@@ -8,5 +8,11 @@
     <include file="config/liquibase/changelog/create/session-create.xml"/>
     <include file="config/liquibase/changelog/create/user-create.xml"/>
     <include file="config/liquibase/changelog/create/admin-create.xml"/>
+    <include file="config/liquibase/changelog/create/nationality-create.xml"/>
+    <include file="config/liquibase/changelog/create/author-create.xml"/>
+    <include file="config/liquibase/changelog/create/category-create.xml"/>
+    <include file="config/liquibase/changelog/create/book-create.xml"/>
+    <include file="config/liquibase/changelog/create/loan-create.xml"/>
+    <include file="config/liquibase/changelog/create/loanDetail-create.xml"/>
 
 </databaseChangeLog>
