@@ -20,7 +20,6 @@ import org.springframework.stereotype.Service;
 
 import freemarker.template.Configuration;
 import freemarker.template.Template;
-import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
 import net.sparkminds.library.dto.changeinfo.ChangePassRequest;
@@ -28,6 +27,7 @@ import net.sparkminds.library.dto.changeinfo.ConfirmResetPassRequest;
 import net.sparkminds.library.dto.changeinfo.ResetPassRequest;
 import net.sparkminds.library.entity.Account;
 import net.sparkminds.library.entity.Verify;
+import net.sparkminds.library.enumration.EnumStatus;
 import net.sparkminds.library.enumration.EnumTypeOTP;
 import net.sparkminds.library.exception.RequestException;
 import net.sparkminds.library.repository.AccountRepository;
@@ -50,7 +50,6 @@ public class PasswordServiceImpl implements PasswordService{
 	private final LogoutService logoutService;
 
 	@Override
-	@Transactional(rollbackOn = Exception.class)
 	public void resetPassword(ResetPassRequest resetPassRequest) {
 		Optional<Account> account = null;
 		Verify verify = null;
@@ -65,7 +64,7 @@ public class PasswordServiceImpl implements PasswordService{
 		String absolutePath = resourceDirectory.toFile().getAbsolutePath();
 
 		// Found account by email
-		account = accountRepository.findByEmail(resetPassRequest.getUsername());
+		account = accountRepository.findByEmailAndStatus(resetPassRequest.getUsername(), EnumStatus.ACTIVE);
 		if (!account.isPresent()) {
 			message = messageSource.getMessage("account.email.email-notfound", 
 					null, LocaleContextHolder.getLocale());
@@ -98,20 +97,10 @@ public class PasswordServiceImpl implements PasswordService{
 				.account(account.get()).build();
 		
 		
-		try {
-			verifyRepository.save(verify);
-			message = messageSource.getMessage("verify.insert-successed", 
-					null, LocaleContextHolder.getLocale());
-			
-			log.info(message + ": " + verify);
-		} catch (Exception e) {
-			message = messageSource.getMessage("verify.insert-failed", 
-					null, LocaleContextHolder.getLocale());
-			
-			log.error(message + ": " + verify);
-			throw new RequestException(message, HttpStatus.BAD_REQUEST.value(),
-					"verify.insert-failed");
-		}
+		verifyRepository.save(verify);
+		message = messageSource.getMessage("verify.insert-successed", 
+				null, LocaleContextHolder.getLocale());
+		log.info(message + ": " + verify);
 
 		// Send mail new password
 		try {
@@ -195,36 +184,16 @@ public class PasswordServiceImpl implements PasswordService{
 		}
 		
 		account.setPassword(verify.get().getNewPassword());
-		try {
-			accountRepository.save(account);
-			message = messageSource.getMessage("account.update-successed", 
-					null, LocaleContextHolder.getLocale());
-			
-			log.info(message + ": " + account.toString());
-		} catch (Exception e) {
-			message = messageSource.getMessage("account.update-failed", 
-					null, LocaleContextHolder.getLocale());
-			
-			log.error(message + ": " + account.toString());
-			throw new RequestException(message, HttpStatus.BAD_REQUEST.value(),
-					"account.update-failed");
-		}
+		accountRepository.save(account);
+		message = messageSource.getMessage("account.update-successed", 
+				null, LocaleContextHolder.getLocale());
+		log.info(message + ": " + account.toString());
 		
 		// Delete verify
-		try {
-			verifyRepository.deleteById(verify.get().getId());
-			message = messageSource.getMessage("verify.delete-successed", 
-					null, LocaleContextHolder.getLocale());
-			
-			log.info(message + ": " + verify.get().getId());
-		} catch (Exception e) {
-			message = messageSource.getMessage("verify.delete-failed", 
-					null, LocaleContextHolder.getLocale());
-			
-			log.error(message + ": " + verify.get().getId());
-			throw new RequestException(message, HttpStatus.BAD_REQUEST.value(),
-					"verify.delete-failed");
-		}		
+		verifyRepository.deleteById(verify.get().getId());
+		message = messageSource.getMessage("verify.delete-successed", 
+				null, LocaleContextHolder.getLocale());
+		log.info(message + ": " + verify.get().getId());	
 	}
 
 	@Override
@@ -247,7 +216,7 @@ public class PasswordServiceImpl implements PasswordService{
     	}
 
 		// Found account by email
-		account = accountRepository.findByEmail(principal.getUsername());
+		account = accountRepository.findByEmailAndStatus(principal.getUsername(), EnumStatus.ACTIVE);
 		if (!account.isPresent()) {
 			message = messageSource.getMessage("account.email.email-notfound", 
 					null, LocaleContextHolder.getLocale());
@@ -280,20 +249,10 @@ public class PasswordServiceImpl implements PasswordService{
 		// Update account with new password
 		account.get().setFirstTimeLogin(false);
 		account.get().setPassword(encryptionService.encrypt(newPass));
-		try {
-			accountRepository.save(account.get());
-			message = messageSource.getMessage("account.update-successed", 
-					null, LocaleContextHolder.getLocale());
-			
-			log.info(message + ": " + account.get().toString());
-		} catch (Exception e) {
-			message = messageSource.getMessage("account.update-failed", 
-					null, LocaleContextHolder.getLocale());
-			
-			log.error(message + ": " + account.get().toString());
-			throw new RequestException(message, HttpStatus.BAD_REQUEST.value(),
-					"account.update-failed");
-		}
+		accountRepository.save(account.get());
+		message = messageSource.getMessage("account.update-successed", 
+				null, LocaleContextHolder.getLocale());
+		log.info(message + ": " + account.get().toString());
 		
 		logoutService.logout();
 	}

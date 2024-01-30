@@ -34,7 +34,7 @@ public class AuthenticationFailureHandler {
 		
 		jwtRequest = authenticationEvent.getJwtRequest();	
 		
-		account = accountRepository.findByEmail(jwtRequest.getUsername());
+		account = accountRepository.findByEmailAndStatus(jwtRequest.getUsername(), EnumStatus.ACTIVE);
 		if(!account.isPresent()) {
 			message = messageSource.getMessage("account.email.email-notfound", 
 					null, LocaleContextHolder.getLocale());

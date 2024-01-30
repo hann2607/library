@@ -1,8 +1,8 @@
-package net.sparkminds.library.service.impl;
+package net.sparkminds.library.service.validator.impl;
 
 import jakarta.validation.ConstraintValidator;
 import jakarta.validation.ConstraintValidatorContext;
-import net.sparkminds.library.service.ValidateEnumValue;
+import net.sparkminds.library.service.validator.ValidateEnumValue;
 
 public class EnumValueValidator implements ConstraintValidator<ValidateEnumValue, CharSequence> {
 

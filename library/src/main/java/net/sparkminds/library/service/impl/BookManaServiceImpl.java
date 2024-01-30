@@ -12,12 +12,12 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
+import org.springframework.web.multipart.MultipartFile;
 
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
-import net.sparkminds.library.dto.bookmana.BookManaRequest;
-import net.sparkminds.library.dto.bookmana.BookManaResponse;
+import net.sparkminds.library.dto.bookmanagement.BookManaRequest;
+import net.sparkminds.library.dto.bookmanagement.BookManaResponse;
 import net.sparkminds.library.entity.Book;
 import net.sparkminds.library.enumration.EnumStatus;
 import net.sparkminds.library.exception.RequestException;
@@ -33,198 +33,150 @@ import tech.jhipster.service.filter.StringFilter;
 @RequiredArgsConstructor
 @Log4j2
 public class BookManaServiceImpl implements BookManaService {
-	
+
 	private final MessageSource messageSource;
 	private final BookManaMapper bookManaMapper;
 	private final BookRepository bookRepository;
 	private final BookQueryService bookQueryService;
-	
-	@Value("${BASEURL_RESOURCES}")
-	private String BASEURL_RESOURCES;
-	
+
+	@Value("${baseUrl.Resources}")
+	private String baseUrlResources;
+
 	@Override
-	@Transactional(rollbackFor = IOException.class)
-	public void create(BookManaRequest bookManaRequest) {
+	public void createBookCriteria(BookManaRequest bookManaRequest) {
 		Book book = null;
 		StringFilter titleFilter = new StringFilter();
 		Page<BookManaResponse> books = null;
 		BookCriteria bookCriteria = new BookCriteria();
 		Pageable pageable = PageRequest.of(0, 10);
 		String message = null;
-		String contentType = null;
-		String fileName = null;
-		String fileDir = null;
-		
+
 		titleFilter.setEquals(bookManaRequest.getTitle());
 		bookCriteria.setTitle(titleFilter);
 		books = bookQueryService.findBookByCriteria(bookCriteria, pageable);
-		if(!books.isEmpty()) {
-			message = messageSource.getMessage("book.title.title-exists", 
-					null, LocaleContextHolder.getLocale());
-			
+		if (!books.isEmpty()) {
+			message = messageSource.getMessage("book.title.title-exists", null, LocaleContextHolder.getLocale());
+
 			log.error(message + ": " + bookManaRequest.getTitle());
-			throw new RequestException(message, HttpStatus.BAD_REQUEST.value(),
-					"book.title.title-exists");
+			throw new RequestException(message, HttpStatus.BAD_REQUEST.value(), "book.title.title-exists");
 		}
 
-		contentType = bookManaRequest.getCoverImageFile().getContentType();
-		if (!("image/jpeg".equals(contentType)) && !("image/png".equals(contentType))) {
-			message = messageSource.getMessage("bookmanarequest.coverImageFile.coverImageFile-invalid", 
-					null, LocaleContextHolder.getLocale());
-			
-			log.error(message);
-			throw new RequestException(message, HttpStatus.BAD_REQUEST.value(),
-					"bookmanarequest.coverImageFile.coverImageFile-invalid");
-	    }      
-		
-		book = bookManaMapper.dtoToModel(bookManaRequest);
-		fileName = UUID.randomUUID().toString() + System.currentTimeMillis() +
-				bookManaRequest.getCoverImageFile().getOriginalFilename();
-		fileDir = BASEURL_RESOURCES + "/images/books";
-		try {
-			FileUtil.saveMultipartFile(fileDir, fileName, bookManaRequest.getCoverImageFile());
-		} catch (IOException e) {
-			message = messageSource.getMessage("file.image.createimage-failed", 
-					null, LocaleContextHolder.getLocale());
-			
-			log.error(message + ": " + fileDir + "/" + fileName);
-			throw new RequestException(message, HttpStatus.BAD_REQUEST.value(),
-					"file.image.createimage-failed");
-		}
-		
-		book.setCoverImageUrl("/images/books/" + fileName);
-		try {
+		if (validateFile(bookManaRequest.getCoverImageFile())) {
+			book = bookManaMapper.dtoToModel(bookManaRequest);
+			book = handleUploadFile(bookManaRequest.getCoverImageFile(), book);
+
 			bookRepository.save(book);
-			message = messageSource.getMessage("book.insert-successed", 
-					null, LocaleContextHolder.getLocale());
-			
+			message = messageSource.getMessage("book.insert-successed", null, LocaleContextHolder.getLocale());
 			log.info(message + ": " + book.toString());
-		} catch (Exception e) {
-			message = messageSource.getMessage("book.insert-failed", 
-					null, LocaleContextHolder.getLocale());
-			
-			log.error(message + ": " + book.toString());
-			throw new RequestException(message, HttpStatus.BAD_REQUEST.value(),
-					"book.insert-failed");
 		}
 	}
 
+	private boolean validateFile(MultipartFile coverImageFile) {
+		String contentType = null;
+		String message = null;
+
+		contentType = coverImageFile.getContentType();
+		if (!("image/jpeg".equals(contentType)) && !("image/png".equals(contentType))) {
+			message = messageSource.getMessage("bookmanarequest.coverImageFile.coverImageFile-invalid", null,
+					LocaleContextHolder.getLocale());
+
+			log.error(message);
+			throw new RequestException(message, HttpStatus.BAD_REQUEST.value(),
+					"bookmanarequest.coverImageFile.coverImageFile-invalid");
+
+		}
+
+		return true;
+	}
+
+	private Book handleUploadFile(MultipartFile coverImageFile, Book book) {
+		String fileName = null;
+		String fileDir = null;
+		String message = null;
+
+		fileName = UUID.randomUUID().toString() + System.currentTimeMillis() + coverImageFile.getOriginalFilename();
+		fileDir = baseUrlResources + "/images/books";
+		try {
+			FileUtil.saveMultipartFile(fileDir, fileName, coverImageFile);
+		} catch (IOException e) {
+			message = messageSource.getMessage("file.image.createimage-failed", null, LocaleContextHolder.getLocale());
+
+			log.error(message + ": " + fileDir + "/" + fileName);
+			throw new RequestException(message, HttpStatus.BAD_REQUEST.value(), "file.image.createimage-failed");
+		}
+
+		book.setCoverImageUrl("/images/books/" + fileName);
+
+		return book;
+	}
+
 	@Override
-	public void update(BookManaRequest bookManaRequest) {
+	public void updateBookCriteria(BookManaRequest bookManaRequest) {
 		Book book = null;
 		StringFilter titleFilter = new StringFilter();
 		Page<BookManaResponse> books = null;
 		Pageable pageable = PageRequest.of(0, 10);
 		BookCriteria bookCriteria = new BookCriteria();
 		String message = null;
-		String contentType = null;
-		String fileName = null;
-		String fileDir = null;
-		
+
 		titleFilter.setEquals(bookManaRequest.getTitle());
 		bookCriteria.setTitle(titleFilter);
 		books = bookQueryService.findBookByCriteria(bookCriteria, pageable);
-		if(books.isEmpty()) {
-			message = messageSource.getMessage("book.book-notexists", 
-					null, LocaleContextHolder.getLocale());
-			
-			log.error(message + ": {} " + bookManaRequest.getTitle());
-			throw new RequestException(message, HttpStatus.BAD_REQUEST.value(),
-					"book.book-notexists");
-		}
-		
-		contentType = bookManaRequest.getCoverImageFile().getContentType();
-		if (!("image/jpeg".equals(contentType)) && !("image/png".equals(contentType))) {
-			message = messageSource.getMessage("bookmanarequest.coverImageFile.coverImageFile-invalid", 
-					null, LocaleContextHolder.getLocale());
-			
-			log.error(message);
-			throw new RequestException(message, HttpStatus.BAD_REQUEST.value(),
-					"bookmanarequest.coverImageFile.coverImageFile-invalid");
-	    }  
+		if (books.isEmpty()) {
+			message = messageSource.getMessage("book.book-notexists", null, LocaleContextHolder.getLocale());
 
-		book = bookManaMapper.dtoToModel(bookManaRequest);
-		fileName = UUID.randomUUID().toString() + System.currentTimeMillis() +
-				bookManaRequest.getCoverImageFile().getOriginalFilename();
-		fileDir = BASEURL_RESOURCES + "/images/books";
-		try {
-			FileUtil.saveMultipartFile(fileDir, fileName, bookManaRequest.getCoverImageFile());
-		} catch (IOException e) {
-			message = messageSource.getMessage("file.image.createimage-failed", 
-					null, LocaleContextHolder.getLocale());
-			
-			log.error(message + ": " + fileDir + "/" + fileName);
-			throw new RequestException(message, HttpStatus.BAD_REQUEST.value(),
-					"file.image.createimage-failed");
+			log.error(message + ": {} " + bookManaRequest.getTitle());
+			throw new RequestException(message, HttpStatus.BAD_REQUEST.value(), "book.book-notexists");
 		}
-		
-		try {
-			FileUtil.deleteFile(BASEURL_RESOURCES + books.getContent().get(0).getCoverImageUrl());
-		} catch (IOException e1) {
-			message = messageSource.getMessage("file.image.deleteimage-failed", 
-					null, LocaleContextHolder.getLocale());
-			
-			log.error(message + ": " + fileDir + "/" + fileName);
-			throw new RequestException(message, HttpStatus.BAD_REQUEST.value(),
-					"file.image.deleteimage-failed");
-		}
-		
-		book.setId(books.getContent().get(0).getId());
-		book.setCoverImageUrl("/images/books/" + fileName);
-		try {
+
+		if (validateFile(bookManaRequest.getCoverImageFile())) {
+			book = bookManaMapper.dtoToModel(bookManaRequest);
+			handleDeleteFile(book.getCoverImageUrl());
+			book = handleUploadFile(bookManaRequest.getCoverImageFile(), book);
+			book.setId(books.getContent().get(0).getId());
+
 			bookRepository.save(book);
-			message = messageSource.getMessage("book.update-successed", 
-					null, LocaleContextHolder.getLocale());
-			
+			message = messageSource.getMessage("book.update-successed", null, LocaleContextHolder.getLocale());
 			log.info(message + ": {} " + book.toString());
-		} catch (Exception e) {
-			message = messageSource.getMessage("book.update-failed", 
-					null, LocaleContextHolder.getLocale());
-			
-			log.error(message + ": {} " + book.toString());
-			throw new RequestException(message, HttpStatus.BAD_REQUEST.value(),
-					"book.update-failed");
+		}
+	}
+
+	private void handleDeleteFile(String coverImageUrl) {
+		String message = null;
+
+		try {
+			FileUtil.deleteFile(baseUrlResources + coverImageUrl);
+		} catch (IOException e1) {
+			message = messageSource.getMessage("file.image.deleteimage-failed", null, LocaleContextHolder.getLocale());
+
+			log.error(message + ": " + coverImageUrl);
+			throw new RequestException(message, HttpStatus.BAD_REQUEST.value(), "file.image.deleteimage-failed");
 		}
 	}
 
 	@Override
-	public void delete(Long id) {
+	public void deleteBookCriteria(Long id) {
 		Optional<Book> book = null;
 		String message = null;
 
 		book = bookRepository.findById(id);
-		if(!book.isPresent()) {
-			message = messageSource.getMessage("book.book-notexists", 
-					null, LocaleContextHolder.getLocale());
-			
+		if (!book.isPresent()) {
+			message = messageSource.getMessage("book.book-notexists", null, LocaleContextHolder.getLocale());
+
 			log.error(message + ": " + id);
-			throw new RequestException(message, HttpStatus.BAD_REQUEST.value(),
-					"book.book-notexists");
+			throw new RequestException(message, HttpStatus.BAD_REQUEST.value(), "book.book-notexists");
 		}
-		
-		if(book.get().getStatus().compareTo(EnumStatus.DELETED) == 0) {
-			message = messageSource.getMessage("book.book-deleted", 
-					null, LocaleContextHolder.getLocale());
-			
+
+		if (book.get().getStatus().compareTo(EnumStatus.DELETED) == 0) {
+			message = messageSource.getMessage("book.book-deleted", null, LocaleContextHolder.getLocale());
+
 			log.error(message + ": " + id);
-			throw new RequestException(message, HttpStatus.BAD_REQUEST.value(),
-					"book.book-deleted");
+			throw new RequestException(message, HttpStatus.BAD_REQUEST.value(), "book.book-deleted");
 		}
 
 		book.get().setStatus(EnumStatus.DELETED);
-		try {
-			bookRepository.save(book.get());
-			message = messageSource.getMessage("book.delete-successed", 
-					null, LocaleContextHolder.getLocale());
-			
-			log.info(message + ": {} " + book.toString());
-		} catch (Exception e) {
-			message = messageSource.getMessage("book.delete-failed", 
-					null, LocaleContextHolder.getLocale());
-			
-			log.error(message + ": {} " + book.toString());
-			throw new RequestException(message, HttpStatus.BAD_REQUEST.value(),
-					"book.delete-failed");
-		}
+		bookRepository.save(book.get());
+		message = messageSource.getMessage("book.delete-successed", null, LocaleContextHolder.getLocale());
+		log.info(message + ": {} " + book.toString());
 	}
 }

@@ -1,10 +1,10 @@
-package net.sparkminds.library.service.impl;
+package net.sparkminds.library.service.validator.impl;
 
 import java.time.format.DateTimeFormatter;
 
 import jakarta.validation.ConstraintValidator;
 import jakarta.validation.ConstraintValidatorContext;
-import net.sparkminds.library.service.ValidDateTime;
+import net.sparkminds.library.service.validator.ValidDateTime;
 
 public class DateTimeValidator implements ConstraintValidator<ValidDateTime, CharSequence> {
 

@@ -1,4 +1,4 @@
-package net.sparkminds.library.service;
+package net.sparkminds.library.service.validator;
 
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;
@@ -7,7 +7,7 @@ import java.lang.annotation.Target;
 
 import jakarta.validation.Constraint;
 import jakarta.validation.Payload;
-import net.sparkminds.library.service.impl.EnumValueValidator;
+import net.sparkminds.library.service.validator.impl.EnumValueValidator;
 
 @Target(ElementType.FIELD)
 @Retention(RetentionPolicy.RUNTIME)

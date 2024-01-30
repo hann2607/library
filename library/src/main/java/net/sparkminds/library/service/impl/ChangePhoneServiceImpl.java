@@ -11,13 +11,13 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Service;
 
-import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
 import net.sparkminds.library.dto.changeinfo.ChangePhoneRequest;
 import net.sparkminds.library.entity.Account;
 import net.sparkminds.library.entity.Customer;
 import net.sparkminds.library.entity.Verify;
+import net.sparkminds.library.enumration.EnumStatus;
 import net.sparkminds.library.enumration.EnumTypeOTP;
 import net.sparkminds.library.exception.RequestException;
 import net.sparkminds.library.repository.AccountRepository;
@@ -57,8 +57,8 @@ public class ChangePhoneServiceImpl implements ChangePhoneService {
     	}
 		
 		// Found account by email
-		customer = customerRepository.findByEmail(principal.getUsername());
-		account = accountRepository.findByEmail(principal.getUsername());
+		customer = customerRepository.findByEmailAndStatus(principal.getUsername(), EnumStatus.ACTIVE);
+		account = accountRepository.findByEmailAndStatus(principal.getUsername(), EnumStatus.ACTIVE);
 		if (!customer.isPresent() || !account.isPresent()) {
 			message = messageSource.getMessage("account.email.email-notfound", 
 					null, LocaleContextHolder.getLocale());
@@ -88,20 +88,10 @@ public class ChangePhoneServiceImpl implements ChangePhoneService {
 				.typeOTP(EnumTypeOTP.CHANGEPHONE)
 				.account(account.get()).build();
 
-		try {
-			verifyRepository.save(verify);
-			message = messageSource.getMessage("verify.insert-successed", 
-					null, LocaleContextHolder.getLocale());
-			
-			log.info(message + ": " + verify);
-		} catch (Exception e) {
-			message = messageSource.getMessage("verify.insert-failed", 
-					null, LocaleContextHolder.getLocale());
-			
-			log.error(message + ": " + verify);
-			throw new RequestException(message, HttpStatus.BAD_REQUEST.value(),
-					"verify.insert-failed");
-		}
+		verifyRepository.save(verify);
+		message = messageSource.getMessage("verify.insert-successed", 
+				null, LocaleContextHolder.getLocale());
+		log.info(message + ": " + verify);
 	}
 	
 	private int randOTP() {
@@ -113,7 +103,6 @@ public class ChangePhoneServiceImpl implements ChangePhoneService {
 	}
 
 	@Override
-	@Transactional(rollbackOn = Exception.class)
 	public void verifyChangePhone(String otp) {
 		String message = null;
 		Optional<Customer> customer = null;
@@ -133,8 +122,8 @@ public class ChangePhoneServiceImpl implements ChangePhoneService {
     	}
 		
 		// Found account by email
-		customer = customerRepository.findByEmail(principal.getUsername());
-		account = accountRepository.findByEmail(principal.getUsername());
+		customer = customerRepository.findByEmailAndStatus(principal.getUsername(), EnumStatus.ACTIVE);
+		account = accountRepository.findByEmailAndStatus(principal.getUsername(), EnumStatus.ACTIVE);
 		if (!customer.isPresent() || !account.isPresent()) {
 			message = messageSource.getMessage("account.email.email-notfound", 
 					null, LocaleContextHolder.getLocale());
@@ -187,36 +176,17 @@ public class ChangePhoneServiceImpl implements ChangePhoneService {
 		
 		// Update phone number
 		customer.get().setPhone(verify.get().getNewPhone());
-		try {
-			customerRepository.save(customer.get());
-			message = messageSource.getMessage("account.update-successed", 
-					null, LocaleContextHolder.getLocale());
-			
-			log.info(message + ": " + customer.get().toString());
-		} catch (Exception e) {
-			message = messageSource.getMessage("account.update-failed", 
-					null, LocaleContextHolder.getLocale());
-			
-			log.error(message + ": " + customer.get().toString());
-			throw new RequestException(message, HttpStatus.BAD_REQUEST.value(),
-					"account.update-failed");
-		}
+		
+		customerRepository.save(customer.get());
+		message = messageSource.getMessage("account.update-successed", 
+				null, LocaleContextHolder.getLocale());
+		log.info(message + ": " + customer.get().toString());
 		
 		// Delete verify
-		try {
-			verifyRepository.deleteById(verify.get().getId());
-			message = messageSource.getMessage("verify.delete-successed", 
-					null, LocaleContextHolder.getLocale());
-			
-			log.info(message + ": " + verify.get().getId());
-		} catch (Exception e) {
-			message = messageSource.getMessage("verify.delete-failed", 
-					null, LocaleContextHolder.getLocale());
-			
-			log.error(message + ": " + verify.get().getId());
-			throw new RequestException(message, HttpStatus.BAD_REQUEST.value(),
-					"verify.delete-failed");
-		}
+		verifyRepository.deleteById(verify.get().getId());
+		message = messageSource.getMessage("verify.delete-successed", 
+				null, LocaleContextHolder.getLocale());
+		log.info(message + ": " + verify.get().getId());
 		
 		logoutService.logout();
 	}

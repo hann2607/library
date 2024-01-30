@@ -12,8 +12,8 @@ import org.springframework.stereotype.Service;
 
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
-import net.sparkminds.library.dto.bookmana.BookManaRequest;
-import net.sparkminds.library.dto.bookmana.BookManaResponse;
+import net.sparkminds.library.dto.bookmanagement.BookManaRequest;
+import net.sparkminds.library.dto.bookmanagement.BookManaResponse;
 import net.sparkminds.library.entity.Author;
 import net.sparkminds.library.entity.Book;
 import net.sparkminds.library.entity.Category;

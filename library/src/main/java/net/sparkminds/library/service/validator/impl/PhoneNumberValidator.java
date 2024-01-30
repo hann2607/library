@@ -1,11 +1,11 @@
-package net.sparkminds.library.service.impl;
+package net.sparkminds.library.service.validator.impl;
 
 import com.google.i18n.phonenumbers.PhoneNumberUtil;
 import com.google.i18n.phonenumbers.Phonenumber;
 
 import jakarta.validation.ConstraintValidator;
 import jakarta.validation.ConstraintValidatorContext;
-import net.sparkminds.library.service.ValidPhoneNumber;
+import net.sparkminds.library.service.validator.ValidPhoneNumber;
 
 public class PhoneNumberValidator implements ConstraintValidator<ValidPhoneNumber, String> {
 

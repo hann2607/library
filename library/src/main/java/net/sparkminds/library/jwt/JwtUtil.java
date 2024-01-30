@@ -23,7 +23,7 @@ import lombok.RequiredArgsConstructor;
 @RequiredArgsConstructor
 public class JwtUtil {
 	
-	@Value("${jwt.secret-key}")
+	@Value("${jwt.SecretKey}")
 	private String secretKey;
 
 	public String extractUsername(String token) {

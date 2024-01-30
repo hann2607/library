@@ -37,7 +37,7 @@ public class UserDetailsServiceImpl implements UserDetailsService {
     	Optional<Account> account = null;
     	LocalDateTime currentDateTime = null;
     	
-    	account = accountRepository.findByEmail(email);
+    	account = accountRepository.findByEmailAndStatus(email, EnumStatus.ACTIVE);
 		if(!account.isPresent()) {
 			message = messageSource.getMessage("account.email.email-notfound", 
 					null, LocaleContextHolder.getLocale());
@@ -65,20 +65,10 @@ public class UserDetailsServiceImpl implements UserDetailsService {
         		account.get().setReasonBlocked(null);
         		account.get().setStatus(EnumStatus.ACTIVE);
         		
-        		try {
-        			accountRepository.save(account.get());
-        			message = messageSource.getMessage("account.update-successed", 
-        					null, LocaleContextHolder.getLocale());
-        			
-        			log.info(message + ": " + account.toString());
-        		} catch (Exception e) {
-        			message = messageSource.getMessage("account.update-failed", 
-        					null, LocaleContextHolder.getLocale());
-        			
-        			log.error(message + ": " + account.toString());
-        			throw new RequestException(message, HttpStatus.BAD_REQUEST.value(), 
-        					"account.update-failed");
-        		}
+        		accountRepository.save(account.get());
+    			message = messageSource.getMessage("account.update-successed", 
+    					null, LocaleContextHolder.getLocale());
+    			log.info(message + ": " + account.toString());
         	} else {
         		message = messageSource.getMessage("account.account-blocked", null,
     					LocaleContextHolder.getLocale());

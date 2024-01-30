@@ -1,11 +1,11 @@
 package net.sparkminds.library.service;
 
-import net.sparkminds.library.dto.bookmana.BookManaRequest;
+import net.sparkminds.library.dto.bookmanagement.BookManaRequest;
 
 public interface BookManaService {
-	void create(BookManaRequest bookManaRequest);
+	void createBookCriteria(BookManaRequest bookManaRequest);
 	
-	void update(BookManaRequest bookManaRequest);
+	void updateBookCriteria(BookManaRequest bookManaRequest);
 	
-	void delete(Long id);
+	void deleteBookCriteria(Long id);
 }

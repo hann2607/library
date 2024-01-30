@@ -32,6 +32,7 @@ import net.sparkminds.library.dto.jwt.JwtResponse;
 import net.sparkminds.library.dto.jwt.RefreshTokenRequest;
 import net.sparkminds.library.entity.Account;
 import net.sparkminds.library.entity.Session;
+import net.sparkminds.library.enumration.EnumStatus;
 import net.sparkminds.library.event.AuthenticationFailureEvent;
 import net.sparkminds.library.exception.RequestException;
 import net.sparkminds.library.jwt.JwtUtil;
@@ -65,7 +66,7 @@ public class AuthenticationServiceImpl implements AuthenticationService {
 					.collect(Collectors.toList());
 			
 			// Reset login attempt
-			account = accountRepository.findByEmail(jwtRequest.getUsername());
+			account = accountRepository.findByEmailAndStatus(jwtRequest.getUsername(), EnumStatus.ACTIVE);
 			if(!account.isPresent()) {
 				message = messageSource.getMessage("account.email.email-notfound", 
 						null, LocaleContextHolder.getLocale());
@@ -77,20 +78,11 @@ public class AuthenticationServiceImpl implements AuthenticationService {
 			
 			account.get().setLoginAttempt(0);
 			account.get().setFirstTimeLogin(false);
-			try {
-				accountRepository.save(account.get());
-				message = messageSource.getMessage("account.update-successed", 
-						null, LocaleContextHolder.getLocale());
-				
-				log.info(message + ": " + account.get().toString());
-			} catch (Exception e) {
-				message = messageSource.getMessage("account.update-failed", 
-						null, LocaleContextHolder.getLocale());
-				
-				log.error(message + ": " + account.get().toString());
-				throw new RequestException(message, HttpStatus.BAD_REQUEST.value(),
-						"account.update-failed");
-			}
+			
+			accountRepository.save(account.get());
+			message = messageSource.getMessage("account.update-successed", 
+					null, LocaleContextHolder.getLocale());
+			log.info(message + ": " + account.get().toString());
 
 			// Create token and refresh token
 			String JTI = UUID.randomUUID().toString();
@@ -103,20 +95,10 @@ public class AuthenticationServiceImpl implements AuthenticationService {
 					.refreshExpirationTime(convertDateToLocalDateTime(refreshTokenExpiration))
 					.account(account.get()).build();
 
-			try {
-				sessionRepository.save(session);
-				message = messageSource.getMessage("session.insert-successed", 
-						null, LocaleContextHolder.getLocale());
-				
-				log.info(message + ": " + session.toString());
-			} catch (Exception e) {
-				message = messageSource.getMessage("session.insert-failed", 
-						null, LocaleContextHolder.getLocale());
-				
-				log.error(message + ": " + session.toString());
-				throw new RequestException(message, HttpStatus.BAD_REQUEST.value(),
-						"session.insert-failed");
-			}
+			sessionRepository.save(session);
+			message = messageSource.getMessage("session.insert-successed", 
+					null, LocaleContextHolder.getLocale());
+			log.info(message + ": " + session.toString());
 
 			JwtResponse jwtResponse = new JwtResponse(token, userDetails.getUsername(), roles, refreshToken);
 			
@@ -135,7 +117,7 @@ public class AuthenticationServiceImpl implements AuthenticationService {
 					new UsernamePasswordAuthenticationToken(jwtRequest.getUsername(), jwtRequest.getPassword()));
 			
 			// Find account
-			account = accountRepository.findByEmail(jwtRequest.getUsername());
+			account = accountRepository.findByEmailAndStatus(jwtRequest.getUsername(), EnumStatus.ACTIVE);
 			if(!account.isPresent()) {
 				message = messageSource.getMessage("account.email.email-notfound", 
 						null, LocaleContextHolder.getLocale());

@@ -1,4 +1,4 @@
-package net.sparkminds.library.dto.bookmana;
+package net.sparkminds.library.dto.bookmanagement;
 
 import java.math.BigDecimal;
 import java.time.LocalDateTime;

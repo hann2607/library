@@ -19,7 +19,6 @@ import org.springframework.stereotype.Service;
 
 import freemarker.template.Configuration;
 import freemarker.template.Template;
-import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
 import net.sparkminds.library.dto.register.RegisterRequest;
@@ -43,7 +42,6 @@ import net.sparkminds.library.service.RegisterService;
 @Service
 @RequiredArgsConstructor
 @Log4j2
-//@Transactional
 public class RegisterServiceImpl implements RegisterService {
 
 	private final RegisterRequestMapper userMapper;        // Use convert DTO to Entity
@@ -55,11 +53,10 @@ public class RegisterServiceImpl implements RegisterService {
 	private final MailService mailService;        // Sending mail
 	private final VerifyRepository verifyRepository;        // Handle entities Verify
 	
-	@Value("${baseUrlCommon}")
+	@Value("${baseUrl.Common}")
 	private String baseUrlCommon;
 
 	@Override
-	@Transactional(rollbackOn = Exception.class)
 	public RegisterRequest register(RegisterRequest userDTO) {
 		Optional<Account> account = null;        // Get accounts by email
 		Customer customer = null;        // Save User to database
@@ -79,7 +76,7 @@ public class RegisterServiceImpl implements RegisterService {
 		customer = userMapper.dtoToModel(userDTO);
 
 		// Find account by email if not existed -> accept register
-		account = accountRepository.findByEmail(customer.getEmail());
+		account = accountRepository.findByEmailAndStatus(customer.getEmail(), EnumStatus.ACTIVE);
 		if(account.isPresent()) {
 			message = messageSource.getMessage("account.email.email-existed", 
 					null, LocaleContextHolder.getLocale());
@@ -109,20 +106,10 @@ public class RegisterServiceImpl implements RegisterService {
 		customer.setRole(role.get());
 		
 		// Create user
-		try {
-			customerRepository.save(customer);
-			message = messageSource.getMessage("account.insert-successed", 
-					null, LocaleContextHolder.getLocale());
-			
-			log.info(message + ": " + customer.toString());
-		} catch (Exception e) {
-			message = messageSource.getMessage("account.insert-failed", 
-					null, LocaleContextHolder.getLocale());
-			
-			log.error(message + ": " + customer.toString());
-			throw new RequestException(message, HttpStatus.BAD_REQUEST.value(),
-					"account.insert-failed");
-		}
+		customerRepository.save(customer);
+		message = messageSource.getMessage("account.insert-successed", 
+				null, LocaleContextHolder.getLocale());
+		log.info(message + ": " + customer.toString());
 
 		// Create otp, link and mail info
 		otp = randOTP() + "";        // Generate OTP
@@ -152,20 +139,10 @@ public class RegisterServiceImpl implements RegisterService {
 				.typeOTP(EnumTypeOTP.REGISTER)
 				.account(customer).build();
 
-		try {
-			verifyRepository.save(verify);
-			message = messageSource.getMessage("verify.insert-successed", 
-					null, LocaleContextHolder.getLocale());
-			
-			log.info(message + ": " + verify);
-		} catch (Exception e) {
-			message = messageSource.getMessage("verify.insert-failed", 
-					null, LocaleContextHolder.getLocale());
-			
-			log.error(message + ": " + verify);
-			throw new RequestException(message, HttpStatus.BAD_REQUEST.value(),
-					"verify.insert-failed");
-		}
+		verifyRepository.save(verify);
+		message = messageSource.getMessage("verify.insert-successed", 
+				null, LocaleContextHolder.getLocale());
+		log.info(message + ": " + verify);
 
 		return userDTO;
 	}

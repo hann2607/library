@@ -64,20 +64,10 @@ public class LogoutServiceImpl implements LogoutService {
         
         session.get().setLogin(false);
         
-        try {
-			sessionRepository.save(session.get());
-			message = messageSource.getMessage("session.update-successed", 
-					null, LocaleContextHolder.getLocale());
-			
-			log.info(message + ": " + session.toString());
-		} catch (Exception e) {
-			message = messageSource.getMessage("session.update-failed", 
-					null, LocaleContextHolder.getLocale());
-			
-			log.error(message + ": " + session.toString());
-			throw new RequestException(message, HttpStatus.BAD_REQUEST.value(),
-					"session.update-failed");
-		}
+        sessionRepository.save(session.get());
+		message = messageSource.getMessage("session.update-successed", 
+				null, LocaleContextHolder.getLocale());
+		log.info(message + ": " + session.toString());
 	}
 
 }

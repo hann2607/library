@@ -8,7 +8,7 @@ import jakarta.validation.constraints.Pattern;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import net.sparkminds.library.service.ValidPhoneNumber;
+import net.sparkminds.library.service.validator.ValidPhoneNumber;
 
 @AllArgsConstructor
 @NoArgsConstructor

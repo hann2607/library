@@ -17,6 +17,7 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
 import net.sparkminds.library.dto.mfa.MfaResponse;
 import net.sparkminds.library.entity.Account;
+import net.sparkminds.library.enumration.EnumStatus;
 import net.sparkminds.library.exception.RequestException;
 import net.sparkminds.library.repository.AccountRepository;
 import net.sparkminds.library.service.LogoutService;
@@ -84,7 +85,7 @@ public class TwoFactorAuthServiceImpl implements TwoFactorAuthService {
 					"account.mfa-invalid");
 		}
 		
-		account = accountRepository.findByEmail(principal.getUsername());
+		account = accountRepository.findByEmailAndStatus(principal.getUsername(), EnumStatus.ACTIVE);
 		if(!account.isPresent()) {
 			message = messageSource.getMessage("account.email.email-notfound", 
 					null, LocaleContextHolder.getLocale());
@@ -97,20 +98,10 @@ public class TwoFactorAuthServiceImpl implements TwoFactorAuthService {
 		account.get().setMfa(true);
 		account.get().setSecret(secret);
 		
-		try {
-			accountRepository.save(account.get());
-			message = messageSource.getMessage("account.update-successed", 
-					null, LocaleContextHolder.getLocale());
-			
-			log.info(message + ": " + account.get().toString());
-		} catch (Exception e) {
-			message = messageSource.getMessage("account.update-failed", 
-					null, LocaleContextHolder.getLocale());
-			
-			log.error(message + ": " + account.get().toString());
-			throw new RequestException(message, HttpStatus.BAD_REQUEST.value(),
-					"account.update-failed");
-		}
+		accountRepository.save(account.get());
+		message = messageSource.getMessage("account.update-successed", 
+				null, LocaleContextHolder.getLocale());
+		log.info(message + ": " + account.get().toString());
 		
 		logoutService.logout();
 	}

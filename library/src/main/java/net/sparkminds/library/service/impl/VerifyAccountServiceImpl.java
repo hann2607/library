@@ -29,6 +29,7 @@ import lombok.extern.log4j.Log4j2;
 import net.sparkminds.library.entity.Account;
 import net.sparkminds.library.entity.Customer;
 import net.sparkminds.library.entity.Verify;
+import net.sparkminds.library.enumration.EnumStatus;
 import net.sparkminds.library.enumration.EnumTypeOTP;
 import net.sparkminds.library.exception.RequestException;
 import net.sparkminds.library.repository.AccountRepository;
@@ -48,7 +49,7 @@ public class VerifyAccountServiceImpl implements VerifyAccountService {
 	private final MailService mailService;        // Sending mail
 	private final VerifyRepository verifyRepository;        // Handle entities Verify
 	
-	@Value("${baseUrlCommon}")
+	@Value("${baseUrl.Common}")
 	private String baseUrlCommon;
 
 	@Override
@@ -77,20 +78,11 @@ public class VerifyAccountServiceImpl implements VerifyAccountService {
 		// Check time link
 		if (seconds <= 0) {
 			// Delete verify
-			try {
-				verifyRepository.deleteById(verifyId);
-				message = messageSource.getMessage("verify.delete-successed", 
-						null, LocaleContextHolder.getLocale());
-				
-				log.info(message + ": " + verifyId);
-			} catch (Exception e) {
-				message = messageSource.getMessage("verify.delete-failed", 
-						null, LocaleContextHolder.getLocale());
-				
-				log.error(message + ": " + verifyId);
-				throw new RequestException(message, HttpStatus.BAD_REQUEST.value(),
-						"verify.delete-failed");
-			}
+			verifyRepository.deleteById(verifyId);
+			message = messageSource.getMessage("verify.delete-successed", 
+					null, LocaleContextHolder.getLocale());
+			log.info(message + ": " + verifyId);
+			
 			message = messageSource.getMessage("verify.link.link-expired", null, LocaleContextHolder.getLocale());
 			log.error(message);
 			throw new RequestException(message, HttpStatus.BAD_REQUEST.value(), "verify.link.link-expired");
@@ -107,36 +99,15 @@ public class VerifyAccountServiceImpl implements VerifyAccountService {
 		customer.get().setVerify(true);
 
 		// Update isVerify account		
-		try {
-			customerRepository.save(customer.get());
-			message = messageSource.getMessage("account.update-successed", 
-					null, LocaleContextHolder.getLocale());
-			
-			log.info(message + ": " + customer.get().toString());
-		} catch (Exception e) {
-			message = messageSource.getMessage("account.update-failed", 
-					null, LocaleContextHolder.getLocale());
-			
-			log.error(message + ": " + customer.get().toString());
-			throw new RequestException(message, HttpStatus.BAD_REQUEST.value(),
-					"account.update-failed");
-		}
-
+		message = messageSource.getMessage("account.update-successed", 
+				null, LocaleContextHolder.getLocale());
+		log.info(message + ": " + customer.get().toString());
+		
 		// Delete verify
-		try {
-			verifyRepository.deleteById(verifyId);
-			message = messageSource.getMessage("verify.delete-successed", 
-					null, LocaleContextHolder.getLocale());
-			
-			log.info(message + ": " + verifyId);
-		} catch (Exception e) {
-			message = messageSource.getMessage("verify.delete-failed", 
-					null, LocaleContextHolder.getLocale());
-			
-			log.error(message + ": " + verifyId);
-			throw new RequestException(message, HttpStatus.BAD_REQUEST.value(),
-					"verify.delete-failed");
-		}
+		verifyRepository.deleteById(verifyId);
+		message = messageSource.getMessage("verify.delete-successed", 
+				null, LocaleContextHolder.getLocale());
+		log.info(message + ": " + verifyId);
 	}
 
 	@Override
@@ -165,20 +136,10 @@ public class VerifyAccountServiceImpl implements VerifyAccountService {
 		// Check time link
 		if (seconds <= 0) {
 			// Delete verify
-			try {
-				verifyRepository.deleteById(verifyId);
-				message = messageSource.getMessage("verify.delete-successed", 
-						null, LocaleContextHolder.getLocale());
-				
-				log.info(message + ": " + verifyId);
-			} catch (Exception e) {
-				message = messageSource.getMessage("verify.delete-failed", 
-						null, LocaleContextHolder.getLocale());
-				
-				log.error(message + ": " + verifyId);
-				throw new RequestException(message, HttpStatus.BAD_REQUEST.value(),
-						"verify.delete-failed");
-			}
+			verifyRepository.deleteById(verifyId);
+			message = messageSource.getMessage("verify.delete-successed", 
+					null, LocaleContextHolder.getLocale());
+			log.info(message + ": " + verifyId);
 			
 			message = messageSource.getMessage("verify.otp.otp-expired", null, LocaleContextHolder.getLocale());
 			log.error(message);
@@ -196,36 +157,16 @@ public class VerifyAccountServiceImpl implements VerifyAccountService {
 		customer.get().setVerify(true);
 
 		// Update isVerify account
-		try {
-			customerRepository.save(customer.get());
-			message = messageSource.getMessage("account.update-successed", 
-					null, LocaleContextHolder.getLocale());
-			
-			log.info(message + ": " + verifyId);
-		} catch (Exception e) {
-			message = messageSource.getMessage("account.update-failed", 
-					null, LocaleContextHolder.getLocale());
-			
-			log.error(message + ": " + verifyId);
-			throw new RequestException(message, HttpStatus.BAD_REQUEST.value(),
-					"account.update-failed");
-		}
+		customerRepository.save(customer.get());
+		message = messageSource.getMessage("account.update-successed", 
+				null, LocaleContextHolder.getLocale());
+		log.info(message + ": " + verifyId);
 
 		// Delete verify
-		try {
-			verifyRepository.deleteById(verifyId);
-			message = messageSource.getMessage("verify.delete-successed", 
-					null, LocaleContextHolder.getLocale());
-			
-			log.info(message + ": " + verifyId);
-		} catch (Exception e) {
-			message = messageSource.getMessage("verify.delete-failed", 
-					null, LocaleContextHolder.getLocale());
-			
-			log.error(message + ": " + verifyId);
-			throw new RequestException(message, HttpStatus.BAD_REQUEST.value(),
-					"verify.delete-failed");
-		}
+		verifyRepository.deleteById(verifyId);
+		message = messageSource.getMessage("verify.delete-successed", 
+				null, LocaleContextHolder.getLocale());
+		log.info(message + ": " + verifyId);
 	}
 
 	@Override
@@ -247,8 +188,8 @@ public class VerifyAccountServiceImpl implements VerifyAccountService {
 		String absolutePath = resourceDirectory.toFile().getAbsolutePath();
 
 		// find user and account
-		customer = customerRepository.findByEmail(email);
-		account = accountRepository.findByEmail(email);
+		customer = customerRepository.findByEmailAndStatus(email, EnumStatus.ACTIVE);
+		account = accountRepository.findByEmailAndStatus(email, EnumStatus.ACTIVE);
 		if(!account.isPresent() || !customer.isPresent()) {
 			message = messageSource.getMessage("account.email.email-notfound", 
 					null, LocaleContextHolder.getLocale());
@@ -297,39 +238,19 @@ public class VerifyAccountServiceImpl implements VerifyAccountService {
 			verify.setOtp(otp);
 
 			// update verify
-			try {
-				verifyRepository.save(verify);
-				message = messageSource.getMessage("verify.insert-successed", 
-						null, LocaleContextHolder.getLocale());
-				
-				log.info(message + ": " + verify);
-			} catch (Exception e) {
-				message = messageSource.getMessage("verify.insert-failed", 
-						null, LocaleContextHolder.getLocale());
-				
-				log.error(message + ": " + verify);
-				throw new RequestException(message, HttpStatus.BAD_REQUEST.value(),
-						"verify.insert-failed");
-			}
+			verifyRepository.save(verify);
+			message = messageSource.getMessage("verify.insert-successed", 
+					null, LocaleContextHolder.getLocale());
+			log.info(message + ": " + verify);
 		} else {
 			// if verify == null -> create new verify
 			verify = Verify.builder().link(link).otp(otp).expirationTime(currentDateTime.plusMinutes(5))
 					.typeOTP(EnumTypeOTP.REGISTER).account(account.get()).build();
 
-			try {
-				verifyRepository.save(verify);
-				message = messageSource.getMessage("verify.insert-successed", 
-						null, LocaleContextHolder.getLocale());
-				
-				log.info(message + ": " + verify);
-			} catch (Exception e) {
-				message = messageSource.getMessage("verify.insert-failed", 
-						null, LocaleContextHolder.getLocale());
-				
-				log.error(message + ": " + verify);
-				throw new RequestException(message, HttpStatus.BAD_REQUEST.value(),
-						"verify.insert-failed");
-			}
+			verifyRepository.save(verify);
+			message = messageSource.getMessage("verify.insert-successed", 
+					null, LocaleContextHolder.getLocale());
+			log.info(message + ": " + verify);
 		}
 
 		// send mail

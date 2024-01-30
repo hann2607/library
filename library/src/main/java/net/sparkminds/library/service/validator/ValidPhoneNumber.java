@@ -1,4 +1,4 @@
-package net.sparkminds.library.service;
+package net.sparkminds.library.service.validator;
 
 import java.lang.annotation.Documented;
 import java.lang.annotation.ElementType;
@@ -8,16 +8,18 @@ import java.lang.annotation.Target;
 
 import jakarta.validation.Constraint;
 import jakarta.validation.Payload;
-import net.sparkminds.library.service.impl.DateTimeValidator;
+import net.sparkminds.library.service.validator.impl.PhoneNumberValidator;
 
 @Target({ElementType.FIELD, ElementType.PARAMETER})
 @Retention(RetentionPolicy.RUNTIME)
-@Constraint(validatedBy = DateTimeValidator.class)
+@Constraint(validatedBy = PhoneNumberValidator.class)
 @Documented
-public @interface ValidDateTime {
-    String message() default "Invalid date format. Use yyyy-MM-dd for LocalDate and yyyy-MM-dd'T'HH:mm:ss for LocalDateTime";
-
+public @interface ValidPhoneNumber {
+	String message() default "{phone.invalid}";
+	
     Class<?>[] groups() default {};
-
+    
     Class<? extends Payload>[] payload() default {};
+    
+    String countryCode();
 }
